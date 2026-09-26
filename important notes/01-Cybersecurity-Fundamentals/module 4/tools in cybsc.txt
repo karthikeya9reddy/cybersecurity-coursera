@@ -1,0 +1,136 @@
+🛡️ Security Analyst Toolkit — Revision Summary
+1. SIEM tools 🔎
+A SIEM collects and analyzes logs from different systems and helps analysts identify suspicious activity.
+Why?
+An organization can generate millions of logs.
+Instead of manually reading everything:
+SIEM → organizes → filters → alerts → analyst investigates
+
+SIEMs usually provide dashboards that visually organize security information.
+They can be hosted:
+- On-premises → organization's own infrastructure
+- Cloud-hosted → hosted by a cloud provider
+🧠 Remember:
+SIEM = huge amounts of security data → organized into useful information and alerts.
+
+🌐 2. Network Protocol Analyzer / Packet Sniffer
+A packet sniffer captures and analyzes network traffic.
+Examples:
+- Wireshark
+- tcpdump
+Think of your network as a highway:
+Computer → 🚗🚗🚗🚗 → Router → Internet
+Each "car" represents a network packet.
+Wireshark lets you inspect those packets and understand what's happening on the network.
+🧠 Remember:
+Packet sniffer = watch network traffic.
+
+📖 3. Playbooks
+A playbook is a documented procedure telling an analyst what steps to follow for a particular task or incident.
+For example:
+🚨 Security incident
+      ↓
+Identify incident
+      ↓
+Contain it
+      ↓
+Collect evidence
+      ↓
+Preserve evidence
+      ↓
+Investigate
+      ↓
+Report findings
+Different organizations have different playbooks.
+🧠 Remember:
+Playbook = cybersecurity instruction manual.
+
+⚖️ 4. Chain of Custody
+This is particularly important when you're dealing with digital evidence.
+Chain of custody = documenting who has possession/control of evidence throughout an investigation.
+Imagine you collect a laptop from a compromised company.
+You need to record:
+Who collected it?
+
+When?
+
+Where?
+
+Why?
+
+Who received it afterward?
+
+When was it transferred?
+
+For example:
+08:00 → Analyst A collected laptop
+09:00 → Evidence stored securely
+11:00 → Forensic investigator received it
+14:00 → Evidence returned to secure storage
+Everything is documented.
+Why?
+Because if evidence is poorly handled, someone could argue:
+"How do we know this evidence wasn't changed?"
+
+Proper chain of custody helps maintain the integrity and credibility of evidence.
+🧠 Remember:
+Chain of custody = Who had the evidence, when, and what happened to it?
+
+💾 5. Protecting & Preserving Evidence
+Digital evidence can be fragile and volatile.
+If you handle it incorrectly, you can accidentally change or destroy important evidence.
+Therefore:
+Preserve first → investigate second.
+
+Ideally, investigators work from forensic copies rather than modifying the original evidence.
+⏱️ 6. Order of Volatility
+Some data disappears faster than other data.
+For example, information stored in RAM can disappear when a computer loses power.
+Therefore investigators use the order of volatility to determine what should be collected/preserved first.
+Think:
+🔥 Very volatile
+      ↓
+Data that disappears quickly
+      ↓
+Less volatile data
+      ↓
+💾 Persistent storage
+The exact forensic order can be more detailed, but the key concept for your course is:
+Preserve the most volatile data before it disappears.
+
+Example
+If you're investigating a running computer and immediately shut it down, you might lose important information stored in memory.
+So:
+❌ Shut down → investigate later
+can potentially destroy valuable evidence.
+Instead:
+✅ Follow the appropriate evidence-preservation procedure.
+🧠 The whole lesson in one picture
+                 SECURITY ANALYST
+                        │
+          ┌─────────────┼──────────────┐
+          ↓             ↓              ↓
+        SIEM        Packet Sniffer   Playbooks
+          │             │              │
+       Logs         Network traffic   Procedures
+          │             │              │
+          └─────────────┼──────────────┘
+                        ↓
+                    Investigation
+                        │
+              ┌─────────┴─────────┐
+              ↓                   ↓
+       Chain of Custody     Preserve Evidence
+              │                   │
+       Track evidence       Order of volatility
+⭐ Memorize these five
+Concept	Meaning
+SIEM	Collects/analyzes logs and generates useful alerts
+Packet sniffer	Captures and analyzes network traffic
+Playbook	Step-by-step procedure for security tasks
+Chain of custody	Tracks evidence possession and handling
+Order of volatility	Determines what data should be preserved first
+
+
+🔥 One sentence for your notes
+SIEM helps me find suspicious activity, Wireshark helps me inspect network traffic, playbooks tell me what to do, chain of custody protects the credibility of evidence, and order of volatility tells me what evidence must be preserved first.
