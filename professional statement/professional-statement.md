@@ -1,0 +1,3 @@
+#professional-statement 
+
+“I am an aspiring cybersecurity professional currently building a strong foundation in cybersecurity and developing my technical skills. I am particularly interested in understanding how systems, networks, and data can be protected from evolving threats. As I continue my education, I hope to gain hands-on experience across different areas of cybersecurity and discover the specialization that best matches my interests and strengths. My goal is to continuously develop my technical and problem-solving skills and eventually contribute to protecting organizations and the people who rely on their systems.”
