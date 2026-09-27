@@ -1,0 +1,82 @@
+1. Prepare 🧭
+"What risks do we need to think about?"
+Before an incident happens, identify potential risks and determine what controls might reduce them.
+Analyst: Monitor for risks and identify appropriate controls.
+2. Categorize 🗂️
+"How serious is this asset/data?"
+Determine the potential impact on:
+- Confidentiality
+- Integrity
+- Availability
+For example, leaking someone's public newsletter subscription isn't as serious as leaking their credit-card information.
+3. Select 🛡️
+"Which security controls should we use?"
+Choose and document controls that will reduce the identified risks.
+Examples:
+- MFA
+- Encryption
+- Access controls
+- Firewalls
+- Security policies
+- Monitoring
+An analyst might help maintain the relevant playbooks and documentation.
+4. Implement ⚙️
+"Let's actually put those controls into operation."
+The organization implements the selected security and privacy controls.
+Example:
+Employees frequently have password problems → improve password-management procedures.
+
+This is where the security plan becomes something that actually operates in the environment.
+5. Assess 🔍
+"Are our controls actually working?"
+This is a big one for analysts.
+You check whether the controls:
+- Were implemented correctly
+- Are working as intended
+- Have weaknesses
+- Need improvement
+Example:
+Company requires MFA → you check whether MFA is actually enabled for the required accounts.
+
+If something isn't working, you identify it and recommend changes.
+6. Authorize ✅
+"Is the organization willing to accept the remaining risk?"
+Someone with appropriate authority reviews the security/risk information and takes responsibility for the decision to operate the system.
+An analyst may support this by:
+- Creating reports
+- Documenting findings
+- Preparing action plans
+- Tracking remediation milestones
+Important: An entry-level analyst generally isn't the person who makes the final authorization decision.
+7. Monitor 👀
+"Is everything still secure?"
+Security doesn't stop after implementation.
+You continuously monitor:
+- Systems
+- Logs
+- Controls
+- Threats
+- Vulnerabilities
+- Changes in the environment
+If something changes, the organization may need to reassess its risks and controls.
+🧠 Remember it like this
+Step	Simple question
+Prepare	What risks do we have?
+Categorize	How serious are they?
+Select	What controls do we need?
+Implement	Put the controls in place
+Assess	Do they actually work?
+Authorize	Accept/approve the remaining risk
+Monitor	Keep watching and improve
+
+
+🔥 One example from start to finish
+Imagine a company has a database containing customer personal information.
+Prepare: Identify the possibility of unauthorized access.
+Categorize: Determine that the data is highly sensitive because it contains PII.
+Select: Choose encryption, MFA, access controls, logging, etc.
+Implement: Actually configure those controls.
+Assess: Test whether unauthorized users can access the database.
+Authorize: Management reviews the remaining risk and approves operation.
+Monitor: SIEM/logs continuously monitor access for suspicious activity.
+And then the cycle continues
