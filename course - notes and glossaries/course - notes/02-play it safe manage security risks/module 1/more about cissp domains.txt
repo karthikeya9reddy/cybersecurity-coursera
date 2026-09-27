@@ -1,0 +1,213 @@
+Yes — Course 2 goes deeper into these domains, but don't worry about memorizing all eight like you're preparing for CISSP. At your stage, understand what each domain is responsible for and what an analyst might actually do in it.
+Here's a more detailed explanation of what this reading is trying to teach you.
+🛡️ The 8 CISSP Domains — Course 2 Perspective
+Think of the domains as 8 different areas of cybersecurity work.
+1. Security & Risk Management — 🧭 "What are we protecting and what could go wrong?"
+This is the management/risk side of security.
+An organization asks:
+What are our important assets?
+What threats do we face?
+What is the probability/impact?
+What laws do we need to follow?
+How do we reduce the risk?
+
+This includes:
+- Risk assessment
+- Compliance
+- Security policies
+- Business continuity
+- Disaster recovery
+- Ethics
+- Incident response planning
+Example: A company stores customer PII. You discover that employees have excessive access to it. You help identify the risk and recommend controls.
+2. Asset Security — 💾 "What do we have and how do we protect it?"
+An asset is something valuable to the organization.
+It could be:
+- Customer data
+- Servers
+- Laptops
+- Databases
+- Applications
+- Cloud resources
+- Intellectual property
+Asset security involves the entire lifecycle of data/assets:
+Create → Store → Use → Maintain → Retain → Destroy
+
+Example: A company needs to securely delete old customer records according to its retention policy.
+As an analyst, you might also help with backups so data can be restored after an incident.
+3. Security Architecture & Engineering — 🏗️ "How do we build security into the system?"
+This is where security becomes part of the design of systems and infrastructure.
+Important principles you'll encounter:
+Least privilege
+→ Give users only the access they need.
+Defense in depth
+→ Don't rely on one security control. Use multiple layers.
+Internet
+   ↓
+Firewall
+   ↓
+Authentication
+   ↓
+Network segmentation
+   ↓
+Application security
+   ↓
+Data encryption
+
+If one layer fails, others still provide protection.
+Zero Trust
+→ Don't automatically trust something just because it's inside the network.
+Threat modeling
+→ Think about how a system could be attacked before it is deployed.
+This domain is particularly relevant if you eventually move toward security engineering/cloud security.
+4. Communication & Network Security — 🌐 "How do we protect communications?"
+This deals with securing:
+- Networks
+- Wireless connections
+- Remote access
+- Cloud communication
+- Network infrastructure
+Imagine employees working from home.
+The company needs to make sure:
+Employee → Internet → Company systems
+             🔒
+        Secure connection
+
+Controls could include:
+- Firewalls
+- VPNs
+- Network segmentation
+- Secure protocols
+- Access restrictions
+- Monitoring
+This is where things like Wireshark and packet analysis eventually become much more relevant.
+5. Identity & Access Management (IAM) — 🔑 "Who are you and what are you allowed to access?"
+This is one of the easiest domains to understand.
+Two major questions:
+Who are you?
+
+→ Authentication
+What are you allowed to do?
+
+→ Authorization
+Example:
+Employee logs in
+      ↓
+Authentication
+      ↓
+Identity verified
+      ↓
+Authorization
+      ↓
+Can access only required systems
+
+Least privilege
+This is extremely important:
+Give someone only the minimum access required to perform their job.
+
+For example, a customer-service employee might need:
+✅ Customer phone number
+but shouldn't automatically have:
+❌ Customer payment information
+❌ Administrator privileges
+❌ Entire customer database
+6. Security Assessment & Testing — 🔍 "Can we find weaknesses before attackers do?"
+This domain is about testing security.
+Activities include:
+- Security assessments
+- Vulnerability assessments
+- Penetration testing
+- Security-control testing
+- Auditing
+- Permission reviews
+Example:
+A company asks:
+"Can you check whether our employees have excessive permissions?"
+
+You audit permissions and discover:
+Employee A
+Customer Service
+       ↓
+Admin access ❌
+
+You report the problem so it can be fixed.
+Important distinction
+Vulnerability assessment:
+Find and identify weaknesses.
+
+Penetration testing:
+Authorized simulated attack to determine whether weaknesses can actually be exploited.
+
+7. Security Operations — 🚨 "Something is happening. What do we do?"
+This is probably the domain you'll recognize most from the tools you've been learning about.
+It includes:
+- SIEM
+- Log management
+- IDS/IPS
+- Incident response
+- Playbooks
+- Threat investigation
+- Forensics
+- Documentation
+- Post-incident analysis
+Imagine:
+SIEM
+ ↓
+🚨 500 suspicious login attempts
+ ↓
+Security Analyst
+ ↓
+Investigate logs
+ ↓
+Identify source
+ ↓
+Determine whether it's an attack
+ ↓
+Contain/respond
+ ↓
+Document incident
+
+This is where your earlier learning about SIEM, logs, playbooks, and incident response comes together.
+8. Software Development Security — 💻 "Build security into software"
+Security shouldn't be added after software is finished.
+It should be considered throughout the Software Development Life Cycle (SDLC).
+Design
+  ↓
+Development
+  ↓
+Testing
+  ↓
+Deployment
+  ↓
+Maintenance
+
+Security should exist throughout all of these stages.
+For example, developers might need to ensure:
+- Authentication is secure
+- Data is encrypted
+- User input is validated
+- Vulnerabilities are tested
+- Secrets aren't exposed
+- Access controls work correctly
+This domain connects particularly well with your C++/JavaScript/web-development background.
+🧠 The easiest way to remember all 8
+Don't memorize the complicated descriptions. Remember the question each domain answers:
+Domain	Think
+1. Security & Risk Management	🧭 What could go wrong?
+2. Asset Security	💾 What do we have?
+3. Architecture & Engineering	🏗️ How do we build it securely?
+4. Network Security	🌐 How do we protect communication?
+5. IAM	🔑 Who can access what?
+6. Assessment & Testing	🔍 Can we find weaknesses?
+7. Security Operations	🚨 What do we do when something happens?
+8. Software Development Security	💻 How do we build secure software?
+
+
+And one important thing for Course 2
+You don't need to decide:
+"I'm going into Domain 7."
+
+or
+"I'm going to be an IAM specialist."
+
+You're still exploring.
