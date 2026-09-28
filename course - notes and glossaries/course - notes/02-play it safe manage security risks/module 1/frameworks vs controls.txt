@@ -1,0 +1,119 @@
+🧠 Framework vs Control
+Think of it like building a house:
+Framework = the security plan/blueprint 📋
+Control = the actual protection you install 🛡️
+For example:
+HIPAA → requires healthcare organizations to protect patient information
+Framework/policies → define how the organization should manage that protection
+MFA → an actual control that helps prevent unauthorized access
+
+1. Security Frameworks 📋
+A security framework is a structured set of guidelines and practices that helps an organization:
+- Identify and manage risks
+- Protect data
+- Establish security processes
+- Meet compliance requirements
+- Improve its security posture
+You've already seen frameworks such as:
+- NIST CSF
+- NIST RMF
+- ISO/IEC 27001
+- Cyber Threat Framework (CTF)
+Cyber Threat Framework (CTF)
+The CTF gives cybersecurity professionals a common language for describing cyber threats.
+Basically:
+"Let's describe and classify threat activity in a consistent way so security teams can understand and communicate it."
+
+This makes threat analysis and information sharing easier.
+2. ISO/IEC 27001 🌎
+ISO/IEC 27001 is an internationally recognized framework/standard for managing information security.
+It helps organizations protect things such as:
+- Financial information
+- Intellectual property
+- Employee information
+- Customer/third-party information
+It provides requirements and guidance for an Information Security Management System (ISMS).
+One important point:
+ISO 27001 doesn't simply say "you must install this exact security tool."
+
+Instead, it helps organizations establish a systematic way to identify risks and select appropriate controls.
+🛡️ 3. Security Controls
+A security control = a safeguard used to reduce a specific security risk.
+Controls can be:
+🏢 Physical controls
+Protect physical locations and equipment.
+Examples:
+- 🔒 Locks
+- 🚧 Fences/gates
+- 👮 Security guards
+- 📹 CCTV
+- 🪪 Access badges
+- Motion detectors
+💻 Technical controls
+Use technology to protect systems and data.
+Examples:
+- 🔥 Firewalls
+- 🔐 MFA
+- 🦠 Antivirus
+- Encryption
+- IDS/IPS
+- Access-control systems
+📋 Administrative controls
+These are mainly policies, procedures, and organizational processes.
+Examples:
+- Separation of duties
+- Authorization policies
+- Asset classification
+- Security policies
+- Employee training
+⭐ Another useful way to classify controls
+Controls can also be categorized by what they do:
+Preventive
+Try to stop something from happening.
+Example:
+MFA prevents an attacker from accessing an account with only a stolen password.
+
+Detective
+Try to detect something happening.
+Example:
+SIEM detects suspicious login activity.
+
+Corrective
+Help fix/recover after something happens.
+Example:
+Restoring a compromised system from a clean backup.
+
+🔥 Put everything together
+Imagine a hospital:
+Risk: Unauthorized person accesses patient records.
+Framework:
+HIPAA/security framework establishes requirements and security processes.
+Controls:
+- MFA → technical
+- Door locks → physical
+- Access policy → administrative
+Then:
+Framework
+    ↓
+Defines security approach
+    ↓
+Identify risks
+    ↓
+Choose controls
+    ↓
+Implement controls
+    ↓
+Monitor & assess
+    ↓
+Reduce risk
+
+🧠 For your notes, remember:
+Framework = structured guidelines for managing security and risk.
+
+Control = safeguard used to reduce a specific risk.
+
+Physical = protects physical environment.
+
+Technical = uses technology.
+
+Administrative = policies, procedures, and organizational processes.
