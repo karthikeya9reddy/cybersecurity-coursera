@@ -1,0 +1,87 @@
+1. Minimize Attack Surface
+Attack surface = all the possible points a threat actor could exploit.
+➡️ Reduce unnecessary:
+- Open ports
+- Services
+- User accounts
+- Permissions
+- Features
+Goal: Fewer attack opportunities.
+2. Principle of Least Privilege
+Give users/processes only the minimum access they need to perform their job.
+Example:
+A customer-service employee needs access to a customer's phone number → give access to that, not their entire account.
+
+Goal: Limit damage if an account is compromised.
+3. Defense in Depth
+Use multiple layers of security controls rather than relying on one control.
+Example:
+Password → MFA → Firewall → Antivirus → SIEM → Monitoring
+If one layer fails, others can still protect the system.
+Goal: No single point of security failure.
+4. Separation of Duties
+Critical actions should require multiple people/roles, rather than one person having complete control.
+Example:
+One employee requests a payment → another approves it.
+
+Goal: Prevent fraud, abuse, and insider threats.
+5. Keep Security Simple
+Avoid unnecessarily complicated security designs.
+Why?
+More complexity → harder to understand → harder to maintain → greater chance of mistakes.
+Goal: Simple, understandable security.
+6. Fix Security Issues Correctly
+Don't just fix the visible symptom.
+Process:
+Find root cause → contain → fix vulnerability → test → verify
+Example:
+If an attacker repeatedly exploits a vulnerable application, don't just block the attacker's IP. Fix the underlying vulnerability.
+Four Additional Principles
+7. Establish Secure Defaults
+The application's default configuration should already be secure.
+Secure should be the default, not something the user has to manually enable.
+
+Example:
+A newly created account should have minimum permissions by default.
+8. Fail Securely
+When a security mechanism fails, it should fail in the safest state.
+Example:
+Firewall fails → block connections
+Not:
+Firewall fails → allow everything
+Remember:  
+Failure should not automatically create an opening for attackers.
+
+9. Don't Trust Services
+Don't automatically trust third-party systems just because you work with them.
+Example:
+Your company uses an external cloud/vendor service.
+You should still:
+- Verify data
+- Authenticate requests
+- Validate responses
+- Apply appropriate access controls
+Remember:  
+Third party ≠ automatically trusted.
+
+10. Avoid Security by Obscurity
+Don't depend on hiding how something works as your primary security mechanism.
+Bad approach:
+"Attackers don't know our source code, so we're secure."
+
+Good approach:
+Even if the attacker knows how the system works, strong authentication, encryption, access controls, and other defenses still protect it.
+
+🧠 Super-short revision
+
+Principle	                   Remember it as
+Minimize attack surface   	Reduce entry points
+Least privilege           	Minimum access
+Defense in depth	        Multiple layers
+Separation of duties	        Split critical actions
+Keep security simple	        Avoid unnecessary complexity
+Fix issues correctly	        Fix root cause
+Secure defaults	                Secure by default
+Fail securely	                Failure → safest state
+Don't trust services	        Verify third parties
+Avoid security by obscurity	Don't rely on secrecy
