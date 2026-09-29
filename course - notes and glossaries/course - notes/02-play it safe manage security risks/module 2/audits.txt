@@ -1,0 +1,286 @@
+🔐 Security Audits — Complete Revision Notes
+1. What is a Security Audit?
+A security audit is a systematic review of an organization's:
+- Security controls
+- Policies
+- Procedures
+- Assets
+- Security practices
+against a defined set of expectations or criteria.
+The purpose is to determine:
+What is working? What is not? What risks exist? What needs to be fixed?
+
+Audits help maintain and improve an organization's security posture.
+The criteria can be:
+Internal
+- Company policies
+- Procedures
+- Security standards
+- Best practices
+External
+- Laws
+- Regulations
+- Compliance requirements
+- Industry standards
+2. Why are Security Audits Important?
+Audits help organizations:
+- Identify security risks
+- Find vulnerabilities and weaknesses
+- Check whether controls are effective
+- Identify compliance problems
+- Improve security posture
+- Create remediation plans
+- Avoid regulatory penalties and fines
+- Protect organizational assets and data
+Think of an audit as a security health check.
+3. Internal vs External Audit
+Internal Audit
+Performed within the organization, usually involving:
+- Security team
+- Security manager
+- Compliance officer
+- Other relevant employees
+Entry-level analysts are more likely to assist with internal audits.
+External Audit
+Performed by an independent external party to evaluate whether the organization meets required standards, regulations, or other criteria.
+4. Main Elements of an Internal Security Audit
+Remember these 5 major stages:
+1️⃣ Establish Scope & Goals
+2️⃣ Conduct Risk Assessment
+3️⃣ Complete Controls Assessment
+4️⃣ Assess Compliance
+5️⃣ Communicate Results
+Let's break them down.
+1️⃣ Establish Scope and Goals
+Scope = What are we checking?
+The scope defines what the audit will cover.
+It can include:
+- People
+- Assets
+- Systems
+- Technologies
+- Policies
+- Procedures
+- User permissions
+- Network infrastructure
+Goals = What do we want to achieve?
+Examples:
+- Improve security posture
+- Implement NIST CSF functions
+- Strengthen security controls
+- Achieve compliance
+- Reduce organizational risk
+Easy way to remember:
+Scope = WHERE/WHAT are we checking?
+Goals = WHY are we checking it?
+
+2️⃣ Conduct a Risk Assessment
+A risk assessment identifies and evaluates:
+- Threats
+- Risks
+- Vulnerabilities
+- Potential impact
+The organization asks:
+What could go wrong, and how badly could it affect us?
+
+Example:
+An organization discovers that employees' laptops contain sensitive information but aren't properly protected.
+Potential problem:
+Vulnerability: Weak device security
+↓
+Threat: Attacker steals/compromises laptop
+↓
+Risk: Sensitive data is exposed
+The assessment helps determine what security measures are necessary.
+3️⃣ Controls Assessment
+A controls assessment evaluates whether existing security controls are actually effective.
+The analyst asks:
+Are our current controls sufficient to protect our assets?
+
+Controls are divided into three major categories.
+🧑‍💼 Administrative Controls
+Human/organizational controls.
+Examples:
+- Security policies
+- Password policies
+- Procedures
+- Security awareness training
+- Separation of duties
+- Asset classification
+💻 Technical Controls
+Technology-based controls.
+Examples:
+- Firewalls
+- MFA
+- Encryption
+- Antivirus
+- IDS
+- SIEM
+🏢 Physical Controls
+Controls that protect physical locations/assets.
+Examples:
+- Locks
+- Security guards
+- CCTV
+- Motion detectors
+- Access cards
+- Fences
+Remember:
+Administrative = People & policies
+Technical = Technology
+Physical = Physical environment
+4️⃣ Assess Compliance
+Now determine whether the organization follows the laws, regulations, standards, and requirements that apply to it.
+For example, a company:
+- Operates in the EU
+- Accepts credit-card payments
+It may need to consider:
+GDPR → protection of personal data
+PCI DSS → protection of payment-card information
+So the auditor asks:
+"Are we actually complying with the requirements that apply to us?"
+
+5️⃣ Communicate Results
+After the audit, findings must be communicated to stakeholders.
+The final report can contain:
+- Audit scope
+- Audit goals
+- Identified risks
+- Vulnerabilities
+- Control weaknesses
+- Compliance gaps
+- Priority/severity
+- Recommended improvements
+- Mitigation/remediation actions
+The purpose is to tell the organization:
+Here's what we found, here's how serious it is, and here's what should be done.
+
+🛠️ Audit Checklist
+Before conducting an audit, organizations generally create an audit checklist.
+Step 1 — Identify Scope
+Determine:
+- What assets will be assessed?
+- What systems?
+- What policies?
+- What procedures?
+- What technologies?
+Example:
+Is the firewall configured correctly?
+Is PII protected?
+Are physical assets secured?
+
+Step 2 — Complete Risk Assessment
+Evaluate risks related to:
+- Assets
+- Budget
+- Controls
+- Internal processes
+- External regulations
+Step 3 — Conduct the Audit
+Actually evaluate the assets and controls identified in the scope.
+Example:
+Check whether employees actually follow the password policy.
+
+Not just:
+"Does a password policy exist?"
+
+Step 4 — Create Mitigation Plan
+A mitigation plan is a strategy for reducing identified risks.
+Example:
+Finding: Employees use weak passwords.
+Mitigation:
+- Strong password requirements
+- MFA
+- Password manager
+- Security awareness training
+The objective is to lower risk and potential negative consequences.
+Step 5 — Communicate Results
+Create a report containing:
+Finding → Risk → Severity → Recommendation → Required action
+Then communicate it to stakeholders.
+🔗 How Frameworks, Controls, Compliance & Audits Connect
+This is probably the most important concept from this section.
+Think of it like this:
+Frameworks
+⬇️
+Give you a structured approach
+Controls
+⬇️
+Give you specific safeguards
+Compliance
+⬇️
+Tells you what laws/regulations/requirements you must satisfy
+Audit
+⬇️
+Checks whether everything is actually working and compliant
+Example
+A hospital wants to protect patient data.
+Framework: NIST CSF
+→ provides a structured security approach
+Controls: MFA + encryption + access controls
+→ actually protect the data
+Compliance: HIPAA
+→ legal requirement for protecting health information
+Audit:
+→ checks whether the hospital's controls and procedures actually meet its requirements.
+🧠 Frameworks' Role in Audits
+Frameworks such as:
+- NIST CSF
+- ISO/IEC 27001
+help organizations prepare for audits.
+They provide structured security practices that can help organizations:
+- Identify risks
+- Implement controls
+- Improve security
+- Demonstrate compliance
+- Prepare for audits
+⚠️ Important: Risk vs Audit
+Don't confuse these.
+Risk Assessment
+What could go wrong?
+
+Identifies and evaluates risks.
+Security Audit
+Are we actually doing what we're supposed to do?
+
+Reviews controls, policies, procedures, and compliance against expectations.
+🎯 The Entire Audit Process in One Flow
+Memorize this:
+Scope & Goals
+↓
+Risk Assessment
+↓
+Controls Assessment
+↓
+Compliance Assessment
+↓
+Mitigation Plan
+↓
+Communicate Results
+That's the core workflow.
+🔥 Interview-Level Summary
+If someone asks "What is a security audit?", you can say:
+A security audit is a systematic review of an organization's security controls, policies, procedures, and practices against internal and external requirements. It identifies risks, control weaknesses, and compliance gaps and provides recommendations to improve the organization's security posture.
+
+And if they ask "What would an entry-level security analyst do?":
+An entry-level analyst may help review controls, analyze risks, verify compliance, examine evidence, document findings, and contribute to recommendations and audit reports.
+
+Your GitHub note can be structured as:
+Security Audits
+│
+├── Definition
+├── Purpose
+├── Internal vs External
+├── 5 Audit Elements
+│   ├── Scope & Goals
+│   ├── Risk Assessment
+│   ├── Controls Assessment
+│   ├── Compliance Assessment
+│   └── Communicate Results
+├── Control Categories
+│   ├── Administrative
+│   ├── Technical
+│   └── Physical
+├── Audit Checklist
+├── Mitigation Plan
+└── Frameworks + Controls + Compliance + Audit
