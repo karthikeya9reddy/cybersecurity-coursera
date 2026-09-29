@@ -284,3 +284,6 @@ Security Audits
 ├── Audit Checklist
 ├── Mitigation Plan
 └── Frameworks + Controls + Compliance + Audit
+
+🧠 Memorize this
+Scope → Risk → Controls → Compliance → Evidence → Findings → Remediation → Report → Follow-up
