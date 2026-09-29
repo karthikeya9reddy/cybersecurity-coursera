@@ -60,14 +60,14 @@ You continuously monitor:
 - Changes in the environment
 If something changes, the organization may need to reassess its risks and controls.
 🧠 Remember it like this
-Step	Simple question
-Prepare	What risks do we have?
+Step	         Simple question
+Prepare  	What risks do we have?
 Categorize	How serious are they?
-Select	What controls do we need?
+Select	        What controls do we need?
 Implement	Put the controls in place
-Assess	Do they actually work?
+Assess	        Do they actually work?
 Authorize	Accept/approve the remaining risk
-Monitor	Keep watching and improve
+Monitor	        Keep watching and improve
 
 
 🔥 One example from start to finish
