@@ -1,0 +1,120 @@
+
+                               NIST CSF	                                                 NIST RMF
+Main purpose	        Organize/manage cybersecurity	                  Manage security & privacy risk systematically
+Structure	        5 functions	                                  7 steps
+Focus	                Overall cybersecurity activities	          Detailed risk-management lifecycle
+Easy way to think	What should we do?	                          How do we manage this system's risk?
+Key words	        Identify, Protect, Detect, Respond, Recover	  Prepare, Categorize, Select, Implement, Assess, Authorize, Monitor
+
+NIST CSF: A high-level cybersecurity framework organized around Identify, Protect, Detect, Respond, Recover to help organizations manage cybersecurity risk.
+
+NIST RMF: A structured 7-step risk-management process — Prepare, Categorize, Select, Implement, Assess, Authorize, Monitor — used to manage security and privacy risks throughout a system's lifecycle.
+
+🛡️ The 5 NIST CSF Functions
+
+1. IDENTIFY 🔎
+"What do we have, and what could go wrong?"
+The organization identifies:
+- Important assets
+- Systems and devices
+- Data
+- Vulnerabilities
+- Threats
+- Risks
+Analyst example:
+You monitor the organization's systems and identify an unusual or vulnerable device.
+👉 This is mainly understanding your environment and its risks.
+2. PROTECT 🛡️
+"How do we prevent or reduce the damage?"
+Once risks are understood, security measures are implemented.
+This includes:
+- Security policies
+- Access controls
+- MFA
+- Encryption
+- Employee training
+- Security tools
+- Procedures
+Example:
+You discover employees are vulnerable to phishing → the organization introduces security awareness training and stronger email protections.
+👉 Protect = prevent/reduce risk.
+3. DETECT 🚨
+"Is something bad happening?"
+You continuously monitor systems to identify potential incidents.
+This is where tools you've already learned about become important:
+- SIEM
+- Logs
+- IDS
+- Network monitoring
+- Alerts
+Example:
+SIEM
+ ↓
+Suspicious login detected 🚨
+ ↓
+Alert security team
+ ↓
+Investigate
+
+👉 Detect = notice the attack/incident quickly.
+4. RESPOND 🚒
+"Something happened. What do we do?"
+Once an incident is detected, the organization takes action.
+This can involve:
+- Containing the incident
+- Investigating it
+- Collecting evidence
+- Documenting what happened
+- Following playbooks
+- Communicating with relevant teams
+- Improving security afterward
+Example:
+Suspicious account detected
+        ↓
+Investigate
+        ↓
+Disable/contain account
+        ↓
+Determine what happened
+        ↓
+Document incident
+
+👉 Respond = contain and deal with the incident.
+5. RECOVER 🔄
+"How do we get back to normal?"
+After the incident is contained, affected systems and data need to be restored.
+This can involve:
+- Restoring backups
+- Recovering systems
+- Restoring data
+- Returning services to normal
+- Improving recovery plans
+Example:
+Ransomware encrypts a company's files.
+Attack
+ ↓
+Respond/contain
+ ↓
+Remove threat
+ ↓
+Restore clean backups
+ ↓
+Systems return to normal
+
+👉 Recover = restore normal operations and learn from the incident.
+🧠 The easiest way to remember it
+Imagine your house:
+IDENTIFY 🔎  
+"There's a weak window."
+
+PROTECT 🛡️  
+"Install a stronger lock."
+
+DETECT 🚨  
+"The alarm detects someone trying to enter."
+
+RESPOND 🚒  
+"You follow your emergency procedure."
+
+RECOVER 🔄  
+"Repair the damage and improve your security.
