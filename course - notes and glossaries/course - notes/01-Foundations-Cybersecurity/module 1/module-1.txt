@@ -1,0 +1,352 @@
+🔐 Module 1 — Foundations of Cybersecurity
+1. What is cybersecurity?
+
+Cybersecurity = protecting systems, networks, applications, and data from unauthorized access, damage, disruption, or theft.
+
+Think:
+
+🏦 CyberBank has valuable data → cybersecurity protects it.
+
+2. The CIA Triad — ⭐ VERY IMPORTANT
+
+This is one of the most fundamental cybersecurity concepts.
+
+🔒 Confidentiality
+
+Only authorized people should see the information.
+
+Example:
+
+Customer bank details should not be visible to random employees or attackers.
+
+Think: "Who can see it?"
+
+📝 Integrity
+
+Information should remain accurate and shouldn't be changed without authorization.
+
+Example:
+
+An attacker changes someone's bank balance from ₹10,000 → ₹1,00,000.
+
+That's an integrity problem.
+
+Think: "Can someone secretly change it?"
+
+⚡ Availability
+
+Systems and data should be accessible when authorized users need them.
+
+Example:
+
+CyberBank's website goes down because of a DDoS attack.
+
+That's an availability problem.
+
+Think: "Can I access it when I need it?"
+
+🧠 Remember:
+
+CIA = Confidentiality + Integrity + Availability
+
+These three will appear everywhere in cybersecurity.
+
+3. Threats and Threat Actors
+Threat
+
+Something that could potentially cause harm.
+
+Example:
+
+Malware could steal customer information.
+
+Threat actor
+
+The person/group responsible for carrying out a malicious action.
+
+Example:
+
+A cybercriminal group attacks CyberBank.
+
+They are the threat actor.
+
+Remember:
+
+Threat = potential danger
+Threat actor = who causes the danger
+
+4. Internal threats
+
+A threat doesn't always come from some random hacker on the internet.
+
+Someone inside an organization can create a threat.
+
+Accidental
+
+Employee clicks a malicious phishing link.
+
+Intentional
+
+Employee deliberately accesses information they aren't authorized to access.
+
+Remember:
+
+Internal threat = danger involving someone who has legitimate/trusted access or is inside the organization.
+
+5. Security Controls 🛡️
+
+Security controls are safeguards used to reduce security risks.
+
+Examples:
+
+MFA
+Firewalls
+Encryption
+Access controls
+Antivirus/EDR
+Security policies
+Backups
+
+Example:
+
+Risk: Someone steals a password.
+
+Control:
+
+MFA makes it harder for the attacker to access the account even if they have the password.
+
+Think:
+
+Risk → Control → Reduced risk
+
+6. Security Frameworks 🏗️
+
+A security framework gives an organization a structured approach to managing cybersecurity.
+
+Think of building a house:
+
+Framework = blueprint
+
+It helps an organization figure out things like:
+
+What are our risks?
+       ↓
+How do we protect ourselves?
+       ↓
+How do we detect attacks?
+       ↓
+How do we respond?
+       ↓
+How do we recover?
+7. Security Posture 🛡️
+
+Security posture means the organization's overall ability to protect itself and respond to threats.
+
+Imagine two companies:
+
+Company A
+MFA everywhere
+Updated systems
+Good backups
+Monitoring
+Strong access controls
+Incident response plan
+
+→ Strong security posture
+
+Company B
+Old software
+No MFA
+Poor passwords
+No backups
+No monitoring
+
+→ Weak security posture
+
+Think:
+
+Security posture = "How strong is our security overall?"
+
+8. Compliance 📋
+
+Compliance means following required laws, regulations, standards, and internal requirements.
+
+Example:
+
+A company must protect customers' personal information according to applicable regulations.
+
+The company puts appropriate security measures in place to meet those requirements.
+
+Remember:
+
+Compliance = Follow the rules.
+
+9. Audits 🔎
+
+An audit is a systematic check to determine whether an organization is actually following requirements and whether controls are working as expected.
+
+Example:
+
+Requirement:
+
+"Every employee must use MFA."
+
+Audit:
+
+Check employee accounts → discover 3 accounts without MFA → record finding.
+
+Remember:
+
+Audit = Check/verify.
+
+And:
+
+SIEM = tool that can provide evidence for an audit, but SIEM itself isn't an audit.
+
+10. Network Security 🌐
+
+Network security = protecting an organization's network, devices, systems, services and traffic from unauthorized access and attacks.
+
+Examples:
+
+Firewalls
+Network monitoring
+IDS/IPS
+VPNs
+Access controls
+
+Think:
+
+Protect the digital roads and traffic.
+
+11. Cloud Security ☁️
+
+Cloud security protects:
+
+Cloud data
+Cloud applications
+Cloud servers
+Cloud identities
+Cloud infrastructure
+
+A major example:
+
+An employee accidentally makes a cloud storage bucket public.
+
+Now sensitive information could potentially be accessed by unauthorized people.
+
+Cloud security tries to prevent problems like this through proper configuration, access control, monitoring, encryption, etc.
+
+Think:
+
+Cloud security = protecting resources hosted in the cloud.
+
+12. Programming 👨‍💻
+
+Programming means giving computers instructions to perform tasks.
+
+And this becomes particularly interesting for you because you've already completed C++.
+
+For cybersecurity, programming can help you:
+
+Automate repetitive tasks
+Analyze logs
+Process data
+Build security tools
+Detect suspicious activity
+Automate investigations
+
+Example:
+
+Read login logs
+      ↓
+Find repeated failed logins
+      ↓
+Identify suspicious IPs
+      ↓
+Generate an alert
+
+Later you'll probably use Python heavily for this type of work.
+
+13. SIEM 🖥️
+
+You also encountered SIEM.
+
+SIEM = Security Information and Event Management
+
+Think:
+
+Digital security control room.
+
+It collects security-related logs/events from different systems and helps security teams analyze them and identify suspicious activity.
+
+Example:
+
+Server logs ──┐
+Firewall ─────┤
+Cloud ────────┤
+Windows ──────┼──→ SIEM → Analysis → 🚨 Alert
+Linux ────────┤
+Applications ─┘
+
+A security analyst can then investigate the alert.
+
+🎯 The most important connections
+
+This is probably the most valuable part of Module 1.
+
+Imagine CyberBank again:
+
+                    CYBERBANK
+                       │
+          ┌────────────┴────────────┐
+          ↓                         ↓
+       THREATS                  ASSETS/DATA
+          │                         │
+          ↓                         ↓
+    Threat Actors              PII / SPII
+          │
+          ↓
+     SECURITY RISKS
+          │
+          ↓
+   SECURITY CONTROLS
+          │
+          ↓
+   Security Framework
+          │
+          ↓
+   Strong Security Posture
+          │
+          ├── Network Security
+          ├── Cloud Security
+          ├── Access Control
+          ├── Encryption
+          └── Monitoring/SIEM
+
+And CIA sits at the heart of protecting the data:
+
+CONFIDENTIALITY → Don't let unauthorized people see it
+
+INTEGRITY       → Don't let unauthorized people change it
+
+AVAILABILITY    → Make sure authorized people can access it
+🧠 Your Module 1 cheat sheet
+
+If you can explain these without looking, you've understood the module:
+
+Concept	Remember it as
+Cybersecurity	Protect digital systems/data
+CIA Triad	Confidentiality + Integrity + Availability
+Threat	Potential danger
+Threat actor	Person/group causing the threat
+Internal threat	Threat involving trusted/internal access
+Security control	Safeguard
+Security framework	Blueprint
+Security posture	Overall security strength
+Compliance	Follow the rules
+Audit	Check/verify
+Network security	Protect networks/traffic
+Cloud security	Protect cloud resources
+Programming	Give computers instructions
+SIEM	Collect/analyze security events & alert
