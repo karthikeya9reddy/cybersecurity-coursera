@@ -1,0 +1,120 @@
+SIEM & Log Analysis — Notes
+1. What is a Log?
+A log is a record of events that happen within an organization's systems or network.
+Security analysts examine logs to identify threats, risks, vulnerabilities, and suspicious activity.
+Common log sources
+1. Firewall logs
+- Record incoming and outgoing network connections.
+- Show attempted or established connections.
+- Useful for detecting unauthorized network activity.
+2. Network logs
+- Record devices entering/leaving a network.
+- Record connections between devices and network services.
+3. Server logs
+- Record events involving services such as:
+  - Websites
+  - Email
+  - File sharing
+- Can include login attempts, usernames, password requests, etc.
+2. SIEM
+SIEM = Security Information and Event Management
+A SIEM is a tool that collects and analyzes logs from different sources to monitor security activity.
+Think:
+Many logs → SIEM → organized information + alerts → analyst investigates
+
+What SIEM does
+- Collects logs from multiple sources
+- Centralizes security data
+- Analyzes events
+- Provides real-time monitoring
+- Generates alerts for suspicious activity
+- Helps analysts investigate incidents
+- Reduces the amount of raw data analysts need to manually examine
+- Stores/indexes log data for searching and analysis
+Important
+SIEM doesn't magically understand everything.
+It needs to be configured and customized according to an organization's environment and security requirements.
+3. SIEM Dashboards
+A SIEM dashboard presents security information visually using:
+- Charts
+- Graphs
+- Tables
+- Alerts
+- Metrics
+This allows analysts to understand large amounts of security data quickly.
+Example
+Suppose an employee normally logs in from India during working hours.
+The SIEM detects:
+500 login attempts in 5 minutes from several unusual locations outside working hours.
+
+The analyst can use the dashboard to see:
+- Number of attempts
+- Time of attempts
+- Geographic locations
+- Timeline
+- User involved
+This helps the analyst determine that the activity is suspicious and investigate further.
+4. SIEM Metrics
+Metrics are measurements used to evaluate performance or activity.
+Examples:
+- Response time
+- Availability
+- Failure rate
+- Network traffic volume
+- Number of security events
+Different dashboards can be customized for different teams and purposes.
+5. Cloud SIEM
+SIEM has evolved toward cloud environments.
+Cloud-hosted SIEM
+The vendor manages the infrastructure required to run the SIEM.
+The organization accesses it through the internet.
+Benefit: The organization doesn't have to build and maintain its own SIEM infrastructure.
+Cloud-native SIEM
+Designed specifically to take advantage of cloud computing.
+It provides benefits such as:
+- Scalability — can handle increasing amounts of data
+- Flexibility
+- Availability
+- Cloud-based processing and storage
+Simple distinction:
+Cloud-hosted = SIEM hosted in the cloud
+Cloud-native = SIEM designed specifically around cloud capabilities
+
+6. Why SIEM keeps evolving
+Technology and attacks constantly change.
+Examples:
+- IoT → more connected devices → larger attack surface
+- AI/ML → can improve detection and analysis
+- Increasing amounts of security data
+- New threat actor techniques
+Therefore, SIEM systems continue to evolve.
+7. SOAR
+SOAR = Security Orchestration, Automation, and Response
+SOAR uses automation to respond to security events.
+Instead of an analyst manually performing every repetitive action, SOAR can automatically perform predefined responses.
+Example
+A suspicious login is detected:
+SIEM detects → SOAR automatically responds → analyst investigates
+Possible automated actions could include:
+- Blocking an IP
+- Disabling an account
+- Creating an incident ticket
+- Sending an alert to the security team
+This allows analysts to spend more time on complex incidents that cannot easily be automated.
+🔥 The big picture
+Remember this chain:
+Logs
+↓
+SIEM collects & analyzes logs
+↓
+Dashboard / alerts show suspicious activity
+↓
+Security analyst investigates
+↓
+SOAR can automate repetitive responses
+Most important things to remember
+Log: Record of events.
+SIEM: Collects, analyzes, and monitors logs.
+Dashboard: Visualizes security information.
+Cloud SIEM: SIEM delivered through cloud infrastructure.
+SOAR: Automates security responses.
