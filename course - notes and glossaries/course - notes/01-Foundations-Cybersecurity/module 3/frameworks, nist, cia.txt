@@ -1,0 +1,356 @@
+Absolutely. Here is a **combined revision sheet** from both videos/readings. I've removed repetition and kept the concepts connected so you can revise quickly.
+
+# 🔐 Security Frameworks, CIA Triad & NIST — Combined Summary
+
+## 1. 🧠 Security Frameworks
+
+A **security framework** is a structured set of guidelines, standards, and best practices that helps an organization **identify, manage, and reduce cybersecurity risks**.
+
+Frameworks help organizations:
+
+- Protect sensitive data such as PII
+- Identify security weaknesses
+- Manage risks
+- Meet regulatory requirements
+- Align security with business goals
+
+### Security lifecycle
+
+Security is **continuous**, not something you do once:
+
+> **Identify → Plan → Implement → Monitor → Improve → Repeat**
+
+---
+
+# 2. ⭐ Four Core Components of Security Frameworks
+
+### 1. 🎯 Identify & document security goals
+Determine what the organization wants to achieve.
+
+Example:
+
+> "We need to comply with GDPR."
+
+### 2. 📋 Set guidelines
+Create policies and rules for achieving those goals.
+
+Example:
+
+> Create rules for handling users' requests to access or delete their personal data.
+
+### 3. ⚙️ Implement security processes
+Turn those guidelines into actual procedures.
+
+Example:
+
+> Create a process that verifies a user's identity before allowing their data to be deleted.
+
+### 4. 📊 Monitor & communicate results
+Monitor security and report problems/results to the appropriate people.
+
+Example:
+
+> An analyst discovers a GDPR-related issue → documents it → reports it.
+
+🧠 **Memory:**
+
+> **Goals → Guidelines → Processes → Monitor**
+
+---
+
+# 3. 🔐 CIA Triad
+
+The **CIA Triad** is a foundational model for information security.
+
+### 🔒 Confidentiality
+
+> **Only authorized people can access information.**
+
+Example:
+
+Only HR can access employee salary records.
+
+Controls:
+
+- Access control
+- Authentication
+- Encryption
+
+🧠 **C = Who can see it?**
+
+---
+
+### 📝 Integrity
+
+> **Information remains accurate, authentic, and trustworthy.**
+
+Example:
+
+An attacker shouldn't be able to secretly change someone's bank balance.
+
+Controls:
+
+- Encryption
+- Hashing
+- Access controls
+- Integrity monitoring
+
+🧠 **I = Is the data still correct?**
+
+---
+
+### ⚡ Availability
+
+> **Authorized users can access information/systems when needed.**
+
+Example:
+
+A hospital's patient database needs to remain accessible to authorized doctors.
+
+Controls:
+
+- Backups
+- Redundancy
+- Disaster recovery
+- Failover
+
+🧠 **A = Can I access it?**
+
+---
+
+### ⭐ CIA in one line:
+
+> **Confidentiality = secret**  
+> **Integrity = correct**  
+> **Availability = accessible**
+
+---
+
+# 4. 💎 Assets
+
+An **asset** is anything that has value to an organization.
+
+Examples:
+
+- Customer PII
+- Financial information
+- Databases
+- Applications
+- Servers
+- Networks
+- Intellectual property
+
+The more valuable/sensitive an asset is, the more important it is to protect it.
+
+### Example:
+
+A public news website:
+
+> Lower sensitivity → relatively lower security requirements.
+
+A database containing millions of customers' financial information:
+
+> Extremely valuable → much stronger security controls required.
+
+🧠 **Asset = Something valuable that needs protection.**
+
+---
+
+# 5. 🛡️ Security Controls
+
+A **security control** is a specific safeguard designed to **reduce a particular security risk**.
+
+Example:
+
+### Risk:
+Employees accidentally expose sensitive information.
+
+### Control:
+Mandatory security/privacy training.
+
+Another example:
+
+### Risk:
+Unauthorized users access an account.
+
+### Controls:
+**MFA + strong authentication + access control**
+
+### Framework vs Control
+
+> **Framework = overall security blueprint**  
+> **Control = specific protection**
+
+Think:
+
+🏰 **Framework = the castle's defense plan**  
+🧱 **Controls = walls, locks, guards, cameras**
+
+---
+
+# 6. 🏛️ NIST Cybersecurity Framework
+
+**NIST = National Institute of Standards and Technology.**
+
+The **NIST Cybersecurity Framework (CSF)** is a voluntary framework containing standards, guidelines, and best practices for managing cybersecurity risk.
+
+The current NIST CSF 2.0 has **six functions**:
+
+### 1. 🏛️ Govern
+> **How should cybersecurity be managed?**
+
+Policies, roles, responsibilities, risk strategy, governance.
+
+### 2. 🔎 Identify
+> **What do we have and what could go wrong?**
+
+Identify:
+
+- Assets
+- Data
+- Threats
+- Vulnerabilities
+- Risks
+
+### 3. 🛡️ Protect
+> **How do we reduce the risk?**
+
+Examples:
+
+- MFA
+- Encryption
+- Access controls
+- Training
+- Secure configurations
+
+### 4. 🚨 Detect
+> **Is something suspicious happening?**
+
+Examples:
+
+- SIEM
+- Log monitoring
+- IDS/IPS
+- Security alerts
+
+### 5. 🚒 Respond
+> **Something happened. What do we do?**
+
+- Investigate
+- Contain
+- Communicate
+- Take action
+
+### 6. 🔄 Recover
+> **How do we restore normal operations?**
+
+- Restore backups
+- Recover systems
+- Fix vulnerabilities
+- Improve defenses
+
+🧠 **G I P D R R**
+
+> **Govern → Identify → Protect → Detect → Respond → Recover**
+
+---
+
+# 7. 👤 Insider / Internal Threats
+
+A trusted person inside an organization can be dangerous because they may already have:
+
+- Legitimate access
+- Knowledge of systems
+- Knowledge of where sensitive data is located
+
+Example:
+
+> A disgruntled employee intentionally accesses confidential customer information.
+
+An internal threat can also be **accidental**:
+
+> An employee accidentally clicks a malicious email link.
+
+---
+
+# 8. 🔑 Least Privilege
+
+Users should receive **only the access they need to perform their jobs**.
+
+Example:
+
+A receptionist doesn't need access to the company's salary database.
+
+```text
+Receptionist
+→ Reception systems
+
+HR
+→ HR systems/data
+
+Administrator
+→ Administrative systems
+```
+
+Why?
+
+If an account is compromised, the attacker gets **less access and causes less damage**.
+
+🧠 **Least privilege = Minimum necessary access.**
+
+---
+
+# 🔗 How Everything Connects
+
+This is probably the **most important part to understand**:
+
+```text
+💎 ASSET
+"What are we protecting?"
+        ↓
+⚠️ RISK
+"What could go wrong?"
+        ↓
+🔐 CIA TRIAD
+"What security properties must we preserve?"
+        ↓
+🏛️ SECURITY FRAMEWORK
+"How should we manage the risk?"
+        ↓
+🛡️ SECURITY CONTROLS
+"What specific safeguards should we use?"
+        ↓
+📊 MONITOR
+"Are the controls working?"
+        ↓
+🔄 IMPROVE
+"How can we reduce the risk further?"
+```
+
+And **NIST CSF** gives you a practical cycle for doing this:
+
+> **Govern → Identify → Protect → Detect → Respond → Recover**
+
+---
+
+## 🧠 60-Second Revision
+
+If you're about to take a quiz, remember this:
+
+> **Framework** = structured approach to managing security risk.  
+> **CIA** = Confidentiality, Integrity, Availability.  
+> **Asset** = something valuable that needs protection.  
+> **Control** = specific safeguard that reduces risk.  
+> **NIST CSF** = Govern, Identify, Protect, Detect, Respond, Recover.  
+> **Least privilege** = give users only the access they need.  
+> **Security lifecycle** = continuously identify, protect, monitor, respond, recover, and improve.
+
+### 🔥 The key distinction
+
+**CIA tells you the security goals.**  
+**NIST tells you how to organize/manage cybersecurity risk.**  
+**Frameworks provide the overall structure.**  
+**Controls are the actual safeguards.**  
+**Assets are what you're protecting.**
+
+If you understand those relationships rather than just memorizing definitions, you're building the right foundation for the technical parts coming later.

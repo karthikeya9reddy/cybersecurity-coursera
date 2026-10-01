@@ -1,0 +1,192 @@
+🔧 Technical Skills & Security Tools — Summary
+1. Programming 👨‍💻
+Programming = writing instructions that tell a computer what to do.
+Security analysts mainly use programming for automation.
+Automation
+Automation means using technology to perform repetitive tasks automatically instead of doing them manually.
+Example:
+You receive 100,000 log entries every day.
+Instead of manually searching every log:
+Python script
+     ↓
+Read logs
+     ↓
+Find failed logins
+     ↓
+Identify suspicious IPs
+     ↓
+Generate report
+🧠 Remember:
+Programming → Automation → Less manual work + fewer human errors
+
+🐍 2. Python
+Python is particularly useful for cybersecurity because you can use it to:
+- Automate repetitive tasks
+- Analyze logs
+- Process files
+- Work with APIs
+- Search for patterns
+- Build security tools/scripts
+This is one reason your Python learning will be useful later in cybersecurity.
+🗄️ 3. SQL
+SQL = Structured Query Language
+SQL is used to interact with databases.
+A database can contain millions of pieces of information.
+Example:
+Customers
+────────────────────────
+ID | Name | Email | Age
+1  | Alex | ...   | 21
+2  | Sam  | ...   | 25
+3  | John | ...   | 19
+You can use SQL to ask the database:
+"Give me all users older than 20."
+
+So:
+Python → automate tasks
+SQL → communicate with databases
+
+🖥️ 4. Operating Systems
+An operating system (OS) is the software that allows users and applications to interact with computer hardware.
+Examples:
+- Windows
+- Linux
+- macOS
+Important:
+Linux ≠ programming language.
+Linux is an operating system.
+It commonly involves interacting with the computer through a command line.
+⌨️ 5. Command Line
+A command is an instruction given to the computer.
+A command-line interface (CLI) is a text-based way of interacting with a computer.
+For example:
+ls
+means essentially:
+"Show me the files in this directory."
+
+And:
+cd Documents
+means:
+"Move into the Documents directory."
+
+🧠 Remember:
+Linux = OS
+Terminal/CLI = way to interact with it
+Command = instruction you give it
+
+This will become very important for your cybersecurity labs.
+🌐 6. Web Vulnerabilities
+A web vulnerability is a weakness/flaw in a web application that an attacker could exploit.
+Potential consequences include:
+- Unauthorized access
+- Data theft
+- Malware deployment
+For example, imagine a website has a badly designed login system.
+An attacker might find a way to bypass authentication and access another user's account.
+OWASP
+OWASP Top 10 is an important resource for learning about major web application security risks.
+🧠 Remember:
+Web vulnerability = weakness in a web application that can potentially be exploited.
+
+🦠 7. Antivirus / Anti-malware
+Antivirus software helps:
+Prevent → Detect → Remove
+malware and viruses.
+It can scan files, processes, and sometimes memory to identify suspicious patterns.
+Example:
+Download suspicious.exe
+        ↓
+Antivirus scans it
+        ↓
+🚨 Malware detected
+        ↓
+Blocked / quarantined
+🚨 8. IDS
+IDS = Intrusion Detection System
+An IDS monitors activity and alerts you when it detects potentially malicious activity.
+Think:
+IDS = security alarm 🚨
+
+Example:
+Network traffic
+      ↓
+     IDS
+      ↓
+Suspicious activity?
+      ↓
+     YES
+      ↓
+    🚨 ALERT
+It can analyze network packets and identify things such as:
+- Unauthorized access
+- Suspicious network activity
+- Potential attacks
+Important distinction:
+IDS detects and alerts.
+It doesn't necessarily stop the attack itself.
+🔐 9. Encryption
+Encryption protects confidentiality by converting readable information into an unreadable form.
+PLAINTEXT
+"Hello"
+   ↓
+ 🔐 Encryption
+   ↓
+CIPHERTEXT
+"X7$kP..."
+An authorized party with the appropriate key can decrypt it.
+🧠 Remember:
+Plaintext → Encryption → Ciphertext
+
+The goal is:
+Unauthorized people shouldn't be able to understand the data.
+
+⚠️ Encryption vs Encoding
+Don't mix these up.
+Encryption 🔐
+Used for security/confidentiality.
+Encoding 🔄
+Used mainly to represent data in a different format so systems can process or exchange it.
+Encoding isn't designed to keep information secret.
+🕵️ 10. Penetration Testing
+Pen testing = authorized simulated attack.
+A penetration tester thinks like an attacker and tries to find weaknesses with permission.
+Example:
+Company
+   ↓
+"Try to break into our website."
+   ↓
+Pen tester
+   ↓
+Find vulnerabilities
+   ↓
+Report vulnerabilities
+   ↓
+Company fixes them
+The key word is:
+AUTHORIZED
+Without permission, attempting to break into someone else's system can be illegal.
+🧠 Your quick revision table
+Concept	Remember it as
+Programming	Give computers instructions
+Python	Automate security tasks
+SQL	Interact with databases
+Linux	Operating system
+CLI	Text-based computer interaction
+Web vulnerability	Weakness in a web application
+Antivirus	Prevent/detect/remove malware
+IDS	🚨 Detect suspicious activity
+Encryption	🔐 Protect data confidentiality
+Pen testing	🕵️ Authorized simulated attack
+
+
+🔥 The connections you should understand
+You're starting to see how all these pieces fit together:
+Python → automate analysis
+SQL → query databases
+Linux → operate security environments
+Wireshark → inspect network traffic
+SIEM → analyze huge amounts of logs
+IDS → detect suspicious network activity
+Encryption → protect sensitive data
+Pen testing → find vulnerabilities before attackers do
+And this is exactly the kind of foundation you'll eventually use when you start building your own cybersecurity labs rather than just memorizing theory.
