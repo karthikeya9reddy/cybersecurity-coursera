@@ -1,0 +1,113 @@
+SIEM Tools: Splunk & Chronicle
+1. Types of SIEM
+Self-hosted SIEM
+The organization installs and maintains the SIEM on its own infrastructure.
+- Organization manages hardware/server capacity
+- Organization maintains the software
+- More physical control over sensitive data
+- Requires more IT resources
+Example: Splunk Enterprise
+Cloud-hosted SIEM
+The SIEM provider manages the infrastructure and the organization accesses it through the internet.
+- Vendor manages infrastructure
+- Easier to maintain
+- No need to build your own SIEM infrastructure
+Example: Splunk Cloud
+Hybrid SIEM
+Combination of self-hosted + cloud-hosted SIEM.
+Useful when an organization wants:
+- Cloud capabilities
+- While keeping certain sensitive data/infrastructure under physical control
+2. Splunk
+Splunk is a data-analysis platform. Its SIEM solutions include:
+Splunk Enterprise
+- Self-hosted
+- Collects, searches, analyzes, and monitors logs
+- Provides security information and real-time alerts
+Splunk Cloud
+- Cloud-hosted
+- Collects, searches, and monitors logs
+- Useful for cloud and hybrid environments
+3. Important Splunk Dashboards
+Security Posture Dashboard
+Shows security events and trends, typically over the last 24 hours.
+Used to:
+- Monitor security infrastructure
+- Investigate suspicious activity
+- Check whether security controls are working properly
+Executive Summary Dashboard
+Provides a high-level view of the organization's security health.
+Used for:
+- Trends
+- Security incident summaries
+- Reporting to management/stakeholders
+Incident Review Dashboard
+Helps investigate incidents.
+Shows:
+- Suspicious patterns
+- High-risk events
+- Timeline leading up to an incident
+Risk Analysis Dashboard
+Shows risk associated with things such as:
+- Users
+- Computers
+- IP addresses
+Example:
+A user suddenly logs in outside normal working hours.
+
+The analyst can investigate the unusual behavior and determine its risk.
+4. Chronicle
+Chronicle is Google's cloud-native SIEM.
+It can collect, retain, search, and analyze security data.
+Analysts can investigate data based on:
+- Users
+- IP addresses
+- Domains
+- Assets/devices
+5. Important Chronicle Dashboards
+Enterprise Insights
+Shows recent security alerts and suspicious domains.
+Provides:
+- IOC — Indicator of Compromise
+- Confidence score
+- Severity
+Used to identify potentially serious threats.
+Data Ingestion & Health
+Shows whether logs are successfully reaching Chronicle.
+Tracks:
+- Number of events
+- Number of log sources
+- Data-processing success rate
+Purpose: Make sure the SIEM is actually receiving the logs it needs.
+IOC Matches
+Shows important threats and IOCs involving:
+- IP addresses
+- Domains
+- Devices
+Helps analysts identify trends and prioritize threats.
+Main Dashboard
+Provides a high-level overview of:
+- Log ingestion
+- Alerts
+- Events
+- Security activity over time
+Example:
+Sudden spike in failed login attempts → investigate possible attack.
+
+Rule Detections
+Shows incidents detected by specific detection rules.
+Example:
+Rule: Alert whenever a user opens a known malicious email attachment.
+
+Analysts can use this to identify recurring incidents and develop mitigation strategies.
+User Sign-In Overview
+Shows user login activity.
+Used to detect unusual behavior such as:
+Same user logging in from two different locations at the same time.
+
+This could indicate account compromise.
+🔥 The most important comparison
+Tool	Type	Main idea
+Splunk Enterprise	Self-hosted	Organization manages infrastructure
+Splunk Cloud	Cloud-hosted	Vendor manages infrastructure
+Chronicle	Cloud-native	Built specifically to leverage cloud capabilities
