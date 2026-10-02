@@ -1,0 +1,75 @@
+🛡️ Playbooks — Notes
+What is a playbook?
+A playbook is a predefined, step-by-step guide that tells security professionals what actions to take when a particular security situation occurs.
+It provides:
+- What to do
+- In what order
+- Which tools to use
+- Who is responsible
+- How to document the incident
+Purpose: Ensure a response is consistent, fast, accurate, and organized, regardless of which analyst handles the incident.
+Playbooks are "living documents"
+A playbook is regularly updated when:
+- A failure or weakness is discovered
+- Laws or compliance requirements change
+- New threats or attacker techniques emerge
+- Security procedures change
+They are usually maintained collaboratively by the security team.
+Incident Response Playbook
+An incident response playbook guides the organization from detecting a security incident through recovery.
+The 6 phases
+1. Preparation
+- Establish procedures
+- Define roles and responsibilities
+- Train employees
+- Prepare tools and resources
+2. Detection & Analysis
+- Detect suspicious activity
+- Analyze alerts and events
+- Determine whether an actual incident occurred
+- Understand its scope and severity
+3. Containment
+- Stop the incident from spreading
+- Limit immediate damage
+- Protect critical systems and data
+4. Eradication & Recovery
+- Remove malware and other malicious artifacts
+- Fix the vulnerability/root cause
+- Restore affected systems
+- Return the environment to a secure operating state
+5. Post-Incident Activity
+- Document what happened
+- Determine the root cause
+- Inform leadership
+- Record lessons learned
+- Improve security procedures
+6. Coordination
+- Communicate and report throughout the incident
+- Coordinate security teams and stakeholders
+- Meet legal and compliance requirements
+Common playbook types
+Organizations can have playbooks for:
+- Incident response
+- Vulnerability response
+- Ransomware
+- Phishing/vishing
+- Business Email Compromise (BEC)
+- Security alerts
+- Specific products/tools
+Incident vs Vulnerability Response Playbook
+Incident response playbook
+→ Used when a security incident/attack occurs.
+Vulnerability response playbook
+→ Used when a vulnerability is discovered and needs to be assessed and remediated.
+Both provide predefined steps and help analysts respond consistently while following organizational and legal requirements.
+🔗 SIEM + Playbook
+Remember this workflow:
+SIEM detects → Alert generated → Analyst investigates → Playbook guides response
+Example:
+SIEM detects 500 suspicious login attempts → generates an alert → analyst investigates → opens the appropriate incident-response playbook → follows the prescribed steps.
+
+⭐ Most important thing to remember
+A SIEM helps you detect and analyze suspicious activity. A playbook tells you what to do about it.
+
+And the incident-response flow to remember is:
+Preparation → Detection & Analysis → Containment → Eradication & Recovery → Post-Incident → Coordination.
