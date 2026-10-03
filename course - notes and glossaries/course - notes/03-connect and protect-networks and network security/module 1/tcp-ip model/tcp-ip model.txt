@@ -1,0 +1,228 @@
+🌐 Network Communication — Notes
+1. Data packets
+When devices communicate over a network, data is broken into packets.
+Think of a packet like a letter:
+Packet = Header + Body + Footer
+Header
+Contains information such as:
+- Source IP address
+- Destination IP address
+- Source/destination MAC information
+- Protocol information
+- Port information
+Body
+Contains the actual data/message.
+Footer
+Marks the end of the packet and can contain information used for checking the data.
+2. Bandwidth vs Speed
+Bandwidth
+Amount of data that can be transferred per unit of time.
+Bandwidth = amount of data ÷ time
+
+Speed
+How quickly data is actually being transferred/received.
+Security analysts monitor these because unusual changes can indicate problems or attacks.
+3. Packet sniffing 🕵️
+Packet sniffing = capturing and inspecting network packets.
+Security professionals can use packet analysis to investigate:
+- Suspicious communication
+- Attacks
+- Abnormal network activity
+- Potential data theft
+4. TCP/IP Model
+The TCP/IP model is a framework for understanding how network communication works.
+It has 4 layers:
+4. Application
+3. Transport
+2. Internet
+1. Network Access
+
+Layer 1 — Network Access
+Handles communication over the local/physical network.
+Think:
+cables → switches → network hardware
+
+Examples:
+- Ethernet
+- MAC addresses
+- ARP
+- Network interface hardware
+Layer 2 — Internet
+Responsible for IP addressing and routing between networks.
+Main protocols:
+IP
+- Addresses packets
+- Helps route packets toward their destination
+ICMP
+- Sends error/status information
+- Useful for troubleshooting
+Example:
+ping uses ICMP.
+Layer 3 — Transport
+Controls communication between devices/services.
+Main protocols:
+TCP
+- Connection-oriented
+- Reliable
+- Ensures data arrives correctly
+- Retransmits lost/corrupted data
+UDP
+- Connectionless
+- Faster
+- Doesn't guarantee delivery
+- Useful for real-time applications such as streaming
+Layer 4 — Application
+Where network applications and services operate.
+Important protocols:
+Protocol	Purpose
+HTTP	Web communication
+HTTPS	Secure web communication
+DNS	Domain → IP address
+SMTP	Email
+FTP	File transfer
+SSH	Secure remote access
+
+
+5. Ports 🚪
+An IP address identifies the destination device.
+A port identifies the particular service/application on that device.
+Think:
+IP = building address
+Port = apartment number
+
+Examples:
+- 20 → FTP data
+- 25 → SMTP
+- 443 → HTTPS
+So:
+IP address → Which device?
+Port → Which service?
+
+6. TCP vs UDP — Remember This
+TCP	UDP
+Connection-oriented	Connectionless
+Reliable	No delivery guarantee
+Retransmits lost data	Doesn't normally retransmit
+More overhead	Less overhead
+Reliability-focused	Speed/performance-focused
+
+
+Easy memory:
+TCP = Trust/Correct delivery
+UDP = Usually faster
+
+7. OSI Model
+The OSI model is another way to understand networking.
+It has 7 layers, compared with TCP/IP's 4.
+7 Application
+6 Presentation
+5 Session
+4 Transport
+3 Network
+2 Data Link
+1 Physical
+
+You should know both models because security/network professionals use both.
+8. OSI Layers — Simple Explanation
+7️⃣ Application
+Direct interaction with network applications.
+Examples:
+- HTTP/HTTPS
+- DNS
+- SMTP
+Think: "What is the user/application doing?"
+6️⃣ Presentation
+Deals with data formatting, encryption and compression.
+Examples:
+- Encryption
+- Compression
+- Data format conversion
+Think: "How should the data look?"
+5️⃣ Session
+Manages communication sessions/connections.
+Handles things such as:
+- Establishing sessions
+- Maintaining sessions
+- Ending sessions
+- Checkpoints
+- Authentication
+Think: "Is the conversation still open?"
+4️⃣ Transport
+Moves data between devices.
+Main protocols:
+- TCP
+- UDP
+Also handles:
+- Segmentation
+- Flow control
+- Delivery
+Think: "How do we transport the data?"
+3️⃣ Network
+Handles IP addressing and routing.
+Main concept:
+- IP addresses
+- Routers
+Think: "Where should this packet go?"
+2️⃣ Data Link
+Handles communication within the local network.
+Think:
+- MAC addresses
+- Switches
+- Network Interface Cards (NICs)
+Think: "How does it move around this local network?"
+1️⃣ Physical
+Actual physical transmission.
+Think:
+- Cables
+- Electrical/optical signals
+- Hubs
+- Modems
+- Bits (0s and 1s)
+Think: "How does the signal physically travel?"
+🔥 TCP/IP vs OSI
+The biggest thing to understand:
+OSI = 7 layers
+TCP/IP = 4 layers
+TCP/IP combines some OSI layers:
+OSI                         TCP/IP
+
+7 Application ─────┐
+6 Presentation     ├──→ Application
+5 Session ─────────┘
+
+4 Transport ─────────→ Transport
+
+3 Network ───────────→ Internet
+
+2 Data Link ───────┐
+1 Physical ────────┴──→ Network Access
+
+So TCP/IP is basically a simplified practical model of networking.
+🧠 What you REALLY need to remember
+Don't try to memorize the entire lesson.
+Remember these:
+Network basics
+- Packet = unit of data sent across a network
+- IP = identifies/routs to a network/device
+- MAC = identifies a network interface on the local network
+- Port = identifies a service
+- Packet sniffing = capturing/inspecting packets
+Protocols
+- TCP → reliable connection
+- UDP → fast, connectionless
+- IP → addressing/routing
+- ICMP → errors/status
+- DNS → domain → IP
+- HTTP/HTTPS → web
+- SSH → secure remote access
+- FTP → file transfer
+- SMTP → email
+Models
+TCP/IP:  
+Network Access → Internet → Transport → Application
+
+OSI:  
+Physical → Data Link → Network → Transport → Session → Presentation → Application
+
+And most importantly, understand what each layer is responsible for rather than memorizing paragraphs.
+This is the foundation for the networking/security tools you'll start using later.
