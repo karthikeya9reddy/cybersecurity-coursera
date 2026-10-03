@@ -1,0 +1,169 @@
+☁️ Cloud Computing & Cloud Networks — Notes
+1. On-Premise vs Cloud
+🏢 On-Premise
+The organization owns and manages its physical infrastructure.
+Company
+ ├── Servers
+ ├── Routers
+ ├── Switches
+ ├── Firewalls
+ └── Storage
+
+The company is responsible for:
+- Buying hardware
+- Installing it
+- Patching/updating it
+- Maintaining it
+- Securing it
+☁️ Cloud Computing
+Instead of owning the physical infrastructure, the organization uses remote servers, applications, storage, and network services provided over the Internet.
+The physical servers still exist — they're simply located in the cloud provider's data centers, not the customer's office.
+Cloud doesn't mean "no physical hardware." It means someone else owns/manages the physical infrastructure you're using.
+
+2. Cloud Service Provider (CSP)
+A Cloud Service Provider (CSP) owns huge data centers containing thousands/millions of servers and provides computing services to customers.
+Examples include:
+- AWS
+- Microsoft Azure
+- Google Cloud
+Customers access these resources through:
+- Web console
+- API (Application Programming Interface)
+Instead of buying a server, a company can basically rent computing resources from the CSP.
+3. Three Main Cloud Service Models
+Remember these three:
+🔹 IaaS — Infrastructure as a Service
+You rent virtual infrastructure.
+You can get:
+- Virtual machines
+- Virtual storage
+- Virtual networking
+- Virtual containers
+Think:
+IaaS = Rent the infrastructure
+
+You have more control, but also more responsibility.
+🔹 PaaS — Platform as a Service
+The CSP provides a platform for developers to build and run applications.
+Think:
+PaaS = Platform to build
+
+Developers don't have to manage as much underlying infrastructure.
+🔹 SaaS — Software as a Service
+You simply use software provided by the CSP.
+Examples:
+- Online email
+- Cloud office applications
+- Online collaboration tools
+Think:
+SaaS = Software you use
+
+Easy memory:
+IaaS → Infrastructure
+PaaS → Platform
+SaaS → Software
+4. Hybrid Cloud
+A hybrid cloud combines:
+On-premise + Cloud
+
+Example:
+Company Office
+   ↓
+On-Premise Servers
+   ↘
+    ☁️ Cloud
+
+Companies might keep sensitive systems on-premise while using the cloud for other services.
+5. Multi-Cloud
+A multi-cloud environment means an organization uses more than one cloud provider.
+For example:
+Company
+ ├── AWS
+ ├── Azure
+ └── Google Cloud
+
+Don't confuse:
+Hybrid = On-premise + Cloud
+
+Multi-cloud = Multiple cloud providers
+
+You can also have both at the same time.
+6. Software-Defined Networking (SDN)
+This is an important cybersecurity concept.
+Traditional networking uses physical devices:
+Physical Switch
+Physical Router
+Physical Firewall
+
+In cloud environments, many of these can be virtual/software-based:
+Virtual Switch
+Virtual Router
+Virtual Firewall
+
+These are called Software-Defined Networks (SDNs).
+The virtual network devices run on servers inside the CSP's data center.
+Key idea:
+SDN = networking functionality implemented using software/virtual devices instead of relying entirely on dedicated physical hardware.
+
+7. Why Companies Use Cloud
+🟢 Reliability
+Cloud providers operate large-scale infrastructure designed to keep services available.
+💰 Cost
+Instead of purchasing and maintaining huge amounts of hardware, companies can pay for the resources they use.
+📈 Scalability
+Resources can be increased or decreased quickly depending on demand.
+For example:
+Normal traffic → 5 servers
+
+Huge traffic → 20 servers
+
+Traffic decreases → back to 5
+
+This is sometimes described as an elastic/utility model.
+8. Cloud Security
+Cloud doesn't automatically mean secure.
+Security teams still need to protect:
+- Applications
+- Data
+- Accounts/identities
+- Networks
+- Cloud resources
+Cloud environments can use security tools such as:
+- WAF → Web Application Firewall
+- IDS/IPS → Detect/prevent network attacks
+- L3/L4 firewalls → Filter network traffic
+One important change with cloud security is that security isn't only about:
+"Where is the traffic coming from?"
+
+It's also increasingly about:
+"Who is making the request?"
+
+That's why identity and access management (IAM) becomes extremely important in cloud security.
+🧠 The Big Picture
+Think of the evolution like this:
+🏢 Traditional
+Company owns everything
+        ↓
+☁️ Cloud
+CSP owns infrastructure
+        ↓
+🖥️ Virtualization
+Virtual computers/network devices
+        ↓
+🌐 SDN
+Virtual routers, switches, firewalls
+        ↓
+🔐 Cloud Security
+Protect identities, data, applications,
+network traffic and cloud resources
+
+⭐ What you actually need to remember
+On-premise → company owns/manages infrastructure
+Cloud → CSP provides remote infrastructure/services
+IaaS → infrastructure
+PaaS → platform for development
+SaaS → software
+Hybrid → on-premise + cloud
+Multi-cloud → multiple CSPs
+SDN → virtual/software-defined networking
+Cloud benefits → reliability + lower cost + scalability
