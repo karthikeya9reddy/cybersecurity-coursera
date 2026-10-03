@@ -1,0 +1,170 @@
+🌐 Network Fundamentals — Notes
+1. What is a Network?
+A network is a group of connected devices that communicate and share data/resources.
+Examples:
+- Computers
+- Phones
+- Printers
+- Servers
+- Smart devices
+Devices communicate through:
+- Wired connections — Ethernet/fiber, etc.
+- Wireless connections — Wi-Fi
+Data is transmitted as packets, which contain information such as the source and destination.
+2. IP Address vs MAC Address
+Devices use addresses to identify and communicate with each other.
+IP Address
+- Identifies a device/network logically.
+- Used by routers to determine where packets should go.
+- Can change depending on the network.
+MAC Address
+- Identifies a network interface at the hardware/data-link level.
+- Used by switches to deliver traffic within a local network.
+- Usually associated with the network adapter.
+Easy memory:
+IP → Where is it?
+MAC → Which device/interface is it?
+
+3. LAN vs WAN
+LAN — Local Area Network
+Covers a relatively small area.
+Examples:
+- Home
+- School
+- Office
+Your home Wi-Fi network is a LAN.
+WAN — Wide Area Network
+Connects networks across large geographical areas.
+Examples:
+- Networks connecting different company offices
+- The Internet
+Remember:
+LAN = Local
+WAN = Wide
+
+4. Important Network Devices
+🔹 Hub
+A hub sends incoming data to every connected device.
+Example:
+        Hub
+     /  |  |  \
+   PC  PC Phone Printer
+
+Problem:
+- Unnecessary traffic
+- Less secure
+- Can allow eavesdropping
+Hubs are mostly outdated in modern networks.
+🔹 Switch
+A switch connects devices on a LAN and sends data only to the intended device/port.
+It uses a MAC address table to determine where to send packets.
+PC ──┐
+PC ──┼── Switch ── Server
+Phone┘
+
+Remember:
+Switch → MAC address → Local network
+
+Switches improve:
+- Performance
+- Traffic management
+- Security
+🔹 Router
+A router connects different networks.
+It examines the destination IP address and forwards packets toward the correct network.
+LAN 1 → Router → Internet → Router → LAN 2
+
+Remember:
+Router → IP address → Connects networks
+
+Routers can also have firewall capabilities.
+🔹 Modem
+A modem connects a network to the Internet Service Provider (ISP).
+Typical home setup:
+Internet
+   ↓
+Modem
+   ↓
+Router
+   ↓
+Switch / Wi-Fi
+   ↓
+Your devices
+
+The modem communicates with the ISP's connection technology.
+🔹 Wireless Access Point (WAP/AP)
+Provides Wi-Fi connectivity.
+Wireless devices connect to the access point using radio waves.
+Phone ))) 
+Laptop ))) → Access Point → Network
+Tablet )))
+
+Large organizations may use multiple access points.
+🔹 Firewall
+A firewall monitors and controls network traffic entering or leaving a network based on security rules.
+Think:
+Firewall = Security gate
+
+It can allow or block traffic.
+Example:
+Internet
+   ↓
+[ FIREWALL ]
+   ↓
+Internal Network
+
+A firewall is an important defense, but not the only security control.
+5. Servers and Clients
+Server
+A server provides services or resources to other devices.
+Examples:
+- DNS server → domain name lookups
+- File server → stores/provides files
+- Mail server → handles email
+Client
+A device that requests a service from a server.
+Example:
+Client → Request → Server
+Client ← Response ← Server
+
+This is called the client-server model.
+6. Network Diagram
+A network diagram is a visual map showing:
+- Network devices
+- Connections between devices
+- Network architecture
+Example:
+             Internet
+                 |
+              Firewall
+                 |
+               Router
+              /      \
+          Switch      Wi-Fi AP
+         /   |   \       |
+       PC  Server Phone Laptop
+
+Why security analysts care
+Network diagrams help analysts understand:
+- What devices exist
+- How devices communicate
+- Where security controls are located
+- Where potential vulnerabilities might exist
+- How an attacker might move through the network
+⭐ The Most Important Things to Remember
+Don't try to memorize every sentence. Remember this table:
+Device	Main job	Think
+Hub	Sends traffic to everyone	Broadcast
+Switch	Connects devices on LAN	MAC
+Router	Connects different networks	IP
+Modem	Connects to ISP	Internet connection
+Access Point	Provides Wi-Fi	Wireless
+Firewall	Allows/blocks traffic	Security gate
+Server	Provides services	Provides
+Client	Requests services	Requests
+
+
+And the big picture:
+Device → Switch → Router → Firewall → Internet
+
+This foundation is very important for cybersecurity. Once you understand this, things like ports, protocols, TCP/IP, DNS, DHCP, packet analysis, network attacks, firewalls, IDS/IPS and Wireshark will make much more sense.
