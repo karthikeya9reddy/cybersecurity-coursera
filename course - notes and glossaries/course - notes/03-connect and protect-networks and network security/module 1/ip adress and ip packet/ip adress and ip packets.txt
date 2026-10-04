@@ -1,0 +1,194 @@
+🌐 IP Addresses & IP Packets — Notes
+1. What is an IP address?
+IP = Internet Protocol
+An IP address is an address used to identify a device/network and help route data to the correct destination.
+Think of it like a postal address:
+IP address → Where should the packet go?
+
+There are two major versions:
+- IPv4
+- IPv6
+2. IPv4
+IPv4 addresses contain 4 decimal numbers separated by dots.
+Example:
+192.168.1.10
+
+Each number can be 0–255.
+IPv4 uses 32 bits = 4 bytes and provides about 4.3 billion possible addresses.
+The problem:
+Internet grew → more devices → IPv4 addresses started running out.
+
+This is called IPv4 address exhaustion.
+3. IPv6
+IPv6 was created mainly to solve the IPv4 address shortage.
+Example:
+2002:0db8:0000:0000:0000:ff21:0023:1234
+
+IPv6 uses:
+- 128 bits
+- 16 bytes
+- Hexadecimal numbers
+- Colons : between groups
+It provides an enormous number of addresses — approximately:
+340 undecillion addresses.
+IPv6 shortcut
+Consecutive groups of zeros can be shortened using ::.
+Example:
+2002:0db8:0000:0000:0000:ff21:0023:1234
+
+becomes:
+2002:0db8::ff21:0023:1234
+
+4. IPv4 vs IPv6
+IPv4	IPv6
+32-bit	128-bit
+4.3 billion addresses	~340 undecillion
+Decimal	Hexadecimal
+Uses .	Uses :
+Older	Newer
+More complicated header	Simpler header
+Address exhaustion problem	Huge address space
+
+
+Remember:
+IPv4 = 32-bit
+IPv6 = 128-bit
+
+5. Public vs Private IP
+Public IP
+Your ISP gives your network a public IP address.
+It's the address visible to the internet.
+Think:
+Your house's public mailing address
+
+Devices inside your home can share the same public IP when communicating with the internet.
+Private IP
+Used inside your local network (LAN).
+Example:
+Laptop → 192.168.1.10
+Phone  → 192.168.1.11
+TV     → 192.168.1.12
+
+These addresses are used internally and aren't directly visible to the public internet.
+Think:
+Public IP = building address
+Private IP = individual room/device inside the building
+
+6. MAC Address
+A MAC address is a unique identifier associated with a network interface.
+Think:
+IP = where the device is on the network
+MAC = which network interface/device
+
+Switches use MAC addresses to deliver traffic within a local network.
+MAC address table
+A switch maintains a table like:
+MAC Address        Port
+AA:BB:CC:11:22:33  → Port 1
+DD:EE:FF:44:55:66  → Port 2
+
+So when a packet arrives:
+Switch → checks destination MAC → finds corresponding port → forwards packet
+That's why switches are much more intelligent than hubs.
+7. Network Layer / OSI Layer 3
+The Network layer is responsible mainly for:
+Addressing + routing packets between networks
+
+Routers examine the destination IP address and decide where to send the packet next.
+For example:
+Your PC
+  ↓
+Router
+  ↓
+Router
+  ↓
+Router
+  ↓
+Destination network
+  ↓
+Server
+
+Each router uses routing information to move the packet closer to its destination.
+8. IP Packet
+An IP packet contains two major parts:
+┌──────────────┬──────────────────┐
+│    HEADER    │       DATA       │
+└──────────────┴──────────────────┘
+
+Header
+Contains information needed to deliver the packet, including:
+- Source IP
+- Destination IP
+- Packet length
+- Protocol
+- TTL
+- Fragmentation information
+- Header checksum
+Data
+Contains the actual information being transmitted.
+For example:
+Part of a webpage, email, file, etc.
+
+9. Important IPv4 Header Fields
+You do NOT need to memorize all 13 fields right now.
+Understand the important ones:
+Source IP Address
+Who sent the packet?
+Destination IP Address
+Where is the packet going?
+TTL — Time To Live
+Prevents a packet from travelling around the internet forever.
+Every router it passes through:
+TTL - 1
+
+Eventually:
+TTL = 0
+
+The router discards the packet and sends an ICMP Time Exceeded message.
+This is also related to how tools like traceroute/tracert can discover the path packets take.
+Protocol
+Tells the receiving system what protocol is being used for the data.
+For example, the packet may carry TCP or UDP traffic.
+Header Checksum
+Used to detect corruption in the IP header.
+Total Length
+Specifies the total size of the IP packet.
+Maximum IPv4 packet size:
+65,535 bytes
+10. Packet Fragmentation
+Sometimes a packet is too large for a particular network.
+It can be broken into smaller pieces called fragments.
+The receiving system can use information such as:
+- Identification
+- Flags
+- Fragmentation Offset
+to understand and reassemble the pieces.
+You don't need to memorize the detailed fields yet.
+Just remember:
+Large packet → fragments → travel → reassembled
+
+🧠 The MOST important mental model
+When you send something over the internet:
+Application
+     ↓
+Data gets packaged
+     ↓
+Packet gets source + destination information
+     ↓
+Router reads destination IP
+     ↓
+Router forwards packet
+     ↓
+More routers
+     ↓
+Destination network
+     ↓
+Destination device
+
+Inside the local network, switches use MAC addresses to get the data to the appropriate device/interface.
+So remember this distinction:
+🏠 IP → routing between networks
+🔌 MAC → delivery within the local network
+🚪 Port → specific service/application
+
+That IP → MAC → Port relationship is one of the most useful things to understand before you start doing practical networking.
