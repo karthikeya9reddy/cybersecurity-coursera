@@ -1,0 +1,234 @@
+🌐 Network Protocols — Notes
+1. What is a Network Protocol?
+A network protocol is a set of rules that tells devices:
+- How to communicate
+- How data is structured
+- How data is sent/received
+- Where data should go
+Think of protocols as the common language of networks.
+🔄 How protocols work together
+When you visit:
+www.example.com
+Several protocols can work together:
+DNS → TCP → HTTPS → ARP
+- DNS → converts the website name into an IP address.
+- TCP → establishes a reliable connection using a handshake.
+- ARP → finds the MAC address of the next device on the local network.
+- HTTPS → securely transfers the webpage using encryption.
+You don't need to memorize the entire process yet. Just understand what each protocol does.
+📡 2. Communication Protocols
+TCP — Transmission Control Protocol
+Purpose: Reliable communication between devices.
+TCP establishes a connection before sending data.
+TCP 3-way handshake
+Client → SYN → Server
+Client ← SYN/ACK ← Server
+Client → ACK → Server
+
+Then communication begins.
+Layer: Transport
+Main idea: Reliable, connection-oriented.
+UDP — User Datagram Protocol
+Purpose: Fast communication without establishing a connection first.
+- Faster than TCP
+- Less reliable
+- No handshake
+- Useful when speed matters
+Examples:
+- Video streaming
+- DNS queries
+- Real-time applications
+Layer: Transport
+Easy memory:
+TCP = Reliable
+UDP = Fast
+
+HTTP — Hypertext Transfer Protocol
+Used for communication between:
+Web browser ↔ Web server
+Port: 80
+HTTP is not encrypted.
+HTTPS — HTTP Secure
+Secure version of HTTP.
+Uses TLS encryption to protect data in transit.
+Port: 443
+HTTP = 80
+HTTPS = 443
+
+DNS — Domain Name System
+Converts:
+google.com
+     ↓
+IP address
+
+Basically, DNS is the internet's phonebook.
+Usually:
+UDP port 53
+If the response is large, DNS can use TCP.
+🛠️ 3. Management Protocols
+These are used to monitor, configure, and troubleshoot networks.
+SNMP — Simple Network Management Protocol
+Used to:
+- Monitor network devices
+- Collect network information
+- Manage configurations
+- Check bandwidth usage
+Layer: Application
+ICMP — Internet Control Message Protocol
+Used for:
+- Error reporting
+- Network troubleshooting
+- Connectivity testing
+The famous Linux command:
+ping
+
+uses ICMP.
+Layer: Internet
+🔐 4. Security Protocols
+HTTPS
+Secure web communication.
+Port: 443
+Uses TLS encryption.
+SFTP — Secure File Transfer Protocol
+Securely transfers files.
+Uses SSH.
+Port: 22
+SFTP = secure file transfer
+SSH = secure remote connection
+
+🔀 5. NAT — Network Address Translation
+NAT allows devices with private IP addresses to communicate with the public internet using a public IP address.
+Example:
+Laptop       192.168.1.10
+Phone        192.168.1.11
+PC           192.168.1.12
+                    ↓
+                 Router
+                    ↓
+             Public IP
+                    ↓
+                Internet
+
+The router translates private ↔ public addresses.
+Private IPv4 ranges
+10.0.0.0 – 10.255.255.255
+172.16.0.0 – 172.31.255.255
+192.168.0.0 – 192.168.255.255
+
+These are private addresses and aren't directly routable across the public internet.
+⚙️ 6. DHCP
+Dynamic Host Configuration Protocol
+DHCP automatically gives devices network configuration such as:
+- IP address
+- Default gateway
+- DNS server
+Instead of manually configuring every device.
+Ports
+DHCP Server → UDP 67
+DHCP Client → UDP 68
+
+Think:
+DHCP = automatically gives your device its network settings.
+
+🔎 7. ARP
+Address Resolution Protocol
+ARP translates:
+IP address → MAC address
+
+Example:
+192.168.1.5
+     ↓ ARP
+AA:BB:CC:11:22:33
+
+This is needed for communication on the local network.
+ARP doesn't use a port number.
+Why?
+Because port numbers belong to higher-layer protocols, while ARP operates at the network-access/data-link level.
+🖥️ 8. Telnet vs SSH
+Telnet
+Used for remote connections.
+Port: 23
+But:
+❌ Sends information in plaintext
+❌ Not secure
+SSH — Secure Shell
+Used for secure remote connections.
+Port: 22
+✅ Encrypted
+✅ Secure authentication
+✅ Commonly used by Linux administrators
+Remember:
+Telnet = old + insecure
+SSH = secure remote access
+
+This one will become very important when you start Linux.
+📧 9. Email Protocols
+There are three important ones.
+POP3
+Used to retrieve/download email.
+POP3 = download mail
+
+Ports:
+- 110 → unencrypted
+- 995 → encrypted with TLS
+A major characteristic is that emails are downloaded to the local device, so synchronization across multiple devices isn't its strong point.
+IMAP
+Also used for incoming email.
+But unlike POP3:
+Email stays on the mail server
+
+This allows synchronization across multiple devices.
+Ports:
+- 143 → unencrypted
+- 993 → TLS encrypted
+Easy difference:
+POP3 → download mail
+IMAP → sync mail
+
+SMTP
+Used to send/relay email.
+Ports:
+- 25 → unencrypted
+- 587 → TLS encrypted
+Think:
+SMTP = Send Mail
+
+🧠 The protocols you should actually remember
+Don't try to memorize everything equally.
+⭐ High priority
+Protocol	Main purpose	Port
+HTTP	Web	80
+HTTPS	Secure web	443
+DNS	Domain → IP	53
+SSH	Secure remote access	22
+Telnet	Remote access, insecure	23
+DHCP	Assigns IP/config	67/68
+ARP	IP → MAC	None
+ICMP	Errors/testing	None
+TCP	Reliable connection	—
+UDP	Fast connectionless traffic	—
+
+
+⭐ Email
+Protocol	Purpose	Port
+POP3	Receive/download email	110 / 995
+IMAP	Receive/sync email	143 / 993
+SMTP	Send email	25 / 587
+
+
+🎯 What matters for you as a beginner
+You do not need to memorize every sentence from the course.
+For now, build the mental connections:
+DNS   → Name → IP
+ARP   → IP → MAC
+DHCP  → Gives IP/network settings
+TCP   → Reliable
+UDP   → Fast
+HTTP  → Web
+HTTPS → Secure Web
+SSH   → Secure remote access
+Telnet → Insecure remote access
+ICMP  → Troubleshooting/ping
+NAT   → Private IP ↔ Public IP
+
+And since you're about to move deeper into Linux, you'll start seeing these concepts become real when you use commands such as ping, ip, ss, curl, ssh, dig, and later tools like Wireshark and Nmap.
