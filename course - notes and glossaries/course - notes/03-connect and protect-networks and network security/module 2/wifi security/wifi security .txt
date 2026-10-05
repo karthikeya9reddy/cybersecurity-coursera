@@ -1,0 +1,143 @@
+📶 Wi-Fi & Wireless Security — Notes
+1. What is Wi-Fi?
+Wi-Fi = IEEE 802.11
+- IEEE = Institute of Electrical and Electronics Engineers
+- 802.11 = family of standards for wireless LAN (WLAN) communication.
+- Wi-Fi allows devices to communicate using radio waves instead of cables.
+Examples:
+- Phones
+- Laptops
+- Smart TVs
+- Cameras
+- Smart home devices
+IEEE 802.11 = technical standards behind Wi-Fi.
+
+🔐 2. Wi-Fi Security Evolution
+Wireless security has evolved:
+WEP → WPA → WPA2 → WPA3
+❌     ⚠️     ✅     🔥
+
+The main idea is:
+Each newer generation was designed to fix weaknesses in the previous one.
+
+❌ WEP — Wired Equivalent Privacy
+Introduced: 1999
+Oldest Wi-Fi security protocol.
+Goal: provide wireless connections with security similar to wired connections.
+Problem:
+WEP has serious encryption vulnerabilities and can be cracked relatively easily.
+Therefore:
+WEP = obsolete / insecure
+
+You may still encounter it on old equipment.
+⚠️ WPA — Wi-Fi Protected Access
+Developed to replace WEP.
+WPA improved security by introducing:
+TKIP
+Temporal Key Integrity Protocol
+- Improved encryption compared with WEP
+- Used larger keys
+- Added message integrity checking
+But WPA itself had vulnerabilities.
+KRACK attack
+KRACK = Key Reinstallation Attack
+Attackers could exploit weaknesses in the WPA/WPA2 authentication handshake and potentially decrypt wireless traffic.
+Therefore WPA was eventually replaced by WPA2.
+WPA = better than WEP, but no longer considered sufficient.
+
+✅ WPA2
+Released in 2004.
+Major improvement:
+AES
+Advanced Encryption Standard
+WPA2 replaced WPA's weaker TKIP approach with:
+CCMP
+CCMP provides:
+- Encryption
+- Message authentication
+- Integrity
+WPA2 became the major Wi-Fi security standard.
+However, WPA2 is also vulnerable to KRACK attacks, which contributed to the development of WPA3.
+🏠 WPA2 Personal vs Enterprise
+WPA2-Personal
+Designed mainly for:
+Home networks
+
+Uses a shared password/passphrase.
+Example:
+Wi-Fi password:
+MyHomeWifi123
+
+Everyone connecting uses the same passphrase.
+WPA2-Enterprise
+Designed for:
+Businesses/organizations
+
+Instead of everyone sharing one password, access can be managed individually and centrally.
+Administrators can:
+- Grant access
+- Remove access
+- Control users individually
+So:
+Personal → shared password → home
+Enterprise → individual/centralized access → business
+
+🔥 WPA3
+Introduced in 2018.
+WPA3 improves upon WPA2 and addresses weaknesses such as the KRACK vulnerability.
+SAE
+Simultaneous Authentication of Equals
+WPA3 uses SAE for authentication.
+The important idea:
+It makes password-based authentication more resistant to attacks that try to capture wireless exchanges and crack passwords offline.
+
+Stronger encryption
+- WPA3-Personal → 128-bit encryption
+- WPA3-Enterprise → optional 192-bit encryption
+🧠 What you actually need to remember
+Don't memorize all the technical details.
+Remember this:
+WEP
+↓
+Old + insecure
+
+WPA
+↓
+Improved WEP
+↓
+TKIP
+↓
+Still vulnerable
+
+WPA2
+↓
+AES + CCMP
+↓
+Much stronger
+↓
+Still vulnerable to KRACK
+
+WPA3
+↓
+SAE
+↓
+Stronger authentication/security
+↓
+Modern standard
+
+⭐ Exam/interview essentials
+Technology	Key thing to remember
+IEEE 802.11	Wi-Fi standards
+WEP	Old and insecure
+WPA	Replacement for WEP; uses TKIP
+WPA2	AES + CCMP
+WPA3	SAE + stronger security
+KRACK	Key Reinstallation Attack
+WPA2-Personal	Shared passphrase, home
+WPA2-Enterprise	Individual/centralized access, business
+
+
+One-line memory trick:
+WEP was weak → WPA improved it → WPA2 brought AES → WPA3 brought stronger authentication with SAE.
+
+You do not need to memorize TKIP, CCMP, SAE, encryption sizes, and every vulnerability immediately. Understand what changed from one generation to the next; the terminology will become familiar as you do practical networking.
