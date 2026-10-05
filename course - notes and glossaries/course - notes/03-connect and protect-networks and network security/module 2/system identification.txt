@@ -1,0 +1,235 @@
+🌐 Network Security — Today's Notes
+1. Firewalls
+A firewall monitors network traffic and allows or blocks it based on security rules.
+Types by where they run
+- Hardware firewall → physical network device.
+- Software firewall → software installed on a computer/server.
+- Cloud firewall → firewall provided by a cloud provider.
+Types by how they inspect traffic
+Stateless
+- Uses predefined rules.
+- Doesn't remember previous connections.
+- Simpler but less intelligent.
+Stateful
+- Keeps track of active connections using a state table.
+- Can recognize whether traffic belongs to an existing connection.
+- More secure than stateless.
+NGFW (Next-Generation Firewall)
+- Advanced firewall.
+- Stateful inspection + deep packet inspection + intrusion prevention.
+- Can understand applications, not just IP addresses and ports.
+- May include malware sandboxing, antivirus, URL/DNS filtering, etc.
+🔑 Remember:
+Stateless = rules only
+Stateful = remembers connections
+NGFW = deeper inspection + more security
+
+2. VPN
+VPN = Virtual Private Network
+A VPN creates an encrypted tunnel between your device and a VPN server.
+It mainly provides:
+- Encryption of data in transit
+- Hides your public IP from external sites
+- Helps protect communication over untrusted networks
+Encapsulation
+VPN:
+Your original data → encrypted → wrapped inside another packet → sent across the internet
+
+The outer packet allows routers to deliver it while the inner data remains protected.
+Two major VPN types
+Remote Access VPN
+- Individual user → VPN server.
+- Example: employee connecting to company resources from home.
+Site-to-Site VPN
+- Entire network → another network.
+- Common for companies connecting offices in different locations.
+🔑 Remember:
+Remote access = person → company
+Site-to-site = network → network
+
+3. VPN Protocols
+WireGuard
+- Modern VPN protocol
+- Fast
+- Simple
+- Open source
+- Fewer lines of code
+- Good performance
+IPsec
+- Older and widely supported
+- Encrypts and authenticates IP packets
+- Common in enterprise/site-to-site VPNs
+- More complex than WireGuard
+🔑 Remember:
+WireGuard = newer + simple + fast
+IPsec = older + established + widely supported
+
+4. Network Segmentation
+Network segmentation = dividing one network into smaller sections.
+Why?
+If one section gets compromised, attackers shouldn't automatically have access to everything else.
+Example:
+Internet
+   ↓
+[DMZ]
+   ↓
+[Internal Network]
+   ↓
+[Restricted Network]
+
+Each section can have different access rules.
+5. Security Zones
+Uncontrolled zone
+The internet and other networks outside the organization's control.
+Controlled zone
+The organization's protected network.
+DMZ — Demilitarized Zone
+Contains public-facing services, such as:
+- Web servers
+- DNS servers
+- Email servers
+- Public proxy servers
+The DMZ acts as a buffer between the internet and internal network.
+Internal network
+Contains private company systems and data.
+Restricted zone
+Contains highly sensitive/confidential information.
+Only users with appropriate privileges should access it.
+🔑 Important idea
+If an attacker compromises a public web server in the DMZ:
+DMZ compromise ≠ automatic access to internal network.
+That's the whole point of segmentation.
+6. Subnetting
+Subnetting = dividing one large network into smaller networks called subnets.
+Benefits:
+- Better organization
+- Better performance
+- Efficient bandwidth usage
+- Isolation
+- Security segmentation
+Think:
+Company Network
+       ↓
+ ┌─────┴─────┐
+Students    Faculty
+ Subnet      Subnet
+
+If the student subnet is compromised, you can isolate it from the faculty subnet.
+7. CIDR
+CIDR = Classless Inter-Domain Routing
+Example:
+192.168.1.0/24
+
+The /24 is the network prefix.
+For now, don't get stuck on the mathematics.
+Just remember:
+CIDR allows flexible subnetting and dividing IP networks into smaller ranges.
+
+You'll learn the actual subnetting calculations later.
+8. Proxy Servers
+A proxy server sits between a client and another server.
+It can:
+- Filter traffic
+- Hide IP addresses
+- Block dangerous websites
+- Cache frequently requested content
+- Add another security layer
+Forward Proxy
+Employee → Forward Proxy → Internet
+
+Controls outgoing requests from internal users.
+Think:
+Forward proxy = protects/controls users going OUT.
+
+Reverse Proxy
+Internet → Reverse Proxy → Internal Server
+
+Protects internal servers from external users.
+Think:
+Reverse proxy = protects servers from people coming IN.
+
+Email Proxy
+Can filter spam and detect suspicious/forged senders.
+9. VPN vs Proxy vs Firewall
+This distinction is VERY important.
+Technology	Main job
+Firewall	Allow/block network traffic
+VPN	Encrypt traffic + secure tunnel
+Forward Proxy	Controls users' outgoing requests
+Reverse Proxy	Protects internal servers
+Subnetting	Divides a network
+DMZ	Isolates public-facing systems
+
+
+10. Network Security Protocols — Quick Review
+You've already learned a ton of protocols, so don't try to memorize everything today.
+The important ones you've encountered:
+Protocol	Main purpose
+TCP	Reliable connection
+UDP	Fast, connectionless communication
+HTTP	Web communication
+HTTPS	Secure web communication
+DNS	Domain → IP
+ARP	IP → MAC on local network
+DHCP	Automatically gives devices network configuration
+SSH	Secure remote access
+Telnet	Remote access, but insecure
+SMTP	Send email
+POP3	Download email
+IMAP	Access/sync email
+ICMP	Error reporting/troubleshooting
+NAT	Private IP ↔ public IP translation
+
+
+You do not need to force yourself to memorize all of these tonight.
+🧠 The Big Picture
+Everything you've learned today connects together:
+                    INTERNET
+                       │
+                    Firewall
+                       │
+                     DMZ
+              ┌────────┴────────┐
+          Web Server         DNS Server
+              │
+          Firewall
+              │
+       INTERNAL NETWORK
+        ┌─────┴─────┐
+     Subnet A     Subnet B
+        │             │
+     Users         Servers
+                       │
+                 Restricted Zone
+
+And when someone connects remotely:
+Employee
+   │
+   │ encrypted VPN tunnel
+   ↓
+Internet
+   ↓
+Company VPN Gateway
+   ↓
+Internal Network
+
+A proxy can sit between users/servers and the internet, while firewalls control what traffic is allowed, and subnetting/security zones prevent one compromised area from spreading everywhere.
+⭐ What you should actually remember from today's lesson
+If your brain is overloaded, remember just these:
+1. Firewall → controls traffic
+2. Stateless → doesn't remember connections
+3. Stateful → tracks connections
+4. NGFW → deep inspection + advanced protection
+5. VPN → encrypted tunnel
+6. Remote VPN → user to network
+7. Site-to-site VPN → network to network
+8. WireGuard → modern, simple, fast
+9. IPsec → older, established, widely supported
+10. Segmentation → divide network to limit damage
+11. DMZ → public-facing systems
+12. Restricted zone → sensitive systems
+13. Subnetting → divide one network into smaller networks
+14. Forward proxy → controls outgoing users
+15. Reverse proxy → protects incoming internal servers
+16. CIDR /24 → network prefix notation
+And that's enough for today. Don't turn this into another memorization marathon. You've already built the conceptual picture; repeated exposure and practical labs will make the terminology stick naturally.
