@@ -1,0 +1,373 @@
+🌐 Network Attacks — Notes
+1. Why do we need secure networks?
+Networks are constantly exposed to attacks.
+Attackers can:
+- Steal information
+- Intercept or modify network traffic
+- Disrupt services
+- Install malware
+- Gain unauthorized access
+A successful attack can affect an organization in three major ways:
+💰 Financial impact
+- Business operations stop
+- Revenue is lost
+- Recovery costs money
+- Lawsuits/settlements may occur
+🏢 Reputation impact
+Customers lose trust.
+They may move to competitors if they believe their data isn't safe.
+🛡️ Public safety impact
+Attacks against critical infrastructure can cause physical harm.
+Examples:
+- Power grids
+- Water systems
+- Government networks
+- Military systems
+- Industrial/OT systems
+Important idea:  
+A network attack isn't just a "computer problem." It can become a business, financial, or even physical safety problem.
+
+2. Network Interception Attacks
+An interception attack happens when an attacker intercepts network traffic while data is moving between systems.
+Packet sniffing
+An attacker captures and examines packets traveling through a network.
+For example:
+User ───────────────→ Bank
+        ↑
+     Attacker
+     captures
+      packets
+
+If traffic isn't properly protected, the attacker might obtain sensitive information.
+Attackers can also modify traffic
+It's not always just stealing.
+They could intercept:
+Bank transfer:
+₹10,000 → Account A
+
+and modify it to:
+₹10,000 → Attacker's account
+
+Two other interception attacks you'll encounter later:
+- On-path attack
+- Replay attack
+Don't worry about memorizing those yet.
+3. Backdoor Attacks
+A backdoor is a way to bypass the normal security/access controls of a system.
+Think of a building:
+Main entrance
+     ↓
+Security checks
+     ↓
+      Building
+
+But someone secretly leaves:
+Back door → Building
+
+The attacker can bypass the normal security.
+In cybersecurity
+A backdoor can be:
+- A weakness intentionally left by developers/admins
+- A hidden method of accessing a system
+- Something installed by an attacker after compromising a system
+Why attackers want backdoors
+Because they provide persistent access.
+After getting inside, an attacker could:
+- Install malware
+- Steal information
+- Change security settings
+- Launch attacks
+- Perform DoS attacks
+Remember:
+Backdoor = bypass normal access controls to maintain or gain access.
+
+4. DoS — Denial of Service
+This is one of the important concepts in this section.
+DoS = Denial of Service
+The goal is:
+Make a service unavailable to legitimate users.
+
+An attacker overwhelms a server/network/device so it can't properly respond to normal users.
+Simple example:
+Normal:
+
+Users → Server
+         ↓
+      Works normally
+
+
+DoS:
+
+Attacker →→→→→→ Server
+Attacker →→→→→→ Server
+Attacker →→→→→→ Server
+Attacker →→→→→→ Server
+                 ↓
+              Overloaded
+                 ↓
+          Legitimate users
+             can't connect
+
+5. DDoS
+DDoS = Distributed Denial of Service
+It's basically a DoS attack using many different devices.
+Computer 1 ──┐
+Computer 2 ──┤
+Computer 3 ──┤
+Computer 4 ──┤──→ Target server
+Computer 5 ──┤
+Computer 6 ──┘
+
+This makes the attack much harder to handle.
+DoS vs DDoS
+DoS	DDoS
+Usually one/fewer attacking sources	Many distributed sources
+Simpler	More powerful
+Easier to identify/block	Harder to block
+
+
+6. SYN Flood
+This attack abuses the TCP three-way handshake that you already learned.
+Normal TCP:
+Client → SYN
+Server → SYN/ACK
+Client → ACK
+        ↓
+ Connection established
+
+A SYN flood does this:
+Attacker → SYN
+Attacker → SYN
+Attacker → SYN
+Attacker → SYN
+Attacker → SYN
+Attacker → SYN
+              ↓
+          Server
+
+The attacker sends huge numbers of SYN requests but doesn't properly finish the handshake.
+The server keeps resources reserved for these incomplete connections.
+Eventually:
+Server resources exhausted
+          ↓
+Legitimate users can't connect
+
+Remember:
+SYN flood = floods a server with TCP SYN requests to exhaust connection resources.
+
+This is one of the important ones to remember.
+7. ICMP Flood
+You already learned what ICMP does.
+ICMP = Internet Control Message Protocol
+It's used for network error/status messages and tools like ping.
+An ICMP flood sends huge numbers of ICMP packets toward a target.
+Attacker
+  ↓
+ICMP
+ICMP
+ICMP
+ICMP
+ICMP
+ICMP
+  ↓
+Server
+
+The target has to process all those packets/replies.
+Eventually its resources or bandwidth can be overwhelmed.
+Remember:
+ICMP flood = overwhelming a target with large numbers of ICMP packets.
+
+8. Ping of Death
+This one is different.
+Instead of sending lots of packets, the attacker sends one oversized/malformed packet to exploit vulnerable systems.
+Conceptually:
+Normal ICMP packet
+       ↓
+   acceptable size
+
+Ping of Death
+       ↓
+oversized packet
+       ↓
+vulnerable system
+       ↓
+      crash
+
+The course describes it as an ICMP packet larger than 64 KB.
+⚠️ Don't get too focused on the exact 64 KB number. The important concept is:
+Ping of Death = oversized/malformed ping packet intended to crash or disrupt a vulnerable system.
+
+Modern systems generally have protections against the classic form of this attack.
+9. DoS attacks — remember this table
+Attack	What it does
+SYN flood	Floods TCP SYN requests
+ICMP flood	Floods ICMP packets
+Ping of Death	Sends oversized/malformed ICMP packet
+DDoS	Uses many devices to overwhelm target
+
+
+The common goal is:
+Deny legitimate users access to the service.
+
+10. Network Protocol Analyzer
+Now we get to the tool you'll actually use.
+A network protocol analyzer captures and analyzes network traffic.
+Examples:
+- Wireshark
+- tcpdump
+- SolarWinds NetFlow Traffic Analyzer
+- ManageEngine OpManager
+- Azure Network Watcher
+You've already encountered tcpdump.
+11. tcpdump
+tcpdump = command-line network protocol analyzer.
+It runs in the terminal and captures network packets.
+For example:
+Packet 1
+Source IP → Destination IP
+Source port → Destination port
+Protocol
+Timestamp
+
+It can help analysts:
+- Troubleshoot network problems
+- Detect suspicious traffic
+- Investigate attacks
+- Understand network behavior
+- Establish normal traffic baselines
+- Identify unauthorized network activity
+Important fields
+When reading tcpdump output, pay attention to:
+1. Timestamp
+→ When the packet occurred
+2. Source IP
+→ Where the packet came from
+3. Source port
+→ Port where it originated
+4. Destination IP
+→ Where it's going
+5. Destination port
+→ Port it's going to
+Example:
+13:24:32  192.168.1.5:443 → 10.0.0.5:5000
+
+You can ask:
+Who sent it?
+Who received it?
+What port?
+When?
+What protocol?
+
+That's the analyst mindset.
+12. tcpdump can also be abused
+The same tool that defenders use can be used by attackers.
+An attacker could capture packets and potentially obtain sensitive information if traffic isn't properly protected.
+So:
+Tools aren't inherently defensive or offensive. How they're used matters.
+
+13. The 2016 DNS DDoS Attack
+This is the real-world example tying everything together.
+Remember:
+DNS translates:
+google.com
+     ↓
+IP address
+
+So if DNS stops working, users may be unable to reach websites even though the websites themselves are still running.
+What happened?
+A DNS service provider was attacked on October 21, 2016.
+Attackers used a botnet.
+Botnet
+A botnet = collection of malware-infected devices controlled by an attacker.
+Think:
+Device 1 ──┐
+Device 2 ──┤
+Device 3 ──┤
+Device 4 ──┤
+Device 5 ──┤
+            ↓
+       Bot herder
+            ↓
+      Target server
+
+The attacker commands all the infected devices to attack simultaneously.
+14. What happened during the DNS attack?
+The botnet sent tens of millions of DNS requests to the DNS provider.
+Botnet
+ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+DNS requests
+ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+DNS provider
+      ↓
+  overwhelmed
+      ↓
+DNS service shuts down
+      ↓
+Websites using that DNS
+service become unreachable
+
+This is a DDoS attack.
+The important chain is:
+Botnet → massive DNS requests → DNS provider overwhelmed → DNS stops responding → websites become unreachable
+
+The DNS provider recovered after around two hours and was better prepared for subsequent waves.
+🧠 What you actually need to remember
+Don't memorize the entire reading.
+MUST KNOW
+Network interception
+Intercepting network traffic to steal or modify information.
+
+Packet sniffing
+Capturing and analyzing network packets.
+
+Backdoor
+A method of bypassing normal access controls to gain/maintain access.
+
+DoS
+Overwhelming a system/service so legitimate users can't use it.
+
+DDoS
+DoS using many distributed devices.
+
+SYN flood
+Floods TCP SYN requests and exhausts connection resources.
+
+ICMP flood
+Floods a target with ICMP packets.
+
+Ping of Death
+Oversized/malformed packet intended to crash/disrupt a vulnerable system.
+
+Botnet
+Collection of compromised devices controlled by an attacker.
+
+tcpdump
+Command-line tool for capturing and analyzing network packets.
+
+Network protocol analyzer
+Tool used to capture and analyze network traffic.
+
+And the big picture
+You can connect everything you've learned so far:
+NETWORK
+   ↓
+Packets + IP + MAC + ports + protocols
+   ↓
+        ATTACKS
+   ├── Interception
+   │     └── Packet sniffing
+   │
+   ├── Backdoor
+   │
+   └── DoS / DDoS
+         ├── SYN flood
+         ├── ICMP flood
+         └── Ping of Death
+                ↓
+          NETWORK ANALYSIS
+                ↓
+             tcpdump
+                ↓
+       Capture packet evidence
+                ↓
+       Identify suspicious activity
