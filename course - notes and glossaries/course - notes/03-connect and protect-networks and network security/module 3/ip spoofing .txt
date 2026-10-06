@@ -1,0 +1,233 @@
+🔐 Interception Attacks — Notes
+1. Packet Sniffing
+Packet sniffing = capturing and inspecting network packets as they travel across a network.
+Packets can contain:
+- Source/destination IP
+- MAC addresses
+- Protocol information
+- Potentially sensitive data
+A security analyst can use packet sniffing legitimately to:
+- Investigate incidents
+- Troubleshoot network problems
+- Detect suspicious traffic
+Attackers can use it maliciously to steal information.
+Simple analogy
+Think of network traffic as letters:
+Alice ───────────→ Bob
+       letter
+
+Packet sniffing is like someone secretly reading the letter while it's being delivered.
+2. Passive vs Active Packet Sniffing
+This distinction is important.
+🟢 Passive packet sniffing
+The attacker only observes/reads traffic.
+Alice ───────────→ Bob
+          ↑
+       Attacker
+       observes
+
+They don't modify the packet.
+Remember:
+Passive = read
+
+🔴 Active packet sniffing
+The attacker interferes with or modifies traffic.
+For example:
+Alice ──→ Attacker ──→ Bob
+             ↓
+        modifies data
+
+They might alter information or redirect traffic.
+Remember:
+Active = change/interfere
+
+Easy memory trick
+Passive = Peek
+Active = Alter
+3. Promiscuous Mode
+Normally, your network interface card (NIC) accepts packets intended for its own MAC address.
+Packet → My MAC
+       → Accept
+
+Packet → Someone else's MAC
+       → Ignore
+
+In promiscuous mode, the NIC accepts packets it sees even if they're not addressed to it.
+Packet → My MAC       → Accept
+Packet → Other MAC    → Also capture
+Packet → Other MAC    → Also capture
+
+This can be useful for legitimate network analysis tools such as Wireshark.
+Attackers can abuse it for packet sniffing.
+Remember:
+Promiscuous mode = NIC accepts/observes traffic beyond packets addressed to itself.
+
+4. IP Spoofing
+This is the next major concept.
+IP spoofing = changing the source IP address in a packet to pretend it came from another system.
+Normally:
+Attacker
+192.168.1.50
+    ↓
+Server
+
+With spoofing:
+Attacker
+(fake source IP: 192.168.1.10)
+    ↓
+Server
+
+The server sees:
+"This packet appears to come from 192.168.1.10."
+
+The attacker is impersonating another device.
+Remember:
+IP spoofing = fake source IP.
+
+5. On-Path Attack
+This is one of the most important attacks in this section.
+An attacker places themselves between two communicating systems.
+Normal:
+
+Client ───────────→ Server
+
+
+On-path:
+
+Client ──→ Attacker ──→ Server
+             ↓
+          observes
+          /changes
+          traffic
+
+The attacker can potentially:
+- Read traffic
+- Modify traffic
+- Steal credentials
+- Redirect communications
+That's why it's sometimes called a man-in-the-middle attack.
+The course uses on-path attack as the preferred terminology.
+Example: DNS
+Suppose:
+You → DNS server
+"What is example.com?"
+
+The attacker intercepts the communication and gives you a fake response:
+example.com → Attacker's IP
+
+You could then be redirected to a malicious website.
+Main defense:
+Encryption of data in transit, especially TLS/HTTPS.
+6. Replay Attack
+A replay attack is slightly different.
+The attacker captures legitimate traffic and reuses it later.
+Imagine:
+User → Server
+"Transfer ₹10,000"
+
+Attacker captures the packet.
+Later:
+Attacker → Server
+"Transfer ₹10,000"
+
+The attacker is replaying previously captured communication.
+Remember:
+Replay = capture → save → send again later.
+
+7. Smurf Attack
+This one combines:
+IP spoofing + DoS
+The attacker obtains/spoofs a victim's IP address and sends packets toward a network broadcast address.
+Conceptually:
+Attacker
+   ↓
+Packet with victim's fake IP
+   ↓
+Broadcast network
+ ↓   ↓   ↓   ↓
+PC  PC  PC  PC
+ ↓   ↓   ↓   ↓
+Responses
+ ↓   ↓   ↓   ↓
+Victim
+
+The victim gets overwhelmed by the responses.
+So:
+Smurf = IP spoofing + ICMP-based flooding/DoS.
+
+Easy memory:
+Spoof victim → broadcast → many responses → victim overwhelmed
+8. How these attacks connect
+This is the part I really want you to understand rather than memorize individual definitions.
+An attacker might do:
+Packet sniffing
+       ↓
+Discover IP/MAC information
+       ↓
+IP spoofing
+       ↓
+Impersonate a device
+       ↓
+On-path attack
+       ↓
+Intercept communication
+       ↓
+Modify/replay traffic
+       ↓
+Steal information or disrupt service
+
+So these aren't completely isolated attacks.
+They can work together.
+🛡️ 9. Defenses
+There isn't one magical defense.
+That's where defense in depth comes in.
+Encryption
+Use:
+- HTTPS/TLS
+- VPNs
+- Other encrypted protocols
+If an attacker captures encrypted traffic:
+Attacker captures packet
+        ↓
+Encrypted data
+        ↓
+Can't easily understand contents
+
+Firewalls
+Can help detect/block suspicious or spoofed traffic.
+For example, if an external packet claims:
+Source IP = internal network address
+
+the firewall can reject it because an external system shouldn't legitimately appear to originate from the internal network.
+Network monitoring
+Tools such as:
+- Wireshark
+- tcpdump
+- IDS/IPS
+- NGFW
+can help identify unusual traffic.
+Defense in depth
+Don't rely on one protection:
+Encryption
+    +
+Firewall
+    +
+Network segmentation
+    +
+Authentication
+    +
+Monitoring
+    +
+IDS/IPS
+
+If one layer fails, another can still protect you.
+🧠 The cheat sheet
+Attack	Core idea
+Packet sniffing	Capture/read network packets
+Passive sniffing	Observe traffic
+Active sniffing	Modify/interfere with traffic
+IP spoofing	Fake the source IP
+On-path	Get between two communicating systems
+Replay	Capture traffic and send it again later
+Smurf	IP spoofing + ICMP flooding/DoS
+DoS	Make a service unavailable
