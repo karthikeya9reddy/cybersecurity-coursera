@@ -1,0 +1,257 @@
+☁️ Cloud Network Security — Notes
+1. Cloud Network Hardening
+Cloud networks still need to be hardened just like on-premises networks.
+Cloud hardening = securing cloud infrastructure, applications, data, and configurations to reduce vulnerabilities.
+Cloud providers manage the physical infrastructure, but the customer still has security responsibilities.
+2. Cloud Security Challenges
+🔑 IAM — Identity and Access Management
+IAM manages:
+- Digital identities
+- User access
+- Permissions
+- What users can do with cloud resources
+A major risk is incorrectly configured roles.
+Example:
+Normal:
+Employee → only required resources
+
+Bad configuration:
+Employee → admin access
+             ↓
+        Higher risk
+
+IAM = Who can access what, and what can they do?
+
+⚙️ Misconfiguration
+Cloud environments can become complex because there are many services and configurations.
+A misconfigured cloud service can expose resources or create vulnerabilities.
+Therefore:
+Correct configuration is a major part of cloud security.
+
+🎯 Attack Surface
+Every additional cloud service/application can introduce additional risks and potential entry points.
+More services
+     ↓
+More complexity
+     ↓
+Potentially larger attack surface
+     ↓
+Need stronger security
+
+💀 Zero-Day Attacks
+A zero-day attack exploits a vulnerability that was previously unknown.
+Cloud providers may have greater ability to respond quickly because they can patch infrastructure such as hypervisors and move workloads between virtual machines.
+3. Cloud Visibility
+In traditional networks, administrators can inspect network traffic directly.
+In cloud environments, customers don't necessarily have direct access to the provider's underlying infrastructure.
+Cloud providers may instead provide tools such as:
+- Flow logs
+- Packet mirroring
+- Security monitoring
+Providers also undergo third-party audits to assess security and compliance.
+4. Cloud Changes Quickly
+Cloud providers frequently update their services and infrastructure.
+Therefore, organizations need to continually adapt:
+Cloud provider changes
+        ↓
+Configurations may need updating
+        ↓
+Security processes may need updating
+
+Cloud security isn't something you configure once and forget.
+5. ⭐ Shared Responsibility Model
+This is one of the most important concepts in cloud security.
+Security responsibilities are divided between:
+☁️ Cloud Service Provider (CSP)
+Responsible for things such as:
+- Physical data centers
+- Physical infrastructure
+- Hypervisors
+- Host infrastructure/OS components
+🏢 Customer
+Responsible for things such as:
+- Their cloud data
+- Applications
+- User access
+- Cloud configurations
+- Services they deploy
+Simple idea:
+       CLOUD SECURITY
+            │
+      ┌─────┴─────┐
+      ↓           ↓
+     CSP        CUSTOMER
+      │           │
+Physical       Data
+infrastructure Applications
+Hypervisor     IAM
+Provider       Configuration
+infrastructure Access
+
+Most important warning:
+Don't assume the cloud provider is responsible for everything.
+
+For example, the provider can secure the cloud infrastructure, but the organization must configure its cloud services correctly.
+6. Cloud Security Hardening
+Common cloud hardening techniques include:
+- IAM
+- Hypervisor security
+- Baselining
+- Cryptography
+- Cryptographic erasure
+7. Hypervisors
+A hypervisor separates physical hardware from virtual machines.
+Two types:
+Type 1
+Runs directly on the physical hardware.
+Example:
+VMware ESXi
+Hardware
+   ↓
+Hypervisor
+   ↓
+VMs
+
+Type 2
+Runs on top of an existing operating system.
+Example:
+VirtualBox
+Hardware
+   ↓
+Host OS
+   ↓
+VirtualBox
+   ↓
+VM
+
+Cloud providers commonly use Type 1 hypervisors.
+VM Escape
+A VM escape is an exploit where an attacker escapes a virtual machine and gains access to the underlying hypervisor/host or potentially other VMs.
+This is mainly something the CSP manages.
+8. Cloud Baselining
+A baseline is a fixed reference configuration.
+You compare the current cloud environment against the baseline to identify unauthorized or unexpected changes.
+Example:
+Approved configuration
+        ↓
+       BASELINE
+        ↓
+Compare current cloud environment
+        ↓
+Unexpected change?
+        ↓
+Investigate
+
+Examples of baseline settings:
+- Restrict cloud admin portal access
+- Enable password management
+- Enable file encryption
+- Enable threat detection
+🔐 9. Cryptography in the Cloud
+Cryptography helps protect cloud data through:
+- Encryption
+- Secure key management
+Encryption
+Converts readable information (plaintext) into unreadable ciphertext.
+Plaintext
+   ↓
+Encryption + key
+   ↓
+Ciphertext
+
+Only someone with the appropriate key can decrypt it.
+Cryptography helps provide:
+- Confidentiality
+- Integrity
+🗑️ 10. Cryptographic Erasure
+Traditional deletion isn't always straightforward in cloud environments because multiple copies of data may exist.
+Cryptographic erasure / crypto-shredding = destroying the encryption key used to decrypt the data.
+Encrypted data
+      +
+Encryption key
+      ↓
+Delete key
+      ↓
+Data becomes undecipherable
+
+For crypto-shredding to work properly, all relevant copies of the key need to be destroyed.
+🔑 11. Key Management
+Encryption is only useful if encryption keys are protected.
+TPM
+Trusted Platform Module (TPM)
+A hardware chip that can securely store things such as:
+- Passwords
+- Certificates
+- Encryption keys
+CloudHSM
+Cloud Hardware Security Module
+A specialized device/service used for:
+- Secure key storage
+- Encryption operations
+- Decryption operations
+🧠 What you actually need to remember
+Don't memorize every paragraph.
+MUST KNOW:
+IAM
+Controls identities, permissions, and access to cloud resources.
+
+Misconfiguration
+Incorrect cloud configuration can create vulnerabilities.
+
+Attack surface
+More services can mean more potential risks/entry points.
+
+Zero-day
+Previously unknown vulnerability/exploit.
+
+Shared responsibility
+CSP secures the cloud infrastructure; customer secures what they deploy/configure in the cloud.
+
+Type 1 hypervisor
+Runs directly on hardware.
+
+Type 2 hypervisor
+Runs on a host OS.
+
+VM escape
+Attack that escapes a VM toward the underlying host/hypervisor.
+
+Baseline
+Approved reference configuration used to detect unauthorized changes.
+
+Encryption
+Converts plaintext into ciphertext using a key.
+
+Cryptographic erasure
+Destroying encryption keys so encrypted data becomes inaccessible.
+
+TPM
+Hardware-based secure storage for keys/certificates/etc.
+
+CloudHSM
+Hardware security module for protecting keys and performing cryptographic operations.
+
+🔥 The whole cloud security story
+                 CLOUD SECURITY
+                       │
+       ┌───────────────┼────────────────┐
+       ↓               ↓                ↓
+      IAM          Configuration    Attack Surface
+       │               │                │
+   Who can do      Secure settings   Minimize risks
+   what?
+       │               │                │
+       └───────────────┼────────────────┘
+                       ↓
+               Shared Responsibility
+                  ↙           ↘
+                CSP         Customer
+                 ↓              ↓
+          Infrastructure    Data/apps
+          Hypervisors       IAM/config
+                 ↓              ↓
+                 └──────┬───────┘
+                        ↓
+                  Cryptography
+                        ↓
+              Secure cloud environment
