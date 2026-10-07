@@ -1,0 +1,294 @@
+🛡️ Network Hardening — Notes
+1. Security Hardening
+Security hardening = strengthening a system to reduce its vulnerabilities and attack surface.
+Attack surface
+The attack surface is all the possible points an attacker could exploit to gain access.
+Think of a house:
+House
+├── Door
+├── Windows
+├── Garage
+└── Other entrances
+
+Every entrance = potential attack surface.
+In a network:
+Unused ports
+Unnecessary services
+Old software
+Weak passwords
+Excessive permissions
+Misconfigured devices
+
+These can all increase the attack surface.
+Main goal
+Reduce unnecessary ways an attacker can get in.
+
+2. Common Hardening Techniques
+Security hardening can apply to:
+- Hardware
+- Operating systems
+- Applications
+- Networks
+- Databases
+- Physical environments
+Common techniques:
+🔄 Patch/update software
+Fix known vulnerabilities.
+🚫 Disable unused services
+If you don't need a service, don't leave it running.
+🔌 Disable unused ports
+Fewer exposed ports = smaller attack surface.
+🔐 Strong access controls
+Use strong passwords, MFA, and appropriate permissions.
+🧹 Remove unnecessary software
+Unused software can contain vulnerabilities.
+🔒 Improve encryption
+Use current/secure encryption standards.
+🧪 Penetration testing
+A pen test is a simulated attack designed to find vulnerabilities.
+Think:
+Attack yourself before a real attacker does.
+
+3. OS Hardening
+The operating system is extremely important because compromising one system can potentially provide an entry point into the larger network.
+OS hardening = securing the operating system through configuration and maintenance.
+Important practices:
+- Install security patches
+- Keep software updated
+- Remove unnecessary software
+- Maintain backups
+- Maintain an inventory of devices/users
+- Configure secure encryption
+- Use strong password policies
+- Use MFA
+- Restrict access privileges
+4. Patch Updates
+A patch is an update that fixes bugs or security vulnerabilities.
+Why are patches important?
+Imagine:
+Vulnerability discovered
+        ↓
+Vendor creates patch
+        ↓
+Patch released
+        ↓
+Attackers now know what vulnerability was fixed
+        ↓
+Unpatched systems become attractive targets
+
+So organizations should apply security patches promptly.
+Remember:
+Patch = fix a known vulnerability.
+
+5. Baseline Configuration
+A baseline configuration is a documented standard configuration for a system.
+Think of it as:
+"This is what a properly secured system should look like."
+
+Example:
+Firewall:
+Allowed ports → 22, 443
+Blocked ports → everything else
+
+Later, security analysts can compare the current system against the baseline.
+Baseline          Current
+--------          -------
+Port 22 ✓         Port 22 ✓
+Port 443 ✓        Port 443 ✓
+Port 23 blocked   Port 23 OPEN  ← suspicious
+
+So:
+Baseline = reference point for a secure configuration.
+
+6. Password Policies
+Organizations can enforce rules such as:
+- Minimum password requirements
+- Complexity requirements
+- Password reuse restrictions
+- Login attempt limits
+- Account lockout
+- MFA
+The goal is to make credential attacks harder.
+7. Brute Force Attacks
+A brute force attack is a trial-and-error attempt to discover credentials or other secrets.
+Simple brute force
+Trying many username/password combinations.
+admin / password1
+admin / password2
+admin / password3
+...
+
+Dictionary attack
+Instead of trying completely random combinations, the attacker uses a list of:
+- Common passwords
+- Common words
+- Previously leaked credentials
+Example:
+password
+123456
+qwerty
+admin123
+...
+
+Main idea:
+Brute force = repeatedly guessing until something works.
+
+8. Virtual Machines (VMs)
+You already have experience with this. 😎
+A VM = software-based computer running inside another computer.
+Security teams use VMs to:
+- Test suspicious files
+- Investigate malware
+- Test vulnerabilities
+- Practice attacks
+- Safely experiment with configurations
+For example:
+Your Windows PC
+       ↓
+   VirtualBox
+       ↓
+    Ubuntu VM
+       ↓
+   Security lab
+
+If something goes wrong inside the VM, you can often delete/revert it without affecting the host.
+⚠️ VMs aren't completely risk-free. Sophisticated malware can sometimes attempt to escape virtualization.
+9. Sandbox
+A sandbox is an isolated environment used to safely execute/test software.
+Used for:
+- Testing suspicious programs
+- Testing patches
+- Finding bugs
+- Analyzing malware
+- Simulating attacks
+Think:
+Sandbox = laboratory where software can be tested without giving it access to everything else.
+
+A VM can be used as a sandbox, but VM and sandbox aren't exactly the same thing.
+10. Password Protection Techniques
+Hashing
+Hashing converts data into a one-way value.
+Conceptually:
+Password
+   ↓
+Hash function
+   ↓
+Hash
+
+You don't normally decrypt a password hash back into the original password.
+Salting
+A salt is random data added to a password before hashing.
+Conceptually:
+Password + random salt
+        ↓
+      Hash
+
+This makes password cracking attacks more difficult, especially against precomputed/rainbow-table approaches.
+Important:
+Hashing ≠ encryption.
+
+Hashing is designed to be one-way; encryption is designed to be reversible with the appropriate key.
+11. MFA and 2FA
+MFA
+Multi-factor authentication requires two or more authentication factors.
+Three common factor categories:
+Something you know
+- Password
+- PIN
+Something you have
+- Phone
+- Security key
+- ID/token
+Something you are
+- Fingerprint
+- Face
+Example:
+Password
+   +
+Authenticator code
+   ↓
+Access granted
+
+2FA
+2FA = exactly two factors.
+So:
+2FA is a type of MFA.
+
+12. CAPTCHA / reCAPTCHA
+CAPTCHA helps determine whether the user is human rather than an automated bot.
+Why does this help?
+Attacker's bot
+     ↓
+Thousands of login attempts
+     ↓
+CAPTCHA
+     ↓
+Automation becomes harder
+
+It's one layer of defense against automated brute-force attempts.
+🧠 What you actually need to remember
+Don't memorize every sentence from the course.
+MUST KNOW:
+Security hardening
+Strengthening systems to reduce vulnerabilities and attack surface.
+
+Attack surface
+All the potential points an attacker could exploit.
+
+Patch
+Update that fixes vulnerabilities/bugs.
+
+Baseline
+Standard secure configuration used as a reference.
+
+Pen test
+Simulated attack used to find vulnerabilities.
+
+Brute force
+Repeatedly guessing credentials/secrets.
+
+Dictionary attack
+Brute force using a list of common/stolen passwords.
+
+VM
+Software-based computer used for isolated testing.
+
+Sandbox
+Isolated environment for safely testing software.
+
+Hashing
+One-way transformation used for things like password storage.
+
+Salting
+Adding random data before hashing to strengthen password protection.
+
+MFA
+Authentication using 2+ factors.
+
+🔥 The whole module in one picture
+                 SECURITY HARDENING
+                         │
+          ┌──────────────┴──────────────┐
+          ↓                             ↓
+    REDUCE ATTACK SURFACE          PROTECT ACCESS
+          │                             │
+   ┌──────┼──────┐                ┌─────┼─────┐
+   ↓      ↓      ↓                ↓     ↓     ↓
+ Patch  Remove  Disable          Strong MFA  Least
+        unused  unused           passwords   privilege
+        software ports
+          │
+          ↓
+     SECURE BASELINE
+          │
+          ↓
+     PENETRATION TEST
+          │
+          ↓
+   FIND → FIX → HARDEN
+
+And notice how this connects perfectly to the previous module:
+Previous module:
+🔴 "Here are all the ways attackers can attack your network."
+This module:
+🟢 "Now let's reduce the opportunities they have to attack it."
