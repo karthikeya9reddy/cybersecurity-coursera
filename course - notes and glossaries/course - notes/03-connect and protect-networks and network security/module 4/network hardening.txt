@@ -1,0 +1,193 @@
+🛡️ Network Hardening & Monitoring — Notes
+1. Network Hardening
+Network hardening = strengthening a network to reduce its vulnerabilities and attack surface.
+Common hardening practices:
+- 🔥 Maintain firewall rules
+- 🚪 Filter/disable unnecessary ports
+- 🔐 Control network access privileges
+- 📡 Use current secure wireless protocols
+- 🧩 Segment the network into isolated subnets
+- 🔒 Encrypt network communications
+- 📊 Analyze network logs
+- 🔄 Apply patches
+- 💾 Maintain server backups
+Port filtering
+A firewall can allow or block specific ports.
+Only allow ports that are actually needed.
+
+Unused ports should generally be blocked because every unnecessary exposed service increases the attack surface.
+2. Network Segmentation
+Network segmentation = dividing a network into separate isolated subnets/security zones.
+Example:
+Company Network
+       │
+ ┌─────┼─────┐
+ ↓     ↓     ↓
+HR   Finance  Marketing
+
+Why?
+- Limits access to only what users need
+- Prevents problems from spreading across the entire network
+- Protects sensitive/restricted areas
+For example, highly confidential data can be placed in a restricted zone separate from the normal network.
+3. Network Log Analysis
+A log = record of events occurring within systems.
+Network log analysis = examining those logs to identify important or suspicious events.
+Security teams can use a SIEM to collect and analyze these logs.
+4. Defense in Depth
+Defense in depth = multiple layers of security working together.
+Instead of:
+Internet → Firewall → Network
+
+you can have:
+Internet
+   ↓
+🔥 Firewall
+   ↓
+👀 IDS / 🛑 IPS
+   ↓
+Internal Network
+   ↓
+🧠 SIEM / Monitoring
+
+If one security layer fails, another can still provide protection.
+5. Firewall
+Firewall = allows or blocks network traffic according to rules.
+It can inspect packet headers and filter traffic based on things such as ports.
+NGFWs can perform deeper inspection, including packet payloads.
+Think:
+🔥 Firewall = Gatekeeper
+
+Traffic → Firewall → Allow / Block
+
+6. IDS — Intrusion Detection System
+IDS = detects suspicious activity and alerts the security team.
+It can look for:
+- Known attack signatures
+- Suspicious anomalies
+But:
+IDS does NOT automatically stop the traffic.
+
+Attack
+  ↓
+IDS
+  ↓
+🚨 Alert
+  ↓
+Analyst investigates
+
+Remember:
+IDS = Detect + Alert
+Limitation
+It may miss:
+- New sophisticated attacks
+- Unknown attacks
+- Some unusual activity
+7. IPS — Intrusion Prevention System
+IPS = detects suspicious activity AND takes action to stop it.
+For example:
+Attack
+  ↓
+IPS detects
+  ↓
+🛑 Block sender
+or
+🛑 Drop packet
+
+Remember:
+IPS = Detect + Prevent
+IPS is inline, meaning traffic passes through it.
+Therefore, if the IPS fails, it can potentially disrupt the connection between the internal network and internet.
+It can also have false positives, where legitimate traffic gets blocked.
+8. IDS vs IPS
+This is very important:
+	IDS	IPS
+Detects attacks	✅	✅
+Sends alerts	✅	✅
+Automatically blocks	❌	✅
+Main purpose	Detection	Prevention
+Key phrase	Detect	Detect + Stop
+
+
+Easy memory:
+👀 IDS = Security camera
+🛑 IPS = Security guard
+
+9. Full Packet Capture
+Full packet capture records network traffic so analysts can examine it later.
+Useful for:
+- Investigating security alerts
+- Analyzing network traffic
+- Understanding what happened during an incident
+Think:
+📹 Full packet capture = CCTV recording of network traffic
+
+10. SIEM
+SIEM = Security Information and Event Management
+A SIEM collects and analyzes security logs from multiple sources.
+For example:
+Firewall ───┐
+IDS ────────┤
+IPS ────────┤
+VPN ────────┤
+Proxy ──────┤
+DNS logs ───┘
+       ↓
+      SIEM
+       ↓
+Central dashboard
+
+This is called a:
+Single pane of glass
+
+because analysts can see security events from many systems in one place.
+SIEM helps analysts:
+- Monitor security events
+- Identify suspicious activity
+- Prioritize incidents
+- Investigate what happened
+- Decide what needs escalation
+Examples mentioned in the course:
+- Google Chronicle
+- Splunk
+🧠 Most Important Comparison
+Tool	What it does
+🔥 Firewall	Allows/blocks traffic
+👀 IDS	Detects + alerts
+🛑 IPS	Detects + blocks
+📦 Packet capture	Records/analyzes traffic
+🧠 SIEM	Collects/analyzes logs centrally
+
+
+One-line memory:
+Firewall controls → IDS detects → IPS stops → Packet capture records → SIEM organizes/analyzes
+
+🔥 The Complete Picture
+You can now connect the entire hardening module:
+                 NETWORK HARDENING
+                        │
+       ┌────────────────┼────────────────┐
+       ↓                ↓                ↓
+   Reduce attack    Control access    Monitor network
+      surface
+       │                │                │
+   ┌───┼────┐       Firewall         IDS / IPS
+   ↓   ↓    ↓           │                │
+ Ports Patch Segmentation              SIEM
+       │                │                │
+       └────────────────┼────────────────┘
+                        ↓
+                 DEFENSE IN DEPTH
+                        ↓
+              Stronger network security
+
+What you actually need to memorize
+Don't memorize the paragraphs.
+Know these 7 concepts:
+1. Network hardening → reduce vulnerabilities/attack surface.
+2. Port filtering → allow only necessary ports.
+3. Network segmentation → isolate networks/zones and limit access.
+4. Firewall → controls traffic.
+5. IDS → detects and alerts.
+6. IPS → detects and blocks.
+7. SIEM → collects/analyzes security logs centrally.
