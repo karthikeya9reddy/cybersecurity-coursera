@@ -1,0 +1,120 @@
+🖥️ Operating Systems — Notes
+1. What is an Operating System?
+An Operating System (OS) is the interface between the user, applications, and computer hardware.
+It allows humans to interact with the computer without needing to communicate directly in binary (0s and 1s).
+Main jobs of an OS
+- Runs and manages applications
+- Manages hardware
+- Allows multiple applications to run
+- Manages devices such as:
+  - Keyboard
+  - Mouse
+  - Printer
+- Manages files and data
+- Manages user access/authentication
+- Provides an interface between humans and computers
+Simple mental model:
+User → Operating System → Hardware
+🔐 2. Why OS is Important in Cybersecurity
+Security analysts need to understand operating systems because many security tasks happen at the OS level.
+Examples:
+- Managing user access
+- Configuring firewalls
+- Setting security policies
+- Enabling antivirus/virus protection
+- Auditing systems
+- Monitoring logs
+- Detecting unusual behavior
+- Protecting files and data
+Key idea:
+Securing the OS is a major part of securing the computer.
+
+💻 3. Common Operating Systems
+OS	Common use	Open-source status
+Windows	Personal & enterprise computers	Closed source
+macOS	Apple computers	Partially open source
+Linux	Servers, security, enterprise, etc.	Completely open source
+ChromeOS	Education, lightweight computers	Partially open source
+Android	Phones/tablets/watches	Open source
+iOS	Apple mobile devices	Partially open source
+
+
+Important for cybersecurity
+Linux is particularly important in cybersecurity.
+There are Linux distributions specifically designed for security.
+You've already been using Linux, so this section is directly relevant to what you're doing.
+🐧 4. Linux
+- First released in 1991
+- Completely open source
+- Source code can be accessed and modified
+- Large developer community
+- Widely used in the security industry
+- Many security-focused Linux distributions exist
+Remember:
+Linux = Open source + heavily used in cybersecurity.
+
+⚠️ 5. Operating System Vulnerabilities
+No operating system is completely free from security vulnerabilities.
+One of the most important ways to protect an OS is:
+Keep the OS and its components updated.
+
+Updates often contain security fixes.
+🕰️ 6. Legacy Operating Systems
+A legacy OS is an outdated operating system that is still being used.
+Why do organizations still use them?
+Sometimes newer operating systems aren't compatible with older software or equipment.
+This is especially common with systems using embedded software.
+Why are legacy OSs dangerous?
+They may:
+- No longer receive security updates
+- Have known vulnerabilities
+- Be vulnerable to newer attacks
+Cybersecurity takeaway:
+Old OS → No/limited updates → Known vulnerabilities → Higher risk
+🐛 7. Other OS Vulnerabilities
+Even an updated OS can still have vulnerabilities.
+Security professionals can monitor vulnerability databases and security advisories.
+Examples mentioned in the course:
+- Microsoft Security Response Center (MSRC) → Microsoft vulnerabilities
+- Apple Security Updates → Apple vulnerabilities
+- CVE reports for Ubuntu → Ubuntu/Linux vulnerabilities
+- Google Cloud Security Bulletins → Google Cloud vulnerabilities
+You don't need to memorize these websites right now. Understand that vendors publish information about known vulnerabilities and security updates.
+⭐ MUST KNOW
+If you're making short revision notes, remember these:
+1. OS = interface between user/applications and hardware.
+2. OS manages applications, hardware, files, users, and access.
+3. Linux is extremely important in cybersecurity.
+4. Windows = closed source; Linux = open source.
+5. OS security is essential to cybersecurity.
+6. Keep operating systems patched and updated.
+7. Legacy OS = outdated OS still in use.
+8. Legacy systems are risky because they may no longer receive security updates.
+9. Security analysts may manage access, firewalls, policies, antivirus, auditing, and logs at the OS level.
+10. No OS is completely vulnerability-free.
+🧠 Big picture
+                 USER
+                  ↓
+            APPLICATIONS
+                  ↓
+        ┌─────────────────┐
+        │  OPERATING      │
+        │    SYSTEM       │
+        └─────────────────┘
+          ↓      ↓      ↓
+       CPU     RAM    Storage
+          ↓
+       Hardware
+
+And from a cybersecurity perspective:
+OS
+ ↓
+Users + Permissions
+ ↓
+Files + Applications
+ ↓
+Logs + Security Controls
+ ↓
+Potential vulnerabilities
+ ↓
+Security Analyst
