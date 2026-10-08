@@ -1,0 +1,250 @@
+🖥️ How Operating Systems Work
+1. Big Picture
+The OS acts as the middleman between applications and hardware.
+USER
+ ↓
+APPLICATION
+ ↓
+OPERATING SYSTEM
+ ↓
+HARDWARE
+ ↓
+RESULT
+ ↑
+OPERATING SYSTEM
+ ↑
+APPLICATION
+ ↑
+USER
+
+Example: Calculator
+You enter 5 + 5
+      ↓
+Calculator app
+      ↓
+Operating System
+      ↓
+CPU
+      ↓
+Result = 10
+      ↓
+OS
+      ↓
+Calculator app
+      ↓
+You see 10
+
+Key idea: Applications don't directly manage the hardware. The OS handles that interaction.
+🚀 2. What Happens When a Computer Boots?
+When you press the power button:
+Power button
+     ↓
+BIOS / UEFI
+     ↓
+Bootloader
+     ↓
+Operating System
+     ↓
+Computer ready
+
+BIOS
+BIOS = Basic Input/Output System
+- Older firmware used to start the computer
+- Contains instructions needed during startup
+- Performs checks before loading the OS
+UEFI
+UEFI = Unified Extensible Firmware Interface
+- Modern replacement for BIOS
+- Performs the same basic booting role
+- Provides additional security features
+Bootloader
+The bootloader is software that starts/loads the operating system.
+🔐 Security importance
+The boot process itself can contain vulnerabilities.
+For example, the course notes that BIOS may not be scanned by antivirus software, making firmware-level threats a concern.
+🍽️ 3. Restaurant Analogy
+This is a good mental model:
+Computer	Restaurant
+User	Customer
+Application	Waiter/order
+OS	Kitchen
+Hardware	Cooks/equipment
+Result	Food
+
+
+You request something through the application.
+The OS interprets and manages the request, then coordinates with the hardware.
+You don't need to know everything happening inside the "kitchen."
+⚙️ 4. OS Resource Management
+The OS doesn't just connect applications to hardware.
+It also manages the computer's limited resources.
+Resources include:
+- CPU
+- RAM
+- Storage
+- Input/output (I/O) bandwidth
+Many programs and processes may want these resources simultaneously.
+The OS decides how resources are allocated and de-allocated.
+Example
+If you're running:
+Browser
++ Music player
++ Antivirus scan
++ Terminal
++ VM
+
+All of them compete for CPU and RAM.
+The OS coordinates their resource usage.
+🧠 Mental model
+OS = conductor of an orchestra
+
+The programs are the musicians, and the OS coordinates the available resources so everything can work together.
+🔍 5. Why Resource Management Matters in Cybersecurity
+Security analysts may need to investigate why a computer is slow or behaving strangely.
+For example:
+Computer becomes slow
+        ↓
+Check resource usage
+        ↓
+Task Manager
+        ↓
+Process using huge CPU/RAM
+        ↓
+Investigate process
+        ↓
+Could potentially be malware
+
+Task Manager can show processes and their CPU/memory usage.
+Understanding resource usage helps with:
+- Troubleshooting
+- Incident response
+- Finding suspicious processes
+- Investigating abnormal system behavior
+🖥️ 6. Virtual Machines (VMs)
+A Virtual Machine (VM) is a software-based version of a physical computer.
+Instead of having physically separate hardware, the VM has virtual:
+- CPU
+- RAM
+- Storage
+- Other hardware
+Physical Computer
+       ↓
+   Virtualization
+       ↓
+ ┌────────┬────────┬────────┐
+ │ VM 1   │ VM 2   │ VM 3   │
+ │ Linux  │ Windows│ Linux  │
+ └────────┴────────┴────────┘
+
+Multiple VMs can run on one physical computer by sharing its resources.
+Example
+A computer has 16 GB RAM.
+You could allocate portions of that RAM to several VMs while the host also uses RAM.
+🔐 7. Why Security Professionals Use VMs
+Isolation / Sandbox
+VMs can provide an isolated environment.
+For example:
+Host Computer
+     │
+     ├── VM 1
+     │
+     ├── VM 2 ← Test malware
+     │
+     └── VM 3
+
+If malware infects a VM, the isolation can help prevent it from immediately affecting the host or other VMs.
+Security professionals can therefore use VMs for:
+- Malware analysis
+- Testing
+- Security labs
+- Testing applications
+- Experimenting with configurations
+⚠️ Important
+VMs are not perfectly secure.
+A malicious program could potentially exploit a virtualization escape and access the host system.
+So:
+VM ≠ absolute security
+
+⚡ 8. Efficiency of VMs
+Instead of having:
+Computer 1 → Linux
+Computer 2 → Windows
+Computer 3 → Security lab
+
+you can have:
+One physical computer
+       ↓
+ ┌─────┼─────┐
+ VM1   VM2   VM3
+Linux Windows Lab
+
+This saves physical hardware and allows you to switch between environments easily.
+This is exactly why VMs are extremely useful for cybersecurity labs.
+🧠 9. Hypervisor
+A hypervisor is software that manages virtual machines.
+It:
+- Creates/manages VMs
+- Connects virtual hardware to physical hardware
+- Allocates physical resources to VMs
+KVM
+KVM = Kernel-based Virtual Machine
+- Open-source
+- Supported by major Linux distributions
+- Built into the Linux kernel
+- Used to create/manage VMs on Linux
+🌐 10. Other Forms of Virtualization
+Virtualization isn't limited to VMs.
+It can also create:
+- Virtual servers
+- Virtual networks
+- Other software-defined resources
+The goal is generally to use physical hardware more efficiently.
+⭐ MUST KNOW
+For your cybersecurity notes, I'd memorize these:
+OS operation
+User → Application → OS → Hardware → OS → Application → User
+Boot process
+BIOS/UEFI → Bootloader → OS
+OS resource management
+OS manages:
+CPU + RAM + Storage + I/O
+Virtualization
+Virtualization = using software to create virtual versions of physical resources.
+
+VM
+A VM is a virtual computer running on physical hardware.
+
+Hypervisor
+Software that creates/manages VMs and allocates physical resources to them.
+
+Security
+VMs provide isolation and are useful for malware/security testing, but they aren't completely risk-free.
+
+🔥 The big picture
+You can connect everything you've learned so far like this:
+                    USER
+                      ↓
+                APPLICATION
+                      ↓
+             ┌────────────────┐
+             │       OS       │
+             │                │
+             │ Resource Mgmt  │
+             │ Files          │
+             │ Processes      │
+             │ Users          │
+             └───────┬────────┘
+                     ↓
+          ┌─────────────────────┐
+          │      HARDWARE       │
+          │ CPU │ RAM │ Storage │
+          └─────────────────────┘
+
+
+             VIRTUALIZATION
+                    ↓
+              HYPERVISOR
+                    ↓
+        ┌───────────┼───────────┐
+       VM1         VM2         VM3
+      Linux      Windows     Linux
