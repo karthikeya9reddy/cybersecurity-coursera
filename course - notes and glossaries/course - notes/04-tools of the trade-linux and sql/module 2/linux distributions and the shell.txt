@@ -1,0 +1,167 @@
+🐧 Linux Module — Quick Revision Notes
+1. Linux and its distributions
+Linux is an open-source operating system widely used in cybersecurity.
+- Linus Torvalds: Developed the Linux kernel.
+- Richard Stallman: Started the GNU project.
+- Distribution (distro): A version of Linux containing the kernel, utilities, package management tools, an installer, and often preinstalled applications.
+Common Linux distributions
+Distribution	Main use / characteristic
+Kali Linux	Penetration testing and digital forensics
+Ubuntu	User-friendly, general computing and cloud environments
+Parrot	Security tools, penetration testing and forensics
+Red Hat Enterprise Linux (RHEL)	Enterprise use; subscription-based support
+AlmaLinux	Community-driven, enterprise-focused Linux distribution
+Remember these relationships:
+- Ubuntu → Debian-derived
+- Kali Linux → Debian-derived
+- Parrot → Debian-derived
+- AlmaLinux → Created as a stable alternative to CentOS
+Security tools mentioned
+Tool	Purpose
+Metasploit	Vulnerability testing and exploitation
+Burp Suite	Web application security testing
+John the Ripper	Password recovery and password auditing
+tcpdump	Command-line network packet analysis
+Wireshark	Graphical network traffic analysis
+Autopsy	Digital forensics for storage devices
+Suricata	Network threat detection and analysis
+Key definitions
+- Penetration testing: Simulated attacks to identify vulnerabilities.
+- Digital forensics: Collecting and analyzing evidence to understand what happened during or after an incident.
+Use security tools only on systems you're authorized to test. VMs are useful for isolated labs, although they aren't perfectly secure.
+
+2. Linux architecture
+The six components covered in your course:
+Component	Function
+User	Initiates tasks
+Applications	Programs that perform specific tasks
+Shell	Interprets commands entered by the user
+FHS	Organizes the locations of files and directories
+Kernel	Manages processes, memory and hardware resources
+Hardware	Physical components of the computer
+Important terms
+- FHS (Filesystem Hierarchy Standard): Defines how directories and files are organized.
+- Directory: A location that organizes files and other directories.
+- Package: A unit of software that contains files needed to install software, including dependencies where required.
+- Package manager: A tool for installing, managing and removing software packages.
+- Multi-user system: A system that allows multiple users to use its resources.
+Hardware revision
+- CPU: Executes program instructions.
+- RAM: Temporary working memory; its contents are lost when power is turned off.
+- Hard drive/storage: Stores files and programs long-term.
+- Peripheral devices: Examples include the keyboard, mouse, monitor and printer.
+
+3. Linux distributions and package management
+Different distributions use different package-management systems.
+Distribution family	Package format	Tools
+Debian-derived (Ubuntu, Kali, Parrot)	.deb	dpkg, APT
+Red Hat-derived	.rpm	RPM, YUM
+What's the difference between APT and dpkg?
+- APT: A higher-level package-management tool that searches for, installs and removes packages, and handles dependencies through configured repositories.
+- dpkg: Works directly with Debian package files (.deb) and performs lower-level package operations.
+- YUM: A package-management tool used with Red Hat-derived systems.
+Commands you practised
+apt
+sudo apt install suricata
+sudo apt remove suricata
+sudo apt install tcpdump
+apt list --installed
+
+
+Command	What it does
+apt	Displays APT usage information
+sudo apt install package	Installs a package
+sudo apt remove package	Removes an installed package
+apt list --installed	Lists installed packages
+What you did in the lab:
+1. Checked that APT was installed.
+2. Installed Suricata.
+3. Verified that Suricata ran.
+4. Removed Suricata and verified its removal.
+5. Installed tcpdump.
+6. Listed installed packages.
+7. Reinstalled Suricata and confirmed that both packages were installed.
+Why use sudo? It runs a command with elevated privileges when authorized, which are generally required for system-wide package installation and removal.
+Security takeaway: Keep software updated when possible because updates can contain bug fixes and security patches.
+
+4. The Linux shell
+The shell is a command-line interpreter that allows you to communicate with the operating system using commands.
+Think of it as a translator between you and the system.
+Shell types
+- Bash: Bourne-Again Shell
+- csh: C Shell
+- ksh: Korn Shell
+- tcsh: Enhanced C shell
+- zsh: Z Shell
+Your course primarily uses Bash, which is widely used in cybersecurity.
+Different shells can have different features and prompts, but they support many common Linux commands.
+How a command works
+User enters command
+        ↓
+      Shell
+        ↓
+Interprets the command
+        ↓
+System performs the requested task
+        ↓
+Output or error is returned
+
+
+The shell is an interface to the OS, not the kernel itself.
+
+5. Input, output and errors
+When you use the shell, communication generally involves three important concepts.
+Term	Meaning	Example
+Standard input (stdin)	Information supplied to a program	Typing into the terminal
+Standard output (stdout)	Normal output produced by a program	hello
+Standard error (stderr)	Error messages produced by a program	Command not found
+Commands you practised
+A. echo — display text
+echo hello
+echo "hello"
+echo "Example text"
+
+
+Output:
+hello
+
+
+Quotation marks can group text together, especially when it contains spaces or characters the shell might otherwise interpret specially.
+B. expr — perform basic calculations
+expr 32 - 8
+
+
+Output:
+24
+
+
+More examples:
+expr 3500 \* 12
+expr 25 + 15
+expr 20 / 4
+
+
+Important:
+- Put spaces between numbers and operators.
+- Escape * as \* in Bash so it is passed to expr as a multiplication operator.
+- expr performs integer arithmetic; division discards the fractional part.
+C. clear — clear the terminal screen
+clear
+
+
+This clears the visible terminal output. It does not delete your files or erase your command history.
+Error example
+eco hello
+
+
+Because eco is misspelled, Bash typically reports that the command cannot be found.
+
+6. Quick cybersecurity connections
+Why does all this matter for your career?
+- Linux distributions: Help you choose the right environment and tools.
+- APT and dpkg: Let you install and manage security software.
+- Bash: Lets you automate tasks and work efficiently.
+- tcpdump and Wireshark: Help you investigate network traffic.
+- Suricata: Helps detect suspicious network activity.
+- Standard output and errors: Help you understand whether commands succeeded.
+- Digital forensics: Helps establish what happened during an incident.
