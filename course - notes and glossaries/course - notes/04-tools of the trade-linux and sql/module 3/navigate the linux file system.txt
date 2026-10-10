@@ -1,0 +1,116 @@
+🐧 Linux Commands — Quick Revision Notes
+1. Bash commands and arguments
+- Bash: A command-line interpreter used to communicate with the operating system.
+- Command: An instruction telling the computer to perform a task.
+- Argument: Additional information supplied to a command.
+- Case-sensitive: Linux commands, filenames, and directory names distinguish uppercase from lowercase.
+Example:
+echo "You are doing great!"
+
+
+- echo = command
+- "You are doing great!" = argument
+
+2. Linux filesystem hierarchy (FHS)
+The Filesystem Hierarchy Standard (FHS) organizes files and directories in Linux.
+The root directory / is the highest-level directory. All other directories branch from it.
+Directory	Purpose
+/	Root directory
+/home	Users' home directories
+/bin	Essential commands and executable programs
+/etc	System configuration files
+/tmp	Temporary files
+/mnt	Mount points for storage devices
+A directory is like a folder that organizes files and other directories.
+File paths
+- Absolute path: Full path starting from /.
+- Relative path: Path starting from your current directory.
+- . = current directory.
+- .. = parent directory.
+- ~ = current user's home directory.
+Example:
+/home/analyst/projects
+
+
+This is an absolute path.
+If you're in /home/analyst, you can access the same directory using the relative path:
+projects
+
+
+You can also use ~/projects to refer to the user's projects directory.
+
+3. Essential navigation commands
+Command	Purpose	Example
+pwd	Display current working directory	pwd
+ls	List files and directories	ls
+cd	Change directory	cd logs
+whoami	Display current username	whoami
+Examples
+pwd
+ls
+ls /home/analyst/projects
+cd logs
+cd ..
+cd /home/analyst/reports
+
+
+Remember:
+- pwd tells you where you are.
+- ls tells you what is there.
+- cd changes where you are.
+- whoami tells you who you are logged in as.
+
+4. Commands for reading files
+Command	Purpose
+cat file.txt	Display the entire file
+head file.txt	Display the first 10 lines
+tail file.txt	Display the last 10 lines
+less file.txt	View a file one page at a time
+Useful examples
+cat updates.txt
+head updates.txt
+head -n 5 updates.txt
+tail server_logs.txt
+less server_logs.txt
+
+
+With head -n 5, you display only the first five lines.
+When using less:
+- Space → move forward one page
+- b → move backward one page
+- Down arrow → move down one line
+- Up arrow → move up one line
+- q → quit
+Security use: head and tail are useful for checking log files without displaying their entire contents. less is useful for examining longer files.
+
+5. Practical lab revision
+The lab involved navigating directories and examining employee records and server logs.
+Task	Command
+Check the current directory	pwd
+List directory contents	ls
+Enter the reports directory	cd reports
+Open the users directory	cd /home/analyst/reports/users
+Read employee records	cat Q1_added_users.txt
+Navigate to logs	cd /home/analyst/logs
+Display the first 10 log lines	head server_logs.txt
+Answers from the lab
+- Username aezra → Human Resources department.
+- Username mreed → Employee ID 1104, Information Technology department.
+- First 10 lines of server_logs.txt → 3 warning messages.
+
+⭐ Final memory sheet
+
+Navigate
+pwd · ls · cd · whoami
+
+
+
+
+Understand paths
+/ root · ~ home · . current · .. parent
+
+
+
+
+Read files
+cat entire file · head beginning · tail end · less page-by-page
