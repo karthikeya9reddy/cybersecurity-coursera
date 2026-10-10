@@ -1,0 +1,122 @@
+🐧 1. What is Linux?
+Linux is an open-source operating system widely used in cybersecurity and other computing environments.
+History
+- Linus Torvalds developed the Linux kernel in the early 1990s.
+- Richard Stallman started the GNU project to create free software.
+- Their work contributed to the system commonly referred to as Linux (often GNU/Linux).
+Key characteristics
+- Open source: Source code is available to access and modify.
+- GNU General Public License (GPL): Allows software covered by it to be used, shared, and modified under its terms.
+- Community-driven: Developers collaborate to improve Linux.
+- Distributions: Linux comes in different varieties called distributions, or distros.
+- Security use: Linux is used for log analysis, access management, digital forensics, and penetration testing.
+Examples of distributions include Ubuntu and Parrot OS, which you've already used.
+
+🏗️ 2. Linux Architecture
+Linux has six main components:
+1. User
+Person entering commands or performing tasks
+
+2. Applications
+Programs that perform specific tasks
+
+3. Shell
+Interprets commands entered by the user
+
+4. Kernel
+Manages processes, memory, and hardware resources
+
+5. Hardware
+CPU, RAM, storage, keyboard, and other devices
+
+
+The Filesystem Hierarchy Standard (FHS) also organizes the system's files and directories. It works alongside these components rather than being a simple step in the command-processing sequence.
+3. The six components explained
+Component	Meaning
+User	Initiates tasks and commands. Linux supports multiple users.
+Applications	Programs that perform tasks, such as text editors and calculators.
+Shell	Command-line interpreter that processes user commands.
+FHS	Defines the organization and locations of files and directories.
+Kernel	Manages processes, memory, and interactions with hardware.
+Hardware	The physical components that perform computing tasks.
+Package manager
+A package manager is a tool used to install, manage, and remove software packages.
+A package is a unit of software that can be combined with other packages to form an application.
+Example commands you've learned:
+sudo apt install nano
+sudo apt remove nano
+
+
+
+🧠 4. Shell vs Kernel vs FHS
+These three are particularly important to distinguish.
+- Shell: Understands and processes your command.
+- Kernel: Manages system resources and communicates with hardware.
+- FHS: Organizes where files and directories are stored.
+Example:
+When you enter ls in your terminal, the shell processes the command, the required program runs and requests information from the OS, and the system provides the directory listing. The FHS defines the directory structure being displayed.
+
+💻 5. Computer Hardware
+Hardware means the physical components of a computer. The course divides hardware into two categories.
+A. Peripheral devices
+Devices attached to the computer that can generally be added or removed.
+Examples:
+- Keyboard
+- Mouse
+- Monitor
+- Printer
+B. Internal hardware
+Core components inside the computer.
+
+
+
+
+
+CPU — Central Processing Unit
+Executes program instructions and performs general computing tasks.
+
+
+
+
+
+
+
+
+RAM — Random Access Memory
+Temporary working memory used while programs run. Its contents are lost when power is turned off.
+
+
+
+
+
+
+
+
+Hard drive / storage
+Stores files and programs long-term, including when the computer is powered off.
+
+
+
+RAM vs storage
+RAM	Storage
+Short-term memory	Long-term storage
+Used while programs run	Keeps files and programs
+Contents lost when powered off	Data normally persists when powered off
+
+🛡️ 6. Why Linux matters in cybersecurity
+Security analysts may use Linux to:
+- Examine system and error logs.
+- Check user access and authorization.
+- Investigate security alerts using forensic tools.
+- Test systems for vulnerabilities using penetration-testing tools.
+Different Linux distributions are designed for different needs.
+⭐ MUST KNOW
+1. Linux is open source and widely used in cybersecurity.
+2. Torvalds developed the Linux kernel; Stallman started GNU.
+3. Shell = command interpreter.
+4. Kernel = manages processes, memory, and hardware.
+5. FHS = organizes files and directories.
+6. Package manager = installs, updates, and removes software packages.
+7. CPU = processes instructions; RAM = temporary working memory; storage = long-term data.
+8. Linux supports multiple users.
+9. Linux distributions serve different purposes.
