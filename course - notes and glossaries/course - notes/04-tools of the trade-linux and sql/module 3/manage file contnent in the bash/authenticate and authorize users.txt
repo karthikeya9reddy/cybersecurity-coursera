@@ -1,0 +1,189 @@
+Linux Quick Revision Notes: Permissions, Users & Groups
+1. File and directory permissions
+Permissions control who can access or modify files and directories. This is part of authorization.
+Three permission types
+Permission	File	Directory
+r — Read	Read file contents	List directory contents
+w — Write	Modify file contents	Create or remove entries, subject to other restrictions
+x — Execute	Run an executable file	Enter/traverse the directory
+Three owner types
+- u — User: owner of the file
+- g — Group: users belonging to the file's group
+- o — Other: all other users
+Reading the 10-character permission string
+Example: -rwxr-xr--
+rwx
+User
+Read, write, execute
+
+
+r-x
+Group
+Read, execute
+
+
+r--
+Other
+Read only
+
+
+
+The first character is the file type: - means regular file; d means directory. A - in any permission position means that permission is not granted.
+
+Commands to inspect permissions
+ls -l       # Detailed listing, including permissions
+ls -a       # Include hidden files (names begin with .)
+ls -la      # Detailed listing, including hidden files
+
+
+ls -l also shows the owner, group, file size and modification time.
+2. chmod — Change permissions
+The chmod command changes file or directory permissions using symbolic notation.
+Symbol	Meaning
+u	User
+g	Group
+o	Other
++	Add permission
+-	Remove permission
+=	Set permissions exactly as specified
+r, w, x	Read, write, execute
+Examples:
+chmod g+w access.txt
+chmod o-r access.txt
+chmod o-w project_k.txt
+chmod g-r project_m.txt
+chmod g-x drafts
+
+
+To make changes to multiple owner types, separate them with commas and no spaces:
+chmod g+w,o-r access.txt
+chmod u-w,g-w,g+r .project_x.txt
+
+
+To set permissions exactly:
+chmod u=r,g=r,o=r login_sessions.txt
+
+
+Important: = replaces the existing permissions for the specified owner type. + and - add or remove only the permissions specified.
+Principle of least privilege
+Grant users only the minimum permissions needed for their work.
+Example: if only an HR employee needs access to a confidential bonus file, remove unnecessary group permissions:
+chmod g-rw bonuses.txt
+
+
+This removes group read and write permissions; it does not change the user's or other's permissions.
+Permission lab answers
+- Group owning project files: research_team
+- Hidden file: .project_x.txt
+- project_k.txt: remove other write permission using chmod o-w project_k.txt
+- project_m.txt: remove group read permission using chmod g-r project_m.txt
+- .project_x.txt: remove user and group write permissions, then add group read permission.
+- drafts: remove group execute permission using chmod g-x drafts
+
+3. Authentication vs authorization
+Concept	Meaning
+Authentication	Verifying who someone is
+Authorization	Determining what they can access or do
+Example: logging in verifies your identity (authentication); file permissions determine which files you can read (authorization).
+4. sudo and the root user
+- Root/superuser: Has elevated privileges to modify the system and access protected resources.
+- sudo: Temporarily runs a command with elevated privileges, if the user is authorized.
+- Sudoers file: Configuration that determines who can use sudo.
+Why avoid logging in as root for routine work?
+- A compromised root account can cause severe damage.
+- Mistakes can permanently damage or delete important data.
+- Using individual accounts with sudo improves accountability.
+Use sudo only when needed, and be cautious when copying commands from the internet.
+5. Managing users and groups
+Essential commands
+Command	Purpose	Example
+useradd	Create a user	sudo useradd fgarcia
+usermod	Modify an existing user	sudo usermod -g executive fgarcia
+userdel	Delete a user	sudo userdel fgarcia
+chown	Change file/directory ownership	sudo chown fgarcia access.txt
+groupdel	Delete a group	sudo groupdel researcher9
+These account and ownership management operations typically require root privileges or sudo.
+useradd options
+- -g: Set the primary group.
+- -G: Set supplementary groups.
+sudo useradd -g security fgarcia
+sudo useradd -G finance,admin fgarcia
+
+
+usermod options
+Option	Purpose
+-g	Change primary group
+-G	Set supplementary groups
+-a	Append supplementary groups when used with -G
+-d	Change home directory
+-l	Change login name
+-L	Lock the account
+Examples:
+sudo usermod -g executive fgarcia
+sudo usermod -a -G marketing fgarcia
+sudo usermod -d /home/garcia_f fgarcia
+sudo usermod -l newname fgarcia
+sudo usermod -L fgarcia
+
+
+Critical distinction: usermod -G without -a replaces the existing supplementary group list. Use -a -G to add a group without removing existing supplementary memberships.
+userdel options
+sudo userdel fgarcia
+sudo userdel -r fgarcia
+
+
+- Without -r: Deletes the user account but does not remove the user's home-directory files.
+- With -r: Also removes the user's home directory and associated files.
+Consider locking an account with sudo usermod -L username when you need to prevent login while retaining the account for investigation.
+chown — Change ownership
+sudo chown fgarcia access.txt
+sudo chown :security access.txt
+
+
+- chown fgarcia file: Changes the file's user owner.
+- chown :security file: Changes the group owner.
+
+6. Lab revision: Researcher account
+The lab creates researcher9, assigns ownership, adds a supplementary group, then removes the account.
+# 1. Create the user
+sudo useradd researcher9
+
+# 2. Set the primary group
+sudo usermod -g research_team researcher9
+
+# 3. Change ownership of the project file
+sudo chown researcher9 /home/researcher2/projects/project_r.txt
+
+# 4. Add a supplementary group without replacing existing groups
+sudo usermod -a -G sales_team researcher9
+
+# 5. Delete the user
+sudo userdel researcher9
+
+# 6. Remove the now-unneeded group created for the user
+sudo groupdel researcher9
+
+
+The message that the researcher9 group was not removed by userdel is expected in the lab. The user had been assigned research_team as their primary group, so the separately created researcher9 group may remain.
+Final memory sheet
+
+Permissions
+ls -la to inspect; chmod to change.
+
+
+
+
+User management
+useradd, usermod, userdel.
+
+
+
+
+Groups
+-g for primary; -a -G to add supplementary groups safely.
+
+
+
+
+Elevated access and ownership
+sudo for authorized privileged commands; chown to change ownership.
