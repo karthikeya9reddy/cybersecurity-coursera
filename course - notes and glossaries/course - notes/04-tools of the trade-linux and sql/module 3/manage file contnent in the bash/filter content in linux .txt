@@ -1,0 +1,94 @@
+Linux Notes: Filtering Data with grep, Pipes, and find
+1. Filtering in Linux
+Filtering means selecting specific information that matches a condition. Security analysts use filtering to find errors in logs, locate suspicious files, and investigate possible malware.
+2. grep — Search file contents
+grep searches a file and prints lines containing a specified string.
+Syntax:
+grep "search_term" filename
+
+
+Examples:
+grep OS updates.txt
+grep error time_logs.txt
+grep jhill Q2_deleted_users.txt
+
+
+- First argument: the text to search for.
+- Second argument: the file to search.
+- Output: matching lines only.
+3. Piping (|)
+Piping sends the standard output of one command as standard input to another command.
+Think of it as passing the result of one command into the next.
+ls
+Lists files and directories
+
+Pipe: |
+
+grep users
+Filters names containing users
+
+
+Example:
+ls /home/analyst/reports | grep users
+
+
+This lists only the names containing users from the directory listing.
+Remember: | is a general tool for connecting commands, not just for filtering.
+4. find — Search for files and directories
+The find command searches a specified directory and its subdirectories using criteria such as name or modification time.
+Important options
+Command	Meaning
+find /home/analyst/projects	Lists items found under the specified directory
+find /home/analyst/projects -name "*log*"	Finds names containing log, case-sensitive
+find /home/analyst/projects -iname "*log*"	Finds names containing log, case-insensitive
+find /home/analyst/projects -mtime -3	Finds items modified within the past three days
+find /home/analyst/projects -mtime +1	Finds items modified more than one day ago
+find /home/analyst/projects -mtime -1	Finds items modified less than one day ago
+find /home/analyst/projects -mmin -30	Finds items modified within the past 30 minutes
+Wildcards: * represents zero or more characters.
+For example, "*log*" matches names such as logs, server_log.txt, and catalog.
+- -name is case-sensitive.
+- -iname is case-insensitive.
+- -mtime measures modification time in days.
+- -mmin measures modification time in minutes.
+Difference: grep searches inside file contents, while find searches for files and directories that meet criteria.
+5. Lab commands and answers
+Task 1: Find errors in server logs
+cd /home/analyst/logs
+grep error server_logs.txt
+
+
+Result: Six entries contain the string error.
+Task 2: Find report filenames
+cd /home/analyst/reports/users
+ls | grep Q1
+
+
+Result: Three filenames contain Q1.
+ls | grep access
+
+
+Result: Four filenames contain access.
+Task 3: Search user data
+ls
+grep jhill Q2_deleted_users.txt
+
+
+Result: The username jhill is present in Q2_deleted_users.txt.
+To find users added to Human Resources, the provided material specifies searching Q4_added_users.txt, but it doesn't include the command's output or the names returned. So those usernames cannot be determined from the text alone.
+Quick revision sheet
+
+grep
+Search inside files for matching text.
+
+
+
+
+| — Pipe
+Pass one command's output into another command.
+
+
+
+
+find
+Search for files and directories by criteria.
