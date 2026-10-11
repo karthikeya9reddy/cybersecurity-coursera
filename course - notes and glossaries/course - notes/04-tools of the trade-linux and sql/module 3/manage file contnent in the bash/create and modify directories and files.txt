@@ -1,0 +1,108 @@
+Linux Quick Revision Notes: Managing Files & Directories
+1. Essential commands
+Command	Purpose	Example
+mkdir	Create a directory	mkdir logs
+rmdir	Remove an empty directory	rmdir temp
+touch	Create an empty file	touch tasks.txt
+rm	Delete a file	rm tempnotes.txt
+mv	Move or rename a file	mv file.txt /home/analyst/logs/
+cp	Copy a file	cp file.txt /home/analyst/logs/
+nano	Create or edit a text file	nano tasks.txt
+cat	Display file contents	cat tasks.txt
+ls	List files and directories	ls
+pwd	Display current directory	pwd
+cd	Change directory	cd /home/analyst/notes
+clear	Clear the terminal screen	clear
+2. Important differences
+- mkdir vs touch: mkdir creates a directory; touch creates an empty file if it doesn't exist.
+- rmdir vs rm: rmdir removes empty directories; rm removes files. rm can also delete directories when used with appropriate options, so be careful.
+- mv vs cp: mv moves an item, removing it from the original location; cp creates a copy and keeps the original.
+- mv can rename files: mv old.txt new.txt
+- Absolute path: Starts from /, the root directory. Example: /home/analyst/notes
+- Relative path: Starts from your current directory. Example: cd notes
+Safety tip: Be careful with rm because deleted files may be difficult to recover. Check the filename and location before running it.
+3. Editing files with nano
+Open or create a file:
+nano tasks.txt
+
+
+Essential keyboard shortcuts:
+Shortcut	Action
+Ctrl + O	Save the file
+Enter	Confirm the filename
+Ctrl + X	Exit nano
+Y	Confirm saving when prompted
+N	Discard changes when prompted
+The lab also uses an alternative saving sequence: Ctrl + X → Y → Enter.
+4. Writing to files with output redirection
+Two operators can redirect command output into a file.
+Operator	Purpose	Example
+>	Overwrites existing content	echo "time" > permissions.txt
+>>	Appends content to the end	echo "last updated date" >> permissions.txt
+Both operators create the file if it doesn't already exist.
+Remember: > replaces the existing contents, while >> preserves them and adds new content.
+5. Lab revision: Commands in order
+The goal was to reorganize /home/analyst into logs, notes, and reports, move the Q3 report, remove temporary items, and document the completed work.
+Run these commands from the appropriate directories, as indicated.
+Task 1 — Create logs
+mkdir logs
+ls
+
+
+
+
+Task 2 — Remove temp
+rmdir temp
+ls
+
+
+
+
+Task 3 — Move the Q3 report
+cd /home/analyst/notes
+mv Q3patches.txt /home/analyst/reports/
+ls /home/analyst/reports
+
+
+
+
+Task 4 — Delete temporary notes
+rm tempnotes.txt
+ls
+
+
+
+
+Task 5 — Create tasks.txt
+touch tasks.txt
+ls
+
+
+
+
+Task 6 — Edit and verify the file
+nano tasks.txt
+
+
+Add the following text:
+Completed tasks
+1. Managed file structure in /home/analyst
+
+
+Save and exit, then verify:
+cat tasks.txt
+
+
+
+
+6. Final memory sheet
+Memorize these core patterns:
+- Create: mkdir, touch
+- Delete: rmdir, rm
+- Move or rename: mv
+- Copy: cp
+- Edit: nano
+- Display: cat
+- Overwrite: >
+- Append: >>
+You don't need to memorize the entire lab word for word. Understand what each command does, practise the syntax, and know the difference between moving, copying, deleting, and overwriting.
