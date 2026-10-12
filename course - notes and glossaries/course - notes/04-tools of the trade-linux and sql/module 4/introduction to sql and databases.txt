@@ -1,0 +1,131 @@
+# SQL vs Linux Filtering — Quick Revision Notes
+
+## 1. Key definitions
+
+- Database: An organized collection of information or data.
+- SQL (Structured Query Language): A language used to create, interact with, and request information from databases.
+- Security analyst's use of SQL: Quickly analyze large amounts of structured data and retrieve consistent, reliable results using queries.
+
+## 2. Accessing SQL through Linux
+
+You can access different SQL systems through different interfaces. For example, to access SQLite from the Linux command line, enter:
+
+```
+sqlite3
+```
+
+Once inside SQLite, commands you enter are interpreted as SQL commands rather than Linux commands.
+
+## 3. Linux vs SQL filtering
+
+| Feature         | Linux                                              | SQL                                                         |
+| --------------- | -------------------------------------------------- | ----------------------------------------------------------- |
+| Purpose         | Works with files, directories, and system data     | Works with data stored in databases                         |
+| Syntax          | Different commands and options for different tools | Standardized keywords and clauses                           |
+| Data structure  | Often handles text as lines                        | Organizes data into tables, rows, and columns               |
+| Filtering tools | `find`, `sed`, `cut`, `grep`                       | `SELECT`, `WHERE`, `JOIN`                                   |
+| Joining data    | Does not provide SQL-style table joins             | Can combine related tables using joins                      |
+| Best use        | Searching files and filtering text-based logs      | Querying structured data and combining database information |
+
+## 4. Important differences explained
+
+A. Purpose
+
+- Linux: Search for files, manage permissions, and work with processes or system files.
+- SQL: Query and manipulate data stored in a database.
+
+B. Syntax
+
+- Linux uses commands and command-line options, such as `grep` and `find`.
+- SQL uses standardized keywords and clauses, such as `SELECT`, `WHERE`, and `JOIN`.
+
+C. Structure
+
+- SQL stores information in organized tables with rows and columns, making it easier to select specific fields.
+- Linux may display log information as lines of text, which can require additional filtering to isolate specific information.
+
+D. Joining tables
+
+- SQL can combine information from multiple related tables.
+- Linux does not have the same built-in relational table-joining functionality.
+
+For example, a security analyst could use SQL to combine employee information with login-attempt records to investigate suspicious activity.
+
+## 5. When should you use each tool?
+
+Use Linux when…
+
+- Data is stored in text files or logs.
+- You need to search files or directories.
+- You need to filter text or manage system resources.
+
+Use SQL when…
+
+- Data is stored in a database.
+- You need specific records or columns.
+- You need to filter structured data or combine related tables.
+
+Important: SQL cannot directly query an ordinary text file unless its data is imported into a database or otherwise made accessible to a database system. In that situation, Linux filtering tools remain useful.
+
+## 6. Quick memory sheet
+
+- Database = organized data.
+- SQL = language for working with databases.
+- SQLite access command = `sqlite3`.
+- Linux filtering = files and text.
+- SQL filtering = structured database records.
+- `SELECT` = retrieve data.
+- `WHERE` = filter records by conditions.
+- `JOIN` = combine related tables.
+- Best practice = choose the tool according to where the data is stored.
+
+Remember for cybersecurity: Both tools are important. SQL helps analyze structured security data, while Linux helps investigate text-based logs and system files. A security analyst should know when to use each.
+
+
+
+Database keys — Quick revision
+A key is a column, or a combination of columns, used to identify records or establish relationships between tables.
+1. Primary key (PK)
+- Uniquely identifies each row in a table.
+- Cannot contain duplicate values.
+- Cannot be NULL (missing).
+Example: Student_ID uniquely identifies each student.
+Student_ID (PK)	Name
+101	Rahul
+102	Priya
+103	Arjun
+2. Foreign key (FK)
+- A column that references a key in another table, typically its primary key.
+- Establishes a relationship between tables.
+- Values can repeat because multiple records may refer to the same record in another table.
+Example:
+Student_ID (FK)	Course
+101	Cybersecurity
+102	AI/ML
+101	Networking
+Here, Student_ID connects the Courses table to the Students table. Student 101 has two courses.
+3. Primary key vs foreign key
+Primary key	                                               Foreign key
+Uniquely identifies a row in its own table	Links to a key in another table, or sometimes the same table
+Must be unique and non-NULL	                Can repeat and may allow NULL, depending on the database rules
+Identifies a record	                        Establishes a relationship
+4. How they work together
+Students table
+Student_ID (Primary Key)
+101 — Rahul
+102 — Priya
+
+Student_ID links the tables
+
+Courses table
+Student_ID (Foreign Key)
+101 — Cybersecurity
+102 — AI/ML
+101 — Networking
+
+
+In cybersecurity, keys help analysts connect information across tables—for example, linking employee records to login attempts or devices to investigate suspicious activity.
+Memory trick:
+- Primary key = identifies.
+- Foreign key = connects.
+One more term you may encounter later: a composite key uses two or more columns together to uniquely identify a row.
