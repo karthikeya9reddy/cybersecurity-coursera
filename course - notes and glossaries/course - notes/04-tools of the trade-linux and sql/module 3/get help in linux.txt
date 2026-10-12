@@ -1,0 +1,66 @@
+Linux Quick Revision Notes: Getting Help in the Shell
+1. Essential help commands
+Command	Purpose	Example
+man	Displays a detailed manual for a command	man usermod
+whatis	Gives a one-line description of a command	whatis tail
+apropos	Searches manual-page descriptions using keywords	apropos password
+apropos -a	Searches for descriptions containing all specified keywords	apropos -a change password
+man — Detailed help
+man chown
+man usermod
+
+
+- man stands for manual.
+- Displays the command's description and available options.
+- The output is called a man page.
+whatis — Quick definition
+whatis nano
+whatis tail
+
+
+- Displays a short, one-line description.
+- Useful when you only need to know what a command does.
+apropos — Find commands by topic
+apropos password
+apropos -a change password
+
+
+- apropos password searches manual descriptions related to password.
+- apropos -a change password searches for descriptions containing both words.
+Important: apropos searches manual-page descriptions, not the contents of your files.
+2. Online Linux support
+The Linux community is another resource for troubleshooting.
+- UNIX and Linux Stack Exchange: A question-and-answer website where users ask and answer Linux questions.
+- Community voting helps surface useful answers.
+- Searching for an error message or a problem can help you learn how others solved it.
+3. Which resource should you use?
+
+Need detailed instructions?
+Use man.
+
+
+
+
+Need a quick definition?
+Use whatis.
+
+
+
+
+Don't know which command to use?
+Use apropos with relevant keywords.
+
+
+
+
+Need help troubleshooting a specific problem?
+Search the UNIX and Linux Stack Exchange.
+
+
+
+Final memory sheet
+- man = detailed manual.
+- whatis = one-line description.
+- apropos = search manual descriptions by keyword.
+- apropos -a = require all specified keywords.
+- UNIX and Linux Stack Exchange = community troubleshooting.
