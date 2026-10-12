@@ -1,0 +1,217 @@
+Google Cybersecurity — SQL Notes
+1. Basic SQL queries
+SQL (Structured Query Language) is used to retrieve and manipulate data stored in databases.
+SELECT and FROM
+- SELECT specifies which columns to return.
+- FROM specifies which table to query.
+- A comma separates multiple column names.
+- SQL keywords are not case-sensitive. Uppercase is often used for readability.
+- A semicolon (;) marks the end of a SQL statement.
+- Line breaks are optional but improve readability.
+Example: retrieve employee IDs and their assigned devices.
+SELECT employee_id, device_id
+FROM employees;
+
+
+Selecting specific columns
+SELECT customerid
+FROM customers;
+
+
+Returns only the customerid column.
+SELECT customerid, city
+FROM customers;
+
+
+Returns the customerid and city columns.
+Selecting all columns: *
+The asterisk (*) means select all columns.
+SELECT *
+FROM employees;
+
+
+Returns all columns in the employees table.
+Important: SELECT * is convenient for small tables, but large tables can produce excessive output and may take longer to execute. Selecting only the required columns is often preferable.
+One-line vs multiple-line queries
+Both are valid:
+SELECT *
+FROM customers;
+
+
+SELECT * FROM customers;
+
+
+Line breaks are for readability, not a requirement.
+
+2. The Chinook database
+The course uses a sample database called Chinook for exercises, readings, and quizzes.
+- It represents data that might exist at a digital media company.
+- It contains 11 tables, including:
+  - employees
+  - customers
+  - invoices
+- Tables contain information such as names and addresses.
+- A ready-made database lets you focus on learning SQL queries instead of spending time building a database and configuring how it stores, protects, and retrieves information.
+Remember: the employees table in the video is used to demonstrate which computer is assigned to an employee.
+
+3. Organizing results with ORDER BY
+ORDER BY sorts the records returned by a query based on one or more columns.
+Ascending order — default
+SELECT customerid, city, country
+FROM customers
+ORDER BY city;
+
+
+If you omit a direction, the results are sorted in ascending order.
+- Numbers: smallest to largest.
+- Alphabetic text: A to Z.
+Descending order — DESC
+SELECT customerid, city, country
+FROM customers
+ORDER BY city DESC;
+
+
+DESC means descending.
+- Numbers: largest to smallest.
+- Alphabetic text: Z to A.
+Sorting by multiple columns
+SELECT customerid, city, country
+FROM customers
+ORDER BY country, city;
+
+
+SQL sorts by country first. When multiple records have the same country, it sorts those records by city.
+Memory tip: ORDER BY organizes results; it does not filter records.
+
+4. Filtering records with WHERE
+Filtering means selecting only the records that match a specified condition.
+Security analysts use filters to find:
+- Login attempts made by a particular user.
+- Login attempts around the time of a security incident.
+- Login attempts from a specific country.
+- Devices running a particular application version.
+The WHERE clause
+WHERE specifies the condition that records must satisfy.
+Example: retrieve login attempts made in the USA.
+SELECT *
+FROM log_in_attempts
+WHERE country = 'USA';
+
+
+This returns all columns, but only for records where country equals USA.
+Example: find employees whose title is IT Staff.
+SELECT *
+FROM employees
+WHERE title = 'IT Staff';
+
+
+Operators
+An operator is a symbol or keyword that represents an operation.
+Operator	Purpose
+=	Checks whether a value equals a specified value
+LIKE	Matches a text pattern, often using wildcards
+Text values in these examples are enclosed in single quotes, such as 'USA'.
+Semicolon rule: When a query includes WHERE, place the semicolon at the end of the entire statement, after the condition.
+
+5. Pattern matching with LIKE
+Sometimes a database contains inconsistent values. For example, the same country may appear as US in some records and USA in others.
+An exact match using = would not return both forms with one condition. To search for patterns, use LIKE with wildcards.
+What is a wildcard?
+A wildcard is a special character that can represent other characters.
+The two wildcards introduced in your course are:
+- % — represents zero or more characters.
+- _ — represents exactly one character.
+Use LIKE instead of = when applying these wildcard patterns.
+The percentage sign %
+Suppose the office column contains East-120, East-290, and East-435.
+SELECT *
+FROM employees
+WHERE office LIKE 'East%';
+
+
+'East%' matches values that begin with East, followed by zero or more characters.
+Matching US and USA
+SELECT *
+FROM log_in_attempts
+WHERE country LIKE 'US%';
+
+
+This matches values beginning with US, including both US and USA.
+The underscore _
+The underscore represents one character only.
+For the following examples, assume the pattern is applied to a text column:
+Pattern	Possible matches	Meaning
+'a%'	apple123, art, a	Starts with a, followed by zero or more characters
+'a_'	as, an, a7	a followed by exactly one character
+'a__'	ant, add, a1c	a followed by exactly two characters
+'%a'	pizza, Z6ra, a	Ends with a, preceded by zero or more characters
+'_a'	ma, 1a, Ha	Exactly two characters, ending in a
+'%a%'	Again, back, a	Contains a anywhere
+'_a_'	Car, ban, ea7	Exactly three characters, with a in the middle
+Practical examples from the reading
+Find employees whose titles begin with IT, such as IT Staff and IT Manager:
+SELECT *
+FROM employees
+WHERE title LIKE 'IT%';
+
+
+Find state abbreviations that begin with N and contain exactly one more character, such as NY, NV, NS, and NT:
+SELECT *
+FROM invoices
+WHERE state LIKE 'N_';
+
+
+'N_' matches exactly two characters: N followed by any single character.
+
+6. Quick comparison: =, LIKE, %, and _
+Syntax	Meaning	Example
+=	Exact value match	country = 'USA'
+LIKE 'US%'	Starts with US	US, USA, US-CA
+LIKE '%US'	Ends with US	AUS, 123US
+LIKE '%US%'	Contains US anywhere	USA, AUS, RUSSIAN
+LIKE 'N_'	N plus exactly one character	NY, NV
+LIKE '_a_'	Exactly three characters, a in the middle	Car, ban
+These are illustrative pattern examples; actual matches depend on the values in the database.
+
+7. SQL query structure — combined revision
+You can combine the concepts covered so far into one query.
+SELECT customerid, city, country
+FROM customers
+WHERE country = 'USA'
+ORDER BY city DESC;
+
+
+Read it in this order:
+1. SELECT — which columns to return.
+2. FROM — which table to query.
+3. WHERE — which records to keep.
+4. ORDER BY — how to sort the results.
+5. DESC — sort in descending order.
+6. ; — end of the statement.
+Although SELECT appears first in the written query, this is a useful way to understand each clause's purpose.
+Final memory sheet
+
+Retrieve data
+SELECT chooses columns; FROM chooses the table; * selects all columns.
+
+
+
+
+Filter data
+WHERE defines a condition; = checks exact equality; LIKE matches patterns.
+
+
+
+
+Sort data
+ORDER BY sorts records; ascending is the default; DESC means descending. Multiple columns can be specified.
+
+
+
+
+Remember wildcards
+% = zero or more characters. _ = exactly one character.
+
+
+
+Security analyst takeaway: Use SQL to retrieve relevant information from large datasets, filter out irrelevant records, and sort the results to make investigations easier. The most important next step is practising these queries until you can write them without looking at your notes.
