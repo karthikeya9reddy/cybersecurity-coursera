@@ -1,0 +1,110 @@
+1. Security fundamentals
+Key definitions
+Term	Definition
+Asset	Anything valuable to an organization that needs protection.
+Threat	Any circumstance or event that can negatively impact an asset.
+Vulnerability	A weakness that can be exploited by a threat.
+Risk	Anything that can impact the confidentiality, integrity, or availability of an asset.
+The CIA triad
+- Confidentiality: Protect information from unauthorized disclosure.
+- Integrity: Protect information from unauthorized alteration.
+- Availability: Ensure information and systems remain accessible when needed.
+Security plans analyze assets, threats, and vulnerabilities to assess risks to the CIA triad.
+Risk calculation
+\[
+\text{Risk}=\text{Likelihood}\times\text{Impact}
+\]
+
+- Likelihood: How probable an adverse event is.
+- Impact: How serious its consequences would be.
+Organizations calculate risk to prevent costly disruptions, identify improvements, determine which risks can be tolerated, and prioritize critical assets.
+Example — car tire:
+- Asset: Car and its tire.
+- Threat: A nail puncturing the tire.
+- Vulnerability: The tire can be punctured by sharp objects.
+- Risk: Arriving late to work.
+- Risk reduction: Drive on a clean road to reduce the likelihood of a puncture.
+2. Categories of threats and vulnerabilities
+Threat categories
+- Intentional: A malicious hacker targets a misconfigured application.
+- Unintentional: An employee accidentally allows an unauthorized person into a restricted area.
+Vulnerability categories
+- Technical: Weaknesses in technology, such as misconfigured software.
+- Human: Weaknesses involving people's actions or behavior.
+Remember: a threat can exploit a vulnerability, potentially causing harm to an asset.
+
+3. Asset management
+Asset management is the process of tracking assets and the risks that affect them.
+The principle: You can only protect the assets you know you have.
+Why asset management matters
+- Helps organizations keep track of important assets.
+- Supports security planning and risk identification.
+- Helps allocate security resources.
+- Helps reduce IT costs.
+- Supports compliance with legal regulations.
+Asset inventory
+An asset inventory is a catalog of assets that need to be protected.
+It helps security teams know what assets exist and avoid losing track of important resources.
+Examples of assets include:
+Asset type	Examples
+Digital	Customer data, financial records
+Information systems	Networks, software
+Physical	Buildings, equipment, supplies
+Intangible	Brand reputation, intellectual property
+
+4. Asset classification
+Asset classification is the practice of labeling assets based on their sensitivity and importance to an organization.
+To classify an asset, identify:
+- What it is.
+- Where it is.
+- Who owns it.
+- How important it is.
+Common classification levels
+From highest to lowest:
+Restricted
+
+Highest sensitivity
+Highly sensitive, need-to-know information, such as payment or health information.
+
+
+
+Confidential
+
+Significant consequences if disclosed
+Information intended for specific people, such as employees working on a particular project.
+
+
+
+Internal-only
+
+For internal use
+Can be shared within the organization but should not be shared outside it.
+
+
+
+Public
+
+Lowest sensitivity
+Can be shared with anyone without negative consequences to the organization.
+
+
+
+Classification helps organizations prioritize security resources, manage risk, reduce IT costs, and comply with regulations.
+Important: Classification schemes can vary between organizations. For example, some government organizations use confidential for their highest-sensitivity assets rather than restricted.
+5. Challenges in asset classification
+Ownership can be complicated. A company laptop belongs to the organization, but an employee might also store personal photos on it.
+Information can have multiple sensitivity levels. A letter may contain a name that is public information and an address that should remain confidential.
+Therefore, organizations must consider ownership, sensitivity, importance, and how information is used when classifying assets.
+
+6. Quick memory sheet
+Question	Answer
+What is a risk?	Something that can affect confidentiality, integrity, or availability.
+What is the risk formula?	Likelihood × Impact
+What is a threat?	An event or circumstance that can harm an asset.
+What is a vulnerability?	A weakness a threat can exploit.
+What is asset management?	Tracking assets and their risks.
+What is an asset inventory?	A catalog of assets requiring protection.
+What is asset classification?	Labeling assets by sensitivity and importance.
+What are the two threat categories?	Intentional and unintentional.
+What are the two vulnerability categories?	Technical and human.
+What are the four classification levels?	Restricted, confidential, internal-only, public.
