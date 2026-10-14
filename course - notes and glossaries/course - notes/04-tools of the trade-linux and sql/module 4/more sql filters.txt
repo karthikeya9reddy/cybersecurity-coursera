@@ -1,0 +1,170 @@
+SQL Quick Revision Notes — Data Types, Comparison Operators & Logical Operators
+1. SQL data types
+A data type describes the kind of data stored in a database column.
+Data type	Meaning	Examples
+String	An ordered sequence of characters, including letters, numbers, and symbols	'analyst10', 'USA', usernames
+Numeric	Data consisting of numbers that support mathematical operations	5 login attempts, 100 log entries
+Date and time	Data representing a date, time, or both	'1970-01-01', '18:00'
+Cybersecurity examples
+- String: usernames, country names, operating system names.
+- Numeric: number of login attempts, log entry counts, volume of data sent or received.
+- Date and time: login timestamps, login dates, patch dates, connection duration.
+Security analysts filter these values to investigate suspicious activity, identify outdated machines, and analyze security logs.
+Quotation rule from the course:
+- Strings: use quotation marks, e.g. 'USA'.
+- Dates and times: use quotation marks, e.g. '18:00'.
+- Numeric values: do not use quotation marks, e.g. 5.
+2. Comparison operators
+Comparison operators are used in the WHERE clause to filter records according to a condition.
+Operator	Meaning	Example
+=	Equal to	country = 'USA'
+>	Greater than	attempts > 5
+<	Less than	attempts < 5
+>=	Greater than or equal to	attempts >= 5
+<=	Less than or equal to	attempts <= 5
+<>	Not equal to	country <> 'USA'
+!=	Not equal to; alternative to <>	country != 'USA'
+Inclusive vs exclusive operators
+- Exclusive: > and < do not include the boundary value.
+- Inclusive: >= and <= include the boundary value.
+Example:
+SELECT firstname, lastname
+FROM employees
+WHERE birthdate > '1970-01-01';
+
+
+This returns employees born after January 1, 1970, excluding that date.
+Changing the operator to >= includes employees born on January 1, 1970.
+3. Filtering dates and times
+Example A: Login attempts after 6 PM
+SELECT *
+FROM log_in_attempts
+WHERE time > '18:00';
+
+
+Returns login attempts after 6 PM, which may help analysts investigate activity outside normal business hours.
+Example B: Patches installed within a date range
+SELECT *
+FROM machines
+WHERE OS_patch_date BETWEEN '2021-03-01' AND '2021-09-01';
+
+
+Returns machines with patch dates between March 1, 2021, and September 1, 2021.
+BETWEEN
+BETWEEN filters numeric or date values within a range.
+Important: BETWEEN is inclusive. Both the starting and ending values are included.
+For example:
+WHERE hiredate BETWEEN '2002-01-01' AND '2003-01-01';
+
+
+Includes records dated January 1, 2002, and January 1, 2003, as well as dates between them.
+4. Logical operators
+Logical operators allow you to combine or negate conditions in a WHERE clause.
+The three operators covered in your course are AND, OR, and NOT.
+A. AND — both conditions must be true
+Use AND when a record must satisfy every specified condition.
+Example: find machines running OS 1 and using Email Client 1.
+SELECT *
+FROM machines
+WHERE operating_system = 'OS 1'
+AND email_client = 'Email Client 1';
+
+
+Only machines meeting both conditions are returned.
+Cybersecurity example: identify customers who are both in the USA and handled by support representative 5.
+SELECT firstname, lastname, email
+FROM customers
+WHERE supportrepid = 5
+AND country = 'USA';
+
+
+B. OR — either condition can be true
+Use OR when a record can satisfy the first condition, the second condition, or both.
+Example: find machines running OS 1 or OS 3.
+SELECT *
+FROM machines
+WHERE operating_system = 'OS 1'
+OR operating_system = 'OS 3';
+
+
+Cybersecurity example: find customers in the USA or Canada.
+SELECT *
+FROM customers
+WHERE country = 'Canada'
+OR country = 'USA';
+
+
+Important: Write both full conditions, even when they use the same column.
+C. NOT — negates a condition
+Use NOT to return records that do not match the specified condition.
+Example: find machines that are not running OS 3.
+SELECT *
+FROM machines
+WHERE NOT operating_system = 'OS 3';
+
+
+Example: find customers outside the USA.
+SELECT *
+FROM customers
+WHERE NOT country = 'USA';
+
+
+This is useful when you need to exclude one category rather than list every other possible category.
+Alternative ways to express “not equal”
+These conditions are equivalent in the course examples:
+WHERE country <> 'USA';
+
+
+WHERE country != 'USA';
+
+
+WHERE NOT country = 'USA';
+
+
+5. Combining logical operators
+You can combine AND, OR, and NOT to create more specific filters.
+Example: find customers who are neither in the USA nor Canada.
+SELECT *
+FROM customers
+WHERE NOT country = 'USA'
+AND NOT country = 'Canada';
+
+
+This excludes records matching either country condition.
+Logical operators are useful when a security issue affects only a particular combination of users, machines, countries, operating systems, or applications.
+6. Quick comparison: AND vs OR vs NOT
+AND
+Both conditions must be true.
+Example: OS 1 AND Email Client 1.
+
+
+OR
+At least one condition must be true; both may also be true.
+Example: OS 1 OR OS 3.
+
+
+NOT
+Negates one condition, returning records that do not match it.
+Example: NOT OS 3.
+
+
+7. Final memory sheet
+Concept	Remember
+String	Characters: 'USA', 'analyst10'
+Numeric	Numbers: 5, 100
+Date/time	Dates or times: '2021-03-01', '18:00'
+> / <	Strictly greater / less; excludes equality
+>= / <=	Greater / less or equal; includes equality
+<> / !=	Not equal
+BETWEEN	Inclusive range
+AND	Both conditions
+OR	Either condition or both
+NOT	Negates a condition
+The overall pattern to remember:
+SELECT columns
+FROM table
+WHERE condition1
+AND condition2;
+
+
+You now have the core filtering concepts covered so far: exact matches, pattern matching with LIKE, numeric and date comparisons, ranges with BETWEEN, and combining conditions with logical operators. Your next step is practising these queries until you can write and explain them independently.
