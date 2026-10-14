@@ -1,0 +1,232 @@
+Man, this section covers the last major SQL concepts in your notes: JOINs, NULL values, aggregate functions, and how to continue learning SQL. I've organized the material for quick revision while keeping the important syntax and distinctions from your course.
+
+# Google Cybersecurity — SQL Quick Revision Notes
+
+## 1. SQL JOINs — combining tables
+
+A JOIN combines data from two tables using a related column. Security analysts use JOINs to connect information and investigate issues.
+
+Example: combining an `employees` table with a `machines` table to identify employees, their offices, and their computers' operating systems.
+
+### Table and column notation
+
+When two tables contain columns with the same name, specify the table name, a period, and the column name.
+
+```
+employees.employee_id
+machines.employee_id
+```
+
+This tells SQL exactly which column you mean.
+
+### Primary keys and foreign keys in JOINs
+
+- Primary key (PK): Uniquely identifies each row in a table.
+- Foreign key (FK): References a key in a related table and connects the records.
+
+In the video example, `employees.employee_id` is the primary key, and `machines.employee_id` is a foreign key.
+
+## 2. Types of JOINs
+
+[SQL JOIN - Logicmojo](https://images.openai.com/static-rsc-4/jjrBfHgZ6qfNVLWox6YeS_Qsf4pCjDkwLTbt6NeUDs3bKA3-ANC5Jn-DYSCeBqJb7R8Ux-t6gkIsRVRG6lP3nfFL5SAsk6L6b6GZ2iQ6JALHLOpXrtugi2AV0q-AUdmJyRu3jyAABF5uQ0ZUtJzVjNYTXQBJCWOPQ7tDWH-xSmA?purpose=inline)
+
+INNER JOIN
+
+Returns only rows with matching values in both tables.
+
+[Relational databases: types of joins | by Software Sisterz | Medium](https://images.openai.com/static-rsc-4/raR2MBuQAiq_aCX9WXIp5VK8XqgJKOOCWgp3W2D5nkCRjvKmjDszk5Ii-RHZjXKQhcBtqAD_g_5C3zkQt9DcgSxJkpSRv6mFcvL0K1LH9k7Ojim-JqNYsyulNf-5T33CcAmHLOZ7n_dz3Xrw1T2ihLSX5VMcueafNDWqCH97W9o?purpose=inline)
+
+LEFT JOIN
+
+Returns every row from the left table and matching rows from the right table.
+
+[SQL JOINS (INNER, LEFT, RIGHT, and FULL Join) - Scaler Topics](https://images.openai.com/static-rsc-4/A6cDBw80cx_jOKjypwUQu5utOvpC2TPCGHTWtKxSbjrTlGrkR6N49rjXfcEL2X3rGr5IM37S6Ij83t-rvZeofyS1zIPIiwnVgwM8g9RKWqytIbP0GVBPHXHaUFKXjquxoxsN07lO8bDSaCu0vF9W3PGjoTMxmGX9wYintvPLybo?purpose=inline)
+
+RIGHT JOIN
+
+Returns every row from the right table and matching rows from the left table.
+
+[SQL JOIN - Logicmojo](https://images.openai.com/static-rsc-4/dzakXTsjk-pLT-VExZmT9ZVGmzm4QcjNZjo_ECgDocx3BNgHp3Fe8KQwt_GBjWSimSiF4ttrbvHDWBTu3RQuHjRBEnkmqoFfWaBKj0JaPBsQdBYJeqy6mru4M2NChmkNr0zowQOMIanCI3VfsVHLxlR7WWUaN2RcBvxYnn-y2GU?purpose=inline)
+
+FULL OUTER JOIN
+
+Returns all rows from both tables, whether they match or not.
+
+### JOIN comparison table
+
+| JOIN type         | Left table         | Right table        |
+| ----------------- | ------------------ | ------------------ |
+| `INNER JOIN`      | Matching rows only | Matching rows only |
+| `LEFT JOIN`       | All rows           | Matching rows only |
+| `RIGHT JOIN`      | Matching rows only | All rows           |
+| `FULL OUTER JOIN` | All rows           | All rows           |
+
+Remember: When a row is included but has no matching row in the other table, the missing columns from that table contain `NULL`.
+
+### A. INNER JOIN syntax
+
+```
+SELECT employees.username,
+       employees.office,
+       machines.operating_system
+FROM employees
+INNER JOIN machines
+ON employees.employee_id = machines.employee_id;
+```
+
+- `FROM employees` identifies the left table.
+- `INNER JOIN machines` identifies the right table.
+- `ON` specifies the matching condition.
+- Only matching employee IDs are returned.
+- Only the columns listed after `SELECT` appear in the output.
+
+### B. LEFT JOIN syntax
+
+```
+SELECT *
+FROM employees
+LEFT JOIN machines
+ON employees.device_id = machines.device_id;
+```
+
+Returns all employees, including those without a matching machine. Their machine-related columns contain `NULL`.
+
+### C. RIGHT JOIN syntax
+
+```
+SELECT *
+FROM employees
+RIGHT JOIN machines
+ON employees.device_id = machines.device_id;
+```
+
+Returns all machines, including those without a matching employee.
+
+You can obtain the equivalent result by reversing the tables in a LEFT JOIN:
+
+```
+SELECT *
+FROM machines
+LEFT JOIN employees
+ON employees.device_id = machines.device_id;
+```
+
+### D. FULL OUTER JOIN syntax
+
+```
+SELECT *
+FROM employees
+FULL OUTER JOIN machines
+ON employees.device_id = machines.device_id;
+```
+
+Returns all records from both tables, including unmatched records from either side.
+
+Note: The course teaches `FULL OUTER JOIN` syntax. Support for this syntax varies across database systems.
+
+## 3. NULL values
+
+`NULL` represents a missing value in a database.
+
+Possible examples from your lesson:
+
+- A machine is not assigned to an employee.
+- An employee has no matching machine record.
+- A row from one table has no corresponding row in the other table.
+
+For OUTER JOINs, unmatched rows remain in the results, and columns from the missing side contain `NULL`.
+
+Remember: `NULL` does not mean zero or an empty string; it represents missing or unknown data.
+
+## 4. Aggregate functions
+
+An aggregate function performs a calculation over multiple data points and returns a summary result instead of returning all the underlying data.
+
+The three functions introduced in your reading are:
+
+| Function  | Purpose                                        | Example            |
+| --------- | ---------------------------------------------- | ------------------ |
+| `COUNT()` | Counts non-NULL values in the specified column | `COUNT(firstname)` |
+| `AVG()`   | Calculates the average of numeric values       | `AVG(attempts)`    |
+| `SUM()`   | Calculates the sum of numeric values           | `SUM(attempts)`    |
+
+### Syntax and examples
+
+COUNT — count records or values
+
+```
+SELECT COUNT(firstname)
+FROM customers;
+```
+
+Returns the number of non-NULL `firstname` values.
+
+AVG — calculate an average
+
+```
+SELECT AVG(attempts)
+FROM log_in_attempts;
+```
+
+Calculates the average of numeric values in `attempts`.
+
+SUM — calculate a total
+
+```
+SELECT SUM(attempts)
+FROM log_in_attempts;
+```
+
+Adds the numeric values in `attempts`.
+
+### Aggregate functions with WHERE
+
+You can filter records before calculating an aggregate.
+
+```
+SELECT COUNT(*)
+FROM customers
+WHERE country = 'USA';
+```
+
+This counts the customer records that match the country filter.
+
+Important distinction: `COUNT(firstname)` excludes rows where `firstname` is `NULL`, while `COUNT(*)` counts rows regardless of NULL values in individual columns.
+
+## 5. How JOINs and aggregate functions help security analysts
+
+- JOINs: Connect employee records, machine records, and vulnerability information to identify potentially vulnerable devices.
+- COUNT: Count failed login attempts or records associated with a particular event.
+- AVG: Calculate average numeric measurements, such as connection durations.
+- SUM: Total numeric values, such as data transferred.
+
+These are illustrative applications of the concepts from your course.
+
+## 6. Continuing to learn SQL
+
+The reading emphasizes three habits:
+
+1. Stay curious: Identify what information you need to retrieve.
+2. Find reliable explanations: Search for unfamiliar SQL keywords and concepts.
+3. Practise: Use databases that allow you to write queries and explore their results.
+
+You don't need to memorize every JOIN variation or every aggregate function immediately. Understand what each one does, learn the basic syntax, and practise using it.
+
+## Final memory sheet
+
+| Concept           | Quick reminder                                      |
+| ----------------- | --------------------------------------------------- |
+| `INNER JOIN`      | Only matching rows                                  |
+| `LEFT JOIN`       | All left rows + right matches                       |
+| `RIGHT JOIN`      | All right rows + left matches                       |
+| `FULL OUTER JOIN` | All rows from both tables                           |
+| `ON`              | Specifies the JOIN condition                        |
+| `table.column`    | Identifies a column belonging to a particular table |
+| `NULL`            | Missing or unknown value                            |
+| `COUNT()`         | Counts non-NULL values in a column                  |
+| `AVG()`           | Calculates an average                               |
+| `SUM()`           | Calculates a total                                  |
+
+The big picture: You've now covered basic SQL queries, filtering, comparison operators, logical operators, JOINs, and aggregate functions. These concepts give you a solid foundation for querying structured data as a security analyst.
+
+Your next step is to practise writing queries yourself and interpreting the results, rather than only reading the syntax.
