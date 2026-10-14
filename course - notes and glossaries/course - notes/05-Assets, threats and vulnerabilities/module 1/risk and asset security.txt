@@ -1,0 +1,140 @@
+1. Security plans
+Security is a team effort involving people, processes, and technology. Security culture means shared values and responsibilities across an organization, including employees, vendors, and customers.
+Security plans prepare organizations for risks. They address risks such as information damage, disclosure, loss, device malfunctions, attacks, and human error.
+Three elements of a security plan
+1. Policies — Strategic
+
+A set of rules that reduce risk and protect information. Policies establish the scope, objectives, and limitations of a security plan.
+Example: Acceptable Use Policy (AUP), which defines acceptable use of corporate systems.
+
+
+2. Standards — Tactical
+
+References that inform how policies are set and establish a point of reference for security practices.
+Example from the lecture: a password management standard specifying minimum password requirements.
+
+
+3. Procedures — Step-by-step
+
+Instructions for performing a specific security task.
+Example: Steps for securely resetting a locked password.
+
+
+Memory trick:
+- Policy = what rules must be followed and why.
+- Standard = the reference or requirement used to guide security practices.
+- Procedure = how to perform a task.
+Clear procedures promote accountability, consistency, and efficiency.
+
+2. Compliance and regulations
+Compliance is the process of adhering to internal standards and external regulations.
+Organizations care about compliance to:
+- Maintain trust and reputation.
+- Protect people and information.
+- Preserve data integrity and safety.
+- Avoid fines, penalties, and lawsuits.
+Regulations are rules established by a government or another authority to control how something is done.
+Industries such as healthcare, energy, and finance may face strict regulatory requirements.
+Important distinction
+- Internal standards: Requirements an organization establishes for its operations.
+- External regulations: Rules imposed by an external authority.
+- Frameworks: Resources organizations can choose to use to manage cybersecurity risk.
+The NIST CSF is a voluntary framework, not itself a regulation.
+
+3. NIST Cybersecurity Framework (CSF)
+NIST stands for the National Institute of Standards and Technology.
+The NIST Cybersecurity Framework (CSF) is a voluntary framework consisting of standards, guidelines, and best practices to help organizations manage cybersecurity risk.
+- Originally released in 2014.
+- Initially developed to help protect critical infrastructure in the United States.
+- Later adapted for public- and private-sector organizations of different sizes.
+- Helps organizations identify assets, protect them, detect attacks, respond to incidents, and recover.
+Three main components
+The framework consists of:
+1. Core
+2. Tiers
+3. Profiles
+4. CSF Core — six functions
+Your lecture initially describes five functions, which was the earlier version. The accompanying reading explains that Govern was added in February 2024, making six functions in the updated framework.
+
+1. Identify
+Understand assets, business needs, and cybersecurity risks.
+Course connection: Asset inventories, asset classification, and risk assessment.
+
+
+
+
+2. Protect
+Implement safeguards to protect assets and information.
+
+
+
+
+3. Detect
+Identify possible cybersecurity attacks or incidents.
+
+
+
+
+4. Respond
+Take action when a cybersecurity incident occurs.
+
+
+
+
+5. Recover
+Restore affected systems and operations after an incident.
+
+
+
+
+6. Govern
+Establish cybersecurity risk strategy, oversight, and decision-making.
+Added to the CSF in February 2024 to emphasize leadership's role.
+
+
+
+Memory trick: Identify → Protect → Detect → Respond → Recover, with Govern providing leadership and oversight across cybersecurity risk management.
+
+5. CSF Tiers
+Tiers measure the sophistication of an organization's cybersecurity risk management practices and help assess its security posture.
+The scale ranges from Tier 1 to Tier 4.
+Tier	General meaning
+Tier 1 — Partial	Limited or informal cybersecurity risk management.
+Tier 2 — Risk Informed	Risk awareness informs practices, but they may not be consistently organization-wide.
+Tier 3 — Repeatable	Risk management practices are established and consistently applied.
+Tier 4 — Adaptive	Practices adapt and improve using experience and changing risks.
+Your lecture calls Tier 1 “passive” and Tier 4 “adaptive.” For revision, remember the formal tier names shown above as well.
+Tiers help organizations understand what's working and where improvement is needed.
+
+6. CSF Profiles
+Profiles help organizations describe and compare their cybersecurity posture against their business needs or desired outcomes.
+They can be used to:
+- Establish a baseline for a cybersecurity plan.
+- Represent the current state of security operations.
+- Identify gaps between current and desired security outcomes.
+- Tailor cybersecurity practices to an industry or organization.
+Memory trick: Core = functions; Tiers = sophistication; Profiles = current or desired cybersecurity posture.
+
+7. Implementing the NIST CSF
+The reading outlines four broad steps based on CISA guidance:
+1. Create a current profile: Document current security operations and business needs.
+2. Perform a risk assessment: Identify risks and assess whether operations meet business and regulatory requirements.
+3. Analyze and prioritize gaps: Identify weaknesses that put assets at risk and decide which to address first.
+4. Implement a plan of action: Take steps to achieve security goals and objectives.
+The framework is flexible and can be applied across industries. Organizations should also consider changing threats, vulnerabilities, and risks.
+
+8. Quick revision sheet
+Question	Answer
+What are the three elements of security plans?	Policies, standards, procedures
+What is a policy?	Rules that reduce risk and protect information
+What is a standard?	A reference that guides security requirements and practices
+What is a procedure?	Step-by-step instructions for a task
+What is compliance?	Adhering to internal standards and external regulations
+What is a regulation?	A rule imposed by a government or other authority
+Is the NIST CSF voluntary?	Yes
+What are the three CSF components?	Core, Tiers, Profiles
+How many CSF functions are in the updated framework?	Six
+Which function was added in 2024?	Govern
+What do Tiers measure?	Sophistication of cybersecurity risk management
+What do Profiles help organizations understand?	Current and desired cybersecurity posture
+What are the four implementation steps?	Current profile, risk assessment, gap prioritization, action plan
