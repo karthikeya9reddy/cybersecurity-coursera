@@ -1,0 +1,124 @@
+1. Data and information security
+Data is information that is translated, processed, or stored by a computer.
+Information Security (InfoSec) is the practice of keeping data in all states away from unauthorized users.
+Weak InfoSec can lead to:
+- Identity theft
+- Financial loss
+- Reputational damage
+Three states of data
+
+
+
+
+
+
+
+
+
+1. Data in use
+Data currently being accessed by one or more users.
+Example: Reading your email on a laptop.
+
+
+
+
+
+
+
+
+
+
+
+
+2. Data in transit
+Data traveling from one point to another.
+Example: Sending an email or message.
+
+
+
+
+
+
+
+
+
+
+
+
+3. Data at rest
+Data not currently being accessed, typically stored on a physical device.
+Example: A file stored on a laptop's drive.
+
+
+
+Important: Data's state depends on what it is doing, not just whether a device is switched on or off. Data stored in the cloud may remain accessible even when your phone is resting on a table.
+
+2. Cloud computing
+Cloud computing is an on-demand, massively scalable service hosted on shared infrastructure and accessible via the internet.
+Cloud services help businesses:
+- Start online operations more easily.
+- Scale resources as needed.
+- Lower costs.
+- Connect with customers, employees, and business partners.
+However, cloud adoption also creates cybersecurity challenges because data, applications, and infrastructure are accessed or managed through cloud environments.
+Three types of cloud services
+SaaS — Software as a Service
+
+Users access applications through a web browser. The provider hosts, manages, and maintains the application's backend.
+Examples from the course: Gmail, Slack, Zoom.
+
+
+PaaS — Platform as a Service
+
+Developers use online tools and environments to build, manage, and deploy applications. The provider maintains the underlying hardware and software platform.
+Examples: Google App Engine, Heroku, VMware Cloud Foundry.
+
+
+IaaS — Infrastructure as a Service
+
+Customers access remote computing resources, including servers, storage, and networking, as needed.
+Examples of cloud platforms: Google Cloud Platform and Microsoft Azure.
+
+
+Quick way to remember
+- SaaS: Use an application.
+- PaaS: Build an application.
+- IaaS: Access computing infrastructure.
+
+3. Cloud security
+Cloud security is the subfield of cybersecurity focused on protecting data, applications, and infrastructure in the cloud.
+In traditional on-premises environments, an organization's internal security team is responsible for protecting its infrastructure. In cloud environments, responsibilities are shared.
+Shared responsibility model
+The shared responsibility model defines how security responsibilities are divided between the cloud service provider and the customer.
+Customer responsibilities commonly include	Provider responsibilities commonly include
+Identity and access management	Maintaining the underlying servers
+Resource configuration	Maintaining provider-managed infrastructure
+Data handling	Securing the systems the customer accesses, according to the service model
+The exact division of responsibility depends on whether the service is SaaS, PaaS, or IaaS.
+Key takeaway: Using a cloud provider does not mean the customer can ignore security. Customers must secure the resources and settings under their control.
+
+4. Cloud security challenges
+Know these four challenges from your reading:
+1. Misconfiguration: Customers may leave default settings unchanged even when those settings do not meet their security requirements.
+2. Cloud-native breaches: Misconfigured cloud services can make breaches more likely.
+3. Access monitoring: Monitoring access may be difficult depending on the service and the customer's level of control.
+4. Regulatory compliance: Organizations may need to meet specific legal or regulatory requirements.
+Regulations mentioned in your course
+- HIPAA
+- PCI DSS
+- GDPR
+These are relevant to organizations that handle data subject to the respective requirements.
+Cloud adoption creates new risks, increasing demand for professionals with cloud security skills.
+
+5. Quick revision sheet
+Question	Answer
+What is data?	Information translated, processed, or stored by a computer.
+What is InfoSec?	Keeping data in all states away from unauthorized users.
+What are the three states of data?	In use, in transit, at rest.
+What is cloud computing?	On-demand, scalable services hosted on shared infrastructure and accessed via the internet.
+What does SaaS provide?	Applications to use.
+What does PaaS provide?	Platforms and tools to build applications.
+What does IaaS provide?	Computing infrastructure such as servers, storage, and networking.
+What is cloud security?	Protecting cloud data, applications, and infrastructure.
+What is the shared responsibility model?	Division of security responsibilities between customer and provider.
+Name four cloud security challenges.	Misconfiguration, cloud-native breaches, access monitoring, regulatory compliance.
