@@ -1,0 +1,247 @@
+ 1. Cryptography and encryption
+Cryptography is the process of transforming information to protect it from unintended readers.
+Remember these three terms:
+
+Plaintext
+Original, readable information.
+
+
+Encryption + key
+
+
+Ciphertext
+Encrypted, unreadable information.
+
+
+Decryption + required key
+
+
+Plaintext restored
+The original information becomes readable again.
+
+
+
+Caesar cipher
+The Caesar cipher encrypts text by shifting letters a fixed number of positions.
+With a shift of 3:
+- A → D
+- B → E
+- C → F
+- HELLO → KHOOR
+The shift number is the key in this example.
+Why is it insecure? There are only 26 possible letter shifts, so an attacker can try them all. This is a brute-force attack: systematically trying possibilities until the correct result is found.
+
+2. Symmetric vs. asymmetric encryption
+This is one of the most important distinctions in your notes.
+Feature	Symmetric encryption	Asymmetric encryption
+Keys used	One shared secret key	Public and private key pair
+Encryption/decryption	Same secret key	Different keys for the respective operations
+Main advantage	Fast	Helps establish secure communication without sharing one secret key beforehand
+Main challenge	Securely sharing the secret key	More computationally expensive
+Course example	AES	RSA
+How to remember it
+- Symmetric = same key. Both parties need the shared secret.
+- Asymmetric = two related keys. The public key can be shared; the private key must be protected.
+In the encryption example from your course, someone encrypts information using the recipient's public key, and the recipient decrypts it using their private key.
+3. Public Key Infrastructure (PKI)
+PKI is an encryption framework that helps secure information exchange and establish trust between computers, websites, and networks.
+It involves two key ideas:
+1. Encryption: Symmetric encryption, asymmetric encryption, or both are used to protect information.
+2. Digital certificates: Help establish trust in the identity associated with a public key.
+What is a digital certificate?
+A digital certificate is a file that helps verify the identity of a public-key holder.
+A Certificate Authority (CA) is a trusted entity that verifies identity information and issues digital certificates.
+Think of a certificate as a digital ID badge. It helps your browser verify that a website's public key is associated with the identity stated in its certificate.
+Important: A certificate doesn't itself encrypt all the website's data. It helps establish trust in the public key used during secure communication.
+Why use both encryption types?
+Asymmetric encryption helps establish trust and exchange key material. Symmetric encryption is then useful for encrypting large amounts of data efficiently.
+That gives you a useful summary:
+PKI + certificates help establish trust; encryption protects the information being exchanged.
+
+4. Encryption algorithms you learned
+Algorithm	Type	Important fact
+3DES	Symmetric	Applies DES three times; older and being phased out.
+AES	Symmetric	Supports 128-, 192-, and 256-bit keys; widely used.
+RSA	Asymmetric	Uses public and private keys.
+DSA	Asymmetric digital-signature algorithm	Used for digital signatures, not general-purpose data encryption.
+Key length and brute force
+A brute-force attack tries possible keys until it finds the correct one.
+Generally, a longer key provides more possible combinations, making exhaustive guessing harder. However, security also depends on the algorithm and how it is implemented.
+Your course highlights AES-128, AES-192, and AES-256. These key sizes are considered secure against practical brute-force attacks with current technology.
+Kerckhoffs's principle
+Security should depend on protecting the key, not hiding how the algorithm works.
+A well-designed algorithm should remain secure even when its operation is publicly known.
+Your course also mentioned OpenSSL, a command-line toolkit used for cryptographic operations, including generating keys and working with certificates. The Heartbleed bug was an OpenSSL vulnerability disclosed in 2014, illustrating why software must be kept updated.
+
+5. Hashing — different from encryption
+This is where many people get confused, so remember this carefully.
+A hash function takes input and produces a fixed-size output called a hash value or digest. It is designed as a one-way process, not something you decrypt.
+File or message
+Input of any length
+
+
+Hash function
+Example: SHA-256
+
+
+Hash value / digest
+SHA-256 produces a 256-bit digest.
+
+
+What is hashing used for?
+Your course focuses on data integrity.
+Suppose a company has a legitimate application. A security analyst calculates its hash and compares it with the hash of a later copy.
+- Matching hashes provide evidence that the files have the same contents, assuming the hash algorithm is suitable.
+- Different hashes indicate that the contents differ.
+This can help identify tampering or suspicious modifications.
+Hashing algorithms from your course
+Algorithm	Digest size	Key point
+MD5	128 bits	Vulnerable to collisions; not suitable for security-sensitive integrity verification.
+SHA-1	160 bits	No longer considered collision-resistant.
+SHA-256	256 bits	Commonly used for file-integrity checks.
+SHA-384	384 bits	Part of the SHA family.
+SHA-512	512 bits	Part of the SHA family.
+A hash collision occurs when two different inputs produce the same hash value. Since hash outputs have a fixed size but possible inputs are unlimited, collisions must exist in principle.
+What is salting?
+A salt is a random value added to a password before hashing.
+Salting makes precomputed rainbow-table attacks less effective because identical passwords can produce different salted hashes.
+Remember:
+- Hashing is one-way.
+- Salting strengthens password storage against precomputed attacks.
+- Hashing is not encryption.
+- Passwords should be stored with purpose-built password-hashing algorithms, not just a fast general-purpose hash such as SHA-256.
+
+6. Your Linux cryptography labs
+These labs connect the theory to actual commands.
+Lab A: Decrypting a Caesar cipher
+You used commands such as:
+ls /home/analyst
+cat README.txt
+cd caesar
+ls -a
+cat .leftShift3
+
+
+The important discoveries:
+- ls lists files.
+- cat displays file contents.
+- ls -a includes hidden files.
+- Linux filenames beginning with . are hidden by default.
+The file .leftShift3 contained instructions encoded with a Caesar cipher.
+You decoded it using:
+cat .leftShift3 | tr "d-za-cD-ZA-C" "a-zA-Z"
+
+
+What does tr do? It translates characters from one set into another. In this example, it reverses the shift of three letters.
+Then the decoded message gave you an OpenSSL command to decrypt the encrypted file.
+Lab B: Decrypting a file with OpenSSL
+The command from your transcript was:
+openssl aes-256-cbc -pbkdf2 -a -d \
+-in Q1.encrypted -out Q1.recovered -k ettubrute
+
+
+Here's what each part means:
+Option	Meaning
+openssl	Runs the OpenSSL command-line tool.
+aes-256-cbc	Specifies the AES-256-CBC encryption scheme.
+-pbkdf2	Uses PBKDF2 for deriving key material from the supplied password.
+-a	Uses Base64 encoding/decoding for the encrypted data representation.
+-d	Decrypts rather than encrypts.
+-in Q1.encrypted	Specifies the encrypted input file.
+-out Q1.recovered	Specifies the output file.
+-k ettubrute	Supplies the password used by this lab.
+Then:
+ls
+cat Q1.recovered
+
+
+These commands let you confirm the recovered file exists and read its contents.
+You don't need to memorize the entire OpenSSL command. Understand the options and be able to consult documentation when needed.
+
+7. Your hash-comparison lab
+This is the practical exercise that often feels confusing, so let's walk through it carefully.
+The lab gave you two files:
+- file1.txt
+- file2.txt
+Their visible contents appeared identical, but you needed to determine whether their actual contents matched.
+Step 1: Display the files
+cat file1.txt
+cat file2.txt
+
+
+Both appeared to contain the same EICAR antivirus test string.
+However, visually identical output does not guarantee that files are byte-for-byte identical. Differences in invisible characters, line endings, or other bytes can be missed.
+Step 2: Calculate their hashes
+sha256sum file1.txt
+sha256sum file2.txt
+
+
+The lab returned these hashes:
+file1.txt
+131f95c51cc819465fa1797f6ccacf9d494aaaff46fa3eac73ae63ffbdfd8267
+
+
+file2.txt
+2558ba9a4cad1e69804ce03aa2a029526179a91a5e38cb723320e83af9ca017b
+
+The hashes are different.
+
+
+What does that mean? The files are not identical. Their contents differ at the byte level, even though the terminal display looked the same.
+Step 3: Save the hash outputs
+sha256sum file1.txt >> file1hash
+sha256sum file2.txt >> file2hash
+
+
+The >> operator appends command output to a file, creating it if it doesn't exist.
+You now have two files containing the hash outputs.
+Step 4: Display the saved hashes
+cat file1hash
+cat file2hash
+
+
+This lets you inspect the values saved in each file.
+Step 5: Compare the saved hash files
+cmp file1hash file2hash
+
+
+The lab returned:
+file1hash file2hash differ: char 1, line 1
+
+
+cmp compares files byte by byte. This message indicates that the saved hash-output files differ starting at the first character of the first line.
+Since the hash values differ, the original files' contents differ.
+The complete workflow
+Two files that look identical
+
+Run sha256sum on each
+
+Compare the hash values
+
+Different hashes → investigate the difference
+
+
+One important nuance: matching hashes provide strong evidence of matching contents, but no finite hash guarantees that two arbitrary files are identical. Also, sha256sum reports a file's hash; cmp compares the files you supply to it.
+
+8. Final cheat sheet
+Concept	Remember this
+Plaintext	Readable original data
+Ciphertext	Encrypted data
+Cipher	Algorithm used to encrypt information
+Cryptographic key	Key material used in encryption/decryption
+Brute-force attack	Tries possible keys or combinations
+Symmetric encryption	One shared secret key
+Asymmetric encryption	Public/private key pair
+PKI	Framework for secure exchange and trust
+Digital certificate	Helps verify a public-key holder's identity
+Hash function	Produces a fixed-size digest
+Hash collision	Different inputs produce the same digest
+Salt	Random value added before password hashing
+sha256sum	Calculates SHA-256 file hashes
+cmp	Compares files byte by byte
+tr	Translates characters
+OpenSSL	Command-line cryptographic toolkit
+The three ideas to remember most
+1. Encryption protects confidentiality: authorized parties can recover the original data using the required key.
+2. Hashing helps verify integrity: compare digests to check whether data has changed.
+3. PKI helps establish trust: certificates help verify identities associated with public keys
