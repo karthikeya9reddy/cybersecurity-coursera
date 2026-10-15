@@ -1,0 +1,154 @@
+Course 5 — Access Controls: Quick Revision Notes
+1. Access controls
+Access controls are security measures that manage access to information and systems. They help maintain the CIA triad:
+- Confidentiality: Only authorized users can access data.
+- Integrity: Data remains accurate and protected from unauthorized changes.
+- Availability: Authorized users can access data when needed.
+The AAA framework has three functions:
+
+A — Authentication
+Who are you?
+Verifies a user's identity using credentials or other proof.
+
+
+
+
+A — Authorization
+What are you allowed to do?
+Determines which resources and actions a user can access.
+
+
+
+
+A — Accounting
+What did you do?
+Records and monitors user activity through logs.
+
+
+
+Remember: Authentication = identity; Authorization = permissions; Accounting = activity records.
+2. Authentication
+Authentication verifies that a user is who they claim to be.
+Three factors of authentication
+Factor	Meaning	Example
+Knowledge	Something you know	Password, PIN
+Ownership	Something you have	Security key, OTP device
+Characteristic	Something you are	Fingerprint, facial recognition
+SSO vs MFA
+Single sign-on (SSO) combines multiple logins into one. You authenticate once and can access several connected applications.
+Benefits:
+- Fewer passwords to remember.
+- Easier account management.
+- Fewer separate login points.
+Limitation: If an attacker steals your SSO credentials or compromises your session, multiple connected services may be at risk.
+Multi-factor authentication (MFA) requires at least two different authentication factors.
+Example: Password + authenticator-app code.
+- 2FA: Two factors.
+- 3FA: Three factors.
+- Two passwords alone are not MFA because both are knowledge factors.
+SSO and MFA can work together: SSO improves convenience, while MFA strengthens identity verification.
+How SSO works
+- Identity provider (IdP): Authenticates the user and establishes their identity.
+- Service provider (SP): The application the user wants to access.
+- Access tokens/assertions: Help communicate authorization or authentication information between trusted systems.
+- LDAP: Lightweight Directory Access Protocol, commonly used for directory access in organizational environments.
+- SAML: Security Assertion Markup Language, commonly used to exchange authentication and authorization-related information between identity providers and services.
+3. Authorization and security principles
+Authentication confirms identity; authorization determines permissions.
+Two essential principles
+Principle of least privilege (PoLP): Give users only the minimum access needed to perform their tasks.
+Separation of duties (SoD): Divide sensitive responsibilities among different people to reduce misuse and errors.
+Example: One employee creates a purchase request, while another approves it.
+Principle	Main purpose
+Least privilege	Limits how much access someone has
+Separation of duties	Prevents one person from controlling an entire sensitive process
+Both principles apply to users, systems, databases, networks, and processes.
+4. Basic authentication, HTTPS and OAuth
+HTTP Basic Authentication
+Basic authentication uses credentials to authenticate requests to a server. The course highlights that it is vulnerable when credentials are transmitted without protection.
+HTTPS protects data in transit using TLS, unlike unencrypted HTTP. Basic authentication over HTTPS is much safer than sending credentials over plain HTTP.
+OAuth
+OAuth is an open-standard authorization framework that allows one application to obtain limited access to resources on another service without needing the user's password directly.
+Example: You allow a third-party app to access selected information from your Google account.
+- API token/access token: A credential used to present or verify granted access.
+- Tokens can limit access to specific resources or permissions.
+- OAuth does not mean the third-party app receives your Google password.
+Quick distinction: Authentication proves identity; OAuth primarily handles delegated authorization.
+5. Accounting, access logs and session hijacking
+Accounting tracks user activity, helping security analysts investigate incidents and detect suspicious behavior.
+Access logs may record:
+- Who accessed a system.
+- When they accessed it.
+- Which resources they used.
+- Failed login attempts and other activity.
+Sessions, session IDs and cookies
+- Session: A period of interaction between a user and a service.
+- Session ID: A unique identifier associated with a session.
+- Session cookie: Browser-held data used to maintain or validate a session.
+Cookies make sessions convenient, but they must be protected.
+Session hijacking: An attacker steals or obtains a legitimate user's session token and uses it to impersonate that user.
+Why accounting matters: unusual log activity can help analysts detect stolen sessions, unauthorized access, and potential data breaches.
+6. Identity and Access Management (IAM)
+IAM (Identity and Access Management) is a collection of processes and technologies used to manage digital identities and their access privileges.
+A user can be a person, device, or software.
+IAM and AAA overlap in their purpose: ensuring the right user gets the right resources at the right time for the right reasons, while tracking activity.
+User provisioning and deprovisioning
+- Provisioning: Creating and maintaining a digital identity and configuring appropriate access.
+- Deprovisioning: Removing access when it is no longer needed, such as when an employee leaves an organization.
+Deprovisioning is important because unused accounts can become security risks.
+7. Three access control models — MAC, DAC and RBAC
+These determine how authorization is assigned.
+MAC
+Mandatory Access Control
+
+Access is controlled by a central authority under strict rules, often based on a need-to-know basis.
+Example: Military or government systems.
+
+
+DAC
+Discretionary Access Control
+
+The data owner decides who receives access.
+Example: A Google Drive owner grants viewer or editor access.
+
+
+RBAC
+Role-Based Access Control
+
+Access is assigned according to a user's organizational role.
+Example: HR employees access HR records, while network administrators manage network systems.
+
+
+Memory trick:
+- MAC: Management/central authority decides.
+- DAC: Data owner decides.
+- RBAC: Role decides.
+8. Access control technologies
+An IAM or AAA system may contain:
+- A user directory to store identity information.
+- Tools to create and manage accounts.
+- An authorization system to assign and enforce permissions.
+- An auditing system to review access and activity.
+Organizations can build their own systems or use third-party solutions. Whatever they choose, proper configuration is essential.
+
+Final 60-second revision sheet
+Term	Remember this
+AAA	Authentication, Authorization, Accounting
+Authentication	Who are you?
+Authorization	What can you do?
+Accounting	What did you do?
+SSO	One login for multiple connected services
+MFA	Two or more different authentication factors
+Least privilege	Minimum necessary access
+Separation of duties	Split sensitive responsibilities
+Basic authentication	Credential-based authentication
+HTTPS	Protects data in transit using TLS
+OAuth	Delegated access without sharing the user's password
+Access logs	Records of system activity
+Session hijacking	Stealing a session token to impersonate a user
+IAM	Manages identities and their access
+Provisioning	Create/configure user access
+Deprovisioning	Remove access when no longer required
+MAC	Central authority controls access
+DAC	Data owner controls access
+RBAC	Role controls access
