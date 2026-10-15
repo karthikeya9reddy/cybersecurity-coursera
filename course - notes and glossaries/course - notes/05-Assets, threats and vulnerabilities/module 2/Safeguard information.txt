@@ -1,0 +1,131 @@
+Course 5 — Security Controls and Data Privacy
+1. Security controls
+Security controls are safeguards designed to reduce specific security risks. They help protect assets before, during, and after an event.
+Three types of security controls
+Type	Purpose	Examples from the course
+Technical	Uses technology to protect assets	Encryption, authentication systems
+Operational	Maintains day-to-day security	Awareness training, incident response
+Managerial	Guides how security risks are managed	Policies, standards, procedures
+An organization's security policy outlines the controls needed to achieve its security goals.
+2. Information privacy and least privilege
+Information privacy: Protection from unauthorized access and distribution of data. It also concerns people's ability to decide when, how, and to what extent their personal information is shared.
+Principle of Least Privilege (PoLP)
+A user receives only the minimum access and authorization necessary to complete their task.
+Benefits:
+- Limits access to sensitive information.
+- Reduces accidental modification, tampering, or data loss.
+- Helps reduce the likelihood of successful attacks.
+- Supports monitoring and administration.
+Example: A customer support employee accesses your payment information only when necessary to assist with your reservation.
+Separation of duties
+A security principle that divides tasks and responsibilities among different users to prevent one person from having complete control over critical business functions.
+3. Data owners and custodians
+Role	Responsibility
+Data owner	Decides who can access, edit, use, or destroy information.
+Data custodian	Responsible for safe handling, transport, and storage of information.
+Data steward	Maintains and implements the organization's data governance policies.
+Remember: the owner decides how information should be handled; the custodian protects it; the steward helps implement governance rules.
+4. User account types
+Account type	Purpose
+Guest account	Provides access to external users, such as contractors or business partners.
+User account	Assigned to staff according to their job duties.
+Service account	Allows applications or software to interact with other software.
+Privileged account	Has elevated permissions or administrative access.
+Every user should generally have their own account, with an appropriate baseline access level.
+Auditing user accounts
+There are three common approaches:
+- Usage audit: Reviews which resources an account accesses and what the user does with them.
+- Privilege audit: Checks whether the user's permissions match their current role.
+- Account change audit: Reviews account changes for suspicious or unauthorized activity.
+Privilege creep: When users accumulate more permissions than they need over time, often because their responsibilities change.
+
+5. Data lifecycle
+The data lifecycle describes how data moves through an organization from creation until it is no longer useful.
+1
+
+Collect
+Gather data from internal or external sources.
+
+
+2
+
+Store
+Keep data in a storage system.
+
+
+3
+
+Use
+Access, process, or work with the data.
+
+
+4
+
+Archive
+Retain data that is no longer actively used.
+
+
+5
+
+Destroy
+Dispose of data when it is no longer needed.
+
+
+
+Security controls should protect data throughout every stage, keeping it secure, accessible, and recoverable when needed.
+6. Data governance
+Data governance is a set of processes that defines how an organization manages information.
+Governance policies help ensure data remains:
+- Private
+- Accurate
+- Available
+- Secure
+A data governance policy outlines how information must be managed, who can access it, and what procedures people must follow.
+
+7. Legally protected information
+Term	Meaning	Example
+PII	Personally identifiable information that can help identify, contact, or locate an individual.	Name, address, phone number
+PHI	Protected health information relating to an individual's physical or mental health or condition.	Patient medical information
+SPII	Sensitive personally identifiable information subject to stricter handling and need-to-know access.	Bank account number, login credentials
+Key distinction: SPII is a sensitive subset of PII that requires stricter protection.
+
+8. Information security vs. information privacy
+Information security (InfoSec)	Information privacy
+Protects data in all states from unauthorized users.	Focuses on people's control over their personal information and how it is shared.
+Uses safeguards to protect data against threats.	Concerns appropriate collection, use, and disclosure of personal information.
+Example: A retailer informs customers how their information will be used and offers an opt-out where applicable. Privacy concerns how the information is collected and shared; security controls help prevent unauthorized access and disclosure.
+Both are important for customer trust and brand reputation.
+
+9. Important regulations
+Regulation	What it protects or addresses
+GDPR	Personal data protection and privacy under EU law. It can apply to organizations outside the EU that handle data of EU residents or citizens, depending on its scope.
+PCI DSS	Security standards for protecting payment card transactions and cardholder data.
+HIPAA	U.S. law addressing the protection of sensitive patient health information.
+Organizations must follow the regulations applicable to their operations, industry, and jurisdiction.
+10. Security audits vs. security assessments
+Security audit	Security assessment
+Reviews controls, policies, and procedures against defined expectations.	Evaluates how resilient current security implementations are against threats.
+Checks whether requirements are being met.	Identifies weaknesses and improvement opportunities.
+The reading describes audits as typically less frequent, approximately yearly.	The reading describes assessments as more frequent, approximately every 3–6 months.
+Example: An audit checks whether all administrator accounts have MFA enabled. An assessment identifies weak passwords and helps determine further security improvements.
+Both are part of maintaining security and privacy. The frequencies given are general examples from the course reading, not universal rules.
+
+Quick revision cheat sheet
+Term	Remember this
+Security controls	Safeguards that reduce risk
+Least privilege	Minimum necessary access
+Separation of duties	Divide critical responsibilities
+Data owner	Decides access and permitted use
+Data custodian	Safely handles, transports, and stores data
+Data steward	Implements governance policies
+Privilege creep	Unnecessary permissions accumulate
+Data lifecycle	Collect → Store → Use → Archive → Destroy
+Data governance	Processes for managing information
+PII	Information that can identify a person
+PHI	Protected health information
+SPII	Sensitive PII requiring stricter handling
+GDPR	Personal data protection and privacy
+PCI DSS	Payment card security
+HIPAA	U.S. health information protection
+Security audit	Checks controls against requirements
+Security assessment	Checks resilience against threats
