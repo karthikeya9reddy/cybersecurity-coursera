@@ -1,0 +1,233 @@
+Course 5 — Vulnerability Management: Quick Revision Notes
+
+1. Vulnerabilities and vulnerability management
+
+- Asset: Something valuable that needs protection.
+- Threat: Something that could cause harm to an asset.
+- Vulnerability: A weakness that a threat could exploit.
+- Exploit: A method of taking advantage of a vulnerability.
+- Exposure: A mistake or condition that can leave something vulnerable to a threat, as described in your course.
+- Zero-day exploit: An exploit involving a previously unknown vulnerability, before defenders have had an opportunity to address it.
+Vulnerability management cycle
+1. Identify vulnerabilities
+
+2. Consider potential exploits
+
+3. Prepare defenses
+
+4. Evaluate defenses
+
+Repeat the cycle regularly as new vulnerabilities emerge.
+
+Example: A window can break (vulnerability); a burglar can use a rock to break it (exploit); an alarm can help detect the intrusion (defense).
+
+2. Defense in depth
+
+Defense in depth is a security model that uses multiple layers of protection. If one layer fails, other layers can still help stop an attack.
+Your course describes five layers:
+Layer	Purpose and examples
+1. Perimeter	Filters external access; usernames and passwords
+2. Network	Controls network traffic; firewalls
+3. Endpoint	Protects devices such as laptops and servers; antivirus
+4. Application	Protects software and its interfaces; MFA and application security controls
+5. Data	Protects the information itself; asset classification and data protection
+Remember: Perimeter → Network → Endpoint → Application → Data.
+The idea is not to depend on one security tool. Multiple controls work together to reduce risk.
+
+3. CVE and CVSS
+
+CVE — Common Vulnerabilities and Exposures
+The CVE list is a publicly accessible dictionary of known vulnerabilities and exposures. It provides standardized identifiers so security teams and organizations can refer to the same reported issue.
+- Originally created by MITRE in 1999.
+- Vulnerabilities can be reported by researchers, vendors, ethical hackers, and others.
+- CVE Numbering Authorities (CNAs) review eligible reports and assign CVE identifiers.
+- Organizations use CVE information to identify known weaknesses in their systems and software.
+CVSS — Common Vulnerability Scoring System
+CVSS measures the severity of a vulnerability, using a score from 0.0 to 10.0.
+CVSS score	Severity in your course
+Below 4.0	Low
+Above 9.0	Critical
+A vulnerability's severity helps security teams prioritize fixes. A critical issue generally deserves urgent attention.
+Difference to remember:
+- CVE: Identifies and documents a vulnerability.
+- CVSS: Scores how severe that vulnerability is.
+The course notes that CVSS base scores reflect the vulnerability's evaluated characteristics at that point in time; real-world risk and remediation priority can also depend on the environment and current threat activity.
+
+4. OWASP and the OWASP Top 10
+
+OWASP (Open Worldwide Application Security Project) is a nonprofit foundation that helps improve software security by sharing resources, tools, and knowledge.
+The OWASP Top 10 highlights common and important web application security risks. It helps developers and organizations identify security problems when designing and building applications.
+The 10 vulnerability categories in your reading
+Category	Quick explanation
+1. Broken access control	Users can access data or perform actions they shouldn't be allowed to.
+2. Cryptographic failures	Sensitive information isn't properly protected by encryption or cryptography.
+3. Injection	Malicious input causes an application to execute unintended commands or queries.
+4. Insecure design	Security protections are missing or poorly planned during design.
+5. Security misconfiguration	Systems have unsafe or incorrect security settings.
+6. Vulnerable and outdated components	Software uses dependencies with known vulnerabilities or inadequate maintenance.
+7. Identification and authentication failures	Systems fail to verify users' identities correctly.
+8. Software and data integrity failures	Software updates or data aren't adequately protected against unauthorized changes.
+9. Security logging and monitoring failures	Security events aren't recorded or monitored effectively.
+10. Server-side request forgery (SSRF)	An attacker tricks a server into making requests to unintended or unauthorized resources.
+Important distinction:
+- CVE helps identify known vulnerabilities in particular software or components.
+- OWASP Top 10 highlights broad categories of web application security risks, helping teams prevent common mistakes when developing software.
+
+5. OSINT — Open-Source Intelligence
+
+OSINT is the collection and analysis of information from publicly available sources to produce useful intelligence.
+Information vs intelligence
+- Information: Raw facts or data.
+- Intelligence: Information that has been analyzed and interpreted to support decisions.
+Example: Finding a public report about a software vulnerability is information. Confirming that your organization uses the affected software and deciding which systems need urgent patching is intelligence in action.
+How OSINT helps cybersecurity
+- Identify potential threats and vulnerabilities.
+- Discover information exposed publicly.
+- Understand emerging cyberattacks.
+- Evaluate existing security defenses.
+- Support risk assessment and patch prioritization.
+OSINT tools to remember
+
+
+
+
+
+
+
+
+
+VirusTotal
+Checks files, URLs, domains, and IP addresses against security detection sources.
+Website: virustotal.com
+
+
+
+
+
+
+
+
+
+
+
+
+MITRE ATT&CK
+Knowledge base of adversary tactics and techniques based on real-world observations.
+Website: attack.mitre.org
+
+
+
+
+
+
+
+
+
+
+
+
+OSINT Framework
+Directory of tools and resources for gathering publicly available information.
+Website: osintframework.com
+
+
+
+
+
+
+
+
+
+
+
+
+Have I Been Pwned
+Checks whether an email address appears in known data breaches.
+Website: haveibeenpwned.com
+
+
+
+
+Final revision sheet
+Term	One-line definition
+Vulnerability	A weakness that can be exploited
+Exploit	A way of taking advantage of a weakness
+Zero-day	Previously unknown vulnerability being exploited before a fix is available
+Vulnerability management	Identify weaknesses, consider exploits, prepare defenses, evaluate defenses, repeat
+Defense in depth	Multiple layers of security
+CVE	Standardized identifier and record for a known vulnerability or exposure
+CVSS	Measures vulnerability severity from 0.0–10.0
+OWASP	Organization that promotes software security
+OWASP Top 10	List of important web application security risks
+OSINT	Collection and analysis of publicly available information
+Information	Raw facts
+Intelligence	Analyzed information used to make decisions
+VirusTotal	Checks files and indicators for malicious content
+MITRE ATT&CK	Documents adversary tactics and techniques
+OSINT Framework	Directory of OSINT tools
+Have I Been Pwned	Checks for known data breaches involving an email address
+
+CI/CD Security — Quick Revision Notes
+
+1. What is CI/CD?
+
+CI/CD automates the software development and release process, from integrating code to deploying software.
+Term	Meaning	What happens
+CI — Continuous Integration	Developers frequently merge code into a central repository.	Automated builds and tests check for problems.
+Continuous Delivery	Software is kept ready for release.	Code is tested and prepared for release, typically with manual approval before production.
+Continuous Deployment	Software releases are fully automated.	Changes that pass automated checks are deployed to production without manual approval.
+Easy memory trick:
+- Integration = merge and test.
+- Delivery = ready to release.
+- Deployment = automatically released.
+
+2. How CI/CD improves security
+
+Security checks can be integrated directly into the pipeline to catch vulnerabilities before software reaches users.
+Benefits include:
+- Detecting weaknesses earlier.
+- Releasing security patches faster.
+- Reducing manual errors.
+- Improving collaboration between development, security, testing, and operations teams.
+- Making smaller, more frequent releases easier to investigate and fix.
+However, insecure automation can introduce vulnerabilities at scale, so the pipeline itself must be protected.
+
+3. Common CI/CD vulnerabilities
+
+Vulnerability	                           What can go wrong?	                                                   Protection
+Insecure dependencies	        Third-party libraries contain known vulnerabilities.	                  Scan and update dependencies.
+Misconfigured permissions	Unauthorized users modify code or pipeline settings.	                 Use RBAC and least privilege.
+Missing security tests	          Vulnerabilities reach production undetected.	                            Integrate automated security testing.
+Exposed secrets	                       API keys, passwords, or tokens are leaked.	                     Use dedicated secrets-management tools.
+Unsecured build environments	Attackers alter builds, inject malicious code, or steal data.	        Harden build servers; use secure containers or VMs.
+
+4. Security testing tools and techniques
+
+- SAST — Static Application Security Testing: Analyzes application source code or other representations without running the application.
+- DAST — Dynamic Application Security Testing: Tests a running application for security weaknesses.
+- SCA — Software Composition Analysis: Identifies third-party dependencies and potential vulnerabilities in them.
+- DevSecOps: Integrates security into every stage of development and operations instead of leaving it until the end.
+Examples of dependency-management tools from your reading: Dependabot and Snyk.
+Examples of secrets-management tools: HashiCorp Vault and AWS Secrets Manager. 
+
+5. CI/CD security best practices
+
+1. Integrate security from the beginning.
+2. Apply least privilege, RBAC, and MFA.
+3. Automate security tests throughout the pipeline.
+4. Maintain an inventory of dependencies and patch vulnerable components.
+5. Store secrets securely; never hardcode passwords or API keys.
+6. Secure the systems that build and deploy software.
+
+Final cheat sheet
+
+Term	Quick definition
+CI	Frequently integrate code and run automated builds/tests.
+Continuous Delivery	Keep software ready for release, usually with a manual production approval step.
+Continuous Deployment	Automatically release changes that pass checks.
+SAST	Test code without running the application.
+DAST	Test a running application.
+SCA	Check third-party dependencies.
+DevSecOps	Build security into the development lifecycle.
+Exposed secrets	Sensitive credentials leaked through code or configuration.
+Secure build environment
