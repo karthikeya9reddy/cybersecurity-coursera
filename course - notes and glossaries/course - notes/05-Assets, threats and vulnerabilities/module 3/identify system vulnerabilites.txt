@@ -1,0 +1,105 @@
+Course 5 — Vulnerability Assessment and Testing
+1. Vulnerability assessment
+A vulnerability assessment is an internal review of an organization's security systems to identify weaknesses, prevent attacks, and check whether security controls meet relevant requirements.
+Four steps of a vulnerability assessment
+1
+
+Identification — Find weaknesses
+Use scanning tools and manual testing to discover vulnerabilities and understand the current state of the system.
+
+
+2
+
+Vulnerability analysis — Investigate
+Test the findings to understand the source and nature of each weakness.
+
+
+3
+
+Risk assessment — Prioritize
+Score vulnerabilities based on the potential impact and likelihood of exploitation.
+
+
+4
+
+Remediation — Fix weaknesses
+Apply patches, update operating systems, or introduce new security procedures.
+
+
+
+Remember: Identify → Analyze → Assess risk → Remediate.
+2. Vulnerability scanners
+A vulnerability scanner is software that automatically compares systems and technologies against known vulnerabilities and exposures.
+It can identify misconfigurations and programming flaws across all five defense-in-depth layers:
+- Perimeter
+- Network
+- Endpoint
+- Application
+- Data
+Scanners compare findings against vulnerability databases and flag potential weaknesses. Their databases are updated as new vulnerabilities become known.
+Types of vulnerability scans
+Scan type	Meaning
+External	Examines outward-facing systems, such as websites, servers, and network ports.
+Internal	Examines internal systems and resources.
+Authenticated	Uses valid credentials to inspect a system with the access granted to that account.
+Unauthenticated	Scans without logging in, simulating an outsider's perspective.
+Limited	Focuses on particular devices or systems.
+Comprehensive	Covers all devices connected to the network, within the scan's scope.
+Discovery	Identifies devices, computers, and open ports before further scanning.
+Scanners are intended to be non-intrusive, but a scan can occasionally disrupt or crash a system.
+3. Patching and software updates
+A patch update is a software or operating system update that addresses security vulnerabilities, often alongside bug fixes.
+Manual vs automatic updates
+Manual updates	Automatic updates
+IT staff or users control installation.	Systems install updates automatically once configured.
+More control over when updates are deployed.	Helps keep systems current with security fixes.
+Critical patches may be forgotten or delayed.	Untested or problematic updates can cause instability.
+End-of-life (EOL) software
+EOL software is no longer supported by its manufacturer. It may stop receiving security patches, leaving known vulnerabilities unresolved.
+- Patch: Fixes a weakness or bug.
+- Upgrade: Moves to a newer version of software or hardware.
+- EOL: No longer supported by the manufacturer.
+Key lesson: Replace EOL software when possible because it can create continuing security risks.
+4. Penetration testing
+A penetration test (pen test) is an authorized, simulated attack that uses techniques similar to those of malicious attackers to test security.
+The important difference:
+- Vulnerability assessment: Finds and prioritizes weaknesses.
+- Penetration test: Attempts to exploit weaknesses to determine their real-world consequences.
+Red, blue and purple teams
+Team	Focus
+Red team	Simulates attacks to find weaknesses.
+Blue team	Defends systems and tests detection and incident response.
+Purple team	Combines red-team and blue-team activities to improve security.
+Three penetration testing strategies
+Strategy	Knowledge available to tester	Also called
+Open-box	Extensive internal knowledge and privileged access	White-box
+Closed-box	Little or no internal information	Black-box
+Partial-knowledge	Some internal knowledge or access	Gray-box
+Closed-box testing simulates an outsider with little prior knowledge, while open-box testing allows more informed testing.
+Skills useful for penetration testers
+- Networking and application security.
+- Linux and other operating systems.
+- Vulnerability analysis and threat modeling.
+- Detection and response tools.
+- Python and Bash.
+- Communication and reporting.
+Bug bounty programs: Organizations may reward ethical hackers for discovering and responsibly reporting vulnerabilities in their products. HackerOne is one platform for finding such programs: HackerOne bug bounty programs.
+
+Final 60-second revision sheet
+Concept	Remember
+Vulnerability assessment	Reviews security systems for weaknesses
+Identification	Finds vulnerabilities
+Analysis	Investigates the cause and nature of weaknesses
+Risk assessment	Scores impact and likelihood
+Remediation	Fixes or reduces vulnerabilities
+Vulnerability scanner	Automatically checks for known weaknesses
+Discovery scan	Finds devices and open ports
+Authenticated scan	Scans using credentials
+Unauthenticated scan	Scans without credentials
+Patch	Fixes vulnerabilities or bugs
+EOL software	No longer supported by its manufacturer
+Pen test	Authorized simulated attack that tests weaknesses
+Red team	Attacks in a controlled simulation
+Blue team	Defends and responds
+Purple team	Improves security through red/blue collaboration
+Bug bounty	Reward for responsibly reporting eligible vulnerabilities
