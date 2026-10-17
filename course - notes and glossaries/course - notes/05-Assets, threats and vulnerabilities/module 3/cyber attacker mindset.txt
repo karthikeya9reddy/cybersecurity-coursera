@@ -1,0 +1,146 @@
+1. Attack surface and security hardening
+An attack surface is the collection of potential entry points and weaknesses that a threat actor could exploit.
+Organizations have two main attack surfaces:
+Attack surface	Includes	Example
+Physical	People and their devices	An unattended laptop displaying confidential information
+Digital	Systems and resources connected online	Cloud services, servers, websites, and network services
+Cloud computing expands the digital attack surface because organizational resources can be accessed from outside the traditional office network.
+Security hardening means strengthening a system to reduce vulnerabilities and minimize the number of possible entry points.
+Examples include:
+- Applying access controls and organizational policies.
+- Restricting unnecessary access.
+- Securing unattended devices and sensitive information.
+- Removing unnecessary services and entry points.
+Key principle: The smaller the attack surface, the easier it is to protect.
+2. Applying an attacker mindset
+An attacker mindset means examining a system from an attacker's perspective to identify weaknesses and improve defenses.
+Proactive vs reactive simulations
+Proactive simulation	Reactive simulation
+Takes the attacker's perspective	Takes the defender's perspective
+Attempts to exploit weaknesses in an authorized exercise	Investigates weaknesses and determines how to respond
+Associated with red-team exercises	Associated with blue-team exercises
+Reactive exercises commonly use vulnerability scans to identify weaknesses and prioritize remediation.
+Vulnerability assessment example
+1. Identification: Discover a server running an outdated operating system.
+2. Vulnerability analysis: Research the operating system's known weaknesses.
+3. Risk assessment: Evaluate severity, impact, and likelihood of exploitation.
+4. Remediation: Patch, update, or otherwise address the vulnerability.
+Security professionals should document and communicate their findings clearly. The course recommends the NIST National Vulnerability Database as a resource for staying informed: NVD website.
+3. Threat actors
+A threat actor is a person or group that presents a security risk, whether intentionally or accidentally.
+Five threat actor categories
+Category	Meaning
+Competitors	Rival companies that might benefit from stolen or leaked information
+State actors	Government intelligence agencies or state-sponsored actors
+Criminal syndicates	Organized groups that profit from criminal activities
+Insider threats	Current or former authorized individuals who accidentally or deliberately put resources at risk
+Shadow IT	Use of technologies outside established IT governance
+Shadow IT example: An employee uses a personal email account to send confidential company information without approval.
+Three types of hackers
+- Unauthorized or malicious hackers: Access systems without authorization to commit harmful or criminal acts.
+- Authorized or ethical hackers: Test systems with permission to improve security.
+- Semi-authorized hackers: May violate ethical standards without necessarily intending conventional criminal harm; hacktivists may exploit systems to promote political or social causes.
+Script kiddies are attackers who rely on prewritten code and tools rather than developing their own sophisticated attack methods.
+Advanced persistent threats (APTs)
+An advanced persistent threat is a situation in which a threat actor maintains unauthorized access to a system for an extended period.
+- Often associated with state-sponsored actors.
+- May involve long-term surveillance and intelligence gathering.
+- Can target private organizations as a stepping stone toward larger organizations or government entities.
+4. Attack vectors — pathways into a system
+An attack vector is a pathway or method used to gain unauthorized access to a system or exploit a weakness.
+The course identifies seven categories:
+Attack vector	Example
+Direct access	An attacker physically accesses an unattended computer
+Removable media	A malicious or compromised USB drive
+Social media	Sensitive company information is exposed in a post
+Email	A malicious link or phishing email
+Wireless networks	An attacker targets an insecure wireless network
+Cloud services	A weakness in cloud access or configuration
+Supply chains	A compromised third-party vendor becomes an entry point
+Four steps to applying an attacker mindset
+1. Identify the target: A person, system, organization, or piece of information.
+2. Determine how it can be accessed: Identify information and potential entry points.
+3. Evaluate attack vectors: Decide which pathways could be exploited.
+4. Identify tools and methods: Consider how an attacker could use those pathways.
+Defending attack vectors
+- Educate users about current threats.
+- Apply the principle of least privilege.
+- Use appropriate security controls, such as antivirus software.
+- Build diverse security teams with different perspectives.
+5. Brute force attacks
+A brute force attack is a trial-and-error technique used to discover credentials or other secret information by repeatedly trying possible combinations.
+Four important techniques
+1. Simple brute force
+Repeatedly guesses combinations of usernames and passwords until a working combination is found.
+
+
+2. Dictionary attack
+Tries a list of commonly used passwords or credentials instead of every possible combination.
+
+
+3. Reverse brute force
+Starts with one commonly used or known password and tries it against multiple accounts or systems.
+
+
+4. Credential stuffing
+Uses usernames and passwords stolen from previous breaches to attempt access to accounts on other services.
+
+
+Pass the hash: The course describes this as a specialized credential-stuffing technique that reuses stolen, unsalted hashed credentials to obtain an authenticated session. More generally, pass-the-hash attacks use a captured password hash directly in an authentication process rather than first recovering the original password.
+Exhaustive key search is the related technique of trying possible encryption keys to recover encrypted information.
+Brute force tools
+Tool	Main association in your course
+Aircrack-ng	Testing Wi-Fi security
+Hashcat	Password hash recovery and auditing
+John the Ripper	Password security auditing
+Ophcrack	Password recovery using rainbow tables
+THC Hydra	Testing authentication services against password-guessing attacks
+These tools can be used for legitimate security testing on systems you own or have explicit permission to test.
+6. Preventing brute force attacks
+Organizations combine technical and managerial controls to reduce the likelihood of successful attacks.
+A. Hashing and salting
+- Hashing: Converts data into a fixed-length digest used for integrity checks and password verification.
+- Salting: Adds a unique random value to a password before hashing it, making precomputed attacks less effective and identical passwords produce different salted hashes.
+Salting does not make passwords impossible to crack, but it makes large-scale password cracking more difficult.
+B. Multi-factor authentication (MFA)
+Requires two or more different authentication factors.
+Example: A password plus a security key or authenticator-app code.
+Even if a password is compromised, an attacker may still be unable to authenticate.
+C. CAPTCHA
+CAPTCHA stands for Completely Automated Public Turing test to tell Computers and Humans Apart.
+It challenges users to complete a task intended to distinguish human users from automated programs.
+Examples include:
+- Entering distorted characters.
+- Selecting specified objects in images.
+CAPTCHA can make automated password guessing harder, though it is not a complete defense on its own.
+D. Password policies
+Organizations establish password rules and authentication procedures to reduce credential-related risks.
+Examples from your course include:
+- Minimum password-length requirements.
+- Requirements for combinations of character types.
+- Lockout policies that restrict repeated failed login attempts.
+- Requirements to use unique passwords.
+The course references NIST guidance for developing password policies: NIST Digital Identity Guidelines.
+
+Final quick-revision cheat sheet
+Term	One-line meaning
+Attack surface	Potential entry points and weaknesses an attacker could exploit
+Security hardening	Strengthening systems and reducing entry points
+Attacker mindset	Thinking from an attacker's perspective to improve defenses
+Proactive simulation	Simulated attack
+Reactive simulation	Defensive investigation and response
+Threat actor	Person or group that poses a security risk
+Insider threat	Risk posed by someone with or previously granted authorized access
+Shadow IT	Technology used outside established IT governance
+Script kiddie	Attacker relying on prewritten code and tools
+APT	Threat actor maintains unauthorized access over an extended period
+Attack vector	Pathway used to reach or exploit a target
+Brute force	Tries possible credential combinations
+Dictionary attack	Tries a list of likely passwords
+Reverse brute force	Tries one password against multiple accounts
+Credential stuffing	Reuses credentials stolen in previous breaches
+Pass the hash	Uses a captured password hash in an authentication attack
+Hashing	Produces a digest from input data
+Salting	Adds random data before password hashing
+MFA	Requires multiple different authentication factors
+CAPTCHA	Challenge intended to distinguish humans from automated programs
