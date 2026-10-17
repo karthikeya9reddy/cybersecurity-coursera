@@ -1,0 +1,242 @@
+Course 5 — Quick Revision Notes
+1. Social engineering
+
+Social engineering is a manipulation technique that exploits human error to gain private information, access, or valuables.
+Attackers exploit people's curiosity, trust, generosity, fear, and desire to help.
+Stages of a social engineering attack
+1. Preparation: Gather information about the target.
+2. Establish trust (pretexting): Pretend to be a trusted person or authority.
+3. Persuasion: Manipulate the target into revealing information or granting access.
+4. Disconnection: End communication and cover their tracks.
+Types of social engineering
+Attack	Meaning	Example
+Baiting	Tempting someone into compromising security	Infected USB left where someone might find it
+Phishing	Digital communications used to steal data or deliver malware	Fake bank email
+Quid pro quo	Offering a reward or service in exchange for information or access	Fake bank employee offering a better rate
+Tailgating / Piggybacking	Unauthorized person follows an authorized person into a restricted area	Following an employee through a secure door
+Watering hole	Compromising a website frequently visited by a target group	Infecting a community website with malware
+Example — Twitter Hack (2020): Attackers impersonated IT staff over phone calls to manipulate employees into granting access to internal systems and tools.
+How to prevent social engineering
+- Stay alert to suspicious communications and unknown people.
+- Verify sender names and email addresses; look for spelling errors.
+- Be cautious about sharing information on social media.
+- Avoid suspicious links, attachments, and offers that seem too good to be true.
+- Use security policies, procedures, firewalls, MFA, email filters, and blocklists.
+- Train employees and customers to recognize suspicious behavior.
+- Follow patch-management procedures to keep systems updated.
+
+2. Phishing
+Phishing is the use of digital communications to trick people into revealing sensitive information or deploying malicious software.
+A phishing kit is a collection of tools used to launch phishing campaigns. The source identifies three main components:
+1. Malicious attachments: Infected files that can harm systems.
+2. Fake-data collection forms: Fraudulent forms designed to collect sensitive information.
+3. Fraudulent web links: Links to fake websites that imitate trusted brands and steal credentials.
+Five common types of phishing
+Type	Meaning
+Email phishing	Deceptive emails impersonating trusted people or organizations
+Smishing	Phishing through text messages and messaging services
+Vishing	Phishing through voice calls or voice messages
+Spear phishing	Targeted phishing aimed at specific people
+Whaling	Spear phishing aimed at high-ranking executives
+Angler phishing: Attackers impersonate customer-service representatives on social media, often targeting people who complain about a company online.
+Phishing defenses
+- Security awareness training and anti-phishing policies.
+- Email filters to detect and block harmful messages.
+- Blocklists: Block specified senders or other identified sources.
+- Allowlists: Permit only approved senders or sources within the configured scope.
+- Intrusion prevention systems (IPS) to identify suspicious traffic patterns.
+- Monitoring tools to detect, quarantine, and log suspicious emails.
+- MFA to reduce the impact of stolen passwords.
+Remember: Phishing can target anyone, from entry-level employees to senior executives. One compromised password can lead to a serious data breach.
+
+3. Malware
+Malware (malicious software) is software designed to harm devices or networks, interfere with normal operations, steal information, or provide unauthorized access.
+Common malware types
+
+1. Virus
+Malicious code that attaches to files or trusted applications. It typically needs user action, such as opening an infected program, to activate and spread.
+
+
+
+
+2. Worm
+Malware that can self-replicate and spread across systems or networks without requiring a separate user action for each spread. Example: Blaster worm.
+
+
+
+
+3. Trojan horse
+Malware disguised as a legitimate file or program to trick someone into installing it.
+
+
+
+
+4. Ransomware
+Encrypts a victim's data and demands payment to restore access. Example: WannaCry.
+
+
+
+
+5. Spyware
+Secretly gathers information without consent, such as login credentials and account PINs.
+
+
+
+
+6. Adware / PUA
+Adware displays advertisements. A potentially unwanted application (PUA) may be bundled with legitimate software and cause unwanted ads, slowdown, or additional installations.
+
+
+
+
+7. Scareware
+Uses fake security warnings to frighten users into installing software or taking unsafe actions.
+
+
+
+
+8. Fileless malware
+Uses legitimate programs and often operates in memory instead of relying on a traditional malicious file stored on disk. Memory analysis can help detect it.
+
+
+
+
+9. Rootkit
+Malware that can provide or conceal privileged access, often enabling a backdoor for further attacks.
+
+
+
+
+10. Dropper and loader
+A dropper delivers or installs malicious code. A loader downloads or installs additional malware from another source.
+
+
+
+
+11. Botnet
+A collection of malware-infected devices controlled by one threat actor, called a bot-herder, who can issue commands to those devices.
+
+
+
+
+12. Cryptojacking
+Malware that secretly uses a victim's computing resources to mine cryptocurrency illegally.
+
+
+
+Important malware differences
+Comparison	Key difference
+Virus vs. worm	A virus typically relies on user action to activate and spread; a worm can spread itself across systems.
+Virus vs. Trojan	A virus infects files or programs; a Trojan disguises itself as something legitimate.
+Ransomware vs. spyware	Ransomware locks/encrypts data for extortion; spyware secretly collects information.
+Dropper vs. loader	A dropper delivers/installs malware; a loader retrieves or installs additional malicious code.
+Rootkit vs. botnet	A rootkit enables or conceals privileged access; a botnet is a network of compromised devices under centralized attacker control.
+Adware vs. scareware	Adware displays advertisements; scareware uses fake warnings to frighten users.
+Cryptojacking: warning signs and defenses
+Warning signs:
+- Unexpected device slowdown.
+- High CPU usage.
+- Sudden system crashes.
+- Fast battery drain.
+- Unusually high electricity costs.
+Defenses mentioned in the course:
+- Browser extensions designed to block malware.
+- Ad blockers.
+- Disabling JavaScript where appropriate.
+- Staying informed about emerging threats.
+- Using an IDS (Intrusion Detection System) to monitor activity and alert security personnel to possible intrusions.
+An IDS can miss new or unknown malware, so monitoring for unusual behavior remains important.
+
+4. Web-based exploits and injection attacks
+A web-based exploit uses malicious code or behavior to take advantage of a coding flaw in a web application.
+An injection attack occurs when malicious code is inserted into an application through vulnerable input handling.
+Why it happens: applications accept inputs, but developers may fail to validate or sanitize them properly.
+Cross-site scripting (XSS)
+XSS is an injection attack in which malicious scripts are inserted into a vulnerable website or web application. These scripts can potentially access information available to the page, such as session cookies.
+There are three main types:
+Type	How it works
+Reflected XSS	Malicious input is sent to the server and reflected in its response, causing the browser to execute the script.
+Stored XSS	Malicious script is stored on the server and executes when users load the affected content.
+DOM-based XSS	The vulnerability is in client-side code that processes page data or user input through the Document Object Model (DOM). The malicious script can execute without needing to be reflected by the server.
+Memory trick:
+- Reflected = returned in a response.
+- Stored = saved on the server.
+- DOM-based = client-side page processing.
+SQL injection (SQLi)
+SQL injection is an attack that executes unexpected SQL queries against a database by exploiting improperly handled user input.
+It can be used to:
+- Steal sensitive information.
+- Modify or delete database records.
+- Gain unauthorized access to a web application or database.
+Common vulnerable input fields include login forms, search bars, and comment boxes.
+Three categories of SQL injection
+Type	How results are obtained
+In-band	The attack and its results use the same communication channel.
+Out-of-band	The attack and results use different communication channels. This is uncommon and requires particular server capabilities.
+Inferential	The attacker cannot directly see the results and instead infers information from the system's behavior.
+Memory trick: Same channel = in-band; separate channel = out-of-band; infer from behavior = inferential.
+SQL injection prevention
+1. Prepared statements: Separate SQL code from user-supplied data.
+2. Input sanitization: Remove or neutralize unwanted input that could be interpreted as code.
+3. Input validation: Ensure input meets the application's expected format and rules.
+Using these techniques together helps reduce SQL injection risk. Security analysts may work with developers to identify and remediate vulnerable application code.
+Reference from your course: OWASP SQL injection testing guidance.
+
+5. Final cheat sheet
+Test yourself
+14/14 revealed
+
+Try answering each question before revealing the answer.
+1. What is social engineering?
+Manipulating people into revealing information, granting access, or giving up valuables.
+
+
+2. What is pretexting?
+Establishing trust using a fabricated identity or scenario.
+
+
+3. Baiting vs. quid pro quo?
+Baiting tempts the victim; quid pro quo promises a benefit in exchange for information or access.
+
+
+4. Spear phishing vs. whaling
+?Spear phishing targets specific people; whaling targets senior executives.
+
+
+5. Smishing vs. vishing?
+Smishing uses text or messaging; vishing uses voice calls or messages.
+
+
+6. What is a phishing kit?
+A collection of tools used to launch phishing campaigns, such as malicious attachments, fake forms, and fraudulent links.
+
+
+7. What is malware?
+Software designed to harm devices or networks.
+
+
+8. What is cryptojacking?
+Secretly using a victim's computing resources to mine cryptocurrency.
+
+
+9. What is an IDS?
+An Intrusion Detection System monitors activity and alerts on possible intrusions.
+
+
+10. What is XSS?
+An injection attack that causes malicious scripts to run in a user's browser through a vulnerable web application.
+
+
+11. What is SQL injection?
+Exploiting improper input handling to execute unexpected SQL queries against a database.
+
+
+12. What prevents SQL injection?Prepared statements, input sanitization, and input validation.
+
+
+13. What is a bot-herder?
+The threat actor who controls a botnet.
+
+
+14. What is fileless malware?
+Malware that uses legitimate programs and often operates in memory rather than as a traditional file on disk.
