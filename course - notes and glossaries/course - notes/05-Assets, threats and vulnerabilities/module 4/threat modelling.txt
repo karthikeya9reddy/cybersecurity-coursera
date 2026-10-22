@@ -1,0 +1,124 @@
+Course Notes: Threat Modeling
+1. What is threat modeling?
+Threat modeling is the process of identifying assets, their vulnerabilities, and how each asset is exposed to threats.
+Its purpose is to anticipate potential attacks and reduce risk before they cause harm.
+Threat modeling can be applied to:
+- Entire systems and networks.
+- Applications and software.
+- Business processes.
+It combines security activities such as vulnerability management, threat analysis, and incident response.
+2. Why is application security important?
+Applications connect businesses, customers, partners, and other systems. They process large amounts of data, so weaknesses can expose sensitive information or allow attackers to compromise systems.
+Example: Log4Shell (CVE-2021-44228)
+- A vulnerability associated with Java-based logging libraries.
+- If left unpatched and exploitable, it can allow remote code execution.
+- Successful exploitation can give an attacker significant access to a vulnerable system.
+Key point: Application security testing and threat modeling help identify weaknesses before attackers exploit them.
+Threat modeling should be incorporated throughout the Software Development Life Cycle (SDLC) — before, during, and after development.
+3. The six steps of threat modeling
+1
+
+Define the scope
+Identify, inventory, and classify the assets being protected. Decide what the threat model covers.
+
+
+
+2
+
+Identify threats
+Identify potential threat actors and threats. Threat actors can be internal, such as malicious employees, or external, such as hackers or competing businesses. Create an attack tree to map threats to assets and possible attack paths.
+
+
+
+3
+
+Characterize the environment
+Examine how employees, customers, partners, and third-party vendors interact with the system. Think from an attacker's perspective.
+
+
+
+4
+
+Analyze threats
+Examine existing security controls, identify gaps, and rank threats according to their assigned risk scores.
+
+
+
+5
+
+Mitigate risks
+Decide whether to avoid, transfer, reduce, or accept each risk.
+
+
+
+6
+
+Evaluate findings
+Document the results, apply fixes, record successes and lessons learned, and use them to improve future threat models.
+
+
+
+Memory aid: Scope → Threats → Environment → Analyze → Mitigate → Evaluate.
+4. PASTA framework
+PASTA stands for Process of Attack Simulation and Threat Analysis.
+It is a risk-centric threat modeling framework that uses evidence about viable threats to guide security decisions. It has seven stages.
+Stage	Name	Main purpose
+1	Define business and security objectives	Establish goals, such as protecting customer data and PII.
+2	Define technical scope	Identify application components, technologies, protocols, controls, and the attack surface.
+3	Decompose the application	Understand components, data flows, and existing security controls; use data flow diagrams.
+4	Perform threat analysis	Research current attack methods and threat information.
+5	Perform vulnerability analysis	Investigate potential vulnerabilities and their underlying causes.
+6	Conduct attack modeling	Simulate attacks and use attack trees to examine possible attack paths.
+7	Analyze risk and impact	Combine the findings to assess risk and recommend actions aligned with business objectives.
+PASTA example: Fitness mobile application
+Suppose a fitness company is preparing to launch an app that stores customer information.
+1. Objectives: Protect customer data and personally identifiable information (PII).
+2. Technical scope: Identify the app, database, protocols, and data interactions.
+3. Decomposition: Map how data travels from the user's device to the company database.
+4. Threat analysis: Research relevant mobile application attacks.
+5. Vulnerability analysis: Investigate weaknesses, such as unsanitized user input.
+6. Attack modeling: Examine whether SQL injection could compromise customer records.
+7. Risk and impact: Evaluate the potential damage and recommend security improvements.
+Remember: PASTA has seven stages, while the general threat modeling process described above has six steps.
+5. Common threat modeling frameworks
+STRIDE
+Developed by Microsoft. Identifies six threat categories:
+- S — Spoofing
+- T — Tampering
+- R — Repudiation
+- I — Information disclosure
+- D — Denial of service
+- E — Elevation of privilege
+
+
+PASTA
+Risk-centric, evidence-based framework with seven stages. Focuses on analyzing viable threats and their business impact.
+
+
+Trike
+Open-source methodology and tool with a security-centric approach. Focuses on security permissions, use cases, and privilege models.
+
+
+VAST
+Stands for Visual, Agile, and Simple Threat Modeling. Associated with an automated threat-modeling platform and designed to streamline assessments.
+
+
+Quick comparison: STRIDE categorizes threats; PASTA analyzes threats and business risk through seven stages; Trike emphasizes security-centric modeling; VAST emphasizes streamlined, automated threat modeling.
+6. Important concepts
+Term	Meaning
+Threat actor	A person or group that presents a security risk.
+Attack surface	The components and possible entry points an attacker could target.
+Attack tree	A diagram mapping a target asset to possible threats and attack paths.
+Data flow diagram	A diagram showing how data moves between components and where controls protect it.
+Vulnerability analysis	Investigation of potential weaknesses and their root causes.
+Risk mitigation	Choosing how to avoid, transfer, reduce, or accept risk.
+DevSecOps	Development, security, and operations working together to integrate security into software delivery.
+SDLC	Software Development Life Cycle; threat modeling should be incorporated throughout it.
+7. Questions security teams should ask
+Threat modeling is collaborative. Although experienced professionals often lead it, anyone on the security team can contribute by asking:
+1. What are we working on?
+2. What kinds of things can go wrong?
+3. What are we doing about it?
+4. Have we addressed everything?
+5. Did we do a good job?
+The answers help teams identify threats, find gaps, choose defenses, and learn from the results.
