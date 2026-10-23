@@ -1,0 +1,108 @@
+Incident Detection: Documentation, IDS/IPS/EDR, SIEM & SOAR
+1. Security analyst’s toolbox
+A security analyst uses multiple tools to detect, investigate, document, and respond to security threats.
+- Detection and management tools: Monitor system and network activity.
+- Documentation tools: Record evidence, findings, and incident details.
+- Investigative tools: Analyze events, such as packet sniffers.
+- Incident handler’s journal: Documents the 5 Ws — Who, What, Where, When, and Why.
+2. Security documentation
+Documentation is recorded content used to provide instructions or guidance for a specific purpose. It can be digital, handwritten, audio, or video.
+Types of documentation
+- Playbooks: Step-by-step instructions for operational actions.
+- Incident handler’s journal: Records incident details and investigation progress.
+- Policies: Establish rules and expectations.
+- Plans: Define how activities should be carried out.
+- Final reports: Summarize findings and outcomes.
+Organizations may adapt their documentation to their own needs and legal requirements.
+Effective documentation
+Good documentation must be clear, consistent, and accurate. It reduces confusion and uncertainty, especially during incidents when a quick response is essential.
+Documentation tools: Google Docs, OneNote, Evernote, Notepad++, Jira, Google Sheets, audio recorders, cameras, and handwritten notes.
+
+3. IDS vs IPS vs EDR
+IDS — Intrusion Detection System
+Detects suspicious system or network activity and generates alerts. It does not automatically stop the activity.
+Examples: Snort, Zeek, Suricata, Sagan
+
+IPS — Intrusion Prevention System
+Monitors for intrusive activity, generates alerts, and takes action to prevent or stop it.
+Examples: Suricata, Snort, Sagan can support IDS and IPS functions.
+
+EDR — Endpoint Detection and Response
+Monitors individual endpoints (computers, phones, tablets, etc.), records and analyzes activity, and can respond automatically to suspicious behavior.
+Key feature: Behavioral analysis to identify unusual or malicious activity, often using machine learning and AI.
+Examples: OpenEDR, Bitdefender EDR, FortiEDR
+
+Quick comparison
+Capability	IDS	IPS	EDR
+Detects malicious activity	Yes	Yes	Yes
+Prevents intrusions	No	Yes	Yes
+Logs activity	Yes	Yes	Yes
+Generates alerts	Yes	Yes	Yes
+Behavioral analysis	Not listed in the course comparison	Not listed in the course comparison	Yes
+IDS detection outcomes — memorize these four
+Outcome	What happens?
+True positive (TP)	A real threat is correctly detected.
+True negative (TN)	No threat exists, and no alert is triggered.
+False positive (FP)	An alert is triggered, but the activity is not malicious.
+False negative (FN)	A real threat exists but is not detected.
+Remember: False positives waste analysts’ time. False negatives are dangerous because a real attack may go unnoticed.
+
+4. SIEM — Security Information and Event Management
+Definition: A tool that collects and analyzes log data to monitor critical activities in an organization.
+Think of SIEM as a car dashboard for an organization's network. It brings information from many systems into one centralized view so analysts can identify potential threats.
+The SIEM process — 3 main steps
+1. Collect and aggregate data
+Collect logs from firewalls, servers, routers, databases, applications, IDS/IPS, and other sources; consolidate them centrally.
+
+2. Normalize data
+Convert data from different sources into a consistent, structured format that is easier to search and process.
+
+3. Analyze data
+Apply detection rules and conditions. Matching activity can generate alerts for security analysts to investigate.
+
+
+Important SIEM terms
+- Logs: Records of events that occur in systems or networks.
+- Aggregation: Consolidating data from multiple sources into one location.
+- Parsing: Extracting individual fields and their values from raw log data.
+- Normalization: Transforming collected data into a standard, structured format.
+- Log analysis: Examining logs to identify events of interest.
+- Correlation: Comparing multiple log events to identify patterns that may indicate a security threat.
+- Detection rules: Conditions used to identify suspicious activity and generate alerts.
+Example: Parsing a log
+Raw log:
+April 3 11:01:21 server sshd[1088]: Failed password for user nuhara from 218.124.14.105 port 5023
+Parsed fields:
+Field	Value
+Host	server
+Process	sshd
+Source user	nuhara
+Source IP	218.124.14.105
+Source port	5023
+Parsing makes raw log data easier to interpret.
+Advantages of SIEM
+1. Event visibility: Access activity across many systems, including real-time events.
+2. Monitoring and alerting: Continuously analyzes data against detection rules and alerts analysts to suspicious activity.
+3. Log storage: Retains historical data for future investigations, according to organizational retention policies.
+Examples of SIEM tools
+- AlienVault OSSIM
+- Chronicle
+- Elastic
+- Exabeam
+- IBM QRadar
+- LogRhythm
+- Splunk
+
+5. SOAR — Security Orchestration, Automation, and Response
+Definition: A collection of applications, tools, and workflows that uses automation to respond to security events.
+- SIEM: Collects, analyzes, and reports security events, helping analysts identify threats.
+- SOAR: Automates parts of security analysis and response and helps track and manage cases.
+- A case can contain multiple related incidents.
+6. Final revision — the key differences
+Tool/concept	Main purpose
+Documentation	Records instructions, evidence, and findings
+IDS	Detects and alerts
+IPS	Detects, alerts, and blocks or stops activity
+EDR	Monitors endpoint behavior and can respond automatically
+SIEM	Centralizes and analyzes logs to generate alerts
+SOAR	Automates workflows and security responses
