@@ -1,0 +1,143 @@
+1. Incident response fundamentals
+Incident response is the process of detecting, investigating, containing and recovering from security incidents.
+NIST Cybersecurity Framework (CSF)
+The five core functions are:
+1. Identify — Understand assets, risks and threats.
+2. Protect — Implement safeguards.
+3. Detect — Identify potential security incidents.
+4. Respond — Take action to manage incidents.
+5. Recover — Restore affected systems and operations.
+This course focuses mainly on Detect, Respond and Recover.
+NIST Incident Response Lifecycle
+1. Preparation
+Plans, tools, teams and procedures
+
+2. Detection and Analysis
+Identify, investigate and understand the incident
+
+3. Containment, Eradication and Recovery
+Limit damage, remove the threat and restore operations
+
+4. Post-incident Activity
+Document findings and improve future responses
+
+This is a cycle, not a strictly linear process. Phases can overlap as investigators discover new information.
+
+2. Events vs. security incidents
+Event: An observable occurrence on a network, system or device.
+Security incident: An event that actually or imminently threatens confidentiality, integrity or availability, or violates security policies or applicable requirements.
+Remember: All security incidents are events, but not all events are security incidents.
+Example:
+- A user forgets their password and legitimately resets it → Event.
+- An attacker unlawfully takes over the user's account and changes the password → Event and security incident.
+CIA triad
+- Confidentiality: Information is accessible only to authorized people.
+- Integrity: Information remains accurate and is not improperly modified.
+- Availability: Systems and information remain accessible when needed.
+An incident may threaten one or more of these properties.
+3. Investigating incidents: the five Ws
+An analyst investigates the following:
+Question	What it establishes
+Who?	Who triggered or was involved in the incident?
+What?	What happened?
+When?	When did it occur?
+Where?	Where did it occur?
+Why?	Why did it happen?
+These details help analysts investigate incidents, document evidence and prepare a final report.
+Incident handler's journal
+A documentation tool used to record and reference incident details throughout an investigation.
+Its purpose is to keep findings organized and make it easier to review what happened.
+4. CSIRT — Computer Security Incident Response Team
+A CSIRT is a specialized group of security professionals trained in incident management and response.
+Other names may include:
+- Incident Handling Team (IHT)
+- Security Incident Response Team (SIRT)
+A CSIRT can be a dedicated team or a task force assembled when needed. Its structure depends on the organization.
+Command, control and communication
+- Command: Leadership and direction for the response.
+- Control: Managing technical work, resources and task assignments.
+- Communication: Keeping stakeholders informed.
+Three key CSIRT roles
+
+1. Security analyst
+- Monitors the environment for threats.
+- Analyzes and triages alerts.
+- Investigates root causes.
+- Resolves or escalates alerts.
+
+
+
+
+2. Technical lead
+- Manages technical incident response.
+- Determines root causes.
+- Develops and implements containment, eradication and recovery strategies.
+- Coordinates technical work with business priorities.
+
+
+
+
+3. Incident coordinator
+- Coordinates across departments.
+- Keeps communication clear.
+- Ensures relevant personnel receive incident updates.
+- Tracks response activities and process compliance.
+
+
+
+Other contributors may include HR, legal, IT, management, public relations and communications specialists.
+5. SOC — Security Operations Center
+A SOC is an organizational unit dedicated to monitoring networks, systems and devices for security threats and attacks.
+SOC teams perform defensive, or blue-team, activities such as monitoring, analysis and incident response.
+SOC hierarchy
+SOC Manager
+Hiring, training, performance, reporting and stakeholder communication
+
+
+Tier 3 — SOC Lead
+Team operations, advanced detection and analysis, malware and forensics work
+
+
+Tier 2 — SOC Analyst
+Investigates escalated alerts, refines security tools and reports to the lead
+
+
+Tier 1 — SOC Analyst
+Monitors and prioritizes alerts, manages tickets and escalates issues
+
+
+Specialized SOC roles
+- Forensic investigator: Collects, preserves and analyzes digital evidence to determine what happened.
+- Threat hunter: Proactively searches for advanced or previously undetected threats using threat intelligence and analysis.
+Note: The exact responsibilities and hierarchy can vary between organizations.
+6. Incident response plans
+An incident response plan is a document outlining the procedures to follow during each stage of incident response.
+Common elements include:
+1. Incident response procedures: Step-by-step response instructions.
+2. System information: Network diagrams, data-flow diagrams, logging information and asset inventories.
+3. Supporting documents: Contact lists, forms and templates.
+Testing and improving the plan
+Organizations should regularly review and test incident response procedures using exercises such as:
+- Tabletop exercises: Team members discuss how they would respond to a simulated incident.
+- Simulations: Teams practise responding to a simulated scenario.
+These exercises help identify gaps, familiarize team members with procedures and improve response readiness. Some organizations may also be required to conduct exercises for regulatory reasons.
+
+7. Quick revision — memorize these distinctions
+Concept	Remember
+NIST CSF	Identify, Protect, Detect, Respond, Recover
+Incident response lifecycle	Preparation → Detection and Analysis → Containment, Eradication and Recovery → Post-incident Activity
+Event vs. incident	Every incident is an event, but not every event is an incident
+Five Ws	Who, What, When, Where, Why
+CSIRT	Specialized incident management and response team
+Command	Leadership and direction
+Control	Technical coordination, resources and tasks
+Communication	Stakeholder updates
+Security analyst	Monitors, triages, investigates and escalates
+Technical lead	Manages technical response and remediation
+Incident coordinator	Coordinates people and communication
+SOC	Monitors and defends systems against threats
+L1	Monitor, prioritize, ticket and escalate
+L2	Investigate escalated alerts and refine tools
+L3	Lead team operations and advanced detection
+SOC manager	People, performance and reporting
+Incident response plan	Procedures, system information and supporting documents
