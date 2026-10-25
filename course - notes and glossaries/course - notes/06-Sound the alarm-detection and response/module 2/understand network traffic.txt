@@ -1,0 +1,97 @@
+Network Analysis: Traffic Monitoring & Data Exfiltration
+1. Network traffic fundamentals
+- Network traffic: The amount of data moving across a network. It can also refer to the types of data transferred, such as HTTP traffic.
+- Network data: The actual data transmitted between devices on a network.
+- Network traffic flow: The movement of network communications, including information about packets, protocols, and ports.
+- Network monitoring: Collecting and analyzing network activity to identify suspicious behavior and potential security incidents.
+- Baseline: A reference point representing normal or expected behavior for systems, devices, or networks.
+- Indicator of Compromise (IoC): Observable evidence suggesting a potential security incident.
+Key principle: Understand what normal network behavior looks like so you can identify abnormal behavior.
+2. What should security analysts monitor?
+A. Flow analysis
+Examines the movement of network communications, including packets, protocols, ports, and connections.
+- Monitor approved ports and protocols.
+- Investigate mismatches between ports and protocols.
+- Watch for suspicious Command and Control (C2) communications, where attackers communicate with compromised systems.
+Example: HTTPS commonly uses port 443, but HTTPS traffic using port 8088 may warrant investigation if that connection is unexpected.
+
+B. Packet payload information
+The payload is the actual data carried by a packet.
+
+Analysts may inspect payloads for unusual transfers or sensitive data leaving the network. Payloads are often encrypted, which limits what can be read directly.
+
+C. Temporal patterns
+Examines the timing of network activity.
+
+Example: Large data transfers occurring outside an organization's normal business hours may be considered off-baseline and require investigation.
+
+3. Network monitoring tools
+Tool	Purpose	Examples
+IDS (Intrusion Detection System)	Detects suspicious activity and generates alerts.	Snort, Suricata
+Network protocol analyzer / packet sniffer	Captures and analyzes network traffic in detail.	Wireshark, tcpdump
+SIEM	Centralizes logs, analyzes events, and alerts on suspicious activity.	Splunk, Elastic
+
+Monitoring can be performed manually or automated through security tools.
+4. SOC vs NOC
+SOC	NOC
+Security Operations Center	Network Operations Center
+Focuses on security threats and incidents.	Focuses on network performance and availability.
+Detects, investigates, and responds to security incidents.	Responds to network disruptions, outages, and performance issues.
+
+Quick memory tip: SOC = security. NOC = network uptime and performance.
+5. Data exfiltration
+Definition: The unauthorized transmission of data from a system or network.
+
+Attackers may steal usernames, passwords, financial records, personally identifiable information (PII), or intellectual property.
+Typical data exfiltration attack sequence
+1. Initial access
+
+Gain access, for example through phishing.
+
+2. Lateral movement
+
+Explore the network and move between systems.
+
+3. Identify valuable assets
+
+Locate sensitive files, repositories, or records.
+
+4. Collect and prepare data
+
+Gather and package data, potentially reducing its size.
+
+5. Exfiltrate data
+
+Transmit stolen data outside the organization.
+
+
+Indicators of possible data exfiltration
+- Large internal file transfers.
+- Large or unexpected external uploads.
+- Unexpected file writes.
+- Unusual data transfers outside normal working hours.
+- Multiple logins from IP addresses outside the organization's expected network.
+These are indicators to investigate, not automatic proof of an attack.
+6. Defending against data exfiltration
+1. Prevent initial access: Use controls such as multi-factor authentication (MFA) to strengthen account security.
+2. Monitor network activity: Look for unusual logins, transfers, and deviations from established baselines.
+3. Maintain an asset inventory: Catalog organizational assets and apply appropriate security controls.
+4. Detect suspicious data collection: Monitor large internal transfers, external uploads, and unexpected file writes.
+5. Investigate alerts: Use SIEM and other security tools to examine suspicious activity.
+6. Stop ongoing attacks: For example, block attacker-associated IP addresses using firewall rules when appropriate.
+
+Quick revision sheet
+Term	Remember
+Network traffic	Amount of data moving across a network
+Network data	Data transmitted between devices
+Baseline	Expected normal behavior
+IoC	Observable evidence of a possible compromise
+Flow analysis	Examines packets, protocols, ports, and communication flows
+Payload	Actual data carried in a packet
+C2	Attacker communication with compromised systems
+Temporal analysis	Examines when network activity occurs
+Packet sniffer	Captures and analyzes network traffic
+Data exfiltration	Unauthorized data transfer out of a system
+Lateral movement	Moving between systems within a network
+SOC	Security monitoring and incident response
+NOC	Network performance, availability, and uptime
