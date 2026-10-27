@@ -1,0 +1,156 @@
+Packet Captures, Packet Analysis & IP Headers
+These notes cover your lesson on packet captures, packet sniffers, IPv4 headers, and the fundamentals of packet analysis for security investigations.
+1. Packets and their components
+A packet is a basic unit of information transmitted between devices over a network. Data, such as an image uploaded to a website, is divided into packets and reassembled at its destination.
+
+A packet has three main components:
+1. Header
+Contains delivery and control information, such as source and destination IP addresses, protocol, packet length, and other fields.
+2. Payload
+Contains the actual data being delivered, such as part of an image or message.
+3. Footer (Trailer)
+May contain error-checking information. Ethernet uses a trailer for this purpose; most protocols, including IP, do not use footers.
+
+Memory trick: Header = delivery details; payload = actual data; footer = possible error checking.
+2. Packet sniffers and packet captures
+- Network protocol analyzer / packet sniffer: A tool that captures and analyzes network traffic.
+- Packet capture (PCAP or p-cap): A file containing captured network packets.
+- Packet sniffing: The practice of capturing and inspecting network packets.
+Common tools
+Tool	Description
+Wireshark	GUI-based tool for visually inspecting packets and applying display filters.
+tcpdump	Command-line tool for capturing and analyzing network traffic.
+TShark	Command-line version of Wireshark's packet analysis capabilities.
+
+Packet analyzers are useful for investigating suspicious activity, troubleshooting network performance, and collecting network statistics. They can also be misused to capture sensitive information.
+How packet analyzers work
+1. A network interface card (NIC) receives network traffic.
+2. The analyzer captures accessible packets, often as raw binary data.
+3. The tool decodes the data into a human-readable format.
+4. The analyst examines packets and filters the data relevant to the investigation.
+Promiscuous mode: Allows a network interface to capture visible packets beyond those addressed specifically to its own interface.
+
+Monitor mode: Commonly refers to a wireless interface mode that captures visible wireless traffic.
+
+Neither mode automatically provides access to all packets across an entire network; the analyzer must be positioned where the relevant traffic is accessible.
+
+Only capture traffic you own or have explicit permission to analyze.
+Packet capture formats and libraries
+Name	Key point
+Libpcap	Packet-capture library commonly used on Unix-like systems; tcpdump uses it.
+WinPcap	Older packet-capture library for Windows.
+Npcap	Packet-capture library commonly used on Windows.
+PCAPng	Next Generation Packet Capture format that supports packet data and additional capture information.
+
+
+3. Internet Protocol (IP) headers
+The Internet Protocol handles addressing and routing packets between devices. The two versions are IPv4 and IPv6.
+IPv4 header — 13 fields
+Field	Purpose
+1. Version	Identifies the IP version.
+2. IHL	Internet Header Length; specifies the IPv4 header length, including options.
+3. ToS	Type of Service; provides information about packet priority and service handling.
+4. Total Length	Length of the entire IP packet, including header and data.
+5. Identification	Identifies fragments belonging to the original packet.
+6. Flags	Provides fragmentation-related information.
+7. Fragment Offset	Indicates a fragment's position in the original packet.
+8. TTL	Time to Live; limits how long a packet can be forwarded through a network.
+9. Protocol	Identifies the protocol carried in the IP packet, such as TCP.
+10. Header Checksum	Checks for errors in the IPv4 header.
+11. Source Address	IP address of the sender.
+12. Destination Address	IP address of the receiver.
+13. Options	Optional field for additional information.
+
+Important distinctions:
+- TTL prevents packets from circulating indefinitely.
+- Identification, Flags and Fragment Offset help with fragmentation and reassembly.
+- Total Length includes the header and data; IHL describes the header length.
+- Source and Destination Addresses help identify where packets originate and where they are going.
+IPv6 header — 8 fields
+Field	Purpose
+1. Version	Identifies IPv6.
+2. Traffic Class	Provides packet priority or traffic-class information.
+3. Flow Label	Identifies packets belonging to a flow.
+4. Payload Length	Specifies the length of the data portion.
+5. Next Header	Identifies the following header, such as TCP.
+6. Hop Limit	Limits how long a packet can travel; similar to IPv4 TTL.
+7. Source Address	Sender's IP address.
+8. Destination Address	Receiver's IP address.
+
+Quick comparison: IPv4 uses TTL, while IPv6 uses Hop Limit. IPv4's ToS is broadly comparable to IPv6's Traffic Class.
+
+4. Packet analysis with Wireshark
+Packet captures can contain thousands of packets. Analysts use filters to narrow down the traffic relevant to an investigation.
+Wireshark packet-list columns
+Column	Meaning
+No.	Packet's index number in the capture.
+Time	Timestamp of the packet.
+Source	Source IP address.
+Destination	Destination IP address.
+Protocol	Protocol identified in the packet.
+Length	Packet or frame length displayed by Wireshark.
+Info	Summary of packet details.
+
+Selecting a packet reveals detailed protocol information. Common sections include:
+- Frame: Overall captured frame details, length, and arrival time.
+- Ethernet II: Source and destination MAC addresses.
+- Internet Protocol Version 4: IP addresses, TTL, and protocol.
+- Transmission Control Protocol: TCP ports, sequence numbers, and flags.
+- Domain Name System: DNS queries and answers, when applicable.
+Essential Wireshark display filters
+These are display filters entered into Wireshark's filter toolbar.
+What you want to find	Filter
+DNS packets	dns
+HTTP packets	http
+SSH packets	ssh
+ICMP packets	icmp
+Traffic involving an IP address	ip.addr == 192.168.1.10
+Packets from a source IP	ip.src == 192.168.1.10
+Packets to a destination IP	ip.dst == 192.168.1.10
+Traffic involving a MAC address	eth.addr == 00:11:22:33:44:55
+UDP port 53	udp.port == 53
+TCP port 80	tcp.port == 80
+TCP packets containing text	tcp contains "curl"
+
+Replace example IP addresses, MAC addresses, ports, and strings with the values relevant to your investigation.
+Comparison operators
+Operator	Meaning
+== or eq	Equal
+!= or ne	Not equal
+> or gt	Greater than
+< or lt	Less than
+>= or ge	Greater than or equal to
+<= or le	Less than or equal to
+
+You can combine filters with Boolean operators such as and and or, and use parentheses to group conditions.
+
+Two additional operators:
+- contains — searches for a specified string in packet data.
+- matches — filters using a regular expression (regex).
+Follow streams
+Wireshark's Follow Stream feature reconstructs a communication conversation so it is easier to read and understand.
+
+For example, following an HTTP stream can help you examine the request and response messages exchanged between devices.
+
+5. Practical lab takeaways
+Your course's Wireshark lab demonstrates how to:
+1. Open a saved .pcap file.
+2. Understand the packet-list columns and protocol coloring.
+3. Filter packets using IP and MAC addresses.
+4. Inspect Frame, Ethernet II, IPv4, and TCP details.
+5. Filter DNS traffic using udp.port == 53 and examine queries and answers.
+6. Filter HTTP traffic using tcp.port == 80.
+7. Search packet data for a string using tcp contains "curl".
+These skills help you investigate network communications without having to inspect every packet manually.
+
+Quick revision: 10 things to remember
+1. Packet = basic unit of network data.
+2. Header = routing and control information.
+3. Payload = actual transmitted data.
+4. Footer/trailer = may provide error-checking information.
+5. Packet sniffer = captures and analyzes network traffic.
+6. PCAP = file containing captured packets.
+7. IPv4 has 13 header fields; IPv6 has 8.
+8. TTL and Hop Limit restrict how long packets travel.
+9. Wireshark display filters isolate relevant packets.
+10. Follow Stream reconstructs a conversation for easier analysis.
