@@ -15,30 +15,30 @@ Examines the movement of network communications, including packets, protocols, p
 - Watch for suspicious Command and Control (C2) communications, where attackers communicate with compromised systems.
 Example: HTTPS commonly uses port 443, but HTTPS traffic using port 8088 may warrant investigation if that connection is unexpected.
 
-B. Packet payload information
+B.  Packet payload information
 The payload is the actual data carried by a packet.
 
 Analysts may inspect payloads for unusual transfers or sensitive data leaving the network. Payloads are often encrypted, which limits what can be read directly.
 
-C. Temporal patterns
+C.  Temporal patterns
 Examines the timing of network activity.
 
 Example: Large data transfers occurring outside an organization's normal business hours may be considered off-baseline and require investigation.
 
-3. Network monitoring tools
+3.  Network monitoring tools
 Tool	Purpose	Examples
 IDS (Intrusion Detection System)	Detects suspicious activity and generates alerts.	Snort, Suricata
 Network protocol analyzer / packet sniffer	Captures and analyzes network traffic in detail.	Wireshark, tcpdump
 SIEM	Centralizes logs, analyzes events, and alerts on suspicious activity.	Splunk, Elastic
 
 Monitoring can be performed manually or automated through security tools.
-4. SOC vs NOC
+4.  SOC vs NOC
 SOC	NOC
 Security Operations Center	Network Operations Center
 Focuses on security threats and incidents.	Focuses on network performance and availability.
 Detects, investigates, and responds to security incidents.	Responds to network disruptions, outages, and performance issues.
 
-Quick memory tip: SOC = security. NOC = network uptime and performance.
+ Quick memory tip: SOC = security. NOC = network uptime and performance.
 5. Data exfiltration
 Definition: The unauthorized transmission of data from a system or network.
 
