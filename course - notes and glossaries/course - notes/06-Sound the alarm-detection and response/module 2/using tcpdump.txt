@@ -1,0 +1,186 @@
+1. What is tcpdump?
+Tcpdump is a command-line network protocol analyzer (packet sniffer) used to capture, filter, and inspect network traffic.
+- CLI: Interact with the computer using text commands.
+- Packet sniffing: Capturing and inspecting network packets.
+- PCAP: A file format used to save captured packets for later analysis.
+- Common use cases: Troubleshooting network issues, investigating suspicious traffic, and identifying possible malicious activity.
+- Permissions: Usually requires sudo or root privileges.
+- Encryption: Capturing encrypted traffic does not automatically reveal its readable contents.
+2. Essential tcpdump commands
+Command	Purpose
+sudo tcpdump -D	List available capture interfaces
+sudo ifconfig	View network interfaces and their details
+sudo tcpdump -i any	Capture traffic on all available interfaces
+sudo tcpdump -i eth0	Capture traffic on interface eth0
+sudo tcpdump -i any -v -c 1	Capture one packet with detailed output
+sudo tcpdump -i eth0 -c 5	Capture five packets from eth0
+sudo tcpdump -i any -w capture.pcap	Save captured packets to a file
+sudo tcpdump -r capture.pcap	Read packets from a saved file
+sudo tcpdump -r capture.pcap -v	Read a capture file with verbose details
+sudo tcpdump -r capture.pcap -X	Display packet contents in hexadecimal and ASCII
+
+Remember: Identify the interface first, capture traffic, save it if needed, and then read or filter it for analysis.
+3. Important options (flags)
+-i
+
+Interface
+
+Specifies where tcpdump captures traffic, such as eth0 or any.
+
+
+
+-c
+
+Count
+
+Limits how many packets are captured. Example: -c 5.
+
+
+
+-v
+
+Verbose
+
+Shows additional packet details. -vv and -vvv increase the verbosity.
+
+
+
+-w
+
+Write
+
+Saves captured packets to a PCAP file.
+
+
+
+-r
+
+Read
+
+Reads a previously saved PCAP file.
+
+
+
+-n
+
+No hostname resolution
+
+Keeps IP addresses numeric instead of resolving them to hostnames.
+
+
+
+-nn
+
+No hostname or port resolution
+
+Keeps addresses and port numbers numeric rather than translating them into names.
+
+
+
+-X
+
+Hexadecimal + ASCII
+
+Displays packet contents in hexadecimal and ASCII, useful for inspecting patterns or readable text.
+
+
+
+Security tip: Using -nn avoids DNS lookups and service-name resolution. This can reduce unnecessary lookups during investigations and keeps output predictable. Option names are case-sensitive: -w and -W are different.
+4. Filtering packets with expressions
+Expressions help narrow down traffic to what you need.
+Expression	What it filters
+ip	IPv4 traffic
+ip6	IPv6 traffic
+port 80	Traffic involving port 80
+port 443	Traffic involving port 443
+host 192.168.1.10	Traffic to or from a specified host
+src host 192.168.1.10	Traffic originating from a specified host
+dst host 192.168.1.10	Traffic going to a specified host
+tcp	TCP traffic
+udp	UDP traffic
+
+Combine expressions with Boolean operators:
+- and — both conditions must match.
+- or — either condition can match.
+- not — exclude matching traffic.
+- Parentheses — group conditions to control filtering order.
+Examples:
+# Capture IPv4 traffic involving port 80
+sudo tcpdump -i any -n 'ip and port 80'
+
+# Capture traffic involving port 80 OR 443
+sudo tcpdump -i any -nn '(port 80 or port 443)'
+
+# Capture only IPv6 traffic
+sudo tcpdump -i any ip6
+
+
+Quotes are helpful when expressions contain multiple conditions.
+5. Understanding tcpdump output
+Example:
+10:57:33.427749 IP (tos 0x0, ttl 64, id 35057,
+offset 0, flags [DF], proto TCP (6), length 134)
+172.17.0.2:5000 > 192.168.1.10:59788:
+Flags [P.], seq 100:182, ack 200, length 82
+
+
+Illustrative output only; addresses and numbers will vary.
+Field	Meaning
+Timestamp	When the packet was observed
+IP	IPv4 packet
+tos	Type of Service field
+ttl	Time to Live; limits how far the packet can travel
+id	Identification field used in fragmentation/reassembly
+offset	Fragment offset
+flags [DF]	Don't Fragment flag
+proto TCP (6)	TCP protocol; IP protocol number 6
+length	Total IP packet length in bytes
+172.17.0.2:5000	Source IP address and port
+>	Direction from source to destination
+Flags [P.]	TCP Push and ACK flags
+seq / ack	TCP sequence and acknowledgment information
+cksum	Checksum used for error detection
+win	TCP window size
+options	Additional TCP header information
+
+Important distinction: The length in the IP header and the TCP length later in the output refer to different things. The IP length describes the complete IP packet; the TCP length shown in the TCP section describes the TCP data payload.
+6. Practical workflow from the lab
+These are the main steps from the tcpdump lab:
+1. Identify interfaces
+   
+   bash     sudo ifconfig     sudo tcpdump -D     
+   
+   eth0 is an example Ethernet interface; lo is the loopback interface.
+2. Inspect live traffic
+   
+   bash     sudo tcpdump -i eth0 -v -c 5     
+   
+   Captures five packets and displays detailed information.
+3. Capture selected traffic to a file
+   
+   bash     sudo tcpdump -i eth0 -nn -c 9 port 80 -w capture.pcap     
+   
+   Captures nine packets involving port 80 and saves them. The lab adds & to run the command in the background.
+4. Generate traffic
+   
+   bash     curl opensource.google.com     
+   
+   In the lab, this generates web traffic to be captured. Actual HTTP versus HTTPS traffic depends on the URL and connection behavior.
+5. Read and inspect the capture
+   
+   bash     sudo tcpdump -nn -r capture.pcap -v     sudo tcpdump -nn -r capture.pcap -X     
+   
+   The first displays detailed packet headers; the second displays packet contents in hexadecimal and ASCII.
+7. Quick revision: memorize these
+- -D = discover available interfaces.
+- -i = interface to monitor.
+- -c = packet count.
+- -v = verbose packet details.
+- -w = write/save packets.
+- -r = read a capture file.
+- -nn = do not resolve hostnames or ports.
+- -X = hexadecimal and ASCII output.
+- Expressions = filter traffic by host, port, or protocol.
+- PCAP = saved packet capture for later analysis.
+- Timestamp + source/destination + ports = establish when traffic occurred and who communicated with whom.
+- TCP flags and sequence numbers = help analyze connection behavior and data flow.
