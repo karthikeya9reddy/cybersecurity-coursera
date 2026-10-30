@@ -1,0 +1,331 @@
+Course 6 — Detection and Analysis: Quick Revision Notes
+1. Incident response lifecycle
+The lesson introduces the process of handling a security incident from detection to recovery.
+
+Event vs Incident
+- Event: Any observable activity in a system, such as a website visit or password reset.
+- Incident: An event, or series of events, that compromises or threatens security.
+Event
+Normal system activity occurs.
+
+Detection
+IDS/SIEM identifies suspicious activity and generates an alert.
+
+Analysis
+Analyst investigates and validates the alert.
+
+Incident confirmed
+Evidence indicates an actual security incident.
+
+This is the detection and analysis portion covered in your material, not the entire lifecycle.
+
+Remember: All incidents are events, but not all events are incidents.
+Challenges with detection
+- Detection tools can only monitor what they've been configured to monitor.
+- Some attacks evade automated detection.
+- Organizations may have limited resources.
+- High alert volumes can overwhelm analysts.
+- Poorly configured rules can generate false positives.
+A security analyst must investigate alerts rather than automatically assuming every alert is a real attack.
+
+2. Methods of detection
+Your reading introduces three important methods.
+A. Threat hunting
+Threat hunting = proactively searching for hidden threats.
+
+Instead of waiting for an IDS or SIEM alert, threat hunters actively investigate systems and networks to find malicious activity that automated tools might have missed.
+
+Example:
+
+Traditional detection: SIEM generates an alert about suspicious network traffic.
+
+Threat hunting: An analyst proactively examines processes, network connections and unusual behavior to discover an attacker who hasn't triggered an alert.
+
+Threat hunters use:
+- Threat intelligence
+- Indicators of compromise (IoCs)
+- Indicators of attack (IoAs)
+- Machine learning and human analysis
+One example is fileless malware, which may operate in memory rather than relying on traditional files, making it harder for signature-based detection to identify.
+B. Threat intelligence
+Threat intelligence = evidence-based information about existing or emerging threats.
+
+It gives security analysts context about attackers, their techniques and their infrastructure.
+
+Sources include:
+Source	Information provided
+Industry reports	Attacker tactics, techniques and procedures
+Government advisories	Information about emerging threats and attacks
+Threat data feeds	IP addresses, domains, file hashes and other indicators
+
+APT — Advanced Persistent Threat
+
+An APT involves a threat actor maintaining unauthorized access to a system for an extended period.
+
+TIP — Threat Intelligence Platform
+
+A TIP collects, centralizes and analyzes threat intelligence from multiple sources.
+
+Its purpose is to help organizations identify relevant threats and prioritize their response.
+
+Important: Threat intelligence feeds should add context to detections, not blindly determine whether something is malicious.
+C. Cyber deception
+Cyber deception = deliberately creating decoys to attract and detect attackers.
+
+The main example in your reading is a honeypot.
+
+
+
+
+
+
+
+en.rattibha.com
+
+
+Honeypot: A decoy system or resource designed to attract potential attackers.
+
+Example:
+
+An organization creates a fake file named Client_Credit_Card_Information_2022.
+
+An attacker accesses it, believing it contains valuable information. The security team receives an alert and can investigate the activity.
+
+Remember: A honeypot is not a normal production system. It is a decoy used for defensive detection.
+
+3. Monitoring CI/CD pipelines for threats
+Remember our earlier discussion about CI/CD?
+
+Now the course explains how attackers might compromise a software development pipeline and how security teams detect suspicious activity.
+
+A compromised CI/CD pipeline could allow an attacker to:
+- Inject malicious code.
+- Steal secrets and credentials.
+- Disrupt software releases.
+- Modify software before deployment.
+Common CI/CD indicators of compromise
+IoC category	Suspicious activity
+Unauthorized code changes	Unexpected developers making changes
+Suspicious deployments	Production deployments at unusual times or from unapproved branches
+Compromised dependencies	Unexpected or vulnerable third-party packages
+Unusual pipeline execution	Unexpected failures, delays or changed execution steps
+Secrets exposure	Attempts to access private keys or credentials
+
+How organizations detect these threats
+1. Pipeline execution logs: Identify unusual build duration, failures and execution order.
+2. Code commit logs: Track who changed code, when and what was changed.
+3. Access logs: Identify suspicious logins and permission changes.
+4. Deployment logs: Identify unexpected deployment activity.
+5. SIEM integration: Correlate CI/CD logs with other security events and generate alerts.
+6. Real-time alerting: Notify analysts about suspicious activity.
+7. Continuous vulnerability scanning: Identify vulnerable CI/CD tools, plugins and containers.
+Important distinction: Performance issues such as unexpected slowdowns can be indicators of attack (IoAs), but they are not proof of compromise. Investigate them for possible underlying IoCs.
+
+4. IoC vs IoA — very important!
+This is one of the most important concepts in this section.
+IoC — Indicator of Compromise
+An IoC is observable evidence suggesting that a security incident may have occurred.
+
+Examples:
+- A suspicious file hash.
+- A malicious IP address.
+- A suspicious domain.
+- An unexpected file created by malware.
+Think: evidence that may indicate an attack has happened.
+IoA — Indicator of Attack
+An IoA is observed activity or behavior that indicates an attack may be happening.
+
+Examples:
+- A process making suspicious network connections.
+- Unusual attempts to access sensitive files.
+- Suspicious sequences of authentication attempts.
+Think: attacker behavior that may reveal an ongoing attack.
+IoC	IoA
+Evidence or artifact	Behavior or activity
+Helps identify signs of compromise	Helps identify attack activity
+Example: malicious file hash	Example: suspicious process behavior
+
+Easy example
+
+You observe a suspicious process connecting to an unknown IP address.
+- The process's behavior and network connection are an IoA.
+- The process filename and destination IP are related IoCs.
+
+Important: An IoC doesn't automatically confirm an incident. It could also result from human error, system malfunction or other non-malicious activity.
+5. Pyramid of Pain
+
+
+
+
+
+
+
+picussecurity.com
+
+
+Created by security researcher David J. Bianco, the Pyramid of Pain explains how difficult it becomes for attackers when defenders detect and block different types of indicators.
+
+There are seven levels, from easiest for attackers to work around to hardest.
+Level	Indicator	Example
+1. Lowest	Hash values	Hash of a malicious file
+2.	IP addresses	Malicious server IP
+3.	Domain names	Malicious website domain
+4.	Network artifacts	Suspicious User-Agent string
+5.	Host artifacts	Malicious file created on a computer
+6.	Tools	Specific software used by attackers
+7. Highest	TTPs	Attacker's tactics, techniques and procedures
+
+Why is it called the Pyramid of Pain?
+Imagine blocking an attacker's IP address.
+
+They can simply switch to another IP address.
+
+But if you identify their actual techniques and procedures, changing their infrastructure won't necessarily help them. They may have to change how they conduct the attack.
+
+Therefore:
+- Bottom: Easier for attackers to change or replace.
+- Top: More difficult and costly for attackers to change.
+Remember
+ TTPs are at the top because they are the hardest for attackers to change.
+
+6. Adding context to investigations
+This section explains why investigating just one IoC is not enough.
+
+Imagine your SIEM generates an alert about a suspicious IP address.
+
+You block the IP, but does that mean you understand the entire attack?
+
+No.
+
+The attacker might use another IP address and continue.
+
+Instead, analysts gather additional evidence:
+- What processes communicated with that IP?
+- Which domains were contacted?
+- Were suspicious files created?
+- Were there unusual login attempts?
+- Did the system communicate with other suspicious destinations?
+This is called adding context to an investigation.
+
+The objective is to understand the bigger picture rather than focusing on one isolated indicator.
+7. Crowdsourcing and threat intelligence sharing
+Crowdsourcing means gathering information through contributions from multiple people or organizations.
+
+In cybersecurity, organizations share threat intelligence so that other organizations can defend themselves against similar attacks.
+
+For example:
+1. Company A detects a malicious file.
+2. Its security team investigates the file.
+3. The team shares relevant threat information through a platform such as VirusTotal.
+4. Other security professionals can use that information to investigate similar threats.
+ISAC
+Information Sharing and Analysis Center (ISAC)
+
+ISACs collect and share threat intelligence within specific industries.
+
+Examples include:
+- Healthcare.
+- Energy.
+- Financial services.
+This allows organizations facing similar threats to share information and improve their defenses.
+OSINT connection
+Remember our earlier discussion about OSINT?
+
+Your course connects OSINT with threat intelligence.
+
+OSINT = collecting and analyzing publicly available information to generate useful intelligence.
+
+Security analysts can use OSINT to research:
+- Threat actors.
+- Malicious domains and IP addresses.
+- Vulnerabilities.
+- Emerging threats.
+
+8. VirusTotal — investigative tool
+
+
+
+
+
+
+
+
+
+VirusTotal
+
+Website: virustotal.com
+
+
+VirusTotal allows users to investigate suspicious:
+- Files.
+- File hashes.
+- Domains.
+- URLs.
+- IP addresses.
+It gathers results from multiple security vendors and provides additional threat intelligence.
+Understand the six sections of a VirusTotal report
+
+
+
+
+
+
+
+medium.com
+
+
+Section	What it tells you
+Detection	Security vendors' detection verdicts
+Details	File hashes, type, size, headers and timestamps
+Relations	Related IPs, domains, URLs and files
+Behavior	Actions observed when an artifact runs in a controlled environment
+Community	Comments and insights from security researchers
+Vendors' ratio / Community score	Detection count and community feedback
+
+Example
+Suppose you find a suspicious file on a computer.
+
+You calculate its hash and search for it in VirusTotal.
+
+You might discover:
+- Multiple antivirus vendors flagging it.
+- Its file type and hashes.
+- Other domains it contacted.
+- Suspicious behavior observed in a sandbox.
+- Community comments about the file.
+This helps analysts add context to an investigation.
+Important privacy warning
+
+The course specifically warns that submitted data may be shared publicly with the VirusTotal community. Never upload confidential company files, personal information or private documents without appropriate authorization and approval.
+9. Other investigative tools
+Tool	Purpose
+Jotti	Scans suspicious files using multiple antivirus engines
+URLScan.io	Analyzes URLs and provides information about website behavior and resources
+MalwareBazaar	Repository containing malware samples for security research
+VirusTotal	Analyzes suspicious files, URLs, domains and IP addresses
+
+Useful links:
+- Jotti
+- URLScan.io
+- MalwareBazaar
+
+Final quick revision sheet
+This is what I want you to remember from the entire section.
+Concept	One-line revision
+Event	Any observable system activity
+Incident	An event that threatens or compromises security
+Detection	Discovering potential security events
+Analysis	Investigating and validating alerts
+Threat hunting	Proactively searching for hidden threats
+Threat intelligence	Evidence-based information about threats
+TIP	Centralizes and analyzes threat intelligence
+APT	Threat actor maintaining unauthorized access over an extended period
+Honeypot	Decoy designed to attract attackers
+IoC	Evidence suggesting a possible compromise
+IoA	Behavior indicating a possible attack
+Pyramid of Pain	Shows how difficult indicators are for attackers to change
+TTPs	Tactics, techniques and procedures
+Crowdsourcing	Sharing information through collective contributions
+ISAC	Industry-specific threat intelligence sharing organization
+OSINT	Intelligence gathered from public sources
+VirusTotal	Analyzes suspicious files and other indicators
