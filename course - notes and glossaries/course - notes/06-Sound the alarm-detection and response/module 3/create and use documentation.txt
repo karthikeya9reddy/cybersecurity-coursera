@@ -1,0 +1,365 @@
+Course 6 – Documentation and Playbooks
+1. What is documentation?
+Documentation is any form of recorded content used for a specific purpose.
+
+Security teams use documentation to:
+- Support security investigations.
+- Record actions taken during incidents.
+- Complete tasks and follow procedures.
+- Communicate findings to other team members.
+- Maintain evidence for audits and legal proceedings.
+For example, when a security alert is triggered, analysts need documentation explaining:
+- What the alert means.
+- What severity to assign.
+- What could cause a false positive.
+- How to verify whether the alert is legitimate.
+- What actions should be taken next.
+Without documentation, knowledge stays with individual analysts. This makes it difficult to train new employees or scale a SOC team.
+2. Three major benefits of documentation
+1
+Transparency
+
+Creates a record of what happened, who performed an action, and when it happened.
+
+2
+Standardization
+
+Establishes consistent guidelines, processes, and procedures that everyone follows.
+
+3
+Clarity
+
+Makes roles, responsibilities, instructions, and decisions easy to understand.
+
+A. Transparency
+Transparency means maintaining records so that relevant information about activities and decisions can be accessed.
+
+Why is it important?
+- Provides a record of actions taken during an incident.
+- Helps demonstrate compliance with regulations and internal processes.
+- Provides evidence for security insurance claims.
+- Supports regulatory investigations and legal proceedings.
+- Makes it easier to review previous actions.
+Example: An analyst documents why an alert was escalated, what evidence was collected, and who received that evidence.
+
+This creates an audit trail.
+
+Important term – Audit trail: A chronological record of activities and actions that allows an organization to review what happened.
+B. Standardization
+Standardization means establishing a common set of guidelines, standards, processes, and procedures that everyone follows.
+
+Benefits:
+- Maintains consistent quality of work.
+- Makes processes repeatable.
+- Supports continuous improvement.
+- Helps transfer knowledge between employees.
+- Makes onboarding new team members easier.
+Example: An organization creates an incident response plan that explains what employees must do during each stage of incident response.
+
+Everyone follows the same documented process instead of making up their own approach.
+
+Standards: References that inform how an organization should establish its policies.
+
+For example, NIST provides security frameworks that organizations can use to improve their security measures.
+C. Clarity
+Clarity means making information easy to understand so that people know what they need to do and why.
+
+Benefits:
+- Defines roles and responsibilities.
+- Explains how to complete tasks.
+- Reduces uncertainty and confusion.
+- Helps analysts understand why an alert was escalated or closed.
+Example: A playbook provides an analyst with step-by-step instructions for responding to a ransomware incident.
+
+Instead of guessing what to do, the analyst follows the documented instructions.
+
+3. Chain of custody
+Important concept
+Chain of custody is the process of documenting the possession and control of evidence throughout the incident lifecycle.
+
+In cybersecurity, evidence may include:
+- Hard drives.
+- Disk images.
+- Log files.
+- Network packet captures.
+- Other digital forensic data.
+The purpose is to maintain a record of who handled the evidence, when they handled it, where it went, and why it was transferred.
+Why is chain of custody important?
+During an investigation, evidence may eventually be used in legal proceedings.
+
+The security team must demonstrate that:
+- Evidence was properly collected.
+- Evidence was not improperly modified.
+- Every transfer was documented.
+- The evidence can be trusted.
+Example: Hard drive forensic investigation
+Imagine a compromised hard drive needs to be examined by a digital forensics team.
+
+
+
+
+
+
+
+ibcourses.ru
+
+
+The process described in your course:
+1. Aisha collects the hard drive. She ensures that it is write-protected so its data cannot be edited or erased.
+2. Aisha calculates a cryptographic hash. She calculates and records the hash of an image of the hard drive.
+3. Aisha transfers it to Colin. The transfer is recorded in the chain of custody form.
+4. Colin examines the evidence. He then sends it to Nav, and that transfer is recorded.
+5. Nav sends it to Arman. This transfer is also recorded.
+Every time evidence changes hands, the chain of custody form must be updated.
+What is the role of hashing?
+A cryptographic hash function produces a fixed-length value from data.
+
+In digital forensics, the original hash can be compared with a newly calculated hash to check whether the data has changed.
+
+For example:
+- Original hash: A1B2C3...
+- Later hash: A1B2C3... → matching values suggest the data has not changed.
+- Later hash: X9Y8Z7... → different values indicate that the data has changed.
+Illustrative hashes only.
+
+Remember: Hashing helps detect changes to evidence. It does not itself prevent someone from modifying the evidence. Write protection helps prevent modifications to the original storage device.
+What information does a chain of custody form contain?
+There is no single standard template, but common elements include:
+Element	Information recorded
+Evidence description	Details identifying the evidence
+Identification information	Location, hostname, MAC address, IP address, etc.
+Custody log	Names of people transferring and receiving evidence
+Date and time	When evidence was collected or transferred
+Purpose	Why the evidence was transferred
+
+Broken chain of custody
+Broken chain of custody occurs when there are inconsistencies in the collection or logging of evidence.
+
+Examples:
+- A transfer happened but was not recorded.
+- The receiving person's name is missing.
+- The date or time is incorrect.
+- There is an unexplained gap in evidence handling.
+Why is it dangerous?
+
+A broken chain of custody can affect the:
+- Integrity of evidence.
+- Reliability of evidence.
+- Accuracy of evidence.
+This can make the evidence difficult to trust or use in court.
+
+Quick example: If Aisha gives a hard drive to Colin but nobody records the transfer, there is a gap in the evidence's documented history.
+
+4. Documentation best practices
+Security professionals should follow three important practices when creating documentation.
+A. Know your audience
+Always consider who will read your document.
+
+Different audiences have different levels of technical knowledge.
+Audience	Documentation style
+SOC manager	Technical details, alerts, evidence, severity
+CEO	Business impact, risks, financial consequences
+Security analyst	Technical instructions and investigation steps
+
+Example:
+
+For a SOC manager:
+
+"An endpoint generated repeated outbound connections to a suspicious IP address."
+
+For a CEO:
+
+"A company computer may have communicated with a malicious server, potentially exposing company information."
+
+Same incident, but different explanations depending on the audience.
+B. Be concise
+Documentation should be clear and to the point.
+
+Why?
+- Long documents can discourage people from reading them.
+- Important information should be easy to find.
+- Readers should understand the purpose immediately.
+Example – Executive summary
+
+An executive summary presents the major facts and findings of an incident at the beginning of a final report.
+
+It should be brief and easy to skim.
+C. Update regularly
+Security threats and regulatory requirements constantly change.
+
+Documentation must be reviewed and updated regularly.
+
+Examples:
+- New vulnerabilities are discovered.
+- Attack techniques evolve.
+- Security procedures change.
+- Regulations may be updated.
+- Incident reviews may reveal gaps in existing procedures.
+Important: The post-incident phase is a good opportunity to identify improvements and update documentation.
+
+5. Security playbooks
+Important concept
+A playbook is a manual that provides detailed instructions about operational actions.
+
+In cybersecurity, playbooks guide security analysts through the steps required to respond to a particular incident.
+
+Think of a playbook as a travel itinerary.
+
+A travel itinerary tells you:
+- Where to go.
+- What to do.
+- When to do it.
+- How to move between destinations.
+Similarly, a security playbook tells an analyst:
+- What to investigate.
+- Which evidence to collect.
+- What actions to perform.
+- What to do next.
+Why are playbooks important?
+Incident response can be unpredictable and stressful. Security teams must respond quickly and effectively.
+
+Playbooks provide structure and order.
+
+Benefits:
+- Reduce guesswork and uncertainty.
+- Provide step-by-step instructions.
+- Help analysts act quickly.
+- Maintain consistency across the team.
+- Reduce mistakes during stressful situations.
+- Help analysts complete all required steps.
+Playbooks and checklists
+Playbooks may contain checklists to help analysts remember every required action.
+
+For example, a ransomware response checklist might include:
+- Identify affected systems.
+- Collect relevant logs and evidence.
+- Investigate suspicious activity.
+- Follow the organization's containment procedures.
+- Document actions taken.
+The specific actions depend on the organization's playbook.
+6. Example: DDoS incident response playbook
+Your course provides an example of a playbook for detecting and investigating a DDoS attack.
+
+
+
+
+
+
+
+incidentresponse.com
+
+
+The example follows these steps:
+1. Determine indicators of compromise (IoCs). Look for signs such as unknown incoming traffic.
+2. Collect logs. Gather relevant logs to understand what is happening.
+3. Analyze evidence. Examine the collected information to investigate the activity.
+This is a non-automated playbook because an analyst performs the steps manually.
+
+7. Three types of playbooks
+There are three types of playbooks based on how much automation is involved.
+1. Non-automated playbook
+Manual
+All steps are performed manually by a security analyst.
+
+Example: An analyst manually identifies suspicious traffic, collects logs, and investigates a DDoS attack.
+
+2. Automated playbook
+Automated
+Tasks in the incident response process are performed automatically by configured tools.
+
+Examples:
+- Categorizing incident severity.
+- Gathering evidence.
+Benefits:
+- Reduces manual work.
+- Can reduce time to resolution.
+SOAR and SIEM tools can be configured to automate playbooks.
+
+3. Semi-automated playbook
+Human + automation
+Combines automated tasks with actions performed by a human analyst.
+
+Example:
+- Automation gathers evidence and enriches an alert.
+- An analyst reviews the evidence and decides what action to take.
+Benefits:
+- Increases productivity.
+- Reduces repetitive work.
+- Saves analyst time.
+- Can decrease time to resolution.
+
+Comparison table
+Type	Who performs the work?	Example
+Non-automated	Human analyst	Manually collect and analyze logs
+Automated	Tools	Automatically categorize severity
+Semi-automated	Human + tools	Tool gathers evidence; analyst investigates
+
+Remember the difference:
+- Non-automated = Human does the work.
+- Automated = System does the configured work.
+- Semi-automated = Both work together.
+Role of SIEM and SOAR
+You have already studied SIEM in the detection and analysis section.
+- SIEM: Collects and analyzes security event data, helping analysts detect suspicious activity.
+- SOAR: Helps orchestrate and automate security operations and response tasks.
+Both can be configured to support automated playbooks.
+
+8. Maintaining and updating playbooks
+Playbooks should not be created once and forgotten.
+
+Security threats constantly evolve, so playbooks must be maintained and updated regularly.
+
+When should a security team update them?
+
+Post-incident activity phase is a particularly good time.
+
+After an incident is resolved, the team can review:
+- What worked well?
+- What did not work?
+- Were any steps missing?
+- Did analysts face confusion?
+- Could any tasks be automated?
+- Do existing procedures need changes?
+The team can then update its playbooks to improve future incident responses.
+
+9. Important terminology – quick reference
+Term	Meaning
+Documentation	Recorded content used for a specific purpose
+Transparency	Making actions and information traceable
+Standardization	Following common guidelines and procedures
+Clarity	Making information easy to understand
+Audit trail	Chronological record of actions
+Chain of custody	Documenting evidence possession and control
+Cryptographic hash	Value used to check data integrity
+Write protection	Preventing data from being modified
+Broken chain of custody	Inconsistencies or gaps in evidence records
+Playbook	Manual containing operational instructions
+Non-automated	Manual execution by analysts
+Automated	Execution of configured tasks by tools
+Semi-automated	Combination of human actions and automation
+
+10. Quick revision – remember these points
+Documentation benefits: 3
+1. Transparency – records and evidence.
+2. Standardization – consistent processes.
+3. Clarity – understandable roles and instructions.
+
+Chain of custody
+- Tracks evidence throughout its lifecycle.
+- Records who handled it, when, where, and why.
+- Uses hashes to help detect changes.
+- Write protection helps prevent modifications.
+- Missing or inconsistent records = broken chain of custody.
+- Important for legal proceedings.
+
+Documentation best practices: 3
+1. Know your audience.
+2. Be concise.
+3. Update regularly.
+
+Playbooks
+- Provide step-by-step incident response instructions.
+- Reduce confusion and guesswork.
+- May contain checklists.
+- Three types: non-automated, automated, semi-automated.
+- Update them after incidents, especially during post-incident activity.
