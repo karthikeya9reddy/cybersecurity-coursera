@@ -1,0 +1,378 @@
+Course 6 – Incident Triage, Response and Recovery
+PART 1: Incident Triage
+1. What is triage?
+Triage is the process of prioritizing incidents according to their level of importance or urgency.
+
+Think of a hospital emergency department:
+- A patient having a heart attack receives immediate attention.
+- A patient with a broken finger may have to wait.
+Hospitals have limited resources, so they prioritize patients based on urgency.
+
+Security teams work similarly.
+
+They receive many alerts every day, but not every alert requires an immediate response.
+
+Triage helps security teams:
+- Identify critical incidents.
+- Prioritize urgent threats.
+- Manage limited resources.
+- Reduce response time.
+- Prevent or minimize damage to an organization.
+Example:
+Incident	Priority
+Active ransomware attack	High
+Employee receives a suspicious phishing email	Depends on investigation
+Multiple failed login attempts	Depends on context
+
+An active ransomware attack generally requires a much more urgent response because it can affect confidentiality, integrity, and availability (CIA).
+2. When does triage happen?
+Triage begins after an incident is detected and an alert is generated.
+Detection
+
+IDS / SIEM detects suspicious activity
+
+Alert generated
+
+Security analyst receives the alert
+
+Triage
+
+Assess, prioritize, collect and analyze
+
+Response / Escalation
+
+Take appropriate action based on findings
+
+
+3. Three steps of the triage process
+Remember these three steps
+Step 1: Receive and assess
+The analyst receives an alert from an alerting system, such as an IDS.
+
+The analyst reviews the alert to verify its validity and understand what triggered it.
+
+Important questions:
+Question	Purpose
+Is it a false positive?	Determine whether a genuine threat exists
+Was this alert triggered before?	Check whether it is new or recurring
+Is it related to a known vulnerability?	Use existing knowledge to guide the response
+What is its severity?	Understand the urgency of the response
+
+False positive: An alert that incorrectly detects the presence of a threat.
+
+Example: A security system flags legitimate employee activity as suspicious.
+
+The analyst must investigate before deciding whether the alert is legitimate.
+Step 2: Assign priority
+Once an alert is assessed and verified as a genuine security issue, the analyst assigns an appropriate priority.
+
+Priority depends on the incident's impact, size, and scope.
+
+Your course identifies three important factors:
+
+A. Functional impact
+
+How does the incident affect the organization's business operations and services?
+
+Example:
+- Ransomware encrypts company computers.
+- Employees cannot access essential systems.
+- Business operations are disrupted.
+B. Information impact
+
+How does the incident affect the confidentiality, integrity, and availability of information?
+
+Example:
+- An attacker steals customer information.
+- Sensitive data is exposed.
+- Third-party users or organizations are affected.
+C. Recoverability
+
+How easily can the organization recover from the incident?
+
+Consider:
+- Can the affected systems be restored?
+- How much time will recovery take?
+- How many resources are required?
+- Is recovery even possible?
+Example: If proprietary information is stolen and publicly released, the organization may not be able to undo the disclosure.
+Priority assessment – quick comparison
+Factor	Main question
+Functional impact	How badly are business operations affected?
+Information impact	How badly is organizational data affected?
+Recoverability	How easily can the organization recover?
+
+Remember: An alert may already have an assigned severity or priority level, based on the organization's guidelines.
+Step 3: Collect and analyze
+This is the final step of triage.
+
+The analyst performs a more comprehensive investigation.
+
+Activities include:
+- Gathering evidence from different sources.
+- Reviewing system logs.
+- Conducting external research.
+- Analyzing suspicious activity.
+- Documenting the investigation.
+- Making an informed decision.
+Depending on severity, the incident may be escalated to:
+- Level 2 analyst: May have more advanced investigation knowledge and techniques.
+- Manager: May oversee the incident and coordinate response efforts.
+4. Adding context during an investigation
+Never make assumptions based on a single alert.
+
+Example: You receive an alert for a failed login attempt.
+
+You should investigate:
+1. Were there multiple failed login attempts?
+2. Did the attempts occur outside normal working hours?
+3. Did the login originate outside the organization's network?
+4. Was anything else unusual associated with the alert?
+These questions provide additional context.
+
+Key lesson: Context helps prevent incomplete or incorrect conclusions.
+5. Benefits of triage
+A. Resource management
+- Focuses resources on urgent threats.
+- Prevents wasting time on low-priority alerts.
+- Helps reduce response time.
+B. Standardized approach
+- Establishes a consistent incident-handling process.
+- Uses documentation and playbooks.
+- Ensures alerts are properly assessed and validated.
+- Helps ensure only valid alerts are escalated for further investigation.
+
+PART 2: Containment, Eradication and Recovery
+This is the third phase of the incident response lifecycle.
+
+The three steps are closely connected:
+1. CONTAINMENT
+
+Limit further damage
+
+2. ERADICATION
+
+Remove the threat completely
+
+3. RECOVERY
+
+Restore normal operations
+
+
+These steps align with the NIST Cybersecurity Framework's Respond and Recover functions.
+1. Containment
+Containment is the act of limiting and preventing additional damage caused by an incident.
+
+Organizations document their containment strategies in incident response plans.
+
+Example: Malware infects one computer in a company's network.
+
+The security team isolates the affected computer by disconnecting it from the network.
+
+Why?
+- Prevents malware from spreading.
+- Limits the incident to the affected system.
+- Reduces additional damage.
+Remember: Containment stops the incident from spreading or causing further damage. It does not necessarily remove the threat.
+2. Eradication
+Eradication involves completely removing the incident elements from all affected systems.
+
+After containment, the security team works to eliminate the threat.
+
+Examples from your course:
+- Performing vulnerability tests.
+- Applying patches to vulnerabilities related to the threat.
+The goal is to remove the elements responsible for the incident.
+
+Remember: Containment = Stop the damage. Eradication = Remove the threat.
+3. Recovery
+Recovery is the process of returning affected systems to normal operations.
+
+Recovery actions include:
+- Reimaging affected systems.
+- Resetting passwords.
+- Adjusting network configurations.
+- Modifying firewall rules.
+Example:
+
+After a ransomware incident:
+1. Affected systems are contained.
+2. Malware and related vulnerabilities are addressed.
+3. Systems are restored and brought back into normal operation.
+Remember: Recovery = Restore normal business operations.
+Comparison of the three
+Phase	Main purpose	Example
+Containment	Limit damage	Isolate infected computer
+Eradication	Remove threat	Remove malware and patch vulnerabilities
+Recovery	Restore operations	Reimage and restore systems
+
+Important: The incident response lifecycle is cyclical. Security teams may need to revisit previous phases when new evidence or related incidents appear.
+
+PART 3: Business Continuity Planning (BCP)
+1. What is business continuity planning?
+A security incident can disrupt normal business operations.
+
+For example:
+- Ransomware can make company systems inaccessible.
+- Data breaches can expose sensitive information.
+- Infrastructure attacks can disrupt essential services.
+Prolonged disruption can cause:
+- Legal damage.
+- Financial losses.
+- Reputational damage.
+Organizations use business continuity planning to minimize these disruptions.
+
+Business Continuity Plan (BCP): A document that outlines procedures to sustain business operations during and after a significant disruption.
+
+Its purpose is to ensure critical business functions can continue or be quickly restored.
+Example: Ransomware in a hospital
+
+
+
+
+
+
+
+esslinger-zeitung.de
+
+
+Imagine ransomware encrypts a hospital's systems.
+
+Consequences:
+- Medical records become inaccessible.
+- Doctors may not access patient information.
+- Healthcare services may be disrupted.
+- Patient safety could be affected.
+A BCP helps the hospital maintain essential services despite the disruption.
+
+Important: Entry-level security analysts are not typically responsible for developing and testing BCPs, but they should understand their purpose.
+2. BCP vs Disaster Recovery Plan (DRP)
+Important comparison
+These two plans are related, but they are not the same.
+BCP	DRP
+Business Continuity Plan	Disaster Recovery Plan
+Focuses on sustaining business operations	Focuses on recovering information systems
+Helps critical business functions continue during and after disruption	Restores systems after a major disaster
+Broader business operations focus	IT systems recovery focus
+
+Example:
+
+A company experiences a major data center failure.
+- BCP: How can the company continue serving customers?
+- DRP: How can the company restore its information systems?
+Remember:
+
+BCP = Keep the business running.
+
+DRP = Recover IT systems.
+
+3. Resilience
+Resilience is the ability to prepare for, respond to, and recover from disruptions.
+
+Organizations design resilient systems so that they can continue delivering services despite disruptions.
+
+One example is site resilience.
+Site resilience
+Site resilience helps ensure the availability of:
+- Networks.
+- Data centers.
+- Other infrastructure.
+Organizations use different types of recovery sites to maintain availability when their primary location experiences a disruption.
+
+There are three types.
+A. Hot site
+
+
+
+
+
+
+
+optage.co.jp
+
+
+A hot site is a fully operational facility that duplicates an organization's primary environment.
+
+Characteristics:
+- Fully operational.
+- Ready for immediate activation.
+- Can take over when the primary site fails.
+Example: A company has a backup data center that is already operational and can be activated immediately.
+B. Warm site
+
+
+
+
+
+
+
+hgcit.co.uk
+
+
+A warm site contains an updated and configured version of the organization's environment, but it is not fully operational or immediately available like a hot site.
+
+Characteristics:
+- Infrastructure is prepared.
+- Requires some additional work to become operational.
+- Can be made operational relatively quickly.
+C. Cold site
+
+
+
+
+
+
+
+dpr.com
+
+
+A cold site is a backup facility equipped with some of the infrastructure required to operate an organization's site.
+
+Characteristics:
+- Not ready for immediate use.
+- Requires additional work and setup.
+- Takes longer to become operational.
+Hot vs Warm vs Cold site
+Very important for revision
+Feature	Hot site	Warm site	Cold site
+Operational status	Fully operational	Partially prepared	Basic infrastructure
+Readiness	Immediate	Requires some work	Requires more work
+Recovery speed	Fastest	Intermediate	Slowest
+Preparation	Highest	Moderate	Lowest
+
+Easy memory trick:
+- Hot = Ready to go.
+- Warm = Almost ready.
+- Cold = Needs preparation.
+
+4. Complete quick-revision sheet
+A. Triage
+- Triage = Prioritizing incidents by urgency and importance.
+- Begins after detection and alert generation.
+- Three steps:
+  1. Receive and assess.
+  2. Assign priority.
+  3. Collect and analyze.
+- Priority factors:
+  - Functional impact.
+  - Information impact.
+  - Recoverability.
+- Benefits:
+  - Resource management.
+  - Standardized approach.
+
+B. Incident response: Third phase
+- Containment = Limit further damage.
+- Eradication = Remove the threat.
+- Recovery = Restore normal operations.
+- Aligns with NIST Respond and Recover functions.
+
+C. Business continuity
+- BCP = Sustain business operations during and after disruption.
+- DRP = Recover information systems after a major disaster.
+- Resilience = Prepare, respond, and recover from disruptions.
+
+D. Site resilience
+- Hot site = Fully operational, immediate activation.
+- Warm site = Prepared, needs some work.
+- Cold site = Basic infrastructure, needs more work.
