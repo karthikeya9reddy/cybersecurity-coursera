@@ -1,0 +1,220 @@
+Course 6 – Post-Incident Activity
+1. What is post-incident activity?
+Post-incident activity is the process of reviewing an incident to identify areas for improvement in incident handling.
+
+It happens after the security team has completed:
+- Containment
+- Eradication
+- Recovery
+But the team's work doesn't completely end there.
+
+The organization reviews the incident to understand:
+- What happened?
+- How did it happen?
+- How effectively did the team respond?
+- What mistakes or gaps were identified?
+- How can similar incidents be prevented?
+Main objective: Learn from previous incidents and improve future incident response.
+2. Lessons learned meeting (Post-mortem)
+Important concept
+A lessons learned meeting, also known as a post-mortem, is a meeting held after a major incident to review the incident, evaluate response actions, and identify areas for improvement.
+When is it conducted?
+- Generally after an incident has been successfully remediated.
+- Should be scheduled no later than two weeks after the incident.
+- Major incidents, such as ransomware attacks, should have a dedicated meeting.
+- Multiple meetings may be scheduled if the incident is complex.
+Not every small incident requires a dedicated lessons learned meeting. The size and severity determine whether one is necessary.
+Who participates?
+All relevant parties involved in the incident response process.
+
+For example:
+- Security analysts.
+- Incident response team.
+- IT administrators.
+- Security managers.
+- Other affected departments.
+Questions discussed during the meeting
+Question	Purpose
+What happened?	Understand the incident
+What time did it happen?	Establish the timeline
+Who discovered it?	Identify how it was detected
+How did it get contained?	Review containment actions
+What actions were taken for recovery?	Evaluate recovery efforts
+What could have been done differently?	Identify improvements
+
+Important principle: No blame culture
+The purpose of a lessons learned meeting is learning and improvement, not assigning blame.
+
+For example:
+
+An employee clicks a phishing link, resulting in malware spreading through the organization.
+
+Instead of blaming the employee, the security team should investigate:
+- Why did the phishing email reach the employee?
+- Were email security controls insufficient?
+- Was security awareness training effective?
+- Could detection have happened earlier?
+The objective is to identify weaknesses and prevent recurrence.
+Meeting preparation
+Before the meeting, organizers should prepare:
+
+1. Meeting agenda
+
+A document containing the topics to be discussed.
+
+It ensures that participants arrive prepared.
+
+2. Meeting roles
+Role	Responsibility
+Moderator	Leads and facilitates the discussion
+Scribe	Records meeting notes
+
+3. Recommendations from lessons learned meetings
+The meeting should produce a list of prioritized actions or actionable recommendations.
+
+These recommendations help improve incident handling and the organization's overall security posture.
+
+Examples of improvements:
+- Fix errors in incident response procedures.
+- Identify gaps in security processes.
+- Improve ineffective security controls.
+- Update existing playbooks.
+- Introduce new security tools and technologies.
+Example:
+
+A ransomware incident revealed that the organization took too long to isolate infected computers.
+
+Recommendation:
+- Update the ransomware response playbook.
+- Improve endpoint detection capabilities.
+- Establish a faster isolation procedure.
+The goal is to ensure that lessons learned are actually implemented.
+
+4. Final report
+Very important
+A final report is documentation that provides a comprehensive review of a security incident.
+
+It records the incident's details, timeline, investigation, findings, and recommendations for future prevention.
+Purpose of a final report
+- Provides a complete record of the incident.
+- Documents the sequence of events.
+- Explains the investigation and actions taken.
+- Communicates findings to relevant people.
+- Helps during lessons learned meetings.
+- Provides recommendations to prevent similar incidents.
+Important: The final report is the main reference document used during the lessons learned meeting.
+Four common elements of a final report
+Your course identifies four important components.
+A. Executive summary
+A high-level summary containing the most important facts and findings.
+
+It should communicate:
+- What happened?
+- What was affected?
+- What was the impact?
+- What were the major findings?
+It is especially useful for executives and non-technical readers.
+B. Timeline
+A detailed chronological record of events related to the incident.
+
+It includes timestamps showing the sequence of events.
+
+Example:
+Time	Event
+09:00 AM	Suspicious email received
+09:15 AM	Employee clicks malicious link
+09:20 AM	Security alert generated
+09:30 AM	Analyst investigates alert
+09:45 AM	Affected system isolated
+11:00 AM	Eradication activities begin
+
+Illustrative timeline.
+C. Investigation
+A compilation of the actions taken during the detection and analysis of the incident.
+
+It can include:
+- Alerts investigated.
+- Logs examined.
+- Evidence collected.
+- Network traffic analyzed.
+- Findings discovered.
+Example: A packet capture (PCAP) reveals suspicious network communication that helps analysts understand what happened.
+D. Recommendations
+A list of suggested actions to prevent similar incidents in the future.
+
+Examples:
+- Improve security controls.
+- Update incident response playbooks.
+- Patch vulnerable systems.
+- Improve employee security awareness.
+- Introduce new security tools.
+Final report structure – quick table
+Component	Purpose
+Executive summary	High-level overview
+Timeline	Chronological sequence of events
+Investigation	Actions, evidence, and findings
+Recommendations	Future prevention and improvements
+
+5. Consider the audience when writing a final report
+Final reports may be read by different audiences.
+
+For example:
+Audience	What they need
+CEO / Executives	Business impact, risks, major findings
+SOC Manager	Incident details, response effectiveness, recommendations
+Security Analysts	Technical investigation, logs, evidence, timeline
+
+Remember: Avoid overwhelming non-technical readers with unnecessary technical details.
+
+The report should communicate important findings in language the intended audience understands.
+
+6. How the final phase connects everything
+Incident resolved
+
+Containment → Eradication → Recovery
+
+Post-incident activity
+
+Review the incident and response process
+
+Final report
+
+Records the complete incident
+
+
+Lessons learned
+
+Reviews what happened
+
+
+
+Recommendations and improvements
+
+Update playbooks, procedures, and security controls
+
+Better preparation for future incidents
+
+7. Quick revision sheet
+Post-incident activity
+- Fourth and final phase of the NIST Incident Response Lifecycle.
+- Reviews incidents to identify improvements.
+- Focuses on learning and preventing recurrence.
+
+Lessons learned meeting
+- Also called post-mortem.
+- Generally scheduled within two weeks after remediation.
+- Includes relevant incident participants.
+- Reviews what happened and how the response worked.
+- Focuses on learning, not blaming.
+- Moderator leads; scribe records notes.
+- Produces prioritized recommendations.
+
+Final report
+- Comprehensive review of an incident.
+- Main reference document for lessons learned meetings.
+- Includes four common components:
+  1. Executive summary.
+  2. Timeline.
+  3. Investigation.
+  4. Recommendations.
+- Must be tailored to its audience.
