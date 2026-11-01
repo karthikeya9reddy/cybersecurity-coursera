@@ -18,7 +18,7 @@ sudo tcpdump -i any -w capture.pcap	Save captured packets to a file
 sudo tcpdump -r capture.pcap	Read packets from a saved file
 sudo tcpdump -r capture.pcap -v	Read a capture file with verbose details
 sudo tcpdump -r capture.pcap -X	Display packet contents in hexadecimal and ASCII
-
+  
 Remember: Identify the interface first, capture traffic, save it if needed, and then read or filter it for analysis.
 3. Important options (flags)
 -i
