@@ -198,7 +198,7 @@ Better preparation for future incidents
 Post-incident activity
 - Fourth and final phase of the NIST Incident Response Lifecycle.
 - Reviews incidents to identify improvements.
-- Focuses on learning and preventing recurrence.
+- Focuses on learning and preventing recurrence.  
 
 Lessons learned meeting
 - Also called post-mortem.
