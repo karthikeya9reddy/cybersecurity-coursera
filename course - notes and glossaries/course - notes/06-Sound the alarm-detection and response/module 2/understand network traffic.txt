@@ -17,7 +17,7 @@ Example: HTTPS commonly uses port 443, but HTTPS traffic using port 8088 may war
 
 B.  Packet payload information
 The payload is the actual data carried by a packet.
-
+ 
 Analysts may inspect payloads for unusual transfers or sensitive data leaving the network. Payloads are often encrypted, which limits what can be read directly.
 
 C.  Temporal patterns
