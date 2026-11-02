@@ -22,7 +22,7 @@ sudo tcpdump -r capture.pcap -X	Display packet contents in hexadecimal and ASCII
 Remember: Identify the interface first, capture traffic, save it if needed, and then read or filter it for analysis.
 3. Important options (flags)
 -i
-
+ 
 Interface
 
 Specifies where tcpdump captures traffic, such as eth0 or any.
