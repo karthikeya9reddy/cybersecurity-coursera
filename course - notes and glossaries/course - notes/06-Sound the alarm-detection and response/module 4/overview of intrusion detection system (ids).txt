@@ -1,0 +1,291 @@
+Course 6 – Detection and Response
+1. Logs, telemetry, and IDS technologies
+Telemetry
+- Telemetry: Collection and transmission of data for analysis.
+- Logs record events occurring on systems; telemetry describes the data collected about system activity.
+- Example: Packet captures (PCAPs) are a form of network telemetry.
+- Logs and telemetry provide evidence during security investigations.
+Endpoint and host
+- Endpoint: Any device connected to a network, such as a laptop, desktop, tablet, or smartphone.
+- Host: A device that communicates with other devices on a network.
+- Endpoints are important targets because attackers may use them to gain unauthorized access.
+Types of IDS
+Feature	HIDS	NIDS
+Full form	Host-based IDS	Network-based IDS
+Monitors	Individual host	Network traffic
+Installation	Agent on a host	At specific network points
+Visibility	Internal host activity	Traffic passing its monitoring point
+Output	Logs and alerts	Logs and alerts
+
+HIDS (Host-based Intrusion Detection System)
+- Monitors the activity of the device on which it is installed.
+- Detects unauthorized or abnormal host activity.
+- Can monitor file systems, system resource usage, user activity, and inbound/outbound traffic.
+- Example: Detecting installation of an unauthorized application.
+NIDS (Network-based Intrusion Detection System)
+- Collects and analyzes network traffic and network data.
+- Monitors traffic at specific points in a network.
+- Similar to a packet sniffer because it inspects network traffic.
+- Multiple NIDS sensors can be deployed at different network points for better visibility.
+Remember: HIDS monitors an individual host; NIDS monitors network traffic. Using both provides a multi-layered detection approach.
+
+2. Detection techniques
+Two common IDS detection techniques:
+A. Signature-based analysis
+- Detects known threats by matching activity against predefined patterns.
+- A signature is a pattern associated with malicious activity.
+- Signatures may contain IP addresses, byte sequences, binary patterns, or malicious scripts.
+- When activity matches a signature, the IDS records it and generates an alert.
+Example: A signature triggers an alert after three consecutive failed login attempts.
+
+Advantages:
+- Efficient at detecting known threats.
+- Generally has a low false-positive rate.
+Disadvantages:
+- Attackers can modify their behavior or malware to evade signatures.
+- Signature databases require regular updates.
+- Cannot reliably detect unknown threats, such as new malware or zero-day attacks.
+B. Anomaly-based analysis
+- Detects abnormal behavior by comparing current activity against a baseline.
+- A baseline represents normal or expected system behavior.
+Two phases:
+1. Training phase: Collect normal system activity and establish a baseline.
+2. Detection phase: Compare current activity against the established baseline. Deviations can generate alerts.
+Advantages:
+
+- Can detect new and evolving threats, including potentially unknown attacks.
+
+Disadvantages:
+- High false-positive rate because legitimate unusual behavior can trigger alerts.
+- If an attacker is already present during training, their malicious behavior might become part of the baseline.
+Comparison
+Signature-based	Anomaly-based
+Matches known patterns	Detects deviations from normal behavior
+Requires signatures	Requires a baseline
+Good for known threats	Can detect unknown threats
+Generally fewer false positives	Generally more false positives
+Can be evaded by changing signatures/patterns	Can be affected by a compromised training baseline
+
+
+3. NIDS signatures and rules
+A signature (rule) defines what activity an IDS should detect and what action it should take.
+
+NIDS signatures generally contain three components:
+1. Action
+
+Determines what happens when the rule matches.
+
+2. Header
+
+Defines protocol, source and destination IP addresses, ports, and traffic direction.
+
+3. Rule options
+
+Additional conditions that customize the signature.
+
+
+Common actions
+Action	Meaning
+alert	Generate an alert
+pass	Allow traffic to pass
+drop	Drop matching traffic (IPS mode)
+reject	Reject traffic; for TCP, sends a reset packet
+
+Header
+Defines:
+- Protocol (TCP, UDP, HTTP, etc.)
+- Source IP and source port
+- Destination IP and destination port
+- Direction of traffic
+The arrow -> indicates traffic direction from source to destination.
+Rule options
+Option	Purpose
+msg	Alert message
+flow	Specifies traffic flow conditions
+content	Searches packet content for a pattern
+sid	Unique signature ID
+rev	Rule revision/version
+http_method	Matches HTTP method information
+
+Rule options are enclosed in parentheses and separated by semicolons.
+
+4. Suricata
+
+
+
+
+
+
+
+
+
+Suricata
+
+Open-source IDS, IPS, and network security monitoring tool.
+
+
+Suricata has three main uses:
+1. IDS mode: Monitors network traffic and generates alerts for suspicious activity.
+2. IPS mode: Detects and blocks malicious traffic.
+3. Network Security Monitoring (NSM): Produces and stores network logs and telemetry for analysis.
+It can analyze:
+- Live network traffic.
+- Existing PCAP files.
+- Full or conditional packet captures.
+Suricata signatures
+Suricata uses rules and signatures to detect specific patterns, behaviors, and conditions.
+
+Example from your course:
+alert http $HOME_NET any -> $EXTERNAL_NET any
+(msg:"GET on wire"; flow:established,to_server;
+content:"GET"; http_method; sid:12345; rev:3;)
+
+
+Breaking it down:
+Component	Value	Meaning
+Action	alert	Generate an alert
+Protocol	http	HTTP traffic
+Source	$HOME_NET	Local/home network
+Source port	any	Any source port
+Direction	->	Source to destination
+Destination	$EXTERNAL_NET	External network
+Destination port	any	Any destination port
+msg	GET on wire	Alert message
+flow	established,to_server	Established client-to-server traffic
+content	GET	Look for GET
+http_method	HTTP method	Match the HTTP method field
+sid	12345	Signature ID
+rev	3	Revision number
+
+What does this rule detect?
+
+An established HTTP connection going from the home network to an external network, where the HTTP method is GET.
+Important Suricata files
+File	Purpose
+suricata.yaml	Main configuration file
+custom.rules	Custom detection rules
+fast.log	Basic alert information
+eve.json	Detailed event and alert information
+
+- suricata.yaml uses YAML format.
+- Rules can be customized to suit an organization's network.
+- Testing and tailoring rules helps reduce false positives.
+fast.log vs eve.json
+fast.log
+- Contains basic alert information.
+- Includes alert message, source/destination IPs and ports, and traffic direction.
+- Useful for quick checks.
+- Legacy format; not recommended for incident response or threat hunting.
+  
+  eve.json
+- Standard and main Suricata log.
+- Contains detailed alerts, event information, and network telemetry.
+- Uses JSON format.
+- Better for log parsing, SIEM ingestion, detailed analysis, and investigation.
+- Contains flow_id, which helps correlate related events.
+
+
+5. Suricata practical lab – commands and workflow
+Your course's lab uses a sample PCAP and a custom rules file to test detection rules.
+Step 1: Examine the custom rule
+cat custom.rules
+
+
+Displays the rule in the terminal.
+
+Alternatively:
+less custom.rules
+
+
+Displays the file one page at a time.
+Step 2: Check Suricata log directory
+ls -l /var/log/suricata
+
+
+Lists the files in the Suricata log directory.
+Step 3: Run Suricata against a PCAP
+sudo suricata -r sample.pcap -S custom.rules -k none
+
+
+Option	Meaning
+sudo	Run with elevated privileges
+-r sample.pcap	Read traffic from the PCAP file
+-S custom.rules	Use the specified custom rules
+-k none	Disable checksum checks
+
+Suricata processes the captured packets and generates alerts when a rule matches.
+Step 4: Read fast.log
+cat /var/log/suricata/fast.log
+
+
+Displays the alert entries generated by Suricata.
+
+Each alert contains information such as:
+- Timestamp
+- Signature ID and revision
+- Alert message
+- Source and destination IP addresses
+- Source and destination ports
+- Protocol
+Step 5: Read eve.json
+cat /var/log/suricata/eve.json
+
+
+Displays raw JSON output, which can be difficult to read.
+
+Use jq to format it:
+jq . /var/log/suricata/eve.json | less
+
+
+jq is a command-line tool for processing JSON data.
+Step 6: Extract specific fields
+jq -c "[.timestamp,.flow_id,.alert.signature,.proto,.dest_ip]" /var/log/suricata/eve.json
+
+
+Extracts:
+- timestamp – Event time.
+- flow_id – Unique network flow identifier.
+- alert.signature – Alert signature/message.
+- proto – Network protocol.
+- dest_ip – Destination IP address.
+Step 7: Filter events using flow_id
+jq "select(.flow_id==X)" /var/log/suricata/eve.json
+
+
+Replace X with the actual flow ID.
+
+Why is flow_id important?
+
+A network flow is a sequence of packets between communicating endpoints that share characteristics such as IP addresses and protocol.
+
+Suricata assigns a unique flow_id to each flow. Related logs share the same ID, allowing analysts to correlate events belonging to the same network communication.
+
+6. Quick revision sheet
+Term	Remember this
+Telemetry	Collection and transmission of data for analysis
+Endpoint	Device connected to a network
+HIDS	Monitors an individual host
+NIDS	Monitors network traffic
+Signature analysis	Detects known patterns
+Anomaly analysis	Detects deviations from a baseline
+Baseline	Normal expected behavior
+False positive	Alert incorrectly identifies a threat
+Zero-day	Previously unknown vulnerability/exploit
+Signature	Pattern or rule used for detection
+sid	Signature ID
+rev	Rule revision
+Suricata	IDS, IPS, and NSM tool
+suricata.yaml	Configuration file
+custom.rules	Custom detection rules
+fast.log	Basic alert details
+eve.json	Detailed event and alert logs
+flow_id	Correlates events from the same network flow
+jq	Processes and formats JSON
+
+The most important distinctions:
+- HIDS = individual host; NIDS = network.
+- Signature = known pattern; anomaly = unusual behavior.
+- IDS = detects and alerts; IPS = can block.
+- fast.log = basic information; eve.json = detailed information.
+- sid = identifies a rule; rev = identifies its version.
+- flow_id = connects related network events.
