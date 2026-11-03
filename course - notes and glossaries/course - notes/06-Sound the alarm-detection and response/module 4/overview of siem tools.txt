@@ -1,0 +1,255 @@
+Course 6 – SIEM: Data Ingestion, Searching and Queries
+1. SIEM overview
+SIEM (Security Information and Event Management) is an application that collects and analyzes log data to monitor critical activities in an organization.
+
+It helps security analysts:
+- Monitor systems and networks.
+- Investigate security events.
+- Detect suspicious activities.
+- Search and analyze logs from multiple sources.
+Three main steps of the SIEM process
+1. Collect and aggregate
+
+Collect event data from different devices, systems, and sources.
+
+
+2. Normalize
+
+Convert different log formats into a consistent, structured format.
+
+
+3. Analyze, organize and index
+
+Organize and index events so they can be searched, analyzed, and correlated.
+
+
+Indexing: Organizing stored data so it can be accessed efficiently through searches.
+2. Log ingestion
+Log ingestion is the process of collecting and importing data from log sources into a SIEM tool.
+
+Examples of log sources:
+- Servers
+- Network devices
+- Endpoints
+- Applications
+- Authentication systems
+Important points:
+- SIEM creates a copy of incoming event data.
+- The original source logs are not directly modified.
+- The SIEM stores the copied data for analysis.
+- Centralized collection makes investigations easier.
+Log forwarders
+A log forwarder is software that automatically collects and sends log data to a SIEM.
+
+How it works:
+1. Install a log forwarder on a device.
+2. Configure which logs should be collected.
+3. Specify the destination SIEM.
+4. Forward the logs.
+5. SIEM processes and normalizes the data.
+Why use log forwarders?
+
+Manually uploading logs from thousands of devices is inefficient and time-consuming. Forwarders automate this process.
+
+Some operating systems have native log forwarders; others require third-party software.
+
+3. SIEM tools
+Two SIEM platforms introduced in your course:
+
+
+
+
+
+
+
+
+
+Splunk
+
+Splunk Enterprise Security provides SIEM capabilities for searching, analyzing, and visualizing security data.
+
+
+- Collects data from different sources.
+- Stores processed data in indexes.
+- Uses SPL (Search Processing Language) for queries.
+
+
+
+
+
+
+
+
+
+
+Google SecOps (Chronicle)
+
+Google's cloud SIEM platform for storing, searching, analyzing, and visualizing security data.
+
+
+- Receives forwarded data.
+- Normalizes and indexes the data.
+- Allows analysts to search through a search interface.
+- Uses UDM Search and Raw Log Search.
+
+4. Effective SIEM searching
+A SIEM can contain enormous amounts of data, sometimes going back years.
+
+A broad query such as:
+failed login
+
+
+May return thousands of results.
+
+To improve searching:
+- Specify event IDs when available.
+- Use a specific date and time range.
+- Include usernames, IP addresses, hostnames, or event types.
+- Narrow the search to relevant data sources.
+Why? Specific queries reduce unnecessary results and can improve search performance.
+
+5. Splunk searches – SPL
+SPL (Search Processing Language) is Splunk's query language, used to search and retrieve events from indexes.
+Basic search
+index=main fail
+
+
+Part	Meaning
+index=main	Search the index named main
+fail	Find events containing the term fail
+
+Pipes |
+In SPL, the pipe character chains commands together. The output of one command becomes the input of the next.
+
+Example:
+index=main fail | chart count by host
+
+
+Breakdown:
+- index=main – Search the main index.
+- fail – Find events containing fail.
+- | – Pass results to the next command.
+- chart count by host – Create a chart showing the number of events for each host.
+Use: Identify hosts with unusually high failure counts.
+Wildcards *
+A wildcard represents any character or sequence of characters in a search term.
+
+Example:
+index=main fail*
+
+
+Can match:
+- fail
+- failed
+- failure
+It expands the search to include different endings.
+Exact phrase searching
+Use double quotation marks to search for an exact phrase.
+"login failure"
+
+
+This searches for the exact phrase rather than matching the two words separately.
+Boolean operators
+Operator	Meaning
+AND	Both conditions must match
+OR	Either condition can match
+NOT	Excludes matching results
+
+Example from your course
+buttercupgames error OR fail*
+
+
+- buttercupgames – Index being searched.
+- error – Search for errors.
+- OR – Include either search term.
+- fail* – Include terms such as failed and failure.
+The example also uses a time range of the last 30 days.
+
+Raw log search: The demonstrated Splunk search extracts fields during the search process, which can make it slower than searches using already extracted and indexed fields.
+
+6. Google SecOps (Chronicle) searches
+Chronicle supports two main search methods:
+A. UDM Search
+Default search
+- Searches normalized and structured data.
+- Uses Unified Data Model fields.
+- Generally faster than raw log searching.
+- Useful for finding specific event types and security activities.
+
+
+B. Raw Log Search
+- Searches raw, unparsed logs.
+- Slower than UDM Search.
+- Useful when information is missing from normalized data.
+- Useful for troubleshooting ingestion problems.
+- Supports regular expressions to match patterns.
+
+
+What is UDM?
+UDM (Unified Data Model) is the structured format used by Chronicle to represent normalized security events.
+
+UDM events contain common fields:
+Field	Purpose
+Entities	Information about devices, users, and processes
+Event metadata	Event type, timestamps, and basic event details
+Network metadata	Network-related information and protocol details
+Security results	Security-related outcomes or actions
+
+Example UDM query
+metadata.event_type = "USER_LOGIN"
+
+
+Finds events related to user login activity.
+
+A more specific example from your course:
+metadata.event_type = "USER_LOGIN"
+AND security_result.action = "BLOCK"
+
+
+Breakdown:
+- metadata.event_type – Specifies the event type.
+- "USER_LOGIN" – Searches for user login events.
+- AND – Both conditions must match.
+- security_result.action – Specifies the security action.
+- "BLOCK" – Finds blocked login activity.
+This query searches for blocked or failed login events.
+Chronicle search features
+- Timeline: Visualizes events over time.
+- Event list: Displays matching events and timestamps.
+- Raw log view: Allows inspection of the original event data.
+- Quick Filters: Filters results using fields such as target IP.
+- Procedural Filtering: Includes or excludes results based on event information or log sources.
+
+7. Splunk vs Chronicle
+Feature	Splunk	Chronicle
+Search language/method	SPL	UDM Search, Raw Log Search
+Data storage/search	Indexes	Normalized and indexed data
+Normalized search	Depends on indexed/extracted fields	UDM Search
+Raw log search	Supported	Supported
+Special feature	SPL commands and pipes	UDM structured fields
+Wildcards/patterns	Wildcards such as *	Raw search supports regex
+
+
+8. Quick revision sheet
+Term	Quick meaning
+SIEM	Collects and analyzes security logs
+Log ingestion	Importing logs into SIEM
+Log forwarder	Automatically collects and forwards logs
+Aggregation	Collecting data from multiple sources
+Normalization	Converting data into a consistent format
+Indexing	Organizing data for efficient searching
+SPL	Splunk Search Processing Language
+Pipe \|	Chains SPL commands
+Wildcard *	Matches varying characters
+Exact phrase	Search using double quotes
+UDM	Unified Data Model
+UDM Search	Searches normalized structured data
+Raw Log Search	Searches unparsed logs
+YARA-L	Chronicle language for defining detection rules
+
+Five things to remember:
+1. SIEM process = Collect → Normalize → Analyze/index.
+2. Log ingestion = Importing log data into SIEM.
+3. Log forwarders automate log collection and transmission.
+4. Splunk uses SPL; pipes chain commands.
+5. Chronicle uses UDM Search for normalized data and Raw Log Search for unparsed data.
