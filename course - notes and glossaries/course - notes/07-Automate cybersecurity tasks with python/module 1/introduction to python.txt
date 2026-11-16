@@ -1,0 +1,318 @@
+Module 1 — Introduction to Python Programming in Cybersecurity
+These notes cover the main concepts from your videos and readings, organized for quick revision, practical understanding and cybersecurity applications.
+1. Introduction to Python and cybersecurity
+Programming: Creating instructions that tell a computer how to perform tasks.
+
+Python: A general-purpose programming language used for automation, data analysis, web development and cybersecurity.
+
+Automation: Using technology to reduce repetitive manual work, improve consistency and save time.
+Why cybersecurity analysts use Python
+- Log analysis: Search large log files for suspicious activity or failed login attempts.
+- Access control: Help manage lists of authorized users or devices.
+- Network analysis: Process network-related data to identify potential security problems.
+- Incident response: Automate repetitive steps from a security playbook.
+- Workflow automation: Connect several security tasks into a single process.
+Python is popular because it is readable, has relatively simple syntax, offers extensive libraries and has a large support community.
+
+Key takeaway: Python helps analysts spend less time on repetitive tasks and more time investigating security incidents.
+2. Python scripts, programs and environments
+A script is written code that executes instructions, often to automate a task. A program is a broader term for software that performs tasks and may include multiple scripts or components.
+Python environments
+Environment	Purpose
+Jupyter Notebook	Write, execute and document Python code in cells
+Google Colab	Run Python notebooks through a browser
+IDE	Write and debug code with editing assistance
+Command-line interface (CLI)	Execute Python scripts from a terminal
+
+Notebooks contain two main types of cells:
+- Code cells: Execute Python instructions and display output.
+- Markdown cells: Add explanations, headings and formatted documentation.
+Basic Python script
+# Print a welcome messageprint("Hello Python!")
+
+
+
+Output:
+Hello Python!
+
+
+Important concepts:
+- # starts a comment, which Python ignores during execution.
+- print() displays output.
+- Strings must be placed inside quotation marks.
+- Syntax refers to the rules that determine how code must be written.
+3. Python data types
+A data type classifies the kind of information being stored or processed.
+Five primary data types
+Data type	Python name	Example	Meaning
+String	str	"admin"	Text or characters
+Integer	int	5	Whole number
+Float	float	5.5	Decimal number
+Boolean	bool	True	True or False
+List	list	["admin", "guest"]	Ordered, changeable collection
+
+Examples
+username = "admin"             # Stringfailed_attempts = 5           # Integerrisk_score = 7.5              # Floatis_authorized = True          # Booleanusers = ["admin", "analyst"]   # List
+
+
+
+Important rules:
+- Strings use single or double quotation marks.
+- Integers and floats don't require quotation marks.
+- Boolean values are True and False, with capital first letters.
+- Lists use square brackets [] and commas between elements.
+- Lists may contain different data types.
+- Empty string: ""; empty list: [].
+Mathematical operations
+print(5 + 2)   # 7print(5 - 2)   # 3print(5 * 2)   # 10print(5 / 2)   # 2.5print(5 // 2)  # 2
+
+
+
+Division distinction:
+- / performs regular division and produces a float.
+- // performs floor division, rounding down to a whole-number value. The result can still be a float when the operands are floats.
+Three additional data types
+Type	Syntax	Purpose
+Tuple	(1, 2, 3)	Ordered collection whose elements cannot be reassigned
+Dictionary	{"user": "admin"}	Stores key-value pairs
+Set	{"admin", "guest"}	Unordered collection of unique values
+
+# Tupledevices = ("laptop1", "server2")# Dictionaryuser = {"name": "admin", "access": True}# Setallowed_users = {"admin", "analyst"}
+
+
+
+Remember: Lists are mutable, tuples are immutable, dictionaries organize data by keys, and sets contain unique elements.
+4. Variables in Python
+A variable is a named reference to a value that can be used later in a program.
+Assignment
+device_id = "h32rb17"print(device_id)
+
+
+
+Output: h32rb17
+
+The = operator assigns a value to a variable.
+Reassignment
+device_id = "h32rb17"print(device_id)device_id = "n73ab07"print(device_id)
+
+
+
+Output:
+h32rb17
+n73ab07
+
+
+Assigning one variable to another
+username = "nzhao"old_username = usernameusername = "zhao2"print(old_username)  # nzhaoprint(username)      # zhao2
+
+
+
+Checking the data type
+device_id = "h32rb17"print(type(device_id))
+
+
+
+Output:
+<class 'str'>
+
+
+Type errors
+A TypeError occurs when an operation is attempted on incompatible data types.
+number = 5text = "10"print(number + text)  # TypeError
+
+
+
+Variable naming rules
+- Use letters, digits and underscores.
+- Don't start variable names with a digit.
+- Python names are case-sensitive: user and User are different.
+- Don't use reserved keywords such as if, for or True.
+- Avoid reusing built-in function names like print.
+- Prefer descriptive snake_case names.
+Good examples: failed_login_attempts, device_id, access_status.
+5. Conditional statements
+Conditional statements allow Python to make decisions based on whether conditions evaluate to True or False.
+Comparison operators
+Operator	Meaning
+>	Greater than
+<	Less than
+>=	Greater than or equal to
+<=	Less than or equal to
+==	Equal to
+!=	Not equal to
+
+Remember: = assigns a value, whereas == compares values.
+if statement
+failed_attempts = 6if failed_attempts > 5:    print("Account locked")
+
+
+
+The condition is evaluated, and the indented body executes only when the condition is true.
+if, elif and else
+status = 404if status == 200:    print("OK")elif status == 400:    print("Bad Request")elif status == 500:    print("Internal Server Error")else:    print("Check other status")
+
+
+
+Output: Check other status
+- if checks the first condition.
+- elif checks additional conditions if previous conditions were false.
+- else runs when none of the earlier conditions matched.
+- Only the first matching branch in an if–elif–else chain executes.
+Syntax rule: End conditional headers with a colon : and indent their bodies consistently.
+Logical operators
+Operator	Meaning
+and	Both conditions must be true
+or	At least one condition must be true
+not	Negates a condition
+
+Example:
+status = 200if status >= 200 and status <= 226:    print("Successful response")
+
+
+
+Another example:
+user = "admin"authorized = Trueif user == "admin" and authorized:    print("Access permitted")
+
+
+
+Parentheses can be used to group conditions and clarify evaluation.
+6. Iterative statements — loops
+Iteration means repeatedly executing instructions. Loops automate repetitive operations.
+
+Python uses two main types:
+- for loops — iterate through a sequence.
+- while loops — repeat while a condition remains true.
+for loop
+users = ["admin", "analyst", "guest"]for user in users:    print(user)
+
+
+
+Output:
+admin
+analyst
+guest
+
+
+A for loop has:
+- Header: for user in users:
+- Loop variable: user
+- Sequence: users
+- Body: The indented instructions executed each iteration.
+range() function
+Generates a sequence of integers, commonly used to control how many times a loop runs.
+for i in range(5):    print(i)
+
+
+
+Output:
+0
+1
+2
+3
+4
+
+
+The stop value is excluded.
+
+General syntax:
+range(start, stop, step)
+
+
+
+For example:
+for i in range(2, 11, 2):    print(i)
+
+
+
+Output: 2, 4, 6, 8, 10 (each on a new line).
+while loop
+Repeats instructions while a condition is true.
+attempts = 1while attempts <= 5:    print("Login attempt:", attempts)    attempts += 1
+
+
+
+The loop ends when attempts becomes 6.
+
+Important distinction: A while loop requires the controlling condition to change if you want the loop to end.
+for vs. while
+for loop	while loop
+Iterates through a specified sequence	Repeats based on a condition
+Useful for lists and known iteration counts	Useful when the number of repetitions is uncertain
+Commonly uses range()	Commonly uses a condition and counter update
+
+7. Loop control — break and continue
+break — exit the loop
+assets = ["laptop1", "desktop20", "phone03"]for asset in assets:    if asset == "desktop20":        break    print(asset)
+
+
+
+Output:
+laptop1
+
+
+Once desktop20 is encountered, the loop stops completely.
+continue — skip the current iteration
+assets = ["laptop1", "desktop20", "phone03"]for asset in assets:    if asset == "desktop20":        continue    print(asset)
+
+
+
+Output:
+laptop1
+phone03
+
+
+The loop skips desktop20 but processes the remaining items.
+
+Source clarification: The supplied reading appears to accidentally show continue in its break example. The corrected versions above demonstrate the difference.
+Infinite loops
+An infinite loop continues indefinitely because its stopping condition never becomes false.
+while True:    print("Running...")
+
+
+
+Use Ctrl+C in a terminal to interrupt the running program.
+
+Infinite loops may be intentional in continuously running applications, such as servers, but unintended infinite loops should be avoided.
+
+8. Cybersecurity practice example
+This combines variables, lists, loops, conditions and Boolean comparisons from Module 1.
+# Identify accounts with excessive failed login attemptsusers = ["admin", "analyst", "guest"]failed_attempts = [2, 7, 5]for i in range(len(users)):    if failed_attempts[i] > 5:        print(users[i], "- Account locked")    else:        print(users[i], "- Account active")
+
+
+
+Output:
+admin - Account active
+analyst - Account locked
+guest - Account active
+
+
+This is a simplified security-log example, not a real authentication control.
+
+It demonstrates how Python can evaluate several accounts automatically instead of manually checking each one.
+9. Final quick-revision cheat sheet
+Concept	Remember
+Python	General-purpose language widely used for automation
+Script	Written instructions for performing a task
+#	Comment
+print()	Display output
+str	String
+int	Whole number
+float	Decimal number
+bool	True or False
+list	Ordered, mutable collection
+tuple	Immutable sequence
+dict	Key-value pairs
+set	Unique elements
+=	Assignment
+==	Equality comparison
+type()	Return an object's type
+if	Execute when condition is true
+elif	Check another condition
+else	Alternative action
+and, or, not	Logical operators
+for	Iterate through a sequence
+while	Repeat while condition is true
+range()	Generate integer sequence
+break	Exit loop
+continue	Skip current iteration
+Ctrl+C	Interrupt running terminal program
