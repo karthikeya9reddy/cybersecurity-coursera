@@ -1,0 +1,215 @@
+Python Notes — Module 2: Write Effective Python Code
+Google Cybersecurity Professional Certificate · Automate Cybersecurity Tasks with Python
+
+Topics: Functions, parameters, arguments, return statements, variable scope, and built-in functions.
+1. Introduction to Functions
+A function is a reusable block of code that performs a specific task.
+
+Functions help us:
+- Avoid writing the same code repeatedly.
+- Automate repetitive tasks.
+- Make programs easier to maintain and understand.
+- Update functionality in one place instead of changing multiple lines throughout a program.
+Types of functions
+Type	Description	Example
+Built-in	Already available in Python	print(), type()
+User-defined	Created by the programmer	greet_employee()
+
+2. Defining and Calling Functions
+Python uses the def keyword to define a function.
+def greet_employee():    print("Welcome! You are logged in.")greet_employee()
+
+
+
+Output:
+Welcome! You are logged in.
+
+
+Key syntax:
+- def — Defines the function.
+- greet_employee — Function name.
+- () — Parentheses for parameters.
+- : — Marks the beginning of the function body.
+- Indentation — Identifies code belonging to the function.
+- greet_employee() — Calls (executes) the function.
+Important: Defining a function does not execute its body. You must call it.
+3. Parameters and Arguments
+Functions can accept information through parameters.
+- Parameter: A variable declared in a function definition.
+- Argument: An actual value passed when calling the function.
+def greet_employee(name):    print("Welcome", name)greet_employee("Charley")
+
+
+
+Output:
+Welcome Charley
+
+
+Here:
+- name → Parameter
+- "Charley" → Argument
+Multiple parameters
+def greet_employee(first_name, last_name):    print("Welcome", first_name, last_name)greet_employee("Kiara", "Carter")
+
+
+
+Output:
+Welcome Kiara Carter
+
+
+Multiple parameters and arguments are separated by commas. Positional arguments are assigned in the order provided.
+4. Return Statements
+The return keyword sends a value from a function back to the code that called it.
+def calculate_fails(total_attempts, failed_attempts):    fail_percentage = failed_attempts / total_attempts    return fail_percentagepercentage = calculate_fails(4, 2)print(percentage)
+
+
+
+Output:
+0.5
+
+
+Here, 0.5 represents 50% of login attempts.
+Cybersecurity example: Failed login detection
+def calculate_fails(total_attempts, failed_attempts):    return failed_attempts / total_attemptspercentage = calculate_fails(4, 2)if percentage >= 0.5:    print("Account locked")
+
+
+
+Output:
+Account locked
+
+
+This is a simplified learning example. Real account-lockout policies generally require more than a single failure percentage.
+print() vs return
+print()	return
+Displays output	Sends a value back
+Mainly used for displaying information	Used for further calculations and decisions
+Returns None	Returns the specified value
+Does not end the function	Immediately exits the function
+
+Remember: Any statements after an executed return in the same function call will not run.
+5. Global and Local Variables
+Variable scope determines where a variable can be accessed.
+Global variables
+Defined outside a function and accessible throughout the module, including within functions.
+username = "elarson"def identify_user():    print(username)identify_user()
+
+
+
+Output:
+elarson
+
+
+Local variables
+Defined inside a function and normally accessible only within that function.
+def greet_employee():    username = "bmoreno"    print(username)greet_employee()print(username)  # NameError
+
+
+
+The variable username is local to greet_employee().
+Global and local variables with the same name
+username = "elarson"def greet():    username = "bmoreno"    print("Inside:", username)greet()print("Outside:", username)
+
+
+
+Output:
+Inside: bmoreno
+Outside: elarson
+
+
+The local variable does not modify the global variable.
+
+Best practice: Prefer passing values through parameters rather than depending on global variables.
+6. Python Built-in Functions
+Built-in functions can be used without defining or importing them.
+Function	Purpose	Example	Result
+print()	Display data	print("Hello")	Hello
+type()	Identify data type	type(73.2)	<class 'float'>
+max()	Find largest value	max(3, 9, 6)	9
+min()	Find smallest value	min(3, 9, 6)	3
+sorted()	Return sorted elements as a new list	sorted([8, 2, 5])	[2, 5, 8]
+range()	Generate a number sequence	list(range(3, 7))	[3, 4, 5, 6]
+
+Nested function calls
+One function's result can be passed into another function.
+print(type("security"))
+
+
+
+Output:
+<class 'str'>
+
+
+Execution order:
+type("security")
+Find the data type
+<class 'str'>
+Returned result
+print()
+Displays the returned result
+
+The inner function runs first, and its return value is passed to the outer function.
+7. The sorted() Function
+The sorted() function returns a new sorted list without modifying the original list.
+time_list = [12, 5, 30, 8]print(sorted(time_list))print(time_list)
+
+
+
+Output:
+[5, 8, 12, 30]
+[12, 5, 30, 8]
+
+
+Sorting usernames:
+usernames = ["zara", "alex", "mike"]print(sorted(usernames))
+
+
+
+Output:
+['alex', 'mike', 'zara']
+
+
+Important:
+- Default sorting is ascending.
+- Strings are sorted lexicographically.
+- sorted() returns a new list.
+- Incompatible mixed types, such as integers and strings, cannot be sorted directly in Python 3.
+8. Functions in Cybersecurity
+Functions can automate repetitive security operations such as:
+- Checking failed login attempts.
+- Analysing authentication logs.
+- Evaluating user access.
+- Sorting session durations.
+- Identifying suspicious activity.
+Mini practical example: Login monitoring
+def check_login_attempts(total, failed):    if total <= 0:        return "Invalid number of attempts"    failure_rate = failed / total    if failure_rate >= 0.5:        return "Investigate suspicious activity"    return "Normal activity"print(check_login_attempts(10, 7))print(check_login_attempts(10, 2))
+
+
+
+Output:
+Investigate suspicious activity
+Normal activity
+
+
+This combines functions, parameters, arguments, return values, variables, and conditional statements.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+def	Defines a function
+Function call	function_name()
+Parameter	Variable in function definition
+Argument	Value passed during function call
+return	Sends value back and exits function
+Local variable	Defined inside function
+Global variable	Defined outside function
+print()	Displays output
+type()	Returns data type
+max() / min()	Largest / smallest
+sorted()	Returns a sorted list
+range(3, 7)	Generates 3, 4, 5, 6
+
+
+Four essential rules
+1. Defining a function does not execute it.
+2. Parameters belong to definitions; arguments belong to calls.
+3. return and print() serve different purposes.
+4. Prefer parameters and returned values over unnecessary global variables.
