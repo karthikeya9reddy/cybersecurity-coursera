@@ -213,3 +213,198 @@ Four essential rules
 2. Parameters belong to definitions; arguments belong to calls.
 3. return and print() serve different purposes.
 4. Prefer parameters and returned values over unnecessary global variables.
+
+1. Modules and Libraries in Python
+Python provides reusable, pre-written code through modules and libraries, saving programmers time and reducing repetitive work.
+Term	Meaning
+Module	A Python file (.py) containing functions, variables, classes, or executable code
+Library	A collection of reusable modules and related functionality
+Standard Library	Collection of modules included with a standard Python installation
+External Library	Additional library installed separately, usually using pip
+
+Common Python Standard Library modules
+Module	Purpose in cybersecurity
+re	Search patterns in logs using regular expressions
+csv	Read and process CSV files
+glob	Find files matching filename patterns
+os	Interact with the operating system
+time	Work with time values and timestamps
+datetime	Manage dates and times
+statistics	Calculate mean, median, and other statistics
+
+2. Importing Modules
+The import keyword makes module functionality available to your program.
+Method 1: Import an entire module
+import statisticsattempts = [10, 20, 30, 40]print(statistics.mean(attempts))print(statistics.median(attempts))
+
+
+
+Output:
+25
+25.0
+
+
+When importing the entire module, use:
+
+module_name.function_name()
+Method 2: Import specific functions
+from statistics import mean, medianattempts = [10, 20, 30, 40]print(mean(attempts))print(median(attempts))
+
+
+
+Output:
+25
+25.0
+
+
+When importing specific functions, you can call them directly without the module name.
+Difference between importing methods
+Entire module	Specific functions
+import statistics	from statistics import mean
+statistics.mean(data)	mean(data)
+Access functions through the module name	Access imported functions directly
+
+3. External Python Libraries
+External libraries are not included with the standard Python installation and must be installed separately.
+Library	Purpose
+NumPy	Arrays and mathematical calculations
+Beautiful Soup (bs4)	Parsing and extracting data from HTML
+
+Installing and importing NumPy
+In a terminal:
+python -m pip install numpy
+
+
+In Jupyter Notebook or Google Colab:
+%pip install numpy
+
+
+
+Then import the library:
+import numpy
+
+
+
+Important: Installation and importing are different operations. Installation makes a library available in your Python environment; importing makes it accessible in the current program.
+4. Code Readability and PEP 8
+Code readability means writing code that other programmers, including your future self, can easily understand.
+
+PEP 8 (Python Enhancement Proposal 8) is Python's official style guide.
+
+It provides recommendations for:
+- Consistent indentation.
+- Clear comments.
+- Readable variable and function names.
+- Proper spacing and code formatting.
+- Consistent coding conventions.
+PEP 8 is mainly a style guide, not a set of mandatory Python syntax rules.
+5. Comments in Python
+Comments explain the purpose or reasoning behind code. Python ignores comments when executing a program.
+Single-line comments
+Use #:
+# Lock the account after more than 5 failed login attemptsfailed_attempts = 6if failed_attempts > 5:    print("Account locked")
+
+
+
+Multi-line comments
+Use multiple # lines:
+# This function calculates the remaining login attempts.# It accepts the maximum attempts and attempts already made.# It returns the number of remaining attempts.def remaining_login_attempts(maximum, attempts):    return maximum - attempts
+
+
+
+Docstrings
+Docstrings use triple quotes (""") and document functions, classes, and modules.
+def remaining_login_attempts(maximum, attempts):    """Calculate the number of remaining login attempts."""    return maximum - attempts
+
+
+
+Unlike ordinary comments, docstrings can be accessed by Python documentation tools.
+
+Best practices: Keep comments short, meaningful, accurate, and updated when code changes. Explain why something is done when that reasoning is not obvious.
+6. Indentation in Python
+Indentation means adding spaces at the beginning of a line.
+
+It is essential because Python uses indentation to determine which statements belong to a code block.
+
+PEP 8 recommends 4 spaces per indentation level.
+Example: Nested conditional inside a loop
+count = 0login_status = Truewhile login_status:    print("Try again.")    count += 1    if count == 4:        login_status = False
+
+
+
+Understanding indentation
+
+Loop block: 4 spaces
+
+Nested block: 8 spaces
+
+
+Incorrect indentation can produce an IndentationError or change how the program executes.
+7. Maintaining Correct Python Syntax
+Syntax refers to the rules that determine how valid Python code must be written.
+Data type syntax
+Data type	Correct example
+String	username = "bmoreno"
+Integer	attempts = 5
+Float	percentage = 0.8
+Boolean	login_status = True
+List	users = ["alex", "mike"]
+
+Colons in headers
+Python requires a colon (:) at the end of function, conditional, and loop headers.
+def greet():    print("Hello")if True:    print("Access granted")for i in range(3):    print(i)
+
+
+
+Common syntax mistakes
+Mistake	Correction
+Missing :	Add colon after if, for, while, or def header
+Missing indentation	Indent the code block
+Unclosed quotation marks	Close string quotes
+Incorrect Boolean	Use True or False, not true or false
+Missing commas in lists	Separate elements with commas
+
+
+8. Cybersecurity Practical Example
+A simple Python script to analyse failed login attempts using the statistics module.
+from statistics import mean, median# Failed login attempts recorded across five daysfailed_logins = [2, 4, 3, 12, 4]# Calculate the average and middle valueaverage = mean(failed_logins)middle = median(failed_logins)print("Average failed attempts:", average)print("Median failed attempts:", middle)# Flag unusually high values for reviewfor attempts in failed_logins:    if attempts > 10:        print("Investigate:", attempts, "failed attempts")
+
+
+
+Output:
+Average failed attempts: 5
+Median failed attempts: 4
+Investigate: 12 failed attempts
+
+
+This example combines module imports, built-in functions, comments, loops, conditionals, and proper indentation.
+
+The threshold of 10 is illustrative, not a universal security rule.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+Module	Reusable .py file
+Library	Collection of reusable modules
+Standard Library	Bundled with Python
+import	Load module functionality
+from ... import	Import specific names
+statistics.mean()	Calculate average
+statistics.median()	Calculate middle value
+re	Pattern matching
+csv	CSV file processing
+os	Operating system interaction
+NumPy	Numerical computing
+PEP 8	Python style guide
+#	Single-line comment
+"""..."""	Common docstring syntax
+Indentation	Defines code blocks
+:	Required after block headers
+pip	Installs external packages
+
+
+Five essential rules
+1. Import modules before using their functions.
+2. Use module.function() when importing a whole module.
+3. Use 4 spaces per indentation level.
+4. Write meaningful comments and clear code.
+5. Check quotes, colons, data types, and indentation when debugging.
