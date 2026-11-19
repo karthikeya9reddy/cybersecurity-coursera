@@ -1,0 +1,250 @@
+Python Notes — Module 3: Working with Lists & Algorithms
+Google Cybersecurity Professional Certificate · Automate Cybersecurity Tasks with Python
+
+Topics: Lists, indexing, slicing, concatenation, mutability, list methods, loops, and algorithms.
+1. Introduction to Lists
+A list is an ordered, mutable collection of elements stored in a single variable.
+
+Lists are useful in cybersecurity for storing:
+- Usernames and employee IDs.
+- IP addresses and URLs.
+- Blocked applications.
+- Malicious IP addresses and device information.
+Creating a list
+my_list = ["a", "b", "c", "d", "e"]
+
+
+
+Lists use square brackets [], with elements separated by commas.
+
+Unlike strings, a list can contain different data types:
+my_list = ["admin", 123, True, 3.14]
+
+
+
+2. List Indexing
+Just like strings, lists use zero-based indexing, meaning the first element has index 0.
+Example: my_list = ["a", "b", "c", "d", "e"]
+a
+0
+
+
+b
+1
+
+
+c
+2
+
+
+d
+3
+
+
+e
+4
+
+
+
+Element above, index below
+Accessing list elements
+my_list = ["a", "b", "c", "d", "e"]print(my_list[0])  # aprint(my_list[1])  # bprint(my_list[-1]) # e
+
+
+
+Negative indexing works just like it does for strings: -1 refers to the last element.
+3. List Slicing
+Slicing extracts multiple elements from a list, creating a new list called a sublist.
+
+Syntax: list[start:end]
+- Start index is included.
+- End index is excluded.
+users = ["elarson", "fgarcia", "tshah", "sgilmore"]print(users[0:2])
+
+
+
+Output:
+['elarson', 'fgarcia']
+
+
+More slicing examples
+numbers = [10, 20, 30, 40, 50]print(numbers[:3])   # [10, 20, 30]print(numbers[2:])   # [30, 40, 50]print(numbers[-2:])  # [40, 50]
+
+
+
+4. List Concatenation
+Concatenation combines two lists using the + operator.
+letters = ["a", "b", "c"]numbers = [1, 2, 3]combined = letters + numbersprint(combined)
+
+
+
+Output:
+['a', 'b', 'c', 1, 2, 3]
+
+
+This creates a new list without modifying the original lists.
+5. List Mutability
+Mutable means the contents of an object can be changed after creation.
+
+Unlike strings, lists are mutable.
+Changing an element
+my_list = ["a", "b", "c", "d"]my_list[1] = 7print(my_list)
+
+
+
+Output:
+['a', 7, 'c', 'd']
+
+
+The element "b" at index 1 is replaced by 7.
+Strings vs. lists
+Property	Strings	Lists
+Ordered	Yes	Yes
+Indexing	Yes	Yes
+Slicing	Yes	Yes
+Mutable	No	Yes
+Different element types	Characters	Yes
+Concatenation with +	Yes	Yes
+
+6. Important List Methods
+.insert() — Add at a specific position
+Syntax: list.insert(index, element)
+users = ["alex", "mike", "zara"]users.insert(1, "john")print(users)
+
+
+
+Output:
+['alex', 'john', 'mike', 'zara']
+
+
+The existing elements are shifted right; none are replaced.
+.remove() — Remove an element by value
+Syntax: list.remove(value)
+users = ["alex", "mike", "zara"]users.remove("mike")print(users)
+
+
+
+Output:
+['alex', 'zara']
+
+
+Important: .remove() removes only the first matching occurrence. If the element doesn't exist, Python raises ValueError.
+.append() — Add to the end
+Syntax: list.append(element)
+users = ["alex", "mike"]users.append("zara")print(users)
+
+
+
+Output:
+['alex', 'mike', 'zara']
+
+
+.index() — Find an element's position
+Syntax: list.index(value)
+users = ["alex", "mike", "zara"]print(users.index("mike"))
+
+
+
+Output:
+1
+
+
+The method returns the index of the first occurrence. It raises ValueError if the value is absent.
+List methods comparison
+Method	Purpose	Example
+.insert(i, x)	Insert x at index i	a.insert(1, 7)
+.remove(x)	Remove first occurrence of x	a.remove(7)
+.append(x)	Add x at the end	a.append(7)
+.index(x)	Find first index of x	a.index(7)
+
+Remember: .insert(), .remove(), and .append() modify the existing list. .index() only searches it.
+7. Lists with for Loops
+Loops can process every element in a list automatically.
+users = ["alex", "mike", "zara"]for user in users:    print(user)
+
+
+
+Output:
+alex
+mike
+zara
+
+
+Using .append() with a loop
+numbers = []for i in range(5):    numbers.append(i)print(numbers)
+
+
+
+Output:
+[0, 1, 2, 3, 4]
+
+
+An empty list [] is created first, and the loop adds each number.
+8. Introduction to Algorithms
+An algorithm is a set of step-by-step instructions used to solve a problem.
+
+An algorithm generally follows this structure:
+Input
+Data provided to the algorithm
+Processing
+Steps, rules, loops, and calculations
+Output
+Result produced by the algorithm
+
+Algorithm design approach
+1. Understand the problem.
+2. Break the problem into smaller tasks.
+3. Solve a single case.
+4. Apply the solution to multiple inputs using a loop.
+5. Store or return the results.
+9. Cybersecurity Example — Extracting IP Prefixes
+Problem: Extract the first three characters from every IP address string.
+Step 1: Solve for one address
+address = "198.51.100.25"print(address[:3])
+
+
+
+Output:
+198
+
+
+Step 2: Apply to a list using an algorithm
+ip_addresses = [    "198.51.100.25",    "192.0.2.10",    "203.0.113.8"]networks = []for address in ip_addresses:    networks.append(address[:3])print(networks)
+
+
+
+Output:
+['198', '192', '203']
+
+
+How the algorithm works
+- ip_addresses stores the original strings.
+- networks = [] creates an empty results list.
+- for address in ip_addresses: processes each string.
+- address[:3] extracts its first three characters.
+- networks.append(...) adds the extracted result.
+Note: This is the course's string-slicing exercise. The first three characters are not necessarily an IP network identifier. Real IPv4 addresses have variable-length octets, and determining a network requires its subnet prefix or mask.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+List	Ordered, mutable collection
+[]	Creates a list
+a[0]	First element
+a[-1]	Last element
+a[1:3]	Extract indices 1 and 2
+a + b	Concatenate two lists
+a[1] = 7	Replace an element
+a.insert(1, 7)	Insert at index 1
+a.remove(7)	Remove first matching value
+a.append(7)	Add to end
+a.index(7)	Find first occurrence
+for x in a:	Iterate through a list
+Algorithm	Step-by-step problem-solving process
+
+
+Five essential rules
+1. List indices start at 0.
+2. List slicing excludes the ending index.
+3. Lists are mutable; strings are immutable.
+4. .insert() adds an element, whereas index assignment replaces one.
+5. .append() is useful for collecting results inside loops.
