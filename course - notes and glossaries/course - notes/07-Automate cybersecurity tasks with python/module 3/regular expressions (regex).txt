@@ -1,0 +1,262 @@
+Python Notes — Module 3: Regular Expressions (Regex)
+Google Cybersecurity Professional Certificate · Automate Cybersecurity Tasks with Python
+
+Topics: Regular expressions, re module, re.findall(), regex symbols, quantifiers, pattern construction, and cybersecurity applications.
+1. Introduction to Regular Expressions
+A regular expression (Regex) is a sequence of characters that defines a search pattern.
+
+Regex allows us to search for information based on its structure, without knowing the exact text beforehand.
+Applications in cybersecurity
+- Extract email addresses from security logs.
+- Find IP addresses matching particular patterns.
+- Identify usernames and device IDs.
+- Extract failed login counts.
+- Search large log files for suspicious patterns.
+Example: Instead of searching for one specific email address, regex can find multiple email addresses matching a common format.
+2. Python's re Module
+Python provides regular expression functionality through the built-in re module.
+import re
+
+
+
+re.findall()
+The re.findall() function searches a string for a regex pattern and returns a list of all non-overlapping matches.
+
+Syntax:
+re.findall(pattern, string)
+
+
+
+Parameter	Purpose
+pattern	Regex pattern to search for
+string	Text in which to search
+
+Example
+import reresult = re.findall("ts", "tsnow, tshah, bmoreno")print(result)
+
+
+
+Output:
+['ts', 'ts']
+
+
+Python finds two occurrences of "ts".
+3. Regex Character Symbols
+Regex uses special symbols to identify different types of characters.
+Symbol	Meaning	Example
+\w	Letter, digit, or underscore	A, 7, _
+\d	Digit	0–9
+\s	Whitespace	Space, tab, newline
+.	Any character except newline (by default)	A, 7, @
+\.	Literal period	.
+
+Important: In Python 3, \w and \d can also match certain Unicode characters. The examples above describe their common usage.
+Example: \w
+import reprint(re.findall(r"\w", "h32rb17"))
+
+
+
+Output:
+['h', '3', '2', 'r', 'b', '1', '7']
+
+
+Example: \d
+print(re.findall(r"\d", "h32rb17"))
+
+
+
+Output:
+['3', '2', '1', '7']
+
+
+\w finds word characters, while \d finds only digits.
+4. Regex Quantifiers
+Quantifiers specify how many times a character or pattern should appear.
+Symbol	Meaning	Example
++	One or more occurrences	a+
+*	Zero or more occurrences	a*
+{n}	Exactly n occurrences	\d{4}
+{m,n}	Between m and n occurrences	\d{1,3}
+
++ — One or more
+print(re.findall(r"a+", "a aa aaa"))
+
+
+
+Output:
+['a', 'aa', 'aaa']
+
+
+\d+ — One or more consecutive digits
+print(re.findall(r"\d+", "h32rb17"))
+
+
+
+Output:
+['32', '17']
+
+
+The digits can be different; they simply need to be consecutive.
+* — Zero or more
+print(re.findall(r"a*", "baa"))
+
+
+
+Output:
+['', 'aa', '']
+
+
+Because * permits zero occurrences, it can produce empty-string matches.
+{n} — Exactly n occurrences
+print(re.findall(r"\d{2}", "h32rb17 k825t0m"))
+
+
+
+Output:
+['32', '17', '82']
+
+
+The pattern finds groups of exactly two consecutive digits. In a longer digit sequence, it can match two digits and leave the remainder unmatched.
+{m,n} — A range of occurrences
+print(re.findall(r"\d{1,3}", "h32rb17 k825t0m"))
+
+
+
+Output:
+['32', '17', '825', '0']
+
+
+This pattern matches groups containing between one and three consecutive digits.
+5. Combining Regex Symbols
+You can combine character symbols and quantifiers to create advanced search patterns.
+Pattern	Meaning
+\w+	One or more word characters
+\d+	One or more digits
+\d{4}	Exactly four consecutive digits
+\d{1,3}	One to three consecutive digits
+\w+\d+	Word characters followed by digits
+\w+:\s\d+	Word characters, colon, whitespace, digits
+
+Example: Finding usernames and login attempts
+import reemployee_logins = (    "1001 bmoreno: 12 Marketing "    "1002 tshah: 7 Human Resources "    "1003 sgilmore: 5 Finance")pattern = r"\w+:\s\d+"matches = re.findall(pattern, employee_logins)print(matches)
+
+
+
+Output:
+['bmoreno: 12', 'tshah: 7', 'sgilmore: 5']
+
+
+How the pattern works
+Pattern: \w+:\s\d+
+\w+
+Username
+
+
+:
+Colon
+
+
+\s
+Space
+
+
+\d+
+Login count
+
+
+
+
+bmoreno: 12
+
+
+This is useful when analysing authentication logs containing usernames and login attempts.
+6. Extracting Email Addresses Using Regex
+Email addresses share common structural features:
+
+username@domain.extension
+
+A simplified regex pattern is:
+r"\w+@\w+\.\w+"
+
+
+
+Understanding the pattern
+Part	Matches
+\w+	Username
+@	At symbol
+\w+	Domain name
+\.	Literal period
+\w+	Domain extension
+
+Example
+import reemail_log = """Login from alex@example.comLogin from admin@test.orgLogin from john@company.net"""pattern = r"\w+@\w+\.\w+"emails = re.findall(pattern, email_log)print(emails)
+
+
+
+Output:
+['alex@example.com', 'admin@test.org', 'john@company.net']
+
+
+Important limitation: This is a simplified educational pattern, not a complete email validator. It does not correctly handle every valid email address, such as usernames containing periods or hyphens.
+7. Why Use r"..." for Regex?
+You may notice that regex patterns often begin with r.
+r"\d+"
+
+
+
+The r creates a raw string, telling Python not to interpret ordinary backslash escape sequences inside the string.
+
+This makes regex patterns easier to write correctly.
+pattern = r"\d{3}"
+
+
+
+For regex patterns containing backslashes, prefer raw strings.
+
+8. Practical Cybersecurity Examples
+Example 1: Extract numerical values from logs
+import relog = "Failed attempts: 5, 12, 3, 27"numbers = re.findall(r"\d+", log)print(numbers)
+
+
+
+Output:
+['5', '12', '3', '27']
+
+
+Regex returns strings. Convert them to integers if mathematical operations are required.
+Example 2: Find device IDs matching a digit pattern
+import redevices = "Device IDs: 1234, 982, 5678"matches = re.findall(r"\d{4}", devices)print(matches)
+
+
+
+Output:
+['1234', '5678']
+
+
+This identifies four-digit sequences. To enforce an entire device ID format, additional pattern rules may be necessary.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+Regex	Pattern-based text searching
+import re	Import regex module
+re.findall()	Return list of matches
+\w	Word character
+\d	Digit
+\s	Whitespace
+.	Any character except newline by default
+\.	Literal dot
++	One or more
+*	Zero or more
+{n}	Exactly n repetitions
+{m,n}	Between m and n repetitions
+\w+	One or more word characters
+\d+	One or more digits
+r"..."	Raw string for regex patterns
+
+
+Five essential rules
+1. Import re before using its functions.
+2. re.findall(pattern, text) returns a list of matches.
+3. Quantifiers modify the preceding character or pattern.
+4. Use \. when matching an actual period.
+5. Test patterns carefully because overly broad regex may match unwanted information or miss valid data.
