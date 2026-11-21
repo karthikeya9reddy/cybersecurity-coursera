@@ -14,7 +14,7 @@ Why cybersecurity analysts use Python
 - Workflow automation: Connect several security tasks into a single process.
 Python is popular because it is readable, has relatively simple syntax, offers extensive libraries and has a large support community.
 
-Key takeaway: Python helps analysts spend less time on repetitive tasks and more time investigating security incidents.
+Key  takeaway: Python helps analysts spend less time on repetitive tasks and more time investigating security incidents.
 2. Python scripts, programs and environments
 A script is written code that executes instructions, often to automate a task. A program is a broader term for software that performs tasks and may include multiple scripts or components.
 Python environments
