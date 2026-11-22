@@ -1,0 +1,227 @@
+Python Notes — Module 4: File Handling, Parsing & Security Log Analysis
+Google Cybersecurity Professional Certificate · Automate Cybersecurity Tasks with Python
+
+Topics: File handling, with, open(), .read(), .write(), file modes, .split(), parsing security logs, and detecting suspicious login attempts.
+1. Introduction to File Handling
+Security analysts work with large log files containing information about system activity, authentication attempts, and security events.
+
+Python helps automate the process of reading, extracting, and analyzing information from these files.
+
+A log file is a record of events occurring in a system, network, or application.
+
+Common formats include .txt and .csv.
+2. Opening Files in Python
+Python uses the built-in open() function to open files.
+
+The with statement manages file resources and automatically closes the file when its block finishes, including when an exception occurs.
+Syntax
+with open("update_log.txt", "r") as file:    content = file.read()
+
+
+
+Component	Purpose
+with	Manages the file resource automatically
+open()	Opens the specified file
+"update_log.txt"	Filename or path
+"r"	Opens file in read mode
+as file	Assigns the file object to a variable
+:	Begins the indented block
+.read()	Reads the file contents
+
+Important: Using with ensures the file is properly closed, but it does not prevent all file-related errors.
+File paths
+A file path identifies the location of a file or directory.
+
+Relative path:
+with open("update_log.txt", "r") as file:    content = file.read()
+
+
+
+The file is located relative to the program's current working directory.
+
+Absolute path:
+with open("/home/analyst/logs/access_log.txt", "r") as file:    content = file.read()
+
+
+
+The path specifies the complete file location.
+3. File Opening Modes
+The second argument of open() determines how Python interacts with the file.
+Mode	Meaning	Behavior
+"r"	Read	Reads an existing file
+"w"	Write	Creates a file or overwrites existing contents
+"a"	Append	Creates a file or adds data to its end
+
+Warning: "w" overwrites existing content. Use "a" when you want to preserve existing data and add new information.
+4. Reading Files Using .read()
+The .read() method reads the contents of a text file and returns them as a string.
+with open("update_log.txt", "r") as file:    updates = file.read()print(updates)
+
+
+
+Suppose update_log.txt contains:
+elarson
+bmoreno
+tshah
+
+
+Output:
+elarson
+bmoreno
+tshah
+
+
+The updates variable contains the file contents as one string, including newline characters.
+
+You can use string operations on it:
+print(len(updates))print("tshah" in updates)
+
+
+
+The file is closed after exiting the with block, but the updates string remains available.
+5. Writing to Files Using .write()
+The .write() method writes string data into a file.
+Write mode — "w"
+with open("security_report.txt", "w") as file:    file.write("Security scan completed")
+
+
+
+This creates the file if necessary or replaces its existing contents.
+Append mode — "a"
+with open("security_report.txt", "a") as file:    file.write("\nSuspicious login detected")
+
+
+
+This adds a new line without deleting previous content.
+Why \n matters
+\n represents a newline character.
+with open("log.txt", "w") as file:    file.write("First event\n")    file.write("Second event\n")
+
+
+
+File content:
+First event
+Second event
+
+
+Remember: .write() does not automatically add a newline.
+
+6. Parsing Files Using .split()
+Parsing means processing data to extract or organize meaningful information.
+
+The .split() method converts a string into a list of substrings.
+Default .split()
+Without arguments, .split() separates a string at whitespace, including spaces, tabs, and newlines.
+message = "We are learning Python"result = message.split()print(result)
+
+
+
+Output:
+['We', 'are', 'learning', 'Python']
+
+
+Splitting using a specified separator
+log = "admin,192.0.2.10,failed"result = log.split(",")print(result)
+
+
+
+Output:
+['admin', '192.0.2.10', 'failed']
+
+
+Useful .split() examples
+Code	Purpose
+text.split()	Split on whitespace
+text.split(",")	Split at commas
+text.split(":")	Split at colons
+text.split("\n")	Split at newline characters
+
+Important distinction: split() without arguments separates on all whitespace, whereas split("\n") separates specifically at newlines.
+7. Reading and Parsing a Security Log
+Suppose failed_logins.txt contains:
+elarson
+eraab
+eraab
+tshah
+eraab
+bmoreno
+
+
+Each line represents one failed login attempt.
+Step 1: Read the file
+with open("failed_logins.txt", "r") as file:    log_data = file.read()
+
+
+
+Step 2: Convert the string into a list
+usernames = log_data.split()print(usernames)
+
+
+
+Output:
+['elarson', 'eraab', 'eraab', 'tshah', 'eraab', 'bmoreno']
+
+
+You can now use loops and conditionals to investigate the usernames.
+File parsing workflow
+Text file
+failed_logins.txt
+
+open() + .read()
+Load file contents into a string
+
+.split()
+Convert string into a list
+
+Loop + Conditional + Counter
+Analyze repeated login attempts
+
+Result
+Flag accounts for investigation
+
+
+8. Cybersecurity Algorithm — Detect Failed Login Attempts
+Objective: Identify users who have three or more failed login attempts in the supplied log.
+Complete Python program
+# Read failed login attempts from the logwith open("failed_logins.txt", "r") as file:    log_data = file.read()# Convert log data into a listusernames = log_data.split()# Count failures for a specific userdef login_check(login_list, current_user):    counter = 0    for username in login_list:        if username == current_user:            counter += 1    if counter >= 3:        print("Account locked")    else:        print("Login permitted")# Check the selected userslogin_check(usernames, "eraab")login_check(usernames, "elarson")
+
+
+
+Output:
+Account locked
+Login permitted
+
+
+How the algorithm works
+1. open() opens the log file.
+2. .read() converts the contents into a string.
+3. .split() creates a list of usernames.
+4. login_check() defines a reusable function.
+5. counter = 0 initializes the failed-attempt counter.
+6. The for loop checks each username.
+7. The if condition compares it with the target username.
+8. counter += 1 increases the count for each match.
+9. The final condition determines which message to display.
+Understanding the counter
+Searching for eraab
+Username	Match?	Counter
+elarson	No	0
+eraab	Yes	1
+eraab	Yes	2
+tshah	No	2
+eraab	Yes	3
+bmoreno	No	3
+
+Three matching failures → Account locked message
+
+
+Technical note: This course example prints "Account locked" but does not actually disable an account. It also counts every recorded failure in the file, regardless of time. Real account-lockout enforcement requires integration with an authentication system and an appropriate time-based security policy.
+
+9. Important File Handling Practices
+- Use with open() so files are closed reliably.
+- Use "r" for reading, "w" for replacing content, and "a" for appending.
+- Use encoding="utf-8" when working with UTF-8 text files.
+- Keep source logs unchanged when preserving incident evidence.
+- Use .split() for simple text structures.
+- For CSV files with quoted fields and embedded commas, prefer Python's csv module rather than a simple split(",").
+- Be careful with large log files: .read() loads the entire file into memory. Processing one line at a time is more suitable for very large files.
