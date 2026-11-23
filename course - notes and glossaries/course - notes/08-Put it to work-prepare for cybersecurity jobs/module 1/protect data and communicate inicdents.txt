@@ -1,0 +1,170 @@
+Cybersecurity Notes — Security Mindset, Asset Protection & Business Continuity
+Google Cybersecurity Professional Certificate · Course 8: Put It to Work — Prepare for Cybersecurity Jobs
+
+Topics: Security mindset, data classification, asset classification, incident escalation, business continuity planning, disaster recovery, and information security lifecycle.
+1. Security Mindset
+A security mindset is the ability to evaluate risks and continuously identify potential or actual security breaches involving systems, applications, and data.
+
+Security professionals must understand:
+- Assets: What needs protection?
+- Threats: What could harm those assets?
+- Vulnerabilities: What weaknesses could be exploited?
+- Risks: What are the potential consequences of threats exploiting vulnerabilities?
+Why a security mindset matters
+A security mindset helps analysts:
+- Identify suspicious activities before they develop into serious incidents.
+- Understand the importance of organizational assets.
+- Stay informed about emerging threats and vulnerabilities.
+- Evaluate potential risks before making decisions.
+- Protect customer information and business operations.
+Example: An employee installs an unauthorized application on a company computer. A security analyst should recognize that this could introduce vulnerabilities or malicious software and report the concern according to company procedures.
+2. Data Classification
+Data classification is the process of categorizing information according to its sensitivity and protection requirements.
+
+The course introduces four data classifications.
+Classification	Description	Examples
+Public	Information available to the general public	Press releases, job postings, marketing materials
+Private	Information not intended for public access	Employee IDs, internal email addresses, research data
+Sensitive	Information requiring protection against unauthorized access	PII, SPII, PHI, banking details, passwords
+Confidential	Restricted information important to business operations	Trade secrets, financial records, proprietary information
+
+Important data types
+PII — Personally Identifiable Information
+
+Information that can identify an individual, such as their name, address, or identification number.
+
+SPII — Sensitive Personally Identifiable Information
+
+Highly sensitive personal information, such as passport numbers, government identification numbers, or financial account details.
+
+PHI — Protected Health Information
+
+Individually identifiable health information protected under applicable healthcare privacy rules, particularly HIPAA in the United States.
+
+NDA — Non-Disclosure Agreement
+
+A legal agreement requiring parties to protect confidential information.
+
+Technical clarification: Organizations may use different classification schemes. Private, sensitive, and confidential are not universally fixed levels in one hierarchy; actual handling requirements depend on organizational policy and applicable law.
+3. Asset Classification
+Asset classification involves categorizing organizational assets according to their importance, value, and sensitivity.
+Low-level vs. high-level assets
+Low-level assets	High-level assets
+Generally lower sensitivity	Higher sensitivity or business importance
+Publicly accessible information	Restricted or critical information
+Public marketing materials	Customer financial information
+Public website address	Trade secrets and intellectual property
+
+High-level asset compromise can result in financial losses, reputational damage, reduced customer trust, and legal or regulatory consequences.
+
+Remember: A publicly accessible asset can still be business-critical. For example, a public website may contain no confidential information but can be essential to business operations.
+4. Security Incidents and Escalation
+A security event is an observable occurrence within a system or network.
+
+A security incident involves activity that compromises or threatens organizational security.
+
+Incident escalation is the process of reporting a suspected or confirmed security issue to the appropriate supervisor, incident response team, or security personnel.
+Examples requiring evaluation
+Situation	Potential concern
+Employee installs unauthorized software	Unapproved application or potential vulnerability
+Suspicious code execution appears in logs	Possible malware or unauthorized activity
+Sensitive customer data is exposed	Confidentiality breach
+Multiple suspicious authentication attempts occur	Possible credential attack
+
+Incident escalation process
+1. Detect suspicious activity
+Identify an unusual event or possible security violation
+2. Assess the situation
+Review available evidence and possible impact
+3. Report or escalate
+Notify the appropriate security personnel
+4. Document the findings
+Record relevant observations and follow established procedures
+
+Important: Do not ignore suspicious activity simply because its impact initially appears small. Follow the organization's escalation policy.
+
+A confirmed data breach is one type of security incident, but not every security incident requires confirmed data exposure.
+5. Protecting Organizational Assets
+The course describes a four-part approach to protecting organizations.
+1. Identify assets
+Determine which systems and information need protection
+2. Identify threats
+Determine what could negatively affect those assets
+3. Implement detection
+Use security tools and monitoring processes
+4. Prepare BCP and DRP
+Plan how operations and systems will recover from disruption
+
+6. Business Continuity Plan (BCP)
+A Business Continuity Plan documents how an organization will maintain essential business operations during and after a significant disruption.
+Four important BCP steps
+1. Business Impact Analysis (BIA): Determine how disruptions could affect business processes.
+2. Recovery procedures: Document the steps needed to maintain or restore critical functions.
+3. Business continuity team: Assign responsibilities to personnel from departments such as IT, security, HR, communications, and operations.
+4. Training and exercises: Prepare teams through scenarios and testing.
+Example
+If a payment company's primary infrastructure becomes unavailable, the BCP describes how the organization will continue essential payment-related operations, communicate with customers, and coordinate its response.
+7. Disaster Recovery Plan (DRP)
+A Disaster Recovery Plan describes how an organization restores affected technology, systems, applications, and data after a serious disruption.
+
+The course emphasizes:
+- Restoring software functionality.
+- Recovering affected hardware and infrastructure.
+- Identifying impacted applications and data.
+- Minimizing disruption caused by security incidents.
+Example: Ransomware incident
+If ransomware makes important business systems unavailable, a disaster recovery plan helps guide restoration of those systems and data.
+BCP vs. DRP
+BCP	DRP
+Maintains business operations	Restores affected technology
+Focuses on organizational continuity	Focuses on technical recovery
+Involves multiple business departments	Usually involves IT, security, and recovery specialists
+Addresses how work continues	Addresses how systems are restored
+
+Remember: BCP and DRP support each other. Disaster recovery is an important component of broader business continuity planning.
+8. Information Security Lifecycle
+The course presents an information lifecycle strategy with four steps.
+Stage	Purpose
+1. Identify	Identify important assets and sensitive information
+2. Assess	Review security controls, policies, vulnerabilities, and procedures
+3. Protect	Implement safeguards for organizational assets
+4. Monitor	Monitor security processes and systems continuously
+
+Case study: Payment processing company
+The fictional company Right-On-Time Payment Solutions processes customer payments.
+
+The new security analyst, Juliana Soto, discovers that the company handles customer names, usernames, passwords, identification information, and banking details.
+
+She follows the information lifecycle:
+- Identify: Recognize sensitive customer and financial information as critical assets.
+- Assess: Review security policies and existing protective controls.
+- Protect: Observe how experienced analysts safeguard company systems.
+- Monitor: Work with her supervisor to understand security monitoring procedures.
+Key lesson: Before protecting an organization, an analyst must understand what information and systems are most important to its operations.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+Security mindset	Constantly evaluate threats, risks, and vulnerabilities
+Data classification	Categorize information by sensitivity
+Asset classification	Categorize assets by importance and sensitivity
+Public data	Information publicly accessible
+Private data	Information not intended for public access
+Sensitive data	Information requiring restricted access
+Confidential data	Restricted business-critical information
+PII	Personally Identifiable Information
+SPII	Sensitive Personally Identifiable Information
+PHI	Protected Health Information
+NDA	Non-Disclosure Agreement
+Incident escalation	Report security concerns to appropriate personnel
+BIA	Business Impact Analysis
+BCP	Business Continuity Plan
+DRP	Disaster Recovery Plan
+Information lifecycle	Identify → Assess → Protect → Monitor
+
+
+Five essential rules
+1. Know which assets need protection and what threatens them.
+2. Classify information before deciding how it should be handled.
+3. Report suspicious activity according to organizational escalation procedures.
+4. Use BCP to maintain business operations and DRP to restore technology.
+5. Continuously assess and monitor the security of critical assets.
