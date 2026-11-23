@@ -1,0 +1,286 @@
+Python Notes — Module 4: Debugging Python Code
+Google Cybersecurity Professional Certificate · Automate Cybersecurity Tasks with Python
+
+Topics: Debugging, syntax errors, logic errors, exceptions, error messages, breakpoints, debuggers, and debugging strategies.
+1. Introduction to Debugging
+Debugging is the process of identifying, investigating, and fixing errors in code.
+
+Even syntactically valid Python programs can produce incorrect results. Debugging helps security analysts ensure their automation scripts work as intended.
+Why debugging matters in cybersecurity
+- Prevent incorrect security alerts.
+- Fix errors in log-processing scripts.
+- Ensure security policies are enforced correctly.
+- Identify problems in authentication and access-control automation.
+- Improve program reliability.
+2. Three Main Types of Errors
+Error type	Meaning	Does Python show an error?
+Syntax error	Incorrect Python syntax	Yes
+Logic error	Valid code produces incorrect results	Usually no
+Exception	Valid syntax, but execution fails	Usually yes, if unhandled
+
+3. Syntax Errors
+A syntax error occurs when Python code violates the language's syntax rules.
+
+Examples include missing colons, quotation marks, parentheses, or incorrect indentation.
+Example: Missing colon
+Incorrect:
+def greet_user()    print("Welcome")
+
+
+
+Python raises a SyntaxError because the function header is missing :.
+
+Correct:
+def greet_user():    print("Welcome")
+
+
+
+Example: Unclosed string
+Incorrect:
+message = "Security alertprint(message)
+
+
+
+Correct:
+message = "Security alert"print(message)
+
+
+
+IndentationError
+Incorrect indentation can prevent Python from understanding a code block.
+if True:print("Access granted")
+
+
+
+Correct:
+if True:    print("Access granted")
+
+
+
+Remember: IndentationError is a subclass of SyntaxError. Python generally recommends four spaces for each indentation level.
+4. Logic Errors
+A logic error occurs when a program executes successfully but produces an unintended result.
+
+Logic errors are particularly dangerous in security automation because a program may appear to work while applying the wrong security rule.
+Example: Incorrect comparison operator
+Suppose a user should be blocked after reaching five failed login attempts.
+
+Incorrect:
+login_attempts = 5if login_attempts > 5:    print("Account locked")else:    print("Login permitted")
+
+
+
+Output:
+Login permitted
+
+
+The logic is wrong because the condition excludes exactly five attempts.
+
+Correct:
+login_attempts = 5if login_attempts >= 5:    print("Account locked")else:    print("Login permitted")
+
+
+
+Output:
+Account locked
+
+
+Common logic errors
+- Using > instead of >=.
+- Using incorrect variable values.
+- Incorrect indentation that changes execution flow.
+- Returning from a function too early.
+- Running code outside the intended conditional block.
+Important: Code that runs without errors is not necessarily correct.
+5. Exceptions
+An exception occurs when Python encounters a problem while executing syntactically valid code.
+Common Python exceptions
+Exception	Cause
+NameError	Variable or function name is not defined
+IndexError	Index is outside the sequence's valid range
+TypeError	Operation involves incompatible data types
+ZeroDivisionError	Division by zero
+FileNotFoundError	File doesn't exist at the specified path
+ValueError	Correct type but inappropriate value
+
+NameError
+print(username)
+
+
+
+If username has not been defined, Python raises NameError.
+
+Fix:
+username = "elarson"print(username)
+
+
+
+IndexError
+users = ["alex", "mike", "zara"]print(users[5])
+
+
+
+The list only has indices 0, 1, and 2.
+
+Fix:
+print(users[2])
+
+
+
+TypeError
+result = "10" + 5
+
+
+
+You cannot directly concatenate a string and an integer.
+
+Fix:
+result = int("10") + 5print(result)
+
+
+
+Output: 15
+ZeroDivisionError
+result = 10 / 0
+
+
+
+Division by zero is undefined.
+FileNotFoundError
+with open("missing_log.txt", "r") as file:    content = file.read()
+
+
+
+Python raises FileNotFoundError if the file does not exist at that location.
+
+Check the filename, file path, and current working directory.
+
+6. Debugging Techniques
+Method 1: Read error messages
+Python error messages help identify the type and approximate location of the problem.
+
+A traceback may look like:
+Traceback (most recent call last):
+  File "script.py", line 3, in <module>
+    print(usernames[5])
+IndexError: list index out of range
+
+
+When investigating:
+1. Identify the exception type.
+2. Check the indicated file and line.
+3. Examine the relevant variables and operations.
+4. Correct the issue and run the code again.
+A traceback points to where an error was detected, which may not be the original cause of the problem.
+Method 2: Use temporary print() statements
+Print statements allow programmers to inspect execution flow and variable values.
+counter = 0for i in range(3):    print("Inside loop:", i)    counter += 1print("Final counter:", counter)
+
+
+
+Output:
+Inside loop: 0
+Inside loop: 1
+Inside loop: 2
+Final counter: 3
+
+
+If a print statement does not execute where expected, it can help identify a problem with the program's control flow.
+Method 3: Use a debugger
+A debugger is a tool that helps programmers inspect how code executes.
+
+Common debugger features include:
+Feature	Purpose
+Breakpoint	Pause execution at a selected line
+Step over	Execute the current line without entering a called function
+Step into	Enter a function to inspect its execution
+Step out	Finish the current function and return to its caller
+Variable inspection	Examine current variable values
+
+For example, Visual Studio Code supports Python debugging with breakpoints and variable inspection.
+How a breakpoint works
+The red marker represents a breakpoint at line 3, where execution can pause for inspection.
+
+
+
+7. Practical Debugging Example — Duplicate Approved Users
+Problem: A security script should add new users to an approved list without creating duplicates.
+
+Incorrect code:
+new_users = ["sgilmore", "bmoreno"]approved_users = ["bmoreno", "tshah", "elarson"]for user in new_users:    if user in approved_users:        print(user, "already in list")    approved_users.append(user)print(approved_users)
+
+
+
+The problem is that .append() executes regardless of whether the user already exists.
+
+Correct:
+new_users = ["sgilmore", "bmoreno"]approved_users = ["bmoreno", "tshah", "elarson"]for user in new_users:    if user in approved_users:        print(user, "already in list")    else:        approved_users.append(user)print(approved_users)
+
+
+
+Output:
+bmoreno already in list
+['bmoreno', 'tshah', 'elarson', 'sgilmore']
+
+
+Lesson: Indentation and conditional placement directly affect program behavior.
+8. Practical Debugging Example — Incorrect return Placement
+Suppose a function parses HTTP log entries. Entries with status code 200 should not be parsed.
+Incorrect logic
+def parse_log(line):    parsed_line = line.split()    return parsed_line    if parsed_line[0] == "200":        return "Successful event - no parsing needed"
+
+
+
+The condition never executes because the first return immediately exits the function.
+Correct logic
+def parse_log(line):    status_code = line.split()[0]    if status_code == "200":        return "Successful event - no parsing needed"    parsed_line = line.split()    return parsed_lineresult = parse_log("200 2026-11-23 10:30 app1")print(result)
+
+
+
+Output:
+Successful event - no parsing needed
+
+
+Lesson: Once Python executes return, the function stops executing. Any statements after that return in the same execution path are skipped.
+
+This simplified example assumes a nonempty, space-separated log line with the HTTP status code first.
+
+9. Recommended Debugging Workflow
+1. Run the program
+Observe error messages or unexpected output
+2. Identify the error
+Syntax, logic, or exception
+3. Locate the cause
+Read traceback, inspect variables, use breakpoints
+4. Correct the code
+Change the faulty syntax or logic
+5. Test again
+Verify expected results and check for other errors
+
+Fixing one error may reveal another that was previously hidden. Repeat the process until the program behaves correctly.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+Debugging	Find and fix coding errors
+Syntax error	Invalid Python syntax
+Logic error	Valid code, incorrect result
+Exception	Execution fails
+SyntaxError	Invalid syntax
+IndentationError	Incorrect indentation
+NameError	Undefined variable/name
+IndexError	Invalid sequence index
+TypeError	Incompatible data types
+ZeroDivisionError	Division by zero
+FileNotFoundError	File cannot be found
+Debugger	Inspects code execution
+Breakpoint	Pauses program execution
+print() debugging	Inspect values and execution flow
+return	Exits function immediately
+
+
+Five essential rules
+1. Syntax errors prevent Python from correctly interpreting code.
+2. Logic errors can produce incorrect results without raising an exception.
+3. Exceptions occur during program execution.
+4. Use error messages, print statements, and breakpoints to locate problems.
+5. Always test your program's actual output, even when no errors appear.
