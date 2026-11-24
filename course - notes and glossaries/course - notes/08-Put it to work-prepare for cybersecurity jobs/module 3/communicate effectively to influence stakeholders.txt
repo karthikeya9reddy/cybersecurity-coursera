@@ -1,0 +1,204 @@
+Cybersecurity Notes — Course 8, Module 3: Stakeholders & Effective Communication
+Google Cybersecurity Professional Certificate · Put It to Work: Prepare for Cybersecurity Jobs
+
+Topics: Stakeholders, organizational hierarchy, communication strategies, incident reporting, security storytelling, visual dashboards, and Google Sheets.
+1. Stakeholders in Cybersecurity
+A stakeholder is an individual or group that has an interest in an organization's decisions, activities, or outcomes.
+
+Security stakeholders help make decisions about protecting organizational assets, responding to incidents, managing risk, and maintaining business operations.
+Five important stakeholders
+Stakeholder	Responsibilities
+Risk Manager	Identifies, assesses, and manages risks; coordinates with legal and public relations teams when needed
+CEO — Chief Executive Officer	Oversees organizational operations, business decisions, and overall performance
+CFO — Chief Financial Officer	Manages finances and evaluates the financial costs of security incidents and security investments
+CISO — Chief Information Security Officer	Oversees information security strategy, architecture, risk analysis, audits, and security planning
+Operations Manager	Oversees day-to-day security operations, coordinates analysts, and helps manage security incidents
+
+Organizational communication hierarchy
+Executives
+CEO · CFO · CISO
+Management
+Risk managers · Operations managers
+Security Analysts
+Monitoring · Investigation · Reporting
+Simplified communication hierarchy; actual reporting structures vary between organizations.
+Entry-level analysts generally communicate more frequently with operations managers or security risk managers than with senior executives.
+
+Their findings may then be communicated to executives through management.
+2. Why Stakeholders Matter
+Different stakeholders focus on different aspects of cybersecurity.
+Stakeholder	Main concern
+Operations Manager	Daily incidents, alerts, and operational disruptions
+Risk Manager	Risk exposure, consequences, and mitigation
+CISO	Overall security posture and strategy
+CFO	Financial impact and security costs
+CEO	Business continuity, reputation, and organizational impact
+
+Example: If a security analyst detects multiple failed login attempts, they may report the findings to an operations manager.
+
+The manager might investigate whether the employee forgot their password or whether unauthorized access is being attempted.
+
+Key lesson: Understand what each stakeholder needs to know before communicating security findings.
+3. Clear and Concise Communication
+Security analysts must communicate technical information in a way stakeholders can understand and act upon.
+
+Effective communication should be:
+- Clear: Easy to understand.
+- Concise: Avoid unnecessary information.
+- Accurate: Based on verified evidence.
+- Relevant: Focus on the stakeholder's responsibilities.
+- Actionable: Explain what needs to happen next.
+Four important questions
+Before communicating, ask:
+1. What does the stakeholder need to know?
+2. Why is this information important?
+3. When does action need to be taken?
+4. How can I explain it without unnecessary technical terminology?
+Example
+Overly technical communication:
+Multiple anomalous authentication events originated from an unfamiliar source IP and triggered detection thresholds.
+
+Clear communication:
+We detected repeated unsuccessful login attempts against an employee account from an unfamiliar network. The account may be targeted, and further investigation is recommended.
+
+Both communicate the concern, but the second is easier for a nontechnical stakeholder to understand.
+4. Building a Cybersecurity Story
+Security storytelling is presenting a security issue through a clear explanation of the problem, its impact, and possible solutions.
+
+The course emphasizes three essential components:
+1. Security Challenge
+What happened?
+2. Organizational Impact
+Why does it matter?
+3. Possible Solution
+What should happen next?
+
+Practical example: Suspicious code execution
+Challenge: System logs indicate possible malicious code execution.
+
+Impact: The activity could compromise sensitive customer information or affect business operations.
+
+Possible solution: Follow the organization's incident response playbook, preserve relevant evidence, and escalate the suspicious activity for investigation.
+
+A good security story should use supporting evidence and distinguish confirmed findings from suspected threats.
+5. Communication Methods
+Security analysts should select communication channels based on urgency, complexity, sensitivity, and company procedures.
+Communication method	Best used for
+Instant messaging	Brief updates and quick coordination
+Email	Formal updates and detailed explanations
+Phone calls	Urgent matters requiring immediate attention
+Video meetings	Complex discussions and collaborative decisions
+Spreadsheets	Structured data and numerical findings
+Presentations	Executive summaries and security trends
+Incident ticketing systems	Tracking, documenting, and coordinating incidents
+Visual dashboards	Displaying security metrics and trends
+
+Important communication practices
+- Follow approved organizational communication procedures.
+- Verify recipients before sending sensitive information.
+- Share confidential data only with authorized individuals.
+- Avoid unnecessary technical details when communicating with executives.
+- Follow up using approved channels when an urgent message has not received a response.
+Remember: An urgent security incident should not be left unattended while waiting indefinitely for an email reply.
+6. Visual Communication in Cybersecurity
+A visual dashboard displays important data, charts, graphs, or metrics in one place.
+
+Visual dashboards help stakeholders identify security trends and understand information quickly.
+Benefits
+- Simplify large datasets.
+- Highlight security trends.
+- Compare departments or systems.
+- Identify areas requiring attention.
+- Support data-driven decisions.
+Common visualizations
+Visualization	Best purpose
+Bar chart	Compare security metrics across departments
+Line chart	Show trends over time
+Pie chart	Show proportions of a whole
+Table	Display detailed security information
+Dashboard	Present multiple related metrics together
+
+7. Practical Example — Phishing Email Dashboard
+Scenario: The CISO wants to identify the five departments with the highest number of clicked phishing emails.
+
+The security team collects the following data.
+Department	Clicked phishing emails
+Human Resources	30
+Customer Service	18
+Global Security	10
+Media Relations	40
+Professional Development	27
+
+Visual representation
+Clicked phishing emails by department
+Example data from the course
+
+
+0153045Human ResourcesCustomer ServiceGlobal SecurityMedia RelationsProfessional Develo…
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+Key findings
+- Media Relations: Highest number of clicked phishing emails (40).
+- Human Resources: Second highest (30).
+- Global Security: Lowest among the five departments (10).
+The security team can use these findings to discuss targeted security awareness training and investigate the reasons behind the differences.
+
+Technical note: These are counts, not click-through rates. To compare departments fairly, analysts may also need the number of phishing emails delivered and the number of employees tested in each department.
+8. Creating a Dashboard in Google Sheets
+The course demonstrates how to create a bar chart.
+Basic steps
+1. Open Google Sheets and create a blank spreadsheet.
+2. Enter Department in cell A1.
+3. Enter # of clicked phishing emails in cell B1.
+4. Enter the department names and corresponding numbers in rows 2–6.
+5. Select the complete dataset, including headings.
+6. Select Insert → Chart.
+7. In the Chart editor, choose Bar chart.
+8. Under Customize → Chart & axis titles, enter an appropriate chart title.
+Suggested title:
+
+Clicked Phishing Emails by Department
+What should a good dashboard contain?
+- Clear chart title.
+- Accurate data.
+- Appropriate chart type.
+- Labeled axes.
+- Meaningful comparisons.
+- Relevant findings for stakeholders.
+The objective is not simply to create attractive charts, but to communicate security information that supports decisions.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+Stakeholder	Person or group interested in organizational decisions
+CEO	Overall business leadership
+CFO	Financial management and impact
+CISO	Information security leadership
+Risk Manager	Risk identification and mitigation
+Operations Manager	Daily security operations
+Clear communication	Relevant, accurate, concise information
+Security storytelling	Challenge → Impact → Solution
+Incident ticket	Documents and tracks security issues
+Visual dashboard	Displays important security metrics
+Bar chart	Compares values across categories
+Line chart	Shows trends over time
+Google Sheets	Tool for creating spreadsheets and visualizations
+
+
+Five essential rules
+1. Different stakeholders need different levels of technical detail.
+2. Communicate the security issue, organizational impact, and recommended action.
+3. Choose the communication method based on urgency and sensitivity.
+4. Protect confidential information when reporting security findings.
+5. Use dashboards to make security data understandable and actionable.
