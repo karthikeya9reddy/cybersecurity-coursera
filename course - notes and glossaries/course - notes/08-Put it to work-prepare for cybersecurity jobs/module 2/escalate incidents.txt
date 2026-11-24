@@ -1,0 +1,233 @@
+Cybersecurity Notes — Course 8: Incident Escalation & Prioritization
+Google Cybersecurity Professional Certificate · Put It to Work: Prepare for Cybersecurity Jobs
+
+Topics: Incident escalation, incident classification, escalation policies, security team responsibilities, incident criticality, breach notification, and incident prioritization.
+1. What Is Incident Escalation?
+Security incident escalation is the process of identifying a potential security incident, triaging it, and, when appropriate, transferring it to a more experienced team member or responsible department.
+
+Escalation ensures security issues are investigated and handled by the appropriate personnel before they become more serious.
+Why escalation is important
+- Prevents minor security issues from becoming major incidents.
+- Reduces the risk of sensitive data exposure.
+- Helps minimize operational and financial damage.
+- Ensures incidents reach the appropriate response teams.
+- Supports compliance with organizational policies and applicable laws.
+Important: Not every security event must be escalated. Analysts should follow their organization's escalation policy.
+2. Incident Escalation Process
+1. Identify
+Detect suspicious activity through alerts, logs, or monitoring
+2. Triage
+Assess the incident type, affected assets, and potential impact
+3. Prioritize
+Determine the appropriate urgency and criticality
+4. Escalate if required
+Notify the responsible team according to company policy
+5. Document
+Record the findings, actions, and notifications
+
+Two essential analyst skills
+1. Attention to detail: Identify unusual activity, suspicious patterns, and potential threats.
+2. Following escalation procedures: Know who to notify, when to escalate, and which communication channels to use.
+3. Escalation Policy
+An escalation policy is a set of documented procedures describing how security issues should be reported and handled.
+
+It typically specifies:
+- Which security events require escalation.
+- Who should receive notifications.
+- How to communicate incidents.
+- Who to contact if the primary responder is unavailable.
+- How quickly different incidents should be escalated.
+Example
+An organization may require escalation when an account experiences 10 failed login attempts.
+
+An analyst identifies the activity in authentication logs, reviews the company's escalation policy, and notifies the password protection team.
+
+Remember: Escalation thresholds differ between organizations.
+4. Three Important Security Incident Types
+A. Malware infection
+A malware infection occurs when malicious software infiltrates a computer or network.
+
+Examples include ransomware and other malicious programs.
+
+Possible consequences:
+- System performance degradation.
+- Data theft or corruption.
+- Operational disruption.
+- Loss of access to important information.
+B. Unauthorized access
+Unauthorized access occurs when someone gains physical or digital access to a system, application, or data without permission.
+
+Examples:
+- Stolen credentials used to access accounts.
+- Successful brute-force attacks.
+- Access to restricted databases.
+- Unauthorized physical access to protected systems.
+C. Improper usage
+Improper usage occurs when an employee violates an organization's acceptable use policies.
+
+Examples:
+- Installing unauthorized applications.
+- Using company software licenses for personal purposes.
+- Accessing another employee's information without authorization.
+Improper usage may be intentional or accidental. The course recommends escalating these incidents to a supervisor rather than assuming intent.
+Incident types comparison
+Incident type	Main concern	Example
+Malware infection	Malicious software	Ransomware on a workstation
+Unauthorized access	Access without permission	Compromised employee credentials
+Improper usage	Policy violation	Installing prohibited software
+
+Technical distinction: Phishing is generally a social-engineering attack, not itself a malware infection, although phishing messages can deliver malware.
+5. Incident Criticality and Prioritization
+Incident criticality describes the seriousness of an incident and its potential impact on organizational assets or operations.
+
+The course introduces three broad levels.
+Criticality	Description	Example
+Low	Limited apparent impact	Isolated failed login from a known employee
+Medium	Potential risk requiring further investigation	Suspicious activity involving an unapproved application
+High	Significant potential impact on critical operations or sensitive data	Unauthorized access to a customer financial database
+
+These examples are illustrative. Actual severity depends on the evidence and the organization's policy.
+What determines incident priority?
+The course emphasizes the importance of the affected asset.
+
+A threat targeting a manufacturing control application or a database storing customer PII may require greater urgency than an isolated failed login.
+
+Other relevant factors include incident scope, potential damage, available evidence, and business importance.
+Criticality can change
+An incident may initially receive a medium classification because information is limited.
+
+After further investigation, an experienced incident handler may increase or decrease its criticality.
+
+Key lesson: Prioritization is dynamic. Analysts should update their assessment as new evidence becomes available.
+
+6. Roles in the Escalation Process
+Different security and data-management roles handle different responsibilities.
+Role	Main responsibility	When they may be involved
+Data owner	Determines authorized access and use of organizational information	Unauthorized access to owned data
+Data controller	Determines why and how personal data is processed	Risks involving customer personal information
+Data processor	Processes personal data on behalf of a controller	Third-party data-processing security issues
+Data custodian	Implements and manages data protection controls and access	Compromised permissions or access controls
+Data Protection Officer (DPO)	Monitors and advises on data protection compliance	Privacy policy or regulatory concerns
+
+Additional organizational roles
+Depending on the incident, other teams may participate:
+- CISO: Oversees organizational information security.
+- Security engineers and incident responders: Investigate and remediate technical issues.
+- Legal team: Advises on legal obligations and regulatory concerns.
+- Public relations or communications team: Manages appropriate external communication.
+Responsibilities and reporting structures vary between organizations.
+7. Breach Notification Requirements
+Some security breaches trigger legal obligations to notify affected individuals or regulatory authorities.
+
+These obligations may apply to compromised PII and other protected information.
+
+Examples include personal identification numbers, addresses, financial details, and medical records.
+
+Important: Notification requirements vary by jurisdiction, data type, and breach circumstances. Not every security incident automatically triggers a legal reporting obligation.
+
+As an entry-level analyst, your responsibility is generally to escalate potential breaches through the organization's approved process, rather than independently deciding legal notifications.
+8. Consequences of Delayed Escalation
+Even apparently minor incidents may develop into serious problems when left uninvestigated.
+Course example: Unauthorized application activity
+An analyst notices unusual log activity involving an application recently banned by the organization.
+
+Instead of escalating promptly, the analyst postpones reporting it.
+
+Later, the company experiences a serious breach affecting manufacturing operations. The security team discovers that the incident originated from suspicious activity involving the banned application.
+
+Possible consequences include:
+- Manufacturing downtime.
+- Financial losses.
+- Compromised data.
+- Disruption of business operations.
+- Reputational damage.
+Key lesson: Delayed escalation can allow attackers or security problems to persist and expand.
+
+9. Case Study — Juliana Soto
+The course presents a scenario involving Juliana Soto, a new cybersecurity analyst at the fictional Right-On-Time Payment Solutions.
+Two simultaneous security alerts
+
+Alert 1 — Ten failed login attempts
+
+An employee account is locked after 10 failed logins. The organization's policy requires notification of the password protection team.
+
+
+
+
+Alert 2 — Attempted compromise of financial database
+
+An unknown source attempts to compromise a system containing customer bank account information, potentially affecting hundreds of customers.
+
+
+
+Juliana's decision
+She prioritizes the attempted compromise of the customer financial database because it threatens a highly sensitive asset.
+
+She follows the escalation policy, notifies the appropriate team, and then escalates the failed-login event.
+What this teaches
+- Incidents must be prioritized according to risk and asset importance.
+- Multiple alerts may require different levels of urgency.
+- Escalation guidelines help analysts make consistent decisions.
+- Lower-priority incidents should still receive appropriate attention.
+
+10. Technical SOC Analyst Example
+Imagine a SOC analyst sees the following simplified authentication records:
+10:01 admin login_failed 192.0.2.10
+10:02 admin login_failed 192.0.2.10
+10:03 admin login_failed 192.0.2.10
+10:04 admin login_failed 192.0.2.10
+10:05 admin login_success 192.0.2.10
+
+
+The sequence shows four failed attempts followed by a successful login.
+Initial investigation
+An analyst should examine whether the activity is consistent with normal user behavior or possible unauthorized access.
+
+Useful questions include:
+- Is the source IP expected for this account?
+- Were the attempts generated by the legitimate user?
+- Does the organization have a threshold for failed logins?
+- Is the account privileged?
+- Did suspicious activity occur after the successful login?
+A suspicious pattern does not automatically prove compromise.
+Escalation decision
+If the activity meets the organization's defined escalation criteria, the analyst should notify the appropriate response team and provide relevant evidence.
+Example incident report fields
+Field	Example
+Alert type	Multiple failed logins followed by success
+Affected account	admin
+Source IP	192.0.2.10
+Time range	10:01–10:05
+Potential risk	Unauthorized access
+Status	Investigation required
+Escalation	According to company policy
+
+This practical example connects incident escalation concepts to authentication log analysis and your previous SOC coursework.
+
+Quick Revision — 1-Minute Cheat Sheet
+Concept	Remember
+Incident escalation	Identify → Triage → Hand off if appropriate
+Triage	Initial assessment and prioritization
+Escalation policy	Defines who, when, and how to escalate
+Attention to detail	Detect unusual security activity
+Malware infection	Malicious software compromises a system
+Unauthorized access	Access without permission
+Improper usage	Violation of acceptable use policies
+Incident criticality	Seriousness and potential impact
+Low criticality	Limited apparent impact
+Medium criticality	Potentially significant risk
+High criticality	Major threat to critical assets or operations
+Data owner	Controls access decisions for information
+Data controller	Determines purpose and means of processing
+Data processor	Processes data for a controller
+Data custodian	Implements data protection and access controls
+DPO	Oversees data protection compliance
+Breach notification	Legally required reporting in certain circumstances
+
+
+Five essential rules
+1. Not every event needs escalation, but every relevant alert should be handled according to policy.
+2. Prioritize incidents based on affected assets and potential impact.
+3. Malware infection, unauthorized access, and improper usage are important incident classifications.
+4. Delayed escalation can turn minor security issues into major incidents.
+5. When unsure, consult the escalation policy and ask the appropriate supervisor or team.
